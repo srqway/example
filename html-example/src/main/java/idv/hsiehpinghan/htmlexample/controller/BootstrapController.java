@@ -5,15 +5,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value = "/bootstrap", method = RequestMethod.GET)
+@RequestMapping(value = "/bootstrap")
 public class BootstrapController {
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index() {
 		return "bootstrap/index";
 	}
 
-	@RequestMapping(value = "/navbar", method = RequestMethod.GET)
-	public String navbar() {
-		return "bootstrap/navbar";
+	@RequestMapping(value = "/navbar/index", method = RequestMethod.GET)
+	public String navbarIndex() {
+		return "bootstrap/navbar/index";
+	}
+	
+	@RequestMapping(value = "/navbar/base", method = RequestMethod.GET)
+	public String navbarBase() {
+		return "bootstrap/navbar/base";
+	}
+	
+	@RequestMapping(value = "/navbar/hide", method = RequestMethod.GET)
+	public String navbarHide() {
+		return "bootstrap/navbar/hide";
+	}
+	
+	@RequestMapping(value = "/navbar/top", method = RequestMethod.GET)
+	public String navbarTop() {
+		return "bootstrap/navbar/top";
 	}
 }

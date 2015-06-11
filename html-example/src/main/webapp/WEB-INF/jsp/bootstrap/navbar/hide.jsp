@@ -20,7 +20,7 @@
 <body>
 	<nav role="navigation" class="navbar navbar-default">
 		<div class="navbar-header">
-			<a href="#" class="navbar-brand">Brand</a>
+			<span class="navbar-brand">Brand</span>
 			<button type="button" data-target="#navbarCollapse"
 				data-toggle="collapse" class="navbar-toggle">
 				<span class="sr-only">Toggle navigation</span> <span
@@ -28,19 +28,14 @@
 					class="icon-bar"></span>
 			</button>
 		</div>
-		<!-- Collection of nav links and other content for toggling -->
 		<div id="navbarCollapse" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">Profile</a></li>
-				<li><a href="#">Messages</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Login</a></li>
+				<li class="hidden-xs"><a href="#">hidden-xs</a></li>
+				<li class="hidden-sm"><a href="#">hidden-sm</a></li>
+				<li class="hidden-md"><a href="#">hidden-md</a></li>
+				<li class="hidden-lg"><a href="#">hidden-lg</a></li>		
 			</ul>
 		</div>
 	</nav>
-	<br>
-
 </body>
 </html>
