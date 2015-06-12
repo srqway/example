@@ -31,4 +31,9 @@ public class BootstrapController {
 	public String navbarTop() {
 		return "bootstrap/navbar/top";
 	}
+	
+	@RequestMapping(value = "/tabs/index", method = RequestMethod.GET)
+	public String tabsIndex() {
+		return "bootstrap/tabs/index";
+	}
 }

@@ -10,15 +10,16 @@
 	href="/html-example/javascript/bootstrap-3.3.2-dist/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="/html-example/javascript/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
-<script
-	src="/html-example/javascript/jquery-1.11.2/jquery-1.11.2.min.js"></script>
+<script src="/html-example/javascript/jquery-2.1.4/jquery-2.1.4.min.js"></script>
 <script
 	src="/html-example/javascript/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<nav role="navigation" class="navbar navbar-default">
 		<div class="navbar-header">
-			<span class="navbar-brand"><img style="width: 30px; height: 30px;" alt="Brand" src="/html-example/image/talk.png"></span>
+			<span class="navbar-brand"><img
+				style="width: 30px; height: 30px;" alt="Brand"
+				src="/html-example/image/talk.png"></span>
 			<button type="button" data-target="#navbarCollapse"
 				data-toggle="collapse" class="navbar-toggle">
 				<span class="sr-only">Toggle navigation</span> <span

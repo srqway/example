@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,8 +30,10 @@
 </head>
 <body>
 	<c:if test="${not empty list}">
-		<h2>Area Spline Chart</h2><br>
-		<div id="timeseriesAreaSplineChart"></div><br>
+		<h2>Area Spline Chart</h2>
+		<br>
+		<div id="timeseriesAreaSplineChart"></div>
+		<br>
 		<script type="text/javascript">
 			var timeseriesAreaSplineChartParam = {
 				"bindto" : "#timeseriesAreaSplineChart",
@@ -44,8 +46,8 @@
 							[ 'x', 'data1', 'data2' ],
 							<c:forEach var="v" items="${list}">[
 								'<fmt:formatDate pattern="yyyy/MM/dd" value="${v.date}"/>',
-								${v.integerValue},
-								${v.floatValue}],
+								'${v.integerValue}',
+								'${v.floatValue}'],
 							</c:forEach> ],
 					groups : [ [ 'data1', 'data2' ] ]
 				}
@@ -53,7 +55,8 @@
 			timeseriesAreaSplineChart(timeseriesAreaSplineChartParam);
 		</script>
 		<h2>Area Step Chart</h2>
-		<div id="timeseriesAreaStepChart"></div><br>
+		<div id="timeseriesAreaStepChart"></div>
+		<br>
 		<script type="text/javascript">
 			var timeseriesAreaStepChartParam = {
 				bindto : "#timeseriesAreaStepChart",
@@ -67,8 +70,8 @@
 							[ 'x', 'data1', 'data2' ],
 							<c:forEach var="v" items="${list}">[
 								'<fmt:formatDate pattern="yyyy/MM/dd" value="${v.date}"/>',
-								${v.integerValue},
-								${v.floatValue}],
+								'${v.integerValue}',
+								'${v.floatValue}'],
 							</c:forEach> ]
 				},
 				axis : {
@@ -95,8 +98,8 @@
 							[ 'x', 'data1', 'data2' ],
 							<c:forEach var="v" items="${list}">[
 								'<fmt:formatDate pattern="yyyy/MM/dd" value="${v.date}"/>',
-								${v.integerValue},
-								${v.floatValue}],
+								'${v.integerValue}',
+								'${v.floatValue}'],
 							</c:forEach> ],
 					types : {
 						data2 : 'bar'

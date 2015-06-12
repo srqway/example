@@ -15,16 +15,10 @@
 	src="/html-example/javascript/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<nav role="navigation" class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<p class="navbar-text navbar-left">Text</p>
-			</div>
-		</div>
-	</nav>
-	<c:forEach var="i" begin="0" end="100">
-		<c:out value="${i}" />
-		<br />
-	</c:forEach>
+
+
+vvvv
+
+
 </body>
 </html>

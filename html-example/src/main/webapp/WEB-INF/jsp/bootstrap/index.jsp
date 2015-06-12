@@ -9,5 +9,6 @@
 </head>
 <body>
 	<a href="navbar/index">navbar</a>
+	<a href="tabs/index">tabs</a>
 </body>
 </html>
