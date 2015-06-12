@@ -7,8 +7,6 @@
 <meta charset="UTF-8">
 <title>Bootstrap Navbar</title>
 <link rel="stylesheet"
-	href="/html-example/javascript/jquery-1.11.2/jquery-ui-1.11.4.custom/jquery-ui.min.css">
-<link rel="stylesheet"
 	href="/html-example/javascript/bootstrap-3.3.2-dist/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="/html-example/javascript/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
