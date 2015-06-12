@@ -36,4 +36,9 @@ public class BootstrapController {
 	public String tabsIndex() {
 		return "bootstrap/tabs/index";
 	}
+	
+	@RequestMapping(value = "/listGroup/index", method = RequestMethod.GET)
+	public String listGroupIndex() {
+		return "bootstrap/listGroup/index";
+	}
 }
