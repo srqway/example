@@ -33,6 +33,10 @@ function timeseriesAreaSplineChart(param) {
 			hide : getDataHide(param),
 			type : 'area-spline'
 		},
+		size: {
+			height: getSizeHeight(param),
+			width: getSizeWidth(param)
+		},
 		axis : {
 			x : {
 				type : 'timeseries',

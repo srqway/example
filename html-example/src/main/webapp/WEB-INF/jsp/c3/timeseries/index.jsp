@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Bootstrap Date Range Picker</title>
+<title>c3 timeseries</title>
 <link rel="stylesheet"
 	href="/html-example/javascript/bootstrap-3.3.2-dist/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -16,8 +16,6 @@
 <script src="/html-example/javascript/jquery-2.1.4/jquery-2.1.4.min.js"></script>
 <script
 	src="/html-example/javascript/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
-<script
-	src="/html-example/javascript/bootstrap-daterangepicker-master/daterangepicker.js"></script>
 <script src="/html-example/javascript/d3-master/d3.min.js"></script>
 <script src="/html-example/javascript/c3-master/c3.min.js"></script>
 <script src="/html-example/javascript/thank/c3.thank.chartBase.js"></script>
@@ -50,6 +48,13 @@
 								'${v.floatValue}'],
 							</c:forEach> ],
 					groups : [ [ 'data1', 'data2' ] ]
+				},
+				size : {
+					height : 500,
+					width : 500
+				},
+				subchart: {
+					show: true
 				}
 			}
 			timeseriesAreaSplineChart(timeseriesAreaSplineChartParam);

@@ -33,6 +33,10 @@ function timeseriesAreaStepChart(param) {
 			hide : getDataHide(param),
 			type : 'area-step'
 		},
+		size: {
+			height: getSizeHeight(param),
+			width: getSizeWidth(param)
+		},
 		axis : {
 			x : {
 				type : 'timeseries',

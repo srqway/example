@@ -19,6 +19,9 @@ function getPoint(p) {
 function getData(p) {
 	return p.data || {};
 }
+function getSize(p) {
+	return p.size || {};
+}
 function getCulling(p) {
 	return p.culling || {};
 }
@@ -71,17 +74,17 @@ function getAxisXTickFormat(param) {
 
 function getSubchartShow(param) {
 	var subchart = getSubchart(param);
-	return subchart.show || true;
+	return subchart.show === undefined ? false : subchart.show;
 }
 
 function getPointShow(param) {
 	var point = getPoint(param);
-	return point.show || false;
+	return point.show === undefined ? false : point.show;
 }
 
 function getZoomRescale(param) {
 	var zoom = getZoom(param);
-	return zoom.rescale || true;
+	return zoom.rescale === undefined ? true : zoom.rescale;
 }
 
 function getAxisXTickCullingMax(param) {
@@ -90,4 +93,14 @@ function getAxisXTickCullingMax(param) {
 	var tick = getTick(x);
 	var culling = getCulling(tick);
 	return culling.max || 3;
+}
+
+function getSizeHeight(param) {
+	var size = getSize(param);
+	return size.height;
+}
+
+function getSizeWidth(param) {
+	var size = getSize(param);
+	return size.width;
 }

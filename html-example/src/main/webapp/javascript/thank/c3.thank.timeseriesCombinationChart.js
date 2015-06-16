@@ -43,6 +43,10 @@ function timeseriesCombinationChart(param) {
 			types : getDataTypes(param),
 			axes : getDataAxes(param)
 		},
+		size: {
+			height: getSizeHeight(param),
+			width: getSizeWidth(param)
+		},
 		axis : {
 			x : {
 				type : 'timeseries',
