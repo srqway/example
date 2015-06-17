@@ -41,4 +41,14 @@ public class BootstrapController {
 	public String listGroupIndex() {
 		return "bootstrap/listGroup/index";
 	}
+	
+	@RequestMapping(value = "/panel/index", method = RequestMethod.GET)
+	public String panelIndex() {
+		return "bootstrap/panel/index";
+	}
+	
+	@RequestMapping(value = "/table/index", method = RequestMethod.GET)
+	public String tableIndex() {
+		return "bootstrap/table/index";
+	}
 }
