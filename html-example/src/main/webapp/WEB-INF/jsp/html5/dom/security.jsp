@@ -8,6 +8,6 @@
 <title>Security</title>
 </head>
 <body>
-vvv
+<c:out value="${security}"></c:out>
 </body>
 </html>

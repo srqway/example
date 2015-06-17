@@ -78,7 +78,7 @@
 	Test <mark>mark</mark> tag.
 	<br>
 	<ruby>
-	k<rt>kk</rt>
+	注<rt>ㄓㄨˋ</rt>音<rt>ㄧㄣ</rt>
 	</ruby>
 	<br>
 	abcdefghijklmnopqrstuvwxyz<wbr>abcdefghijklmnopqrstuvwxyz<wbr>abcdefghijklmnopqrstuvwxyz<wbr>abcdefghijklmnopqrstuvwxyz<wbr>abcdefghijklmnopqrstuvwxyz<wbr>abcdefghijklmnopqrstuvwxyz<wbr>abcdefghijklmnopqrstuvwxyz<wbr>abcdefghijklmnopqrstuvwxyz<wbr>abcdefghijklmnopqrstuvwxyz<wbr>abcdefghijklmnopqrstuvwxyz<wbr>
@@ -87,5 +87,6 @@
 		keygen : <keygen name="security">
 		<input type="submit">
 	</form>
+	<br>
 </body>
 </html>
