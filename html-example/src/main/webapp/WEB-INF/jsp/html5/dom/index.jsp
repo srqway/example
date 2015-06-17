@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW" manifest="cache_html.manifest">
 <head>
-<base href="http://localhost:8080/html-example/" target="_blank">
+<!-- <base href="http://localhost:8080/html-example/" target="_blank"> -->
 <meta charset="UTF-8">
 <meta name="application-name" content="html-example">
 <meta name="author" content="thank">
@@ -20,7 +20,7 @@
 </head>
 <body>
 	<noscript>Browser doesn't support javascript !!!</noscript>
-	<a href="">go to home.</a>
+<!-- 	<a href="">go to home.</a> -->
 	<br>
 	<input type="text" dir="ltr" value="12345"><input type="text" dir="rtl" value="12345">
 	<br>
@@ -74,5 +74,18 @@
 			</tr>
 		</tfoot>
 	</table>
+	<br>
+	Test <mark>mark</mark> tag.
+	<br>
+	<ruby>
+	k<rt>kk</rt>
+	</ruby>
+	<br>
+	abcdefghijklmnopqrstuvwxyz<wbr>abcdefghijklmnopqrstuvwxyz<wbr>abcdefghijklmnopqrstuvwxyz<wbr>abcdefghijklmnopqrstuvwxyz<wbr>abcdefghijklmnopqrstuvwxyz<wbr>abcdefghijklmnopqrstuvwxyz<wbr>abcdefghijklmnopqrstuvwxyz<wbr>abcdefghijklmnopqrstuvwxyz<wbr>abcdefghijklmnopqrstuvwxyz<wbr>abcdefghijklmnopqrstuvwxyz<wbr>
+	<br>
+	<form action="security">
+		keygen : <keygen name="security">
+		<input type="submit">
+	</form>
 </body>
 </html>

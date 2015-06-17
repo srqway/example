@@ -13,8 +13,12 @@ public class Html5Controller {
 	}
 
 	@RequestMapping(value = "/dom/index", method = RequestMethod.GET)
-	public String navbarIndex() {
+	public String domIndex() {
 		return "html5/dom/index";
 	}
 
+	@RequestMapping(value = "/dom/security", method = RequestMethod.GET)
+	public String domSecurity() {
+		return "html5/dom/security";
+	}
 }
