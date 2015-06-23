@@ -26,4 +26,14 @@ public class Html5Controller {
 		model.addObject("security", request.getParameter("security"));
 		return model;
 	}
+	
+	@RequestMapping(value = "/css/index", method = RequestMethod.GET)
+	public String cssIndex() {
+		return "html5/css/index";
+	}
+	
+	@RequestMapping(value = "/css/multilineOverflow", method = RequestMethod.GET)
+	public String multilineOverflow() {
+		return "html5/css/multilineOverflow";
+	}
 }

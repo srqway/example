@@ -42,6 +42,11 @@ public class BootstrapController {
 		return "bootstrap/listGroup/index";
 	}
 	
+	@RequestMapping(value = "/inputGroup/index", method = RequestMethod.GET)
+	public String inputGroupIndex() {
+		return "bootstrap/inputGroup/index";
+	}
+	
 	@RequestMapping(value = "/panel/index", method = RequestMethod.GET)
 	public String panelIndex() {
 		return "bootstrap/panel/index";

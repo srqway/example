@@ -11,6 +11,7 @@
 	<a href="navbar/index">navbar</a><br>
 	<a href="tabs/index">tabs</a><br>
 	<a href="listGroup/index">list group</a><br>
+	<a href="inputGroup/index">input group</a><br>
 	<a href="panel/index">panel</a><br>
 	<a href="table/index">table</a><br>
 </body>
