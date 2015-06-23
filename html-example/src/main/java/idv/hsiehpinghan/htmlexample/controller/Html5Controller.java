@@ -27,6 +27,20 @@ public class Html5Controller {
 		return model;
 	}
 	
+	@RequestMapping(value = "/dom/form", method = RequestMethod.GET)
+	public ModelAndView domForm(HttpServletRequest request) {
+		ModelAndView model = new ModelAndView("html5/dom/parameter");
+		model.addObject("parameter", "form - parameter1 : " + request.getParameter("parameter1") + "; parameter2 : " + request.getParameter("parameter2"));
+		return model;
+	}
+	
+	@RequestMapping(value = "/dom/overrideForm", method = RequestMethod.POST)
+	public ModelAndView domOverrideForm(HttpServletRequest request) {
+		ModelAndView model = new ModelAndView("html5/dom/parameter");
+		model.addObject("parameter", "overrideForm - parameter1 : " + request.getParameter("parameter1") + "; parameter2 : " + request.getParameter("parameter2"));
+		return model;
+	}
+	
 	@RequestMapping(value = "/css/index", method = RequestMethod.GET)
 	public String cssIndex() {
 		return "html5/css/index";
