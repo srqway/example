@@ -56,4 +56,9 @@ public class BootstrapController {
 	public String tableIndex() {
 		return "bootstrap/table/index";
 	}
+	
+	@RequestMapping(value = "/form/index", method = RequestMethod.GET)
+	public String formIndex() {
+		return "bootstrap/form/index";
+	}
 }

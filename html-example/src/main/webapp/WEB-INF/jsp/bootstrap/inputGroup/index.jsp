@@ -125,5 +125,26 @@
 			</ul>
 		</div>
 	</div>
+	<h2>colored</h2>
+	<div class="input-group">
+		<div class="input-group-btn">
+			<button type="button" class="btn btn-success" tabindex="-1">Action</button>
+			<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+				<span class="caret"></span> 
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="#">action 1</a></li>
+				<li><a href="#">action 2</a></li>
+				<li class="divider"></li>
+				<li><a href="#">action 3</a></li>
+			</ul>
+		</div>
+		<input type="text" class="form-control">
+		<div class="input-group-btn">
+			<button type="button" class="btn btn-warning" tabindex="-1">
+				<i class="glyphicon glyphicon-search"></i>
+			</button>
+		</div>
+	</div>
 </body>
 </html>

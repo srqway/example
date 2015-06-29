@@ -56,7 +56,7 @@
 	<div style='display:none'>
 		<div id='inlineContent'>
 		This is inline content.
-		<a class="ajax" href="ajax">Click here to load new content</a></p>
+		<a class="ajax" href="ajax">Click here to load new content</a>
 		</div>
 	</div>
 	<script type="text/javascript">

@@ -14,5 +14,6 @@
 	<a href="inputGroup/index">input group</a><br>
 	<a href="panel/index">panel</a><br>
 	<a href="table/index">table</a><br>
+	<a href="form/index">form</a><br>
 </body>
 </html>
