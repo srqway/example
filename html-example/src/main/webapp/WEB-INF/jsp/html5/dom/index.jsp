@@ -146,5 +146,14 @@
 	</form>
 	<input name="parameter2" value="outside parameter" form="myForm">
 	<br>
+	<h5>tel</h5>
+	telephone : <input type="tel">
+	<br>
+	<h5>url</h5>
+	url : <input type="url" value="http://www.google.com.tw">
+	<br>
+	<h5>email</h5>
+	email : <input type="email" multiple="multiple" value="aaa@gmail.com,bbb@gmail.com">
+	<br>
 </body>
 </html>
