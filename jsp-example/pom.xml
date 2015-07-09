@@ -2,13 +2,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>idv.hsiehpinghan</groupId>
-	<artifactId>html-example</artifactId>
+	<artifactId>jsp-example</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.0</version>
-	<name>html-example Maven Webapp</name>
+	<name>jsp-example Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<build>
-		<finalName>html-example</finalName>
+		<finalName>jsp-example</finalName>
 	</build>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -75,4 +75,5 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+
 </project>

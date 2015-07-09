@@ -1,4 +1,4 @@
-package idv.hsiehpinghan.htmlexample.configuration;
+package idv.hsiehpinghan.jspexample.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = { "idv.hsiehpinghan.htmlexample" })
+@ComponentScan(basePackages = { "idv.hsiehpinghan.jspexample" })
 public class SpringConfiguration extends WebMvcConfigurerAdapter {
 	@Bean
 	public UrlBasedViewResolver setupViewResolver() {
@@ -25,8 +25,8 @@ public class SpringConfiguration extends WebMvcConfigurerAdapter {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/index.html").addResourceLocations("/");
-		registry.addResourceHandler("/image/**")
-				.addResourceLocations("/image/");
+		registry.addResourceHandler("/image/**").addResourceLocations(
+				"/image/");
 		registry.addResourceHandler("/javascript/**").addResourceLocations(
 				"/javascript/");
 	}
