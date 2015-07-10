@@ -5,11 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Require.js Index</title>
-<script src="/html-example/javascript/requirejs-master/require.js"
-	defer="defer" async="async"
-	data-main="/html-example/javascript/test/requireJs.js"></script>
 </head>
 <body>
-
+	<a href="dataMain">data-main</a>
+	<br>
+	<a href="inline">inline</a>
+	<br>
+	<a href="module">module</a>
+	<br>
 </body>
 </html>

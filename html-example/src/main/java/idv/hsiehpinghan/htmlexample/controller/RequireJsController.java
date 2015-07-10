@@ -11,4 +11,19 @@ public class RequireJsController {
 	public String index() {
 		return "requireJs/index";
 	}
+
+	@RequestMapping(value = "/dataMain", method = RequestMethod.GET)
+	public String dataMain() {
+		return "requireJs/dataMain";
+	}
+
+	@RequestMapping(value = "/inline", method = RequestMethod.GET)
+	public String inline() {
+		return "requireJs/inline";
+	}
+
+	@RequestMapping(value = "/module", method = RequestMethod.GET)
+	public String module() {
+		return "requireJs/module";
+	}
 }
