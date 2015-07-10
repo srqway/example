@@ -17,19 +17,20 @@
 				.config({
 					paths : {
 						'zrender' : '<c:url value="/javascript/zrender-2.0.8/build/zrender"></c:url>',
-						'zrender/shape/Circle' : '<c:url value="/javascript/zrender-2.0.8/build/zrender"></c:url>'
+						'zrender/shape/Isogon' : '<c:url value="/javascript/zrender-2.0.8/build/zrender"></c:url>'
 					}
 				});
-		require([ 'zrender', 'zrender/shape/Circle' ],
-				function(zrender, circle) {
+		require([ 'zrender', 'zrender/shape/Isogon' ],
+				function(zrender, isogon) {
 					var zr = zrender.init(document.getElementById('main'));
 					var shapeId = require('zrender/tool/guid')();
-					zr.addShape(new circle({
+					zr.addShape(new isogon({
 						id : shapeId,
 						style : {
-							x : 100,
-							y : 100,
-							r : 50
+							x : 200,
+							y : 200,
+							r : 70,
+							n : 5
 						}
 					}));
 					zr.render();

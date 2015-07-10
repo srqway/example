@@ -17,23 +17,24 @@
 				.config({
 					paths : {
 						'zrender' : '<c:url value="/javascript/zrender-2.0.8/build/zrender"></c:url>',
-						'zrender/shape/Circle' : '<c:url value="/javascript/zrender-2.0.8/build/zrender"></c:url>'
+						'zrender/shape/Rectangle' : '<c:url value="/javascript/zrender-2.0.8/build/zrender"></c:url>'
 					}
 				});
-		require([ 'zrender', 'zrender/shape/Circle' ],
-				function(zrender, circle) {
-					var zr = zrender.init(document.getElementById('main'));
-					var shapeId = require('zrender/tool/guid')();
-					zr.addShape(new circle({
-						id : shapeId,
-						style : {
-							x : 100,
-							y : 100,
-							r : 50
-						}
-					}));
-					zr.render();
-				})
+		require([ 'zrender', 'zrender/shape/Rectangle' ], function(zrender,
+				rectangle) {
+			var zr = zrender.init(document.getElementById('main'));
+			var shapeId = require('zrender/tool/guid')();
+			zr.addShape(new rectangle({
+				id : shapeId,
+				style : {
+					x : 100,
+					y : 100,
+					width : 100,
+					height : 50
+				}
+			}));
+			zr.render();
+		})
 	</script>
 </body>
 </html>

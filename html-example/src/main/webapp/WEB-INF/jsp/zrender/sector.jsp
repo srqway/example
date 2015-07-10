@@ -17,19 +17,22 @@
 				.config({
 					paths : {
 						'zrender' : '<c:url value="/javascript/zrender-2.0.8/build/zrender"></c:url>',
-						'zrender/shape/Circle' : '<c:url value="/javascript/zrender-2.0.8/build/zrender"></c:url>'
+						'zrender/shape/Sector' : '<c:url value="/javascript/zrender-2.0.8/build/zrender"></c:url>'
 					}
 				});
-		require([ 'zrender', 'zrender/shape/Circle' ],
-				function(zrender, circle) {
+		require([ 'zrender', 'zrender/shape/Sector' ],
+				function(zrender, sector) {
 					var zr = zrender.init(document.getElementById('main'));
 					var shapeId = require('zrender/tool/guid')();
-					zr.addShape(new circle({
+					zr.addShape(new sector({
 						id : shapeId,
 						style : {
-							x : 100,
-							y : 100,
-							r : 50
+							x : 200,
+							y : 200,
+							r : 100,
+							r0 : 50,
+							startAngle : 30,
+							endAngle : 90
 						}
 					}));
 					zr.render();
