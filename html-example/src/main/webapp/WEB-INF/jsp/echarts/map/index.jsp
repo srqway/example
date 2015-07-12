@@ -6,8 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>map</title>
-<!-- <script src="/html-example/javascript/jquery-2.1.4/jquery-2.1.4.min.js"></script> -->
+<title>taiwan map</title>
 </head>
 <body>
 	<div id="main" style="height: 400px"></div>
@@ -25,69 +24,91 @@
 		require(
 			[ 'jquery', 'echarts', 'echarts/chart/map'], function($, ec) {
 			var myChart = ec.init(document.getElementById('main'));
-			require('echarts/util/mapData/params').params.continent = {
+			require('echarts/util/mapData/params').params.taiwan = {
 			    getGeoJson: function (callback) {
-			        $.getJSON('http://localhost:8080/html-example/javascript/echarts-2.2.4/doc/example/geoJson/continent_geo.json',callback);
+			        $.getJSON('http://localhost:8080/html-example/javascript/twgeojson-master/twcounty2010.2_for_echarts.json',callback);
+			    },
+			    specialArea : {
+			        '連江縣' : {              // 把阿拉斯加移到美国主大陆左下方
+			            left : 130,        // 安放位置起始点为西经113
+			            top : 23,           // 北纬31度
+			            width : 15,         // 区间大小宽高不大于15度
+			            height : 15
+			        }
 			    }
 			}
 			option = {
-			    title : {
-			        text : '金棕榈 智慧旅行@云数据',
-			        subtext: 'by 江江的喵',
-			        link: 'http://www.palmyou.com/',
-			        sublink: 'http://weibo.com/u/2813464944'
-			    },
 			    tooltip : {
 			        trigger: 'item',
 			        formatter: function (params){
-			            var value = params.value + '万人次 （' + (params.value/98.19).toFixed(2) + '%）';
-			            return params.seriesName + '<br/>' + params.name + ' : ' + value;
-			        }
-			    },
-			    toolbox: {
-			        show : true,
-			        orient : 'vertical',
-			        x: 'right',
-			        y: 'center',
-			        feature : {
-			            mark : {show: true},
-			            dataView : {show: true, readOnly: false},
-			            restore : {show: true},
-			            saveAsImage : {show: true}
+			            return params.seriesName + '<br/>' + params.name + ' : ' + params.value;
 			        }
 			    },
 			    dataRange: {
 			        min: 0,
-			        max: 1000,
-			        text:['热', '冷'],
+			        max: 10000,
+			        text:['high', 'low'],
 			        splitNumber:0,
 			        color: ['orangered','yellow','lightskyblue']
 			    },
 			    series : [
 			        {
-			            name: '2013年出境目的地（洲际统计）',
+			            name: 'polulation',
 			            type: 'map',
-			            mapType: 'continent', // 自定义扩展图表类型
+			            mapType: 'taiwan',
 			            itemStyle:{
 			                normal:{label:{show:true}},
 			                emphasis:{label:{show:true}}
 			            },
+			            selectedMode: 'multiple',
+			            roam: true,
 			            data:[
-			                {name: '亚洲', value: 8967.69},
-			                {name: '大洋洲', value: 592.09},
-			                {name: '欧洲', value: 183.62},
-			                {name: '北美洲', value: 41.63},
-			                {name: '南美洲', value: 10.41},
-			                {name: '非洲', value: 22.5837}
+			                {"name":"臺東縣", value: 63.86},
+		                	{"name":"花蓮縣", value: 72.03},
+		                	{"name":"苗栗縣", value: 311.56},
+		                	{"name":"雲林縣", value: 546.43},
+		                	{"name":"高雄市", value: 942.79},
+		                	{"name":"南投縣", value: 125.25},
+		                	{"name":"嘉義縣", value: 275.67},
+		                	{"name":"宜蘭縣", value: 214.02},
+		                	{"name":"屏東縣", value: 305.49},
+		                	{"name":"新北市", value: 1932.61, selected: true},
+		                	{"name":"桃園市", value: 1685.84},
+		                	{"name":"臺中市", value: 1227.97},
+		                	{"name":"臺北市", value: 9942.30},
+		                	{"name":"臺南市", value: 859.75},
+		                	{"name":"金門縣", value: 842.19},
+		                	{"name":"連江縣", value: 434.24},
+		                	{"name":"澎湖縣", value: 802.10},
+		                	{"name":"嘉義市", value: 4512.79},
+		                	{"name":"基隆市", value: 2810.18},
+		                	{"name":"彰化縣", value: 1202.05},
+		                	{"name":"新竹市", value: 4147.64},
+		                	{"name":"新竹縣", value: 376.61}
 			            ],
-			            // 文本位置修正
 			            textFixed : {
-			                '大洋洲' : [265, 0],
-			                '非洲' : [10, -30],
-			                '北美洲' : [20, 0],
-			                '南美洲' : [0, -10],
-			                '亚洲' : [20, -30],
-			                '欧洲' : [200, -10],
+			                "臺東縣" : [10, 0],
+		                	"花蓮縣" : [20, 0],
+		                	"苗栗縣" : [-25, -5],
+		                	"雲林縣" : [-20, -5],
+		                	"高雄市" : [-35, 20],
+		                	"南投縣" : [-2, 0],
+		                	"嘉義縣" : [-40, 0],
+		                	"宜蘭縣" : [20, 0],
+		                	"屏東縣" : [-15, 10],
+		                	"新北市" : [0, 0],
+		                	"桃園市" : [-20, -20],
+		                	"臺中市" : [-35, -5],
+		                	"臺北市" : [-20, -15],
+		                	"臺南市" : [-25, 0],
+		                	"金門縣" : [0, -10],
+		                	"連江縣" : [10, 0],
+		                	"澎湖縣" : [-20, -10],
+		                	"嘉義市" : [5, 0],
+		                	"基隆市" : [15, -10],
+		                	"彰化縣" : [-20, 0],
+		                	"新竹市" : [-20, 2],
+		                	"新竹縣" : [-25, -20]
 			            }
 			        }
 			    ]
