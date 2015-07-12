@@ -20,21 +20,12 @@
 				'echarts/chart/map':'http://localhost:8080/html-example/javascript/echarts-2.2.4/build/dist/chart/map' 
 			}
 		});
-		
 		require(
 			[ 'jquery', 'echarts', 'echarts/chart/map'], function($, ec) {
 			var myChart = ec.init(document.getElementById('main'));
 			require('echarts/util/mapData/params').params.taiwan = {
 			    getGeoJson: function (callback) {
 			        $.getJSON('http://localhost:8080/html-example/javascript/twgeojson-master/twcounty2010.2_for_echarts.json',callback);
-			    },
-			    specialArea : {
-			        '連江縣' : {              // 把阿拉斯加移到美国主大陆左下方
-			            left : 130,        // 安放位置起始点为西经113
-			            top : 23,           // 北纬31度
-			            width : 15,         // 区间大小宽高不大于15度
-			            height : 15
-			        }
 			    }
 			}
 			option = {
@@ -113,7 +104,6 @@
 			        }
 			    ]
 			};
-
 			myChart.setOption(option);
 		});
 	</script>
