@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>C3 Index</title>
+<title>echart index</title>
 </head>
 <body>
 	<a href="wordCloud/index">word cloud</a><br>
 	<a href="line/index">line</a><br>
+	<a href="map/index">map</a><br>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>word cloud</title>
+<title>line</title>
 <!-- <script src="/html-example/javascript/jquery-2.1.4/jquery-2.1.4.min.js"></script> -->
 </head>
 <body>
@@ -22,8 +22,6 @@
 		require(
 			[ 'echarts', 'echarts/chart/line'], function(ec) {
 			var myChart = ec.init(document.getElementById('main'));
-
-
 			option = {
 				    title : {
 				        text: '某楼盘销售情况',

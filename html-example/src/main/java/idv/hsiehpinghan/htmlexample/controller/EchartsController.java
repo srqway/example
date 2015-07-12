@@ -18,11 +18,16 @@ public class EchartsController {
 		ModelAndView model = new ModelAndView("echarts/wordCloud/index");
 		return model;
 	}
-	
+
 	@RequestMapping(value = "/line/index", method = RequestMethod.GET)
 	public ModelAndView line() {
 		ModelAndView model = new ModelAndView("echarts/line/index");
 		return model;
 	}
 
+	@RequestMapping(value = "/map/index", method = RequestMethod.GET)
+	public ModelAndView map() {
+		ModelAndView model = new ModelAndView("echarts/map/index");
+		return model;
+	}
 }
