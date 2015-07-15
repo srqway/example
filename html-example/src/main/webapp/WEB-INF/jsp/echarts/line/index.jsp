@@ -9,6 +9,9 @@
 <title>basic area</title>
 </head>
 <body>
-	<a href="basicArea">basic area</a><br>
+	<a href="basicLine">basic line</a>
+	<br>
+	<a href="basicArea">basic area</a>
+	<br>
 </body>
 </html>

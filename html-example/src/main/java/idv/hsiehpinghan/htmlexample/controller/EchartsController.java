@@ -24,10 +24,16 @@ public class EchartsController {
 		ModelAndView model = new ModelAndView("echarts/wordCloud/wordCloud");
 		return model;
 	}
-	
+
 	@RequestMapping(value = "/line/index", method = RequestMethod.GET)
 	public ModelAndView line() {
 		ModelAndView model = new ModelAndView("echarts/line/index");
+		return model;
+	}
+
+	@RequestMapping(value = "/line/basicLine", method = RequestMethod.GET)
+	public ModelAndView basicLine() {
+		ModelAndView model = new ModelAndView("echarts/line/basicLine");
 		return model;
 	}
 
@@ -36,16 +42,46 @@ public class EchartsController {
 		ModelAndView model = new ModelAndView("echarts/line/basicArea");
 		return model;
 	}
-	
+
 	@RequestMapping(value = "/maps/index", method = RequestMethod.GET)
 	public ModelAndView maps() {
 		ModelAndView model = new ModelAndView("echarts/maps/index");
 		return model;
 	}
-	
+
 	@RequestMapping(value = "/maps/taiwanCounty", method = RequestMethod.GET)
 	public ModelAndView taiwanCounty() {
 		ModelAndView model = new ModelAndView("echarts/maps/taiwanCounty");
+		return model;
+	}
+
+	@RequestMapping(value = "/force/index", method = RequestMethod.GET)
+	public ModelAndView force() {
+		ModelAndView model = new ModelAndView("echarts/force/index");
+		return model;
+	}
+
+	@RequestMapping(value = "/force/simpleTopology", method = RequestMethod.GET)
+	public ModelAndView simpleTopology() {
+		ModelAndView model = new ModelAndView("echarts/force/simpleTopology");
+		return model;
+	}
+
+	@RequestMapping(value = "/bar/index", method = RequestMethod.GET)
+	public ModelAndView bar() {
+		ModelAndView model = new ModelAndView("echarts/bar/index");
+		return model;
+	}
+
+	@RequestMapping(value = "/bar/basicColumn", method = RequestMethod.GET)
+	public ModelAndView basicColumn() {
+		ModelAndView model = new ModelAndView("echarts/bar/basicColumn");
+		return model;
+	}
+
+	@RequestMapping(value = "/bar/rainbowBar", method = RequestMethod.GET)
+	public ModelAndView rainbowBar() {
+		ModelAndView model = new ModelAndView("echarts/bar/rainbowBar");
 		return model;
 	}
 }
