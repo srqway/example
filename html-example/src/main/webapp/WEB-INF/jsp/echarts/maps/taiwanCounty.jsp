@@ -15,9 +15,8 @@
 	<script type="text/javascript">
 		require.config({
 			paths : {
-				jquery : 'http://localhost:8080/html-example/javascript/jquery-2.1.4/jquery-2.1.4.min',
-				echarts : 'http://localhost:8080/html-example/javascript/echarts-2.2.4/build/dist',
-				'echarts/chart/map':'http://localhost:8080/html-example/javascript/echarts-2.2.4/build/dist/chart/map' 
+				jquery : '/html-example/javascript/jquery-2.1.4/jquery-2.1.4.min',
+				echarts : '/html-example/javascript/echarts-2.2.4/build/dist'
 			}
 		});
 		require(
@@ -25,10 +24,14 @@
 			var myChart = ec.init(document.getElementById('main'));
 			require('echarts/util/mapData/params').params.taiwan = {
 			    getGeoJson: function (callback) {
-			        $.getJSON('http://localhost:8080/html-example/javascript/twgeojson-master/twcounty2010.2_for_echarts.json',callback);
+			        $.getJSON('/html-example/javascript/twgeojson-master/twcounty2010.2_for_echarts.json',callback);
 			    }
 			}
 			option = {
+				title : {
+					text : 'maps',
+					subtext : 'taiwan county'
+				},
 			    tooltip : {
 			        trigger: 'item',
 			        formatter: function (params){

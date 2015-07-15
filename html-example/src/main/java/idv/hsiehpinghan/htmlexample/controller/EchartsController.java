@@ -14,20 +14,38 @@ public class EchartsController {
 	}
 
 	@RequestMapping(value = "/wordCloud/index", method = RequestMethod.GET)
-	public ModelAndView wordCloud() {
+	public ModelAndView wordCloudIndex() {
 		ModelAndView model = new ModelAndView("echarts/wordCloud/index");
 		return model;
 	}
 
+	@RequestMapping(value = "/wordCloud/wordCloud", method = RequestMethod.GET)
+	public ModelAndView wordCloud() {
+		ModelAndView model = new ModelAndView("echarts/wordCloud/wordCloud");
+		return model;
+	}
+	
 	@RequestMapping(value = "/line/index", method = RequestMethod.GET)
 	public ModelAndView line() {
 		ModelAndView model = new ModelAndView("echarts/line/index");
 		return model;
 	}
 
-	@RequestMapping(value = "/map/index", method = RequestMethod.GET)
-	public ModelAndView map() {
-		ModelAndView model = new ModelAndView("echarts/map/index");
+	@RequestMapping(value = "/line/basicArea", method = RequestMethod.GET)
+	public ModelAndView basicArea() {
+		ModelAndView model = new ModelAndView("echarts/line/basicArea");
+		return model;
+	}
+	
+	@RequestMapping(value = "/maps/index", method = RequestMethod.GET)
+	public ModelAndView maps() {
+		ModelAndView model = new ModelAndView("echarts/maps/index");
+		return model;
+	}
+	
+	@RequestMapping(value = "/maps/taiwanCounty", method = RequestMethod.GET)
+	public ModelAndView taiwanCounty() {
+		ModelAndView model = new ModelAndView("echarts/maps/taiwanCounty");
 		return model;
 	}
 }
