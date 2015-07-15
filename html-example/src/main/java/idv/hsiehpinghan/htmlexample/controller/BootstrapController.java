@@ -16,49 +16,59 @@ public class BootstrapController {
 	public String navbarIndex() {
 		return "bootstrap/navbar/index";
 	}
-	
+
 	@RequestMapping(value = "/navbar/base", method = RequestMethod.GET)
 	public String navbarBase() {
 		return "bootstrap/navbar/base";
 	}
-	
+
 	@RequestMapping(value = "/navbar/hide", method = RequestMethod.GET)
 	public String navbarHide() {
 		return "bootstrap/navbar/hide";
 	}
-	
+
 	@RequestMapping(value = "/navbar/top", method = RequestMethod.GET)
 	public String navbarTop() {
 		return "bootstrap/navbar/top";
 	}
-	
+
 	@RequestMapping(value = "/tabs/index", method = RequestMethod.GET)
 	public String tabsIndex() {
 		return "bootstrap/tabs/index";
 	}
-	
+
 	@RequestMapping(value = "/listGroup/index", method = RequestMethod.GET)
 	public String listGroupIndex() {
 		return "bootstrap/listGroup/index";
 	}
-	
+
 	@RequestMapping(value = "/inputGroup/index", method = RequestMethod.GET)
 	public String inputGroupIndex() {
 		return "bootstrap/inputGroup/index";
 	}
-	
+
 	@RequestMapping(value = "/panel/index", method = RequestMethod.GET)
 	public String panelIndex() {
 		return "bootstrap/panel/index";
 	}
-	
+
 	@RequestMapping(value = "/table/index", method = RequestMethod.GET)
 	public String tableIndex() {
 		return "bootstrap/table/index";
 	}
-	
+
 	@RequestMapping(value = "/form/index", method = RequestMethod.GET)
 	public String formIndex() {
 		return "bootstrap/form/index";
+	}
+
+	@RequestMapping(value = "/pagination/index", method = RequestMethod.GET)
+	public String paginationIndex() {
+		return "bootstrap/pagination/index";
+	}
+
+	@RequestMapping(value = "/image/index", method = RequestMethod.GET)
+	public String imageIndex() {
+		return "bootstrap/image/index";
 	}
 }

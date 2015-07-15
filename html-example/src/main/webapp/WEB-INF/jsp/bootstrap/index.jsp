@@ -15,5 +15,7 @@
 	<a href="panel/index">panel</a><br>
 	<a href="table/index">table</a><br>
 	<a href="form/index">form</a><br>
+	<a href="pagination/index">pagination</a><br>
+	<a href="image/index">image</a><br>
 </body>
 </html>
