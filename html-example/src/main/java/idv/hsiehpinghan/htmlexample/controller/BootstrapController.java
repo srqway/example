@@ -71,4 +71,9 @@ public class BootstrapController {
 	public String imageIndex() {
 		return "bootstrap/image/index";
 	}
+
+	@RequestMapping(value = "/text/index", method = RequestMethod.GET)
+	public String textIndex() {
+		return "bootstrap/text/index";
+	}
 }

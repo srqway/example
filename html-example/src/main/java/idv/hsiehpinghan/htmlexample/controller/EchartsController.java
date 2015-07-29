@@ -84,4 +84,17 @@ public class EchartsController {
 		ModelAndView model = new ModelAndView("echarts/bar/rainbowBar");
 		return model;
 	}
+
+	@RequestMapping(value = "/treeMap/index", method = RequestMethod.GET)
+	public ModelAndView treeMap() {
+		ModelAndView model = new ModelAndView("echarts/treeMap/index");
+		return model;
+	}
+
+	@RequestMapping(value = "/treeMap/basicTreeMap", method = RequestMethod.GET)
+	public ModelAndView basicTreeMap() {
+		ModelAndView model = new ModelAndView("echarts/treeMap/basicTreeMap");
+		return model;
+	}
+
 }

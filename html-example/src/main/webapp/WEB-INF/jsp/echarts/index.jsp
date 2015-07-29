@@ -13,5 +13,6 @@
 	<a href="maps/index">maps</a><br>
 	<a href="force/index">force</a><br>
 	<a href="wordCloud/index">word cloud</a><br>
+	<a href="treeMap/index">tree map</a><br>
 </body>
 </html>

@@ -50,4 +50,14 @@ public class Html5Controller {
 	public String multilineOverflow() {
 		return "html5/css/multilineOverflow";
 	}
+	
+	@RequestMapping(value = "/iframe/index", method = RequestMethod.GET)
+	public String iframeIndex() {
+		return "html5/iframe/index";
+	}
+	
+	@RequestMapping(value = "/iframe/iframeWithEcharts", method = RequestMethod.GET)
+	public String iframeWithEcharts() {
+		return "html5/iframe/iframeWithEcharts";
+	}
 }

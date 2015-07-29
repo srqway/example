@@ -17,5 +17,7 @@
 	<a href="form/index">form</a><br>
 	<a href="pagination/index">pagination</a><br>
 	<a href="image/index">image</a><br>
+	<a href="text/index">text</a>
+	<br>
 </body>
 </html>
