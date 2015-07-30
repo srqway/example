@@ -16,10 +16,8 @@
 </head>
 <body>
 	<nav role="navigation" class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<p class="navbar-text navbar-left">Text</p>
-			</div>
+		<div class="navbar-header">
+			<p class="navbar-text navbar-left">Text</p>
 		</div>
 	</nav>
 	<c:forEach var="i" begin="0" end="100">

@@ -12,6 +12,11 @@ public class BootstrapController {
 		return "bootstrap/index";
 	}
 
+	@RequestMapping(value = "/nonResponsive/index", method = RequestMethod.GET)
+	public String nonResponsive() {
+		return "bootstrap/nonResponsive/index";
+	}
+
 	@RequestMapping(value = "/navbar/index", method = RequestMethod.GET)
 	public String navbarIndex() {
 		return "bootstrap/navbar/index";

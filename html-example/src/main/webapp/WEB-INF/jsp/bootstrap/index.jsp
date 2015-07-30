@@ -8,6 +8,7 @@
 <title>Bootstrap Index</title>
 </head>
 <body>
+	<a href="nonResponsive/index">non responsive</a><br>
 	<a href="navbar/index">navbar</a><br>
 	<a href="tabs/index">tabs</a><br>
 	<a href="listGroup/index">list group</a><br>
