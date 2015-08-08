@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>html5</title>
+<title>svg</title>
 </head>
 <body>
-	<a href="dom/index">dom</a><br>
-	<a href="css/index">css</a><br>
-	<a href="iframe/index">iframe</a><br>
-	<a href="svg/index">svg</a><br>
+	<a href="basicShape">basic shape</a><br>
+	<a href="path">path</a><br>
+	<a href="text">text</a><br>
+	<a href="stroke">stroke</a><br>
 </body>
 </html>

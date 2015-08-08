@@ -60,4 +60,30 @@ public class Html5Controller {
 	public String iframeWithEcharts() {
 		return "html5/iframe/iframeWithEcharts";
 	}
+	
+	@RequestMapping(value = "/svg/index", method = RequestMethod.GET)
+	public String svgIndex() {
+		return "html5/svg/index";
+	}
+	
+	@RequestMapping(value = "/svg/basicShape", method = RequestMethod.GET)
+	public String basicShape() {
+		return "html5/svg/basicShape";
+	}
+	
+	@RequestMapping(value = "/svg/path", method = RequestMethod.GET)
+	public String path() {
+		return "html5/svg/path";
+	}
+	
+	@RequestMapping(value = "/svg/text", method = RequestMethod.GET)
+	public String text() {
+		return "html5/svg/text";
+	}
+	
+	@RequestMapping(value = "/svg/stroke", method = RequestMethod.GET)
+	public String stroke() {
+		return "html5/svg/stroke";
+	}
+
 }
