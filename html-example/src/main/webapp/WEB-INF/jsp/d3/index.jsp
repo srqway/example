@@ -9,5 +9,7 @@
 </head>
 <body>
 	<a href="barChart">bar chart</a>
+	<br>
+	<a href="scatterPlot">scatter plot</a>
 </body>
 </html>

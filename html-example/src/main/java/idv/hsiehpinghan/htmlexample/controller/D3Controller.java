@@ -26,17 +26,47 @@ public class D3Controller {
 	@ResponseBody
 	@RequestMapping(value = "/barChart/{size:.+}", method = RequestMethod.GET)
 	public String barChartCsvData(@PathVariable("size") int size) {
-		return generateRandomCsv(size);
+		return generateBarChartCsvData(size);
 	}
 
-	private String generateRandomCsv(int size) {
+	@RequestMapping(value = "/scatterPlot", method = RequestMethod.GET)
+	public ModelAndView scatterPlot() {
+		ModelAndView model = new ModelAndView("d3/scatterPlot");
+		return model;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/scatterPlot/{size:.+}", method = RequestMethod.GET)
+	public String scatterPlotCsvData(@PathVariable("size") int size) {
+		return generateScatterPlotCsvData(size);
+	}
+	
+	private String generateBarChartCsvData(int size) {
 		Random random = new Random();
 		random.setSeed(0);
 		StringBuilder sb = new StringBuilder();
-		sb.append("column_0,column_1");
+		sb.append("name,value");
 		for (int i = 0; i < size; ++i) {
 			sb.append("\n");
 			sb.append("item_" + i);
+			sb.append(",");
+			sb.append(random.nextInt(100));
+		}
+		return sb.toString();
+	}
+	
+	private String generateScatterPlotCsvData(int size) {
+		Random random = new Random();
+		random.setSeed(0);
+		StringBuilder sb = new StringBuilder();
+		sb.append("name,x,y,value");
+		for (int i = 0; i < size; ++i) {
+			sb.append("\n");
+			sb.append("item_" + i);
+			sb.append(",");
+			sb.append(random.nextInt(500));
+			sb.append(",");
+			sb.append(random.nextInt(500));
 			sb.append(",");
 			sb.append(random.nextInt(100));
 		}
