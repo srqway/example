@@ -46,6 +46,11 @@ public class Html5Controller {
 		return "html5/css/index";
 	}
 	
+	@RequestMapping(value = "/css/array", method = RequestMethod.GET)
+	public String array() {
+		return "html5/css/array";
+	}
+	
 	@RequestMapping(value = "/css/multilineOverflow", method = RequestMethod.GET)
 	public String multilineOverflow() {
 		return "html5/css/multilineOverflow";

@@ -97,4 +97,15 @@ public class EchartsController {
 		return model;
 	}
 
+	@RequestMapping(value = "/component/index", method = RequestMethod.GET)
+	public ModelAndView compoment() {
+		ModelAndView model = new ModelAndView("echarts/component/index");
+		return model;
+	}
+
+	@RequestMapping(value = "/component/dataZoom", method = RequestMethod.GET)
+	public ModelAndView dataZoom() {
+		ModelAndView model = new ModelAndView("echarts/component/dataZoom");
+		return model;
+	}
 }
