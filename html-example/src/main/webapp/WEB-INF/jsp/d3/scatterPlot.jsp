@@ -7,6 +7,18 @@
 <head>
 <meta charset="UTF-8">
 <title>d3 scatter plot</title>
+<style type="text/css">
+.axis path, .axis line {
+	fill: none;
+	stroke: rgb(0, 255, 0);
+	shape-rendering: crispEdges;
+}
+
+.axis text {
+	font-family: sans-serif;
+	font-size: 11px;
+}
+</style>
 </head>
 <body>
 	scatter plot:
@@ -20,10 +32,12 @@
 	var w = 500;
 	var h = 500;
 	var padding = 1;
+	var marginPadding = 30;
 	var valueScale;
-	var yScale = d3.scale.linear().domain([0, 500]).range([h, 0]);
+	var xScale = d3.scale.linear().domain([ 0, 500 ]).range([ 0, w ]);
+	var yScale = d3.scale.linear().domain([ 0, 500 ]).range([ h, 0 ]);
 	var colorScale = d3.scale.category20();
-	
+
 	var svg = d3.select("body").append("svg").attr({
 		"width" : w,
 		"height" : h
@@ -38,6 +52,7 @@
 						reset(dataset);
 						drawShape(dataset);
 						addText(dataset);
+						addAxis();
 					}
 				});
 		function reset(dataset) {
@@ -46,25 +61,25 @@
 				return d.value;
 			});
 			var maxValueSqrt = Math.sqrt(maxValue);
-			valueScale = d3.scale.sqrt().domain([ 0, maxValue ]).range([ 0, maxValueSqrt ]);
+			valueScale = d3.scale.sqrt().domain([ 0, maxValue ]).range(
+					[ 0, maxValueSqrt ]);
 		}
 		function drawShape(dataset) {
 			var circle = svg.selectAll("circle").data(dataset).enter().append(
-					"circle").attr(
-					{
-						"cx" : function(d, i) {
-							return d.x;
-						},
-						"cy" : function(d) {
-							return yScale(d.y);
-						},
-						"r" : function(d) {
-							return valueScale(d.value);
-						},
-						"fill" : function(d, i) {
-							return colorScale(i);
-						}
-					});
+					"circle").attr({
+				"cx" : function(d, i) {
+					return d.x;
+				},
+				"cy" : function(d) {
+					return yScale(d.y);
+				},
+				"r" : function(d) {
+					return valueScale(d.value);
+				},
+				"fill" : function(d, i) {
+					return colorScale(i);
+				}
+			});
 		}
 		function addText(dataset) {
 			var text = svg.selectAll("text").data(dataset).enter().append(
@@ -82,6 +97,18 @@
 				"text-anchor" : "middle"
 			});
 
+		}
+		function addAxis() {
+			var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+			svg.append("g").attr({
+				"class" : "axis",
+				"transform" : "translate(0," + (h - marginPadding) + ")"
+			}).call(xAxis);
+			var yAxis = d3.svg.axis().scale(yScale).orient("left");
+			svg.append("g").attr({
+				"class" : "axis",
+				"transform" : "translate(" + marginPadding + ",0)"
+			}).call(yAxis);
 		}
 	}
 </script>
