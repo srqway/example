@@ -67,7 +67,7 @@
 	<button type="button" class="btn btn-danger active">danger</button>
 	<button type="button" class="btn btn-link active">link</button>
 	<hr>
-	<h2>active</h2>
+	<h2>disabled</h2>
 	<button type="button" class="btn btn-default disabled">default</button>
 	<button type="button" class="btn btn-primary disabled">primary</button>
 	<button type="button" class="btn btn-success disabled">success</button>
