@@ -13,6 +13,7 @@
 	<a href="tabs/index">tabs</a><br>
 	<a href="listGroup/index">list group</a><br>
 	<a href="inputGroup/index">input group</a><br>
+	<a href="buttonGroup/index">button group</a><br>
 	<a href="panel/index">panel</a><br>
 	<a href="table/index">table</a><br>
 	<a href="form/index">form</a><br>
