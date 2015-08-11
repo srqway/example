@@ -86,4 +86,9 @@ public class BootstrapController {
 	public String buttonGroup() {
 		return "bootstrap/buttonGroup/index";
 	}
+	
+	@RequestMapping(value = "/button/index", method = RequestMethod.GET)
+	public String button() {
+		return "bootstrap/button/index";
+	}
 }

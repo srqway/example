@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Bootstrap Input Group</title>
+<title>Bootstrap button Group</title>
 <link rel="stylesheet"
 	href="/html-example/javascript/bootstrap-3.3.2-dist/css/bootstrap.min.css">
 <link rel="stylesheet"
