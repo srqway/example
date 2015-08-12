@@ -108,4 +108,10 @@ public class EchartsController {
 		ModelAndView model = new ModelAndView("echarts/component/dataZoom");
 		return model;
 	}
+	
+	@RequestMapping(value = "/component/toolbox", method = RequestMethod.GET)
+	public ModelAndView toolbox() {
+		ModelAndView model = new ModelAndView("echarts/component/toolbox");
+		return model;
+	}
 }

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>basic line</title>
+<title>data zoom</title>
 </head>
 <body>
 	<div id="main" style="height: 400px"></div>

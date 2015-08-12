@@ -11,5 +11,7 @@
 <body>
 	<a href="dataZoom">data zoom</a>
 	<br>
+	<a href="toolbox">toolbox</a>
+	<br>
 </body>
 </html>
