@@ -85,12 +85,6 @@
 							}
 						},
 						calculable : true,
-						dataZoom : {
-							show : true,
-							realtime : true,
-							start : 0,
-							end : 100
-						},
 						xAxis : [ {
 							type : 'category',
 							boundaryGap : false,
