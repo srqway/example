@@ -22,14 +22,38 @@
 <script src="/html-example/javascript/DataTables-1.10.7/media/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
 $(function() {
+	var height = $(window).height() - 200;
 	$('#tableId').DataTable({
-		"jQueryUI" : true
+		"info" : true,
+		"ordering" : true,
+		"order" : [ [ 1, "desc" ] ],
+		"paging" : true,
+		"scrollY" : height + "px",
+		"scrollX" : true,
+		"scrollXInner" : "200%",
+		"scrollCollapse" : true,
+		"jQueryUI" : true,
+		"language" : {
+			"search" : "篩選:",
+			"emptyTable" : "查無資料",
+			"info" : "顯示 _START_ 到 _END_ 筆 / 共 _TOTAL_ 筆",
+			"infoEmpty" : "",
+			"sInfoFiltered" : "(篩選前共 _MAX_ 筆)",
+			"lengthMenu" : '顯示 _MENU_ 筆',
+			"zeroRecords" : "無符合資料",
+			"paginate" : {
+				"first" : "第一筆",
+				"sLast" : "最後一筆",
+				"sNext" : "下一筆",
+				"sPrevious" : "前一筆"
+			}
+		}
 	});
 });
 </script>
 </head>
 <body>
-	<table id="tableId">
+	<table id="tableId" class="table table-striped">
 		<thead>
 			<tr>
 				<th>Integer Value</th>
