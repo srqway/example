@@ -27,7 +27,7 @@
 	display: block;
 }
 
-.table-fixed tbody td, .table-fixed thead>tr>th {
+.table-fixed tbody td, .table-fixed tbody th {
 	float: left;
 	border-bottom-width: 0;
 }

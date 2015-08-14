@@ -10,5 +10,7 @@
 <body>
 	<a href="cUrl">c:url</a>
 	<br>
+	<a href="fmtFormatNumber">fmt:formatNumber</a>
+	<br>
 </body>
 </html>
