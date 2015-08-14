@@ -28,6 +28,7 @@ $(function() {
 		"scrollXInner" : "200%",
 		"scrollCollapse" : true,
 		"jQueryUI" : false,
+		"lengthMenu": [[10, 25, -1], [10, 25, "All"]],
 		"language" : {
 			"search" : "篩選:",
 			"emptyTable" : "查無資料",

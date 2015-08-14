@@ -1,12 +1,22 @@
 package idv.hsiehpinghan.htmlexample.controller;
 
+import idv.hsiehpinghan.htmlexample.vo.Data;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/bootstrap")
 public class BootstrapController {
+	private final int SIZE = 30;
+
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index() {
 		return "bootstrap/index";
@@ -62,6 +72,18 @@ public class BootstrapController {
 		return "bootstrap/table/index";
 	}
 
+	@RequestMapping(value = "/table/basic", method = RequestMethod.GET)
+	public String tableBasic() {
+		return "bootstrap/table/basic";
+	}
+
+	@RequestMapping(value = "/table/scrollableTable", method = RequestMethod.GET)
+	public ModelAndView tableScrollableTable() {
+		ModelAndView mv = new ModelAndView("bootstrap/table/scrollableTable");
+		mv.addObject("datas", generateDatas(SIZE));
+		return mv;
+	}
+
 	@RequestMapping(value = "/form/index", method = RequestMethod.GET)
 	public String formIndex() {
 		return "bootstrap/form/index";
@@ -86,9 +108,25 @@ public class BootstrapController {
 	public String buttonGroup() {
 		return "bootstrap/buttonGroup/index";
 	}
-	
+
 	@RequestMapping(value = "/button/index", method = RequestMethod.GET)
 	public String button() {
 		return "bootstrap/button/index";
+	}
+
+	private List<Data> generateDatas(int size) {
+		List<Data> datas = new ArrayList<Data>(size);
+		for (int i = 0; i < size; ++i) {
+			datas.add(generateData(i));
+		}
+		return datas;
+	}
+
+	private Data generateData(int i) {
+		Integer integerValue = Integer.valueOf(i);
+		Float floatValue = Float.valueOf(i + "." + i);
+		Date date = Calendar.getInstance().getTime();
+		Data data = new Data(integerValue, floatValue, date);
+		return data;
 	}
 }
