@@ -1,38 +1,34 @@
 package idv.hsiehpinghan.htmlexample.initializer;
 
-import idv.hsiehpinghan.htmlexample.configuration.SpringConfiguration;
+import javax.servlet.Filter;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
+import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.servlet.DispatcherServlet;
-
-public class WebInitializer implements WebApplicationInitializer {
+public class WebInitializer extends
+		AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
-	public void onStartup(ServletContext servletContext)
-			throws ServletException {
-		AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext();
-		applicationContext.setServletContext(servletContext);
-		applicationContext.register(SpringConfiguration.class);
-		addServlets(servletContext, applicationContext);
+	protected Class<?>[] getRootConfigClasses() {
+		return null;
 	}
 
-	private void addServlets(ServletContext servletContext,
-			AnnotationConfigWebApplicationContext applicationContext) {
-		ServletRegistration.Dynamic dispatcherServlet = servletContext
-				.addServlet("dispatcherServlet", new DispatcherServlet(
-						applicationContext));
-		dispatcherServlet.addMapping("/");
-		dispatcherServlet.setLoadOnStartup(1);
+	@Override
+	protected Class<?>[] getServletConfigClasses() {
+		return new Class<?>[] { idv.hsiehpinghan.htmlexample.configuration.SpringConfiguration.class };
 	}
 
-	// private void addListener(ServletContext servletContext,
-	// AnnotationConfigWebApplicationContext applicationContext) {
-	// servletContext.addListener(new
-	// ContextLoaderListener(applicationContext));
-	// }
+	@Override
+	protected String[] getServletMappings() {
+		return new String[] { "/" };
+	}
+
+	@Override
+	protected Filter[] getServletFilters() {
+		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+		characterEncodingFilter.setEncoding("UTF-8");
+		characterEncodingFilter.setForceEncoding(true);
+		return new Filter[] { characterEncodingFilter };
+	}
+
 }

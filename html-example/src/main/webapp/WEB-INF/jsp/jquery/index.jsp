@@ -9,5 +9,7 @@
 <body>
 	<a href="dynamicFormInput">dynamic form input</a>
 	<br>
+	<a href="ajax">ajax</a>
+	<br>
 </body>
 </html>

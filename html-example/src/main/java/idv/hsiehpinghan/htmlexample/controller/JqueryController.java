@@ -1,5 +1,7 @@
 package idv.hsiehpinghan.htmlexample.controller;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,21 @@ public class JqueryController {
 		ModelAndView model = new ModelAndView("jquery/dynamicFormInput");
 		String parameter = httpServletRequest.getParameter("parameter");
 		model.addObject("parameter", parameter);
+		return model;
+	}
+
+	@RequestMapping(value = "/ajax", method = RequestMethod.GET)
+	public String ajax() {
+		return "jquery/ajax";
+	}
+
+	@RequestMapping(value = "/ajaxWithBootstrap", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public ModelAndView ajaxWithBootstrap(HttpServletRequest httpServletRequest)
+			throws UnsupportedEncodingException {
+		ModelAndView model = new ModelAndView("jquery/ajaxWithBootstrap");
+		String chinese = httpServletRequest.getParameter("chinese");
+		model.addObject("chinese", chinese);
 		return model;
 	}
 
