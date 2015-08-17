@@ -20,7 +20,9 @@
 	<a href="form/index">form</a><br>
 	<a href="pagination/index">pagination</a><br>
 	<a href="image/index">image</a><br>
-	<a href="text/index">text</a>
+	<a href="text/index">text</a><br>
+	<a href="badge/index">badge</a><br>
+	<a href="label/index">label</a><br>
 	<br>
 </body>
 </html>

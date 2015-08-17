@@ -114,6 +114,16 @@ public class BootstrapController {
 		return "bootstrap/button/index";
 	}
 
+	@RequestMapping(value = "/badge/index", method = RequestMethod.GET)
+	public String badge() {
+		return "bootstrap/badge/index";
+	}
+	
+	@RequestMapping(value = "/label/index", method = RequestMethod.GET)
+	public String label() {
+		return "bootstrap/label/index";
+	}
+	
 	private List<Data> generateDatas(int size) {
 		List<Data> datas = new ArrayList<Data>(size);
 		for (int i = 0; i < size; ++i) {
