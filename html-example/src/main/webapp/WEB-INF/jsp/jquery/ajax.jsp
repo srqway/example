@@ -25,7 +25,7 @@
 	<script type="text/javascript">
 		$(function() {
 			var setting = {
-				url : 'ajaxWithBootstrap',
+// 				url : 'ajaxWithBootstrap',
 // 				data: { "chinese" : chinese },
 				contentType : 'application/x-www-form-urlencoded; charset=UTF-8',	// false, application/x-www-form-urlencoded, multipart/form-data, or text/plain
 				context: document.getElementById("context"),
@@ -54,6 +54,7 @@
 			};
 			
 			$("#get").on("click", function() {
+				setting.url = "ajaxGetWithBootstrap";
 				setting.method = "GET";
 				var chinese = $("#chinese").val();
 				setting.data = {"chinese" : chinese};
@@ -66,6 +67,7 @@
 			});
 			
 			$("#post").on("click", function() {
+				setting.url = "ajaxPostWithBootstrap";
 				setting.method = "POST";
 				var chinese = $("#chinese").val();
 				setting.data = {"chinese" : chinese};

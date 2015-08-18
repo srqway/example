@@ -30,9 +30,20 @@ public class JqueryController {
 		return "jquery/ajax";
 	}
 
-	@RequestMapping(value = "/ajaxWithBootstrap", method = { RequestMethod.GET,
-			RequestMethod.POST })
-	public ModelAndView ajaxWithBootstrap(HttpServletRequest httpServletRequest)
+	@RequestMapping(value = "/ajaxGetWithBootstrap", method = RequestMethod.GET)
+	public ModelAndView ajaxGetWithBootstrap(
+			HttpServletRequest httpServletRequest)
+			throws UnsupportedEncodingException {
+		ModelAndView model = new ModelAndView("jquery/ajaxWithBootstrap");
+		String chinese = convertIso88591ToUtf8(httpServletRequest
+				.getParameter("chinese"));
+		model.addObject("chinese", chinese);
+		return model;
+	}
+
+	@RequestMapping(value = "/ajaxPostWithBootstrap", method = RequestMethod.POST)
+	public ModelAndView ajaxPostWithBootstrap(
+			HttpServletRequest httpServletRequest)
 			throws UnsupportedEncodingException {
 		ModelAndView model = new ModelAndView("jquery/ajaxWithBootstrap");
 		String chinese = httpServletRequest.getParameter("chinese");
@@ -40,4 +51,8 @@ public class JqueryController {
 		return model;
 	}
 
+	private String convertIso88591ToUtf8(String chinese)
+			throws UnsupportedEncodingException {
+		return new String(chinese.getBytes("ISO-8859-1"), "UTF-8");
+	}
 }
