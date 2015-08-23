@@ -1,8 +1,17 @@
 package idv.hsiehpinghan.htmlexample.controller;
 
+import idv.hsiehpinghan.htmlexample.vo.Data;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -35,5 +44,33 @@ public class AngularController {
 	public ModelAndView filter() {
 		ModelAndView model = new ModelAndView("angular/filter");
 		return model;
+	}
+
+	@RequestMapping(value = "/http", method = RequestMethod.GET)
+	public ModelAndView http() {
+		ModelAndView model = new ModelAndView("angular/http");
+		return model;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/httpJson", method = RequestMethod.GET, produces = { "application/json" })
+	public Collection<Data> httpJson() {
+		return generateList();
+	}
+
+	private Collection<Data> generateList() {
+		return generateList(3);
+	}
+
+	private Collection<Data> generateList(int amount) {
+		List<Data> datas = new ArrayList<Data>(amount);
+		for (int i = 0; i < 3; ++i) {
+			Integer integerValue = i;
+			Float floatValue = Float.valueOf("" + i + "." + i);
+			Date dateValue = Calendar.getInstance().getTime();
+			Data data = new Data(integerValue, floatValue, dateValue);
+			datas.add(data);
+		}
+		return datas;
 	}
 }
