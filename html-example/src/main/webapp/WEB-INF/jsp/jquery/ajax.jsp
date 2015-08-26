@@ -27,6 +27,7 @@
 			var setting = {
 // 				url : 'ajaxWithBootstrap',
 // 				data: { "chinese" : chinese },
+				traditional : true,
 				contentType : 'application/x-www-form-urlencoded; charset=UTF-8',	// false, application/x-www-form-urlencoded, multipart/form-data, or text/plain
 				context: document.getElementById("context"),
 				cache : false,	// true, false
