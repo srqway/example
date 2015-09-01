@@ -124,6 +124,11 @@ public class BootstrapController {
 		return "bootstrap/label/index";
 	}
 	
+	@RequestMapping(value = "/progressBar/index", method = RequestMethod.GET)
+	public String progressBar() {
+		return "bootstrap/progressBar/index";
+	}
+	
 	private List<Data> generateDatas(int size) {
 		List<Data> datas = new ArrayList<Data>(size);
 		for (int i = 0; i < size; ++i) {

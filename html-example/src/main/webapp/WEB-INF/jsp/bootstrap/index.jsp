@@ -23,6 +23,6 @@
 	<a href="text/index">text</a><br>
 	<a href="badge/index">badge</a><br>
 	<a href="label/index">label</a><br>
-	<br>
+	<a href="progressBar/index">progress bar</a><br>
 </body>
 </html>
