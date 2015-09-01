@@ -3,8 +3,6 @@ package idv.hsiehpinghan.htmlexample.controller;
 import idv.hsiehpinghan.htmlexample.vo.Data;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -60,11 +58,7 @@ public class DataTablesController {
 	private List<Data> getList() {
 		List<Data> list = new ArrayList<Data>();
 		for (int i = 0; i < 100; ++i) {
-			Integer integerValue = i;
-			Float floatValue = Float.valueOf(String.valueOf(i) + "."
-					+ String.valueOf(i));
-			Date date = Calendar.getInstance().getTime();
-			Data vo = new Data(integerValue, floatValue, date);
+			Data vo = Data.generateData(i);
 			list.add(vo);
 		}
 		return list;

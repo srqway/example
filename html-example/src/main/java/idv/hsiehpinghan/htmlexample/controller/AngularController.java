@@ -1,18 +1,17 @@
 package idv.hsiehpinghan.htmlexample.controller;
 
+import idv.hsiehpinghan.htmlexample.criteria.Criteria;
 import idv.hsiehpinghan.htmlexample.vo.Data;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 @RequestMapping(value = "/angular")
@@ -41,16 +40,37 @@ public class AngularController {
 	public String controllerBasic() {
 		return "angular/controller/basic";
 	}
+
+	@RequestMapping(value = "/form/index", method = RequestMethod.GET)
+	public String formIndex() {
+		return "angular/form/index";
+	}
+
+	@RequestMapping(value = "/form/basic", method = RequestMethod.GET)
+	public ModelAndView formBasic(@ModelAttribute("criteria") Criteria criteria) {
+		ModelAndView mv = new ModelAndView("angular/form/basic");
+		mv.addObject("criteria", convertDataToString(criteria));
+		return mv;
+	}
 	
-//	private Collection<Data> generateList(int amount) {
-//		List<Data> datas = new ArrayList<Data>(amount);
-//		for (int i = 0; i < 3; ++i) {
-//			Integer integerValue = i;
-//			Float floatValue = Float.valueOf("" + i + "." + i);
-//			Date dateValue = Calendar.getInstance().getTime();
-//			Data data = new Data(integerValue, floatValue, dateValue);
-//			datas.add(data);
-//		}
-//		return datas;
+	private String convertDataToString(Criteria criteria) {
+		String result = "{}";
+		ObjectMapper objectMapper = new ObjectMapper();
+		if(criteria == null) {
+			return result;
+		}
+		try {
+			return objectMapper.writeValueAsString(criteria);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+//	@ResponseBody
+//	@RequestMapping(value = "/form/basicSubmit", method = RequestMethod.GET)
+//	public Data formBasicSubmit(@ModelAttribute("criteria") Criteria criteria) {
+//		return criteria.getData();
 //	}
+
 }

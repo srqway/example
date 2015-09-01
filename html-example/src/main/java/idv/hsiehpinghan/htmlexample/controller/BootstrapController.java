@@ -3,8 +3,6 @@ package idv.hsiehpinghan.htmlexample.controller;
 import idv.hsiehpinghan.htmlexample.vo.Data;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -132,16 +130,9 @@ public class BootstrapController {
 	private List<Data> generateDatas(int size) {
 		List<Data> datas = new ArrayList<Data>(size);
 		for (int i = 0; i < size; ++i) {
-			datas.add(generateData(i));
+			datas.add(Data.generateData(i));
 		}
 		return datas;
 	}
 
-	private Data generateData(int i) {
-		Integer integerValue = Integer.valueOf(i);
-		Float floatValue = Float.valueOf(i + "." + i);
-		Date date = Calendar.getInstance().getTime();
-		Data data = new Data(integerValue, floatValue, date);
-		return data;
-	}
 }

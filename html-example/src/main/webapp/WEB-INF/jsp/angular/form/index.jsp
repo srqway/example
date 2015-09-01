@@ -5,14 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Angular Index</title>
+<title>Angular Form Index</title>
 </head>
 <body>
-	<a href="module/index">module</a>
-	<br>
-	<a href="controller/index">controller</a>
-	<br>
-	<a href="form/index">form</a>
+	<a href="basic">basic</a>
 	<br>
 </body>
 </html>
