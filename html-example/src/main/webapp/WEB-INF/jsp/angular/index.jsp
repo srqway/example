@@ -10,15 +10,7 @@
 <body>
 	<a href="module/index">module</a>
 	<br>
-<!-- 	<a href="expression">expression</a> -->
-<!-- 	<br> -->
-<!-- 	<a href="directive">directive</a> -->
-<!-- 	<br> -->
-<!-- 	<a href="controller">controller</a> -->
-<!-- 	<br> -->
-<!-- 	<a href="filter">filter</a> -->
-<!-- 	<br> -->
-<!-- 	<a href="http">http</a> -->
-<!-- 	<br> -->
+	<a href="controller/index">controller</a>
+	<br>
 </body>
 </html>

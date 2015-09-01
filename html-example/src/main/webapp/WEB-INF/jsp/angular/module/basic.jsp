@@ -5,7 +5,7 @@
 <html data-ng-app="myApp" data-ng-strict-di>
 <head>
 <meta charset="UTF-8">
-<title>controller</title>
+<title>module basic</title>
 <script src="/html-example/javascript/angular-1.4.4/angular.min.js"></script>
 </head>
 <body data-ng-controller="MyController">

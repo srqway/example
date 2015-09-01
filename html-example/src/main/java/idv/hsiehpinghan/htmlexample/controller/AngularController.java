@@ -31,41 +31,17 @@ public class AngularController {
 	public String moduleBasic() {
 		return "angular/module/basic";
 	}
-//
-//	@RequestMapping(value = "/directive", method = RequestMethod.GET)
-//	public ModelAndView directive() {
-//		ModelAndView model = new ModelAndView("angular/directive");
-//		return model;
-//	}
-//
-//	@RequestMapping(value = "/controller", method = RequestMethod.GET)
-//	public ModelAndView controller() {
-//		ModelAndView model = new ModelAndView("angular/controller");
-//		return model;
-//	}
-//
-//	@RequestMapping(value = "/filter", method = RequestMethod.GET)
-//	public ModelAndView filter() {
-//		ModelAndView model = new ModelAndView("angular/filter");
-//		return model;
-//	}
-//
-//	@RequestMapping(value = "/http", method = RequestMethod.GET)
-//	public ModelAndView http() {
-//		ModelAndView model = new ModelAndView("angular/http");
-//		return model;
-//	}
-//
-//	@ResponseBody
-//	@RequestMapping(value = "/httpJson", method = RequestMethod.GET, produces = { "application/json" })
-//	public Collection<Data> httpJson() {
-//		return generateList();
-//	}
-//
-//	private Collection<Data> generateList() {
-//		return generateList(3);
-//	}
-//
+
+	@RequestMapping(value = "/controller/index", method = RequestMethod.GET)
+	public String controllerIndex() {
+		return "angular/controller/index";
+	}
+
+	@RequestMapping(value = "/controller/basic", method = RequestMethod.GET)
+	public String controllerBasic() {
+		return "angular/controller/basic";
+	}
+	
 //	private Collection<Data> generateList(int amount) {
 //		List<Data> datas = new ArrayList<Data>(amount);
 //		for (int i = 0; i < 3; ++i) {
