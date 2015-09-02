@@ -41,6 +41,21 @@ public class AngularController {
 		return "angular/controller/basic";
 	}
 
+	@RequestMapping(value = "/directive/index", method = RequestMethod.GET)
+	public String directiveIndex() {
+		return "angular/directive/index";
+	}
+
+	@RequestMapping(value = "/directive/a", method = RequestMethod.GET)
+	public String directiveA() {
+		return "angular/directive/a";
+	}
+	
+	@RequestMapping(value = "/directive/form", method = RequestMethod.GET)
+	public String directiveForm() {
+		return "angular/directive/form";
+	}
+	
 	@RequestMapping(value = "/form/index", method = RequestMethod.GET)
 	public String formIndex() {
 		return "angular/form/index";
