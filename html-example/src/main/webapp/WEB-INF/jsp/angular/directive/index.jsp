@@ -10,7 +10,13 @@
 <body>
 	<a href="a">a</a>
 	<br>
+	<a href="bind">bind</a>
+	<br>
+	<a href="event">event</a>
+	<br>
 	<a href="form">form</a>
+	<br>
+	<a href="class">class</a>
 	<br>
 </body>
 </html>

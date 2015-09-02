@@ -1,13 +1,11 @@
 package idv.hsiehpinghan.htmlexample.controller;
 
 import idv.hsiehpinghan.htmlexample.criteria.Criteria;
-import idv.hsiehpinghan.htmlexample.vo.Data;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -46,14 +44,24 @@ public class AngularController {
 		return "angular/directive/index";
 	}
 
-	@RequestMapping(value = "/directive/a", method = RequestMethod.GET)
-	public String directiveA() {
-		return "angular/directive/a";
+	@RequestMapping(value = "/directive/bind", method = RequestMethod.GET)
+	public String directiveBind() {
+		return "angular/directive/bind";
+	}
+	
+	@RequestMapping(value = "/directive/event", method = RequestMethod.GET)
+	public String directiveEvent() {
+		return "angular/directive/event";
 	}
 	
 	@RequestMapping(value = "/directive/form", method = RequestMethod.GET)
 	public String directiveForm() {
 		return "angular/directive/form";
+	}
+	
+	@RequestMapping(value = "/directive/class", method = RequestMethod.GET)
+	public String directiveClass() {
+		return "angular/directive/class";
 	}
 	
 	@RequestMapping(value = "/form/index", method = RequestMethod.GET)
