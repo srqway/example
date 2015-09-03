@@ -16,9 +16,20 @@
 		text(minlength:{{minlengthText}}; maxlength:{{maxlengthText}}) : <input type="text" name="text" data-ng-model="criteria.text" 
 			data-ng-required="true" data-ng-minlength="minlengthText" data-ng-maxlength="maxlengthText" data-ng-trim="true">
 		<br>
+		text list : <input type="text" name="textList" data-ng-model="criteria.textList" data-ng-list="," data-ng-required="true" data-ng-trim="true">
+		<br>
 		email : <input type="email" name="email" data-ng-model="criteria.email" data-ng-required="true">
 		<br>
 		url : <input type="url" name="url" data-ng-model="criteria.url" data-ng-required="true">
+		<br>
+		textarea(minlength:{{minlengthTextarea}}; maxlength:{{maxlengthTextarea}}) : <br>
+		<textarea rows="3" cols="10" name="textarea" 
+			data-ng-model="criteria.textarea" data-ng-required="true" data-ng-minlength="minlengthTextarea" 
+			data-ng-maxlength="maxlengthTextarea" data-ng-trim="true"></textarea>
+		<br>
+		textarea list : <br>
+		<textarea rows="3" cols="10" name="textareaList" data-ng-model="criteria.textareaList" 
+			data-ng-required="true" data-ng-list="&#10;" data-ng-trim="false"></textarea>
 		<br>
 		week(min:{{minWeek}}; max:{{maxWeek}}) : <input type="week" name="week" placeholder="yyyy-W##" min="{{minWeek}}" max="{{maxWeek}}" 
 			data-ng-model="criteria.week" data-ng-min="minWeek" data-ng-max="maxWeek" data-ng-required="true">
@@ -54,6 +65,8 @@
 			$scope.maxNumber = 5;
 			$scope.minlengthText = 3;
 			$scope.maxlengthText = 5;
+			$scope.minlengthTextarea = 10;
+			$scope.maxlengthTextarea = 20;
 			$scope.minWeek = '2015-W08';
 			$scope.maxWeek = '2015-W28';
 			$scope.minMonth = '2015-01';

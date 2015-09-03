@@ -75,6 +75,11 @@ public class AngularController {
 		return "angular/directive/include/" + jspName;
 	}
 	
+	@RequestMapping(value = "/directive/model", method = RequestMethod.GET)
+	public String directiveModel() {
+		return "angular/directive/model";
+	}
+	
 	@RequestMapping(value = "/form/index", method = RequestMethod.GET)
 	public String formIndex() {
 		return "angular/form/index";

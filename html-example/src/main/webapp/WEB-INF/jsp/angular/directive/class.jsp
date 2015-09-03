@@ -59,7 +59,7 @@
 	<br>
 	<span class="baseClass" data-ng-class="animation">animation</span>
 	<hr>
-	class-odd & class-even
+	class-odd and class-even
 	<ol>
 		<li data-ng-repeat="element in array">
 			<span data-ng-class-odd="'odd'" data-ng-class-even="'even'"> {{element}} </span>

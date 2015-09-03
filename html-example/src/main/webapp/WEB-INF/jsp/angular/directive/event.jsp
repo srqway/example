@@ -17,7 +17,7 @@
 	<br>
 	change : <input type="text" data-ng-model="change" data-ng-change="onChange()">
 	<br>
-	click : <button data-ng-click="count = count + 1"> {{count}} </button>
+	click : <button data-ng-click="clickCount = clickCount + 1"> {{clickCount}} </button>
 	<br>
 	copy : <input type="text" data-ng-model="copy" data-ng-copy="onCopy()">
 	<br>
@@ -32,15 +32,32 @@
 	checked : <input type="checkbox" data-ng-model="checked"> / relative checkbox : <input type="checkbox"  data-ng-checked="checked">
 	<br>
 	hide : <input type="checkbox" data-ng-model="hide"> / relative checkbox : <input type="checkbox"  data-ng-hide="hide">
-	<br>	
-	if : <input type="checkbox" data-ng-model="if"> / <span data-ng-if="if">This is removed when the checkbox is unchecked.</span>
 	<br>
+	keydown : <input type="text" data-ng-model="keydown" data-ng-keydown="onKeydown($event)">
+	<br>
+	keypress : <input type="text" data-ng-model="keypress" data-ng-keydown="onKeypress($event)">
+	<br>
+	keyup : <input type="text" data-ng-model="keyup" data-ng-keydown="onKeyup($event)">
+	<br>
+	mousedown : <input type="text" data-ng-model="mousedown" data-ng-mousedown="onMousedown()">
+	<br>
+	mouseup : <input type="text" data-ng-model="mouseup" data-ng-mouseup="onMouseup()">
+	<br>
+	mouseenter : <input type="text" data-ng-model="mouseenter" data-ng-mouseenter="onMouseenter()">
+	<br>
+	mouseleave : <input type="text" data-ng-model="mouseleave" data-ng-mouseleave="onMouseleave()">
+	<br>	
+	mousemove : <input type="text" data-ng-model="mousemove" data-ng-mousemove="onMousemove()">
+	<br>
+	mouseover : <input type="text" data-ng-model="mouseover" data-ng-mouseover="onMouseover()">
+	<br>	
+
 </body>
 <script>
 	var myApp = angular.module('myApp', [])
 		.controller('MyController', ['$scope', function($scope) {
 			$scope.a = "http://www.google.com/";
-			$scope.count = 0;
+			$scope.clickCount = 0;
 			$scope.onBlur = function() {
 				alert("blur");
 			}
@@ -59,6 +76,34 @@
 			$scope.onFocus = function() {
 				alert("focus");
 			}
+			$scope.onMousedown = function() {
+				alert("mousedown");
+			}
+			$scope.onMouseenter = function() {
+				alert("mouseenter");
+			}
+			$scope.onMouseleave = function() {
+				alert("mouseleave");
+			}
+			$scope.onMousemove = function() {
+				alert("mousemove");
+			}
+			$scope.onMouseover = function() {
+				alert("mouseover");
+			}
+			$scope.onMouseup = function() {
+				alert("mouseup");
+			}
+			$scope.onKeydown = function(event) {
+				alert("keydown (altKey : " + event.altKey + "; keyCode : " + event.keyCode + ")");
+			}
+			$scope.onKeypress = function(event) {
+				alert("keypress (altKey : " + event.altKey + "; keyCode : " + event.keyCode + ")");
+			}
+			$scope.onKeyup = function(event) {
+				alert("keyup (altKey : " + event.altKey + "; keyCode : " + event.keyCode + ")");
+			}
+			
 		}]);
 </script>
 </html>
