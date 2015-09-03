@@ -4,6 +4,7 @@ import idv.hsiehpinghan.htmlexample.criteria.Criteria;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -62,6 +63,16 @@ public class AngularController {
 	@RequestMapping(value = "/directive/class", method = RequestMethod.GET)
 	public String directiveClass() {
 		return "angular/directive/class";
+	}
+	
+	@RequestMapping(value = "/directive/include", method = RequestMethod.GET)
+	public String directiveInclude() {
+		return "angular/directive/include";
+	}
+	
+	@RequestMapping(value = "/directive/include/{jspName}", method = RequestMethod.GET)
+	public String directiveIncludeSub0(@PathVariable("jspName") String jspName) {
+		return "angular/directive/include/" + jspName;
 	}
 	
 	@RequestMapping(value = "/form/index", method = RequestMethod.GET)
