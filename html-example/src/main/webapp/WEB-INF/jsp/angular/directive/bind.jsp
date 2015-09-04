@@ -26,9 +26,17 @@
 	<hr>
 	ng-non-bindable : <span data-ng-non-bindable>{{1 + 2}}</span>
 	<hr>
-	if : <input type="checkbox" data-ng-model="if"> / <span data-ng-if="if">This is removed when the checkbox is unchecked.</span>
-	<br>
-	
+	ng-style : <span data-ng-style="myStyle"> style </span>
+	<hr>
+	ng-switch : <br>
+	<select data-ng-model="mySwitch" data-ng-options="switch for switch in switchs"></select>
+	<div data-ng-switch data-on="mySwitch">
+		<div data-ng-switch-when="switchA">switch a</div>
+		<div data-ng-switch-when="switchB">switch b</div>
+		<div data-ng-switch-default>switch default</div>
+	</div>
+	<hr/>
+
 </body>
 <script>
 	var myApp = angular.module('myApp', ['ngSanitize'])
@@ -36,6 +44,9 @@
 			$scope.bind = 'bind';
 			$scope.bindHtml = 'link to <a href="http://www.google.com/">google</a>.';
 			$scope.list = [['a', 'b'], ['c', 'd']];
+			$scope.myStyle = {color:'red'};
+			$scope.switchs = ['switchA', 'switchB', 'switchDefault'];
+			$scope.mySwitch = $scope.switchs[1];
 		}]);
 </script>
 </html>

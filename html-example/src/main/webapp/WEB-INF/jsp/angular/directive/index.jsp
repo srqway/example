@@ -20,5 +20,8 @@
 	<br>
 	<a href="model">model</a>
 	<br>
+	<a href="logic">logic</a>
+	<br>
+	
 </body>
 </html>

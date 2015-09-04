@@ -13,6 +13,9 @@
 	<br>
 	a : <a data-ng-href="{{a}}">link to google.</a>
 	<br>
+	src : <br>
+	<img data-ng-src="/html-example/image/{{image}}" />
+	<br>
 	blur : <input type="text" data-ng-model="blur" data-ng-blur="onBlur()">
 	<br>
 	change : <input type="text" data-ng-model="change" data-ng-change="onChange()">
@@ -20,6 +23,8 @@
 	click : <button data-ng-click="clickCount = clickCount + 1"> {{clickCount}} </button>
 	<br>
 	copy : <input type="text" data-ng-model="copy" data-ng-copy="onCopy()">
+	<br>
+	paste : <input type="text" data-ng-model="paste" data-ng-paste="onPaste()">
 	<br>
 	cut : <input type="text" data-ng-model="cut" data-ng-cut="onCut()">
 	<br>
@@ -29,8 +34,19 @@
 	<br>
 	disabled : <input type="checkbox" data-ng-model="disabled"> / relative checkbox : <input type="checkbox"  data-ng-disabled="disabled">
 	<br>
+	readonly : <input type="checkbox" data-ng-model="readonly"> / relative checkbox : <input type="text"  data-ng-readonly="readonly">
+	<br>
 	checked : <input type="checkbox" data-ng-model="checked"> / relative checkbox : <input type="checkbox"  data-ng-checked="checked">
 	<br>
+	selected : <br>
+	<input type="checkbox" data-ng-model="selected"> / relative checkbox : <input type="checkbox"  data-ng-selected="selected">
+	<select>
+		<option>not selected</option>
+		<option data-ng-selected="selected">selected</option>
+	</select>
+	<br>
+	show : <input type="checkbox" data-ng-model="show"> / relative checkbox : <input type="checkbox"  data-ng-show="show">
+	<br>	
 	hide : <input type="checkbox" data-ng-model="hide"> / relative checkbox : <input type="checkbox"  data-ng-hide="hide">
 	<br>
 	keydown : <input type="text" data-ng-model="keydown" data-ng-keydown="onKeydown($event)">
@@ -51,13 +67,13 @@
 	<br>
 	mouseover : <input type="text" data-ng-model="mouseover" data-ng-mouseover="onMouseover()">
 	<br>	
-
 </body>
 <script>
 	var myApp = angular.module('myApp', [])
 		.controller('MyController', ['$scope', function($scope) {
 			$scope.a = "http://www.google.com/";
 			$scope.clickCount = 0;
+			$scope.image = "talk.png";
 			$scope.onBlur = function() {
 				alert("blur");
 			}
@@ -66,6 +82,9 @@
 			}
 			$scope.onCopy = function() {
 				alert("copy");
+			}
+			$scope.onPaste = function() {
+				alert("paste");
 			}
 			$scope.onCut = function() {
 				alert("cut");

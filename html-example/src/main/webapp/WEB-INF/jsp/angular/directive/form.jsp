@@ -56,12 +56,8 @@
 		<br>
 		select ngRepeat : 
 			<select name="selectRepeat" data-ng-model="criteria.selectRepeat" data-ng-required="true" data-ng-change="change()">
+				<option value=""> -- </option>
 				<option data-ng-repeat="option in options" value="{{option.id}}">{{option.name}}</option>
-			</select>
-		<br>
-		select ngOption : 
-			<select name="selectOption" data-ng-model="criteria.selectOption" data-ng-required="true" data-ng-change="change()"
-				data-ng-options="option.name for option in options track by option.id">
 			</select>
 		<br>
 		select convert : 
@@ -77,6 +73,24 @@
 	  		<option value="1">One</option>
 	  		<option value="2">Two</option>
 		</select>
+		<br>
+		select ngOption : 
+			<select name="selectOption" data-ng-model="criteria.selectOption" data-ng-required="true" data-ng-change="change()"
+				data-ng-options="option.name for option in options">
+				<option value=""> -- </option>
+			</select>
+		<br>
+		select group : 
+			<select name="selectGroup" data-ng-model="criteria.selectGroup" data-ng-required="true"
+				data-ng-options="option.name group by option.type for option in options">
+				<option value=""> -- </option>
+			</select>
+		<br>
+		select disabled : 
+			<select name="selectDisabled" data-ng-model="criteria.selectDisabled" data-ng-required="true"
+				data-ng-options="option.name disable when option.disable for option in options">
+				<option value=""> -- </option>
+			</select>
 		<br>
 		<input type="submit" value="submit" data-ng-click="submit()" />
 	</form>
@@ -115,9 +129,9 @@
 			$scope.minDatetimeLocal = '2015-01-01T00:00:00';
 			$scope.maxDatetimeLocal = '2016-01-01T00:00:00';
 			$scope.options = [
-				{id: '0', name: 'Option A'},
-				{id: '1', name: 'Option B'},
-				{id: '2', name: 'Option C'}
+				{id: '0', name: 'Option A', type : 'Type 1'},
+				{id: '1', name: 'Option B', type : 'Type 1', disable: true},
+				{id: '2', name: 'Option C', type : 'Type 2'}
 			],
 			$scope.change = function() {
 				alert("change.");

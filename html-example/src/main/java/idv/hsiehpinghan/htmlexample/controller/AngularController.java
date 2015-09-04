@@ -80,6 +80,11 @@ public class AngularController {
 		return "angular/directive/model";
 	}
 	
+	@RequestMapping(value = "/directive/logic", method = RequestMethod.GET)
+	public String directiveLogic() {
+		return "angular/directive/logic";
+	}
+	
 	@RequestMapping(value = "/form/index", method = RequestMethod.GET)
 	public String formIndex() {
 		return "angular/form/index";
