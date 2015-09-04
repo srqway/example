@@ -45,6 +45,16 @@ public class AngularController {
 		return "angular/directive/index";
 	}
 
+	@RequestMapping(value = "/directive/basic", method = RequestMethod.GET)
+	public String directiveBasic() {
+		return "angular/directive/basic";
+	}
+	
+	@RequestMapping(value = "/directive/include/templateUrl", method = RequestMethod.GET)
+	public String directiveIncludeTemplateUrl() {
+		return "angular/directive/include/templateUrl";
+	}
+	
 	@RequestMapping(value = "/directive/bind", method = RequestMethod.GET)
 	public String directiveBind() {
 		return "angular/directive/bind";

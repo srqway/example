@@ -34,7 +34,7 @@
 	<br>
 	disabled : <input type="checkbox" data-ng-model="disabled"> / relative checkbox : <input type="checkbox"  data-ng-disabled="disabled">
 	<br>
-	readonly : <input type="checkbox" data-ng-model="readonly"> / relative checkbox : <input type="text"  data-ng-readonly="readonly">
+	readonly : <input type="checkbox" data-ng-model="readonly"> / relative text : <input type="text"  data-ng-readonly="readonly">
 	<br>
 	checked : <input type="checkbox" data-ng-model="checked"> / relative checkbox : <input type="checkbox"  data-ng-checked="checked">
 	<br>

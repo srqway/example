@@ -32,12 +32,12 @@
 		    link: function(scope, element, attrs, ngModelController) {
 		      ngModelController.$parsers.push(function(data) {
 		        //convert data from view format to model format
-		        return '2012/12/28';
+		        return '2012-12-28';
 		      });
 
 		      ngModelController.$formatters.push(function(data) {
 		        //convert data from model format to view format
-		        return '2012/12/28';
+		        return '2012-12-28';
 		      });
 		    }
 		  }

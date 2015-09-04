@@ -26,6 +26,8 @@
 	<hr>
 	ng-non-bindable : <span data-ng-non-bindable>{{1 + 2}}</span>
 	<hr>
+	ng-value : <input type="checkbox" data-ng-model="value"> / <input type="text"  data-ng-value="value">
+	<hr>
 	ng-style : <span data-ng-style="myStyle"> style </span>
 	<hr>
 	ng-switch : <br>
@@ -35,8 +37,17 @@
 		<div data-ng-switch-when="switchB">switch b</div>
 		<div data-ng-switch-default>switch default</div>
 	</div>
-	<hr/>
-
+	<hr>
+	ng-transclude : <div data-transclude-directive>
+		content
+	</div>
+	<hr>
+	script : <br>
+	<script id="scriptId" type="text/ng-template" >
+		script content
+	</script>
+	<a data-ng-click="doScript()">click me to load script</a>
+	<div data-ng-include data-src="scriptSrc"></div>
 </body>
 <script>
 	var myApp = angular.module('myApp', ['ngSanitize'])
@@ -47,6 +58,14 @@
 			$scope.myStyle = {color:'red'};
 			$scope.switchs = ['switchA', 'switchB', 'switchDefault'];
 			$scope.mySwitch = $scope.switchs[1];
-		}]);
+			$scope.doScript = function() {
+				$scope.scriptSrc = "scriptId";
+			};
+		}]).directive("transcludeDirective", function() {
+			return {
+				transclude: true,
+				template: "before <span data-ng-transclude></span> after"
+			};
+		});
 </script>
 </html>

@@ -8,6 +8,8 @@
 <title>Angular Directive Index</title>
 </head>
 <body>
+	<a href="basic">basic</a>
+	<br>
 	<a href="bind">bind</a>
 	<br>
 	<a href="event">event</a>
