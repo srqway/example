@@ -54,12 +54,49 @@
 			<input type="radio" name="radio" value="first" data-ng-model="criteria.radio" data-ng-change="change()">
 			<input type="radio" name="radio" value="second" data-ng-model="criteria.radio" data-ng-change="change()">
 		<br>
+		select ngRepeat : 
+			<select name="selectRepeat" data-ng-model="criteria.selectRepeat" data-ng-required="true" data-ng-change="change()">
+				<option data-ng-repeat="option in options" value="{{option.id}}">{{option.name}}</option>
+			</select>
+		<br>
+		select ngOption : 
+			<select name="selectOption" data-ng-model="criteria.selectOption" data-ng-required="true" data-ng-change="change()"
+				data-ng-options="option.name for option in options track by option.id">
+			</select>
+		<br>
+		select convert : 
+		<select name="selectConvert" data-ng-model="criteria.selectConvert" data-convert-to-number>
+			<option value="0">Zero</option>
+	  		<option value="1">One</option>
+	  		<option value="2">Two</option>
+		</select>
+		<br>
+		select multiple : <br>
+		<select name="selectMultiple" data-ng-model="criteria.selectMultiple" multiple="multiple">
+			<option value="0">Zero</option>
+	  		<option value="1">One</option>
+	  		<option value="2">Two</option>
+		</select>
+		<br>
 		<input type="submit" value="submit" data-ng-click="submit()" />
 	</form>
 	{{criteria | json}}
 </body>
 <script>
 	var myApp = angular.module('myApp', [])
+		.directive('convertToNumber', function() {
+			return {
+				require: 'ngModel',
+				link: function(scope, element, attrs, ngModel) {
+					ngModel.$parsers.push(function(val) {
+						return parseInt(val, 10);
+					});
+					ngModel.$formatters.push(function(val) {
+						return '' + val;
+					});
+				}
+			};
+		})
 		.controller('MyController', ['$scope', '$filter', function($scope, $filter) {
 			$scope.minNumber = 3;
 			$scope.maxNumber = 5;
@@ -77,7 +114,11 @@
 			$scope.maxTime = '22:00:00';
 			$scope.minDatetimeLocal = '2015-01-01T00:00:00';
 			$scope.maxDatetimeLocal = '2016-01-01T00:00:00';
-			
+			$scope.options = [
+				{id: '0', name: 'Option A'},
+				{id: '1', name: 'Option B'},
+				{id: '2', name: 'Option C'}
+			],
 			$scope.change = function() {
 				alert("change.");
 			}
