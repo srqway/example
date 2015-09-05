@@ -10,7 +10,7 @@ public class MethodReference {
 		return sb.toString();
 	}
 
-	public static void addToStringBuilder(int i) {
+	private static void addToStringBuilder(int i) {
 		sb.append(i);
 	}
 }

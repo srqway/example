@@ -10,6 +10,13 @@
 		<classes>
 			<class name="idv.hsiehpinghan.java8example.example.LambdaExpressionTest" />
 			<class name="idv.hsiehpinghan.java8example.example.MethodReferenceTest" />
+			<class name="idv.hsiehpinghan.java8example.example.FunctionalInterfaceTest" />
+			<class name="idv.hsiehpinghan.java8example.example.DefaultMethodTest" />
+			<class name="idv.hsiehpinghan.java8example.example.StreamTest" />
+			<class name="idv.hsiehpinghan.java8example.example.OptionalClassTest" />
+			<class name="idv.hsiehpinghan.java8example.example.PeriodClassTest" />
+			<class name="idv.hsiehpinghan.java8example.example.DurationClassTest" />
+			<class name="idv.hsiehpinghan.java8example.example.BackwardCompatibilityTest" />
 		</classes>
 	</test>
 </suite>
