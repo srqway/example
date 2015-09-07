@@ -12,13 +12,14 @@
 	<form action="basic" novalidate="novalidate">
 	    data.integerValue : <input type="number" name="data.integerValue" data-ng-model="criteria.data.integerValue" /><br />
 		data.floatValue : <input type="number" name="data.floatValue" data-ng-model="criteria.data.floatValue" /><br />
-		data.dateValue : <input type="date" name="data.dateValue" data-ng-model="criteria.data.dateValue" my-directive/><br />
+		data.dateValue : <input type="date" name="data.dateValue" data-ng-model="criteria.data.dateValue" /><br />
 		data.stringValue : <input type="text" name="data.stringValue" data-ng-model="criteria.data.stringValue" /><br />
 		data.enumerationValue : <input type="text" name="data.enumerationValue" data-ng-model="criteria.data.enumerationValue" /><br />
 	    <input type="reset" value="reset" />
 		<input type="submit" value="submit" />
 	</form>
 	<hr>
+	{{criteria | json}}
 </body>
 <script>
 	alert('${criteria}');
@@ -26,21 +27,6 @@
 	var myApp = angular.module('myApp', [])
 		.controller('MyController', ['$scope', function($scope) {
 			$scope.criteria = JSON.parse('${criteria}');
-		}]).directive('myDirective', function() {
-		  return {
-		    require: 'ngModel',
-		    link: function(scope, element, attrs, ngModelController) {
-		      ngModelController.$parsers.push(function(data) {
-		        //convert data from view format to model format
-		        return '2012-12-28';
-		      });
-
-		      ngModelController.$formatters.push(function(data) {
-		        //convert data from model format to view format
-		        return '2012-12-28';
-		      });
-		    }
-		  }
-		});
+		}]);
 </script>
 </html>

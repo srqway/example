@@ -49,52 +49,52 @@ public class AngularController {
 	public String directiveBasic() {
 		return "angular/directive/basic";
 	}
-	
+
 	@RequestMapping(value = "/directive/include/templateUrl", method = RequestMethod.GET)
 	public String directiveIncludeTemplateUrl() {
 		return "angular/directive/include/templateUrl";
 	}
-	
+
 	@RequestMapping(value = "/directive/bind", method = RequestMethod.GET)
 	public String directiveBind() {
 		return "angular/directive/bind";
 	}
-	
+
 	@RequestMapping(value = "/directive/event", method = RequestMethod.GET)
 	public String directiveEvent() {
 		return "angular/directive/event";
 	}
-	
+
 	@RequestMapping(value = "/directive/form", method = RequestMethod.GET)
 	public String directiveForm() {
 		return "angular/directive/form";
 	}
-	
+
 	@RequestMapping(value = "/directive/class", method = RequestMethod.GET)
 	public String directiveClass() {
 		return "angular/directive/class";
 	}
-	
+
 	@RequestMapping(value = "/directive/include", method = RequestMethod.GET)
 	public String directiveInclude() {
 		return "angular/directive/include";
 	}
-	
+
 	@RequestMapping(value = "/directive/include/{jspName}", method = RequestMethod.GET)
 	public String directiveIncludeSub0(@PathVariable("jspName") String jspName) {
 		return "angular/directive/include/" + jspName;
 	}
-	
+
 	@RequestMapping(value = "/directive/model", method = RequestMethod.GET)
 	public String directiveModel() {
 		return "angular/directive/model";
 	}
-	
+
 	@RequestMapping(value = "/directive/logic", method = RequestMethod.GET)
 	public String directiveLogic() {
 		return "angular/directive/logic";
 	}
-	
+
 	@RequestMapping(value = "/form/index", method = RequestMethod.GET)
 	public String formIndex() {
 		return "angular/form/index";
@@ -106,11 +106,21 @@ public class AngularController {
 		mv.addObject("criteria", convertDataToString(criteria));
 		return mv;
 	}
-	
+
+	@RequestMapping(value = "/service/index", method = RequestMethod.GET)
+	public String serviceIndex() {
+		return "angular/service/index";
+	}
+
+	@RequestMapping(value = "/service/http", method = RequestMethod.GET)
+	public String serviceHttp() {
+		return "angular/service/http";
+	}
+
 	private String convertDataToString(Criteria criteria) {
 		String result = "{}";
 		ObjectMapper objectMapper = new ObjectMapper();
-		if(criteria == null) {
+		if (criteria == null) {
 			return result;
 		}
 		try {
@@ -121,10 +131,11 @@ public class AngularController {
 		return result;
 	}
 
-//	@ResponseBody
-//	@RequestMapping(value = "/form/basicSubmit", method = RequestMethod.GET)
-//	public Data formBasicSubmit(@ModelAttribute("criteria") Criteria criteria) {
-//		return criteria.getData();
-//	}
+	// @ResponseBody
+	// @RequestMapping(value = "/form/basicSubmit", method = RequestMethod.GET)
+	// public Data formBasicSubmit(@ModelAttribute("criteria") Criteria
+	// criteria) {
+	// return criteria.getData();
+	// }
 
 }

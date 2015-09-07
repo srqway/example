@@ -5,18 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Angular Index</title>
+<title>Angular Controller Index</title>
 </head>
 <body>
-	<a href="module/index">module</a>
-	<br>
-	<a href="controller/index">controller</a>
-	<br>
-	<a href="directive/index">directive</a>
-	<br>
-	<a href="form/index">form</a>
-	<br>
-	<a href="service/index">service</a>
+	<a href="http">http</a>
 	<br>
 </body>
 </html>
