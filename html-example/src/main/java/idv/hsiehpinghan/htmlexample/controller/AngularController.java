@@ -1,16 +1,14 @@
 package idv.hsiehpinghan.htmlexample.controller;
 
 import idv.hsiehpinghan.htmlexample.criteria.Criteria;
+import idv.hsiehpinghan.htmlexample.vo.Data;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = "/angular")
@@ -101,10 +99,13 @@ public class AngularController {
 	}
 
 	@RequestMapping(value = "/form/basic", method = RequestMethod.GET)
-	public ModelAndView formBasic(@ModelAttribute("criteria") Criteria criteria) {
-		ModelAndView mv = new ModelAndView("angular/form/basic");
-		mv.addObject("criteria", convertDataToString(criteria));
-		return mv;
+	public String formBasic() {
+		return "angular/form/basic";
+	}
+
+	@RequestMapping(value = "/form/formController", method = RequestMethod.GET)
+	public String formFormController() {
+		return "angular/form/formController";
 	}
 
 	@RequestMapping(value = "/service/index", method = RequestMethod.GET)
@@ -117,25 +118,9 @@ public class AngularController {
 		return "angular/service/http";
 	}
 
-	private String convertDataToString(Criteria criteria) {
-		String result = "{}";
-		ObjectMapper objectMapper = new ObjectMapper();
-		if (criteria == null) {
-			return result;
-		}
-		try {
-			return objectMapper.writeValueAsString(criteria);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		return result;
+	@ResponseBody
+	@RequestMapping(value = "/service/httpGet", method = RequestMethod.GET)
+	public Data serviceHttpGet(@ModelAttribute("criteria") Criteria criteria) {
+		return criteria.getData();
 	}
-
-	// @ResponseBody
-	// @RequestMapping(value = "/form/basicSubmit", method = RequestMethod.GET)
-	// public Data formBasicSubmit(@ModelAttribute("criteria") Criteria
-	// criteria) {
-	// return criteria.getData();
-	// }
-
 }

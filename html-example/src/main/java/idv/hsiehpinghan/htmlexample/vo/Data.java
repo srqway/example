@@ -2,17 +2,24 @@ package idv.hsiehpinghan.htmlexample.vo;
 
 import idv.hsiehpinghan.htmlexample.enumeration.Enumeration;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Data {
 	private Integer integerValue;
 	private Float floatValue;
-	private Date dateValue;
+	@DateTimeFormat(iso = ISO.DATE)
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
+	private LocalDate dateValue;
 	private String stringValue;
 	private Enumeration enumerationValue;
 
-	public Data() {}
+	public Data() {
+	}
 
 	public Integer getIntegerValue() {
 		return integerValue;
@@ -30,11 +37,11 @@ public class Data {
 		this.floatValue = floatValue;
 	}
 
-	public Date getDateValue() {
+	public LocalDate getDateValue() {
 		return dateValue;
 	}
 
-	public void setDateValue(Date dateValue) {
+	public void setDateValue(LocalDate dateValue) {
 		this.dateValue = dateValue;
 	}
 
@@ -57,7 +64,7 @@ public class Data {
 	public static Data generateData(int i) {
 		Integer integerValue = Integer.valueOf(i);
 		Float floatValue = Float.valueOf(i + "." + i);
-		Date dateValue = Calendar.getInstance().getTime();
+		LocalDate dateValue = LocalDate.now();
 		String stringValue = String.valueOf(i);
 		Enumeration[] enumArr = Enumeration.values();
 		Enumeration enumerationValue = enumArr[(i % enumArr.length)];
@@ -66,7 +73,7 @@ public class Data {
 		return data;
 	}
 
-	private Data(Integer integerValue, Float floatValue, Date dateValue,
+	private Data(Integer integerValue, Float floatValue, LocalDate dateValue,
 			String stringValue, Enumeration enumerationValue) {
 		super();
 		this.integerValue = integerValue;

@@ -10,5 +10,7 @@
 <body>
 	<a href="basic">basic</a>
 	<br>
+	<a href="formController">form controller</a>
+	<br>
 </body>
 </html>
