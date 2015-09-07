@@ -36,7 +36,7 @@ $(function() {
 				<tr>
 					<td>${v.integerValue}</td>
 					<td>${v.floatValue}</td>
-					<td><fmt:formatDate pattern="yyyy/MM/dd" value="${v.date}"/></td>
+					<td><fmt:formatDate pattern="yyyy/MM/dd" value="${v.dateValue}"/></td>
 				</tr>
 			</c:forEach>
 		</tbody>
