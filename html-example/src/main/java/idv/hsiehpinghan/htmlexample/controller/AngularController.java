@@ -1,7 +1,6 @@
 package idv.hsiehpinghan.htmlexample.controller;
 
 import idv.hsiehpinghan.htmlexample.criteria.Criteria;
-import idv.hsiehpinghan.htmlexample.vo.Data;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -120,7 +119,7 @@ public class AngularController {
 
 	@ResponseBody
 	@RequestMapping(value = "/service/httpGet", method = RequestMethod.GET)
-	public Data serviceHttpGet(@ModelAttribute("criteria") Criteria criteria) {
-		return criteria.getData();
+	public Criteria serviceHttpGet(@ModelAttribute("criteria") Criteria criteria) {
+		return criteria;
 	}
 }
