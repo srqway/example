@@ -9,7 +9,7 @@
 <script src="/html-example/javascript/angular-1.4.4/angular.min.js"></script>
 </head>
 <body data-ng-controller="MyController">
-	<form>
+	<form name="myForm">
 		number(minlength:{{minNumber}}; maxlength:{{maxNumber}}) : <input type="number" name="number" min = "{{minNumber}}" 
 			max = {{maxNumber}} data-ng-model="criteria.number" data-ng-required="true" data-ng-trim="true">
 		<br>

@@ -9,40 +9,39 @@
 <script src="/html-example/javascript/angular-1.4.4/angular.min.js"></script>
 </head>
 <body data-ng-controller="MyController">
-    integerValue : <input type="number" data-ng-model="criteria.integerValue" /><br />
-	floatValue : <input type="number" step="0.1" data-ng-model="criteria.floatValue" /><br />
-	dateValue : <input type="date" data-ng-model="criteria.dateValue" /><br />
-	stringValue : <input type="text" data-ng-model="criteria.stringValue" /><br />
-	enumerationValue : <input type="text" data-ng-model="criteria.enumerationValue" /><br />
+	<form name="myForm">
+	    integerValue : <input type="number" name="integerValue" data-ng-model="criteria.integerValue" /> {{myForm.integerValue.$valid}}<br />
+		floatValue : <input type="number" name="floatValue" step="0.1" data-ng-model="criteria.floatValue" /> {{myForm.floatValue.$valid}}<br />
+		dateValue : <input type="text" name="dateValue" pattern="\d{4}-\d{2}-\d{2}" data-ng-model="criteria.dateValue" 
+			data-ng-pattern="\d{4}-\d{2}-\d{2}" /> {{myForm.dateValue.$valid}}<br />
+		stringValue : <input type="text" name="stringValue" data-ng-model="criteria.stringValue" /> {{myForm.stringValue.$valid}}<br />
+		enumerationValue : 
+		<select name="enumerationValue" data-ng-model="criteria.enumerationValue">
+			<option value="ENUM_1">ENUM_1</option>
+	  		<option value="ENUM_2">ENUM_2</option>
+	  		<option value="ENUM_3">ENUM_3</option>
+		</select> {{myForm.enumerationValue.$valid}}<br />
+	</form>
 	<input type="button" value="GET" data-ng-click="get()">
+	<input type="button" value="POST" data-ng-click="post()">
 	<hr>
 	{{criteria | json}}
 	<hr>
-	{{status}} / {{result | json}}
+	{{method}} : {{status}} / {{result | json}}
 </body>
 <script>
 	var myApp = angular.module('myApp', [])
 	.controller('MyController', ['$scope', '$http', '$filter', function($scope, $http, $filter) {
-		var toDate = function(value) {
-			var R_ISO8601_STR = /^(\d{4})-?(\d\d)-?(\d\d)(?:T(\d\d)(?::?(\d\d)(?::?(\d\d)(?:\.(\d+))?)?)?(Z|([+-])(\d\d):?(\d\d))?)?$/;
-			if (typeof value === 'string' && value.match(R_ISO8601_STR)) {
-				value = $filter('date')(value, 'medium');
-			}
-		    return new Date(value);
-		}
-
-
-		alert(toDate("2013-02-03T22:12:33"));
-		
 		$scope.criteria = {
 			integerValue : 1,
 			floatValue : 2.2,
-			dateValue : new Date(),
+			dateValue : '2015-03-05',
 			stringValue : 'this is a string',
 			enumerationValue : 'ENUM_2'
 		}
 
 		$scope.get = function() {
+			$scope.method = 'GET';
 			var config = {
 				method : 'GET',
 				url : 'httpGet',
@@ -54,8 +53,25 @@
 				$scope.result = response.data;
 			}, function(response) {
 				$scope.status = response.status;
-	      });
-	    };
+			});
+		};
+		
+		$scope.post = function() {
+			$scope.method = 'POST';
+			var config = {
+				method : 'POST',
+				url : 'httpPost',
+				headers: {'Content-Type': 'application/json'},
+				data : $scope.criteria
+			};
+
+			$http(config).then(function(response) {
+				$scope.status = response.status;
+				$scope.result = response.data;
+			}, function(response) {
+				$scope.status = response.status;
+			});
+		};
 	}]);
 </script>
 </html>

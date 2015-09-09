@@ -43,8 +43,7 @@ public class JqueryController {
 
 	@RequestMapping(value = "/ajaxPostWithBootstrap", method = RequestMethod.POST)
 	public ModelAndView ajaxPostWithBootstrap(
-			HttpServletRequest httpServletRequest)
-			throws UnsupportedEncodingException {
+			HttpServletRequest httpServletRequest) {
 		ModelAndView model = new ModelAndView("jquery/ajaxWithBootstrap");
 		String chinese = httpServletRequest.getParameter("chinese");
 		model.addObject("chinese", chinese);
