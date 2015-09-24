@@ -17,6 +17,7 @@
 			<class name="idv.hsiehpinghan.java8example.example.PeriodClassTest" />
 			<class name="idv.hsiehpinghan.java8example.example.DurationClassTest" />
 			<class name="idv.hsiehpinghan.java8example.example.BackwardCompatibilityTest" />
+			<class name="idv.hsiehpinghan.java8example.example.TryWithResourcesTest" />
 		</classes>
 	</test>
 </suite>
