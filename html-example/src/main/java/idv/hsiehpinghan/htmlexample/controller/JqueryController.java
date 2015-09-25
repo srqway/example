@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -48,6 +49,19 @@ public class JqueryController {
 		String chinese = httpServletRequest.getParameter("chinese");
 		model.addObject("chinese", chinese);
 		return model;
+	}
+
+	@RequestMapping(value = "/jsonp", method = RequestMethod.GET)
+	public ModelAndView jsonp() {
+		ModelAndView model = new ModelAndView("jquery/jsonp");
+		return model;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/jsonpTest", method = RequestMethod.GET)
+	public String jsonpTest(HttpServletRequest httpServletRequest) {
+		String callback = httpServletRequest.getParameter("callback");
+		return callback + "('{\"jsonp\":\"success\"}')";
 	}
 
 	private String convertIso88591ToUtf8(String chinese)

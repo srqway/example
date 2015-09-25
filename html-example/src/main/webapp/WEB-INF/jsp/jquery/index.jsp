@@ -11,5 +11,7 @@
 	<br>
 	<a href="ajax">ajax</a>
 	<br>
+	<a href="jsonp">jsonp</a>
+	<br>
 </body>
 </html>
