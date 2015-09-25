@@ -129,4 +129,9 @@ public class AngularController {
 	public Criteria serviceHttpPost(@RequestBody Criteria criteria) {
 		return criteria;
 	}
+	
+	@RequestMapping(value = "/method/index", method = RequestMethod.GET)
+	public String methodIndex() {
+		return "angular/method/index";
+	}
 }

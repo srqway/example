@@ -18,5 +18,7 @@
 	<br>
 	<a href="service/index">service</a>
 	<br>
+	<a href="method/index">method</a>
+	<br>
 </body>
 </html>

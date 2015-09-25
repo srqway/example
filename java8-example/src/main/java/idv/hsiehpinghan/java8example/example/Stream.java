@@ -46,6 +46,14 @@ public class Stream {
 		return convertToString(result);
 	}
 	
+	public String[] toArray(List<Integer> list) {
+		return list.stream().map((t) -> {
+			return String.valueOf(t);
+		}).toArray((size) -> {
+			return new String[size];
+		});
+	}
+	
 	private static void addToStringBuilder(int i) {
 		sb.append(i);
 	}

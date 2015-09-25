@@ -45,6 +45,12 @@ public class StreamTest {
 		Assert.assertEquals(stream.parallelStream(list), "12");
 	}
 	
+	@Test
+	public void toArray() {
+		List<Integer> list = generateList();
+		Assert.assertEquals(stream.toArray(list), new String[]{"0", "1", "2"});
+	}
+	
 	private List<Integer> generateList() {
 		List<Integer> list = new ArrayList<Integer>();
 		for (int i = 0; i < 3; ++i) {
