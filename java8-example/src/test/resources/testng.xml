@@ -1,23 +1,32 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="suite" verbose="1">
-<!-- 	<test name="suit"> -->
-<!-- 		<classes> -->
-<!-- 			<class name="idv.hsiehpinghan.java8example.suit.TestngSuitSetting" /> -->
-<!-- 		</classes> -->
-<!-- 	</test> -->
+	<!-- <test name="suit"> -->
+	<!-- <classes> -->
+	<!-- <class name="idv.hsiehpinghan.java8example.suit.TestngSuitSetting" 
+		/> -->
+	<!-- </classes> -->
+	<!-- </test> -->
 	<test name="test">
 		<classes>
 			<class name="idv.hsiehpinghan.java8example.example.LambdaExpressionTest" />
 			<class name="idv.hsiehpinghan.java8example.example.MethodReferenceTest" />
-			<class name="idv.hsiehpinghan.java8example.example.FunctionalInterfaceTest" />
+			<class
+				name="idv.hsiehpinghan.java8example.example.FunctionalInterfaceTest" />
 			<class name="idv.hsiehpinghan.java8example.example.DefaultMethodTest" />
 			<class name="idv.hsiehpinghan.java8example.example.StreamTest" />
 			<class name="idv.hsiehpinghan.java8example.example.OptionalClassTest" />
 			<class name="idv.hsiehpinghan.java8example.example.PeriodClassTest" />
 			<class name="idv.hsiehpinghan.java8example.example.DurationClassTest" />
-			<class name="idv.hsiehpinghan.java8example.example.BackwardCompatibilityTest" />
+			<class
+				name="idv.hsiehpinghan.java8example.example.BackwardCompatibilityTest" />
 			<class name="idv.hsiehpinghan.java8example.example.TryWithResourcesTest" />
+			<class
+				name="idv.hsiehpinghan.java8example.example.ConstructorReferenceTest" />
+			<class name="idv.hsiehpinghan.java8example.example.ConsumerTest" />
+			<class name="idv.hsiehpinghan.java8example.example.SupplierTest" />
+			<class name="idv.hsiehpinghan.java8example.example.FunctionTest" />
+			<class name="idv.hsiehpinghan.java8example.example.PredicateTest" />
 		</classes>
 	</test>
 </suite>

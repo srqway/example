@@ -7,14 +7,14 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class MethodReferenceTest {
-	private MethodReference methodReference = new MethodReference();
+public class FunctionTest {
 
 	@Test
-	public void convertToString() {
+	public void function() {
 		List<Integer> list = GeneratorUtility.generateIntegerList();
-		Assert.assertEquals(methodReference.convertToString(list), "012");
-
+		List<String> result = Function.function(list);
+		for (int i = 0, size = list.size(); i < size; ++i) {
+			Assert.assertTrue(result.get(i).compareTo(String.valueOf(i)) == 0);
+		}
 	}
-
 }
