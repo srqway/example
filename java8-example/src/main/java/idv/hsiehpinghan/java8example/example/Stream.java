@@ -1,7 +1,5 @@
 package idv.hsiehpinghan.java8example.example;
 
-import idv.hsiehpinghan.java8example.utility.ConverterUtility;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,10 +12,9 @@ public class Stream {
 	}
 
 	public String map(List<Integer> list) {
-		List<Integer> result = list.stream().map(t -> {
-			return t + 1;
-		}).collect(Collectors.toList());
-		return ConverterUtility.convertToString(result);
+		return list.stream().map(t -> {
+			return String.valueOf(t + 1);
+		}).collect(Collectors.joining());
 	}
 
 	public Integer reduce(List<Integer> list) {
@@ -27,30 +24,33 @@ public class Stream {
 	}
 
 	public String filter(List<Integer> list) {
-		List<Integer> result = list.stream().filter(i -> {
+		return list.stream().filter(i -> {
 			return i > 0;
-		}).collect(Collectors.toList());
-		return ConverterUtility.convertToString(result);
+		}).map(t -> {
+			return String.valueOf(t);
+		}).collect(Collectors.joining());
 	}
 
 	public String limit(List<Integer> list) {
-		List<Integer> result = list.stream().limit(2)
-				.collect(Collectors.toList());
-		return ConverterUtility.convertToString(result);
+		return list.stream().limit(2).map(t -> {
+			return String.valueOf(t);
+		}).collect(Collectors.joining());
 	}
 
 	public String sorted(List<Integer> list) {
-		List<Integer> revertList = ConverterUtility.convertToRevertList(list);
-		List<Integer> result = revertList.stream().sorted()
-				.collect(Collectors.toList());
-		return ConverterUtility.convertToString(result);
+		return list.stream().sorted((o1, o2) -> {
+			return -o1.compareTo(o2);
+		}).sorted().map(t -> {
+			return String.valueOf(t);
+		}).collect(Collectors.joining());
 	}
 
 	public String parallelStream(List<Integer> list) {
-		List<Integer> result = list.parallelStream().filter(i -> {
+		return list.parallelStream().filter(i -> {
 			return i > 0;
-		}).collect(Collectors.toList());
-		return ConverterUtility.convertToString(result);
+		}).map(t -> {
+			return String.valueOf(t);
+		}).collect(Collectors.joining());
 	}
 
 	public String[] toArray(List<Integer> list) {

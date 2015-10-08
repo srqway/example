@@ -1,9 +1,9 @@
 package idv.hsiehpinghan.java8example.example;
 
-import idv.hsiehpinghan.java8example.utility.ConverterUtility;
 import idv.hsiehpinghan.java8example.utility.GeneratorUtility;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -14,7 +14,9 @@ public class PredicateTest {
 	public void predicate() {
 		List<Integer> list = GeneratorUtility.generateIntegerList();
 		List<Integer> result = Predicate.predicate(list);
-		Assert.assertEquals(ConverterUtility.convertToString(result), "1");
+		Assert.assertEquals(result.stream().map(t -> {
+			return String.valueOf(t);
+		}).collect(Collectors.joining()), "1");
 	}
-	
+
 }
