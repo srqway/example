@@ -3,6 +3,7 @@ package idv.hsiehpinghan.java8example.example;
 import idv.hsiehpinghan.java8example.utility.GeneratorUtility;
 
 import java.util.List;
+import java.util.Map;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -57,6 +58,16 @@ public class StreamTest {
 		List<Integer> list = GeneratorUtility.generateIntegerList();
 		Assert.assertEquals(stream.toArray(list),
 				new String[] { "0", "1", "2" });
+	}
+
+	@Test
+	public void listToMap() {
+		List<Integer> list = GeneratorUtility.generateIntegerList();
+		Map<Integer, Integer> map = stream.listToMap(list);
+		Assert.assertEquals(map.size(), 3);
+		map.forEach((k, v) -> {
+			Assert.assertEquals(k.compareTo(v), 0);
+		});
 	}
 
 }

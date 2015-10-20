@@ -1,6 +1,7 @@
 package idv.hsiehpinghan.java8example.example;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Stream {
@@ -59,6 +60,14 @@ public class Stream {
 		}).toArray((size) -> {
 			return new String[size];
 		});
+	}
+
+	public Map<Integer, Integer> listToMap(List<Integer> list) {
+		return list.stream().collect(Collectors.toMap((i) -> {
+			return i;
+		}, (i) -> {
+			return i;
+		}));
 	}
 
 	private static void addToStringBuilder(int i) {
