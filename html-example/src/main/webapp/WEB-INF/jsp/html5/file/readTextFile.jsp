@@ -10,7 +10,7 @@
 <script type="text/javascript">
 $(function() {
 	$("#file").on("change", function(event) {
-		var file = event.target.files[0]; // FileList object
+		var file = event.target.files[0];
 		$("#info").append("name : " + escape(file.name) + "; type : " + 
 			file.type + "; size : " + file.size + " bytes; lastModifiedDate : " + 
 			file.lastModifiedDate + "<br>");
@@ -49,7 +49,7 @@ $(function() {
 <body>
 	onprogress print on console.
 	<br>
-	<input type="file" id="file" name="files[]" />
+	<input type="file" id="file" />
 	<br>
 	<output id="info"></output>
 	<output id="content"></output>
