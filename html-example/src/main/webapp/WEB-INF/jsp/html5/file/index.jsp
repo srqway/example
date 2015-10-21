@@ -5,13 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>html5</title>
+<title>file</title>
 </head>
 <body>
-	<a href="dom/index">dom</a><br>
-	<a href="css/index">css</a><br>
-	<a href="iframe/index">iframe</a><br>
-	<a href="svg/index">svg</a><br>
-	<a href="file/index">file</a><br>
+	<a href="selectFiles">select files</a>
+	<br>
+	<a href="readTextFile">read text file</a>
+	<br>
 </body>
 </html>

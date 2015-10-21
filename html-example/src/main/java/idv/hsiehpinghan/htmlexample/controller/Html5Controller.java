@@ -26,69 +26,92 @@ public class Html5Controller {
 		model.addObject("security", request.getParameter("security"));
 		return model;
 	}
-	
+
 	@RequestMapping(value = "/dom/form", method = RequestMethod.GET)
 	public ModelAndView domForm(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("html5/dom/parameter");
-		model.addObject("parameter", "form - parameter1 : " + request.getParameter("parameter1") + "; parameter2 : " + request.getParameter("parameter2"));
+		model.addObject(
+				"parameter",
+				"form - parameter1 : " + request.getParameter("parameter1")
+						+ "; parameter2 : "
+						+ request.getParameter("parameter2"));
 		return model;
 	}
-	
+
 	@RequestMapping(value = "/dom/overrideForm", method = RequestMethod.POST)
 	public ModelAndView domOverrideForm(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("html5/dom/parameter");
-		model.addObject("parameter", "overrideForm - parameter1 : " + request.getParameter("parameter1") + "; parameter2 : " + request.getParameter("parameter2"));
+		model.addObject(
+				"parameter",
+				"overrideForm - parameter1 : "
+						+ request.getParameter("parameter1")
+						+ "; parameter2 : "
+						+ request.getParameter("parameter2"));
 		return model;
 	}
-	
+
 	@RequestMapping(value = "/css/index", method = RequestMethod.GET)
 	public String cssIndex() {
 		return "html5/css/index";
 	}
-	
+
 	@RequestMapping(value = "/css/array", method = RequestMethod.GET)
 	public String array() {
 		return "html5/css/array";
 	}
-	
+
 	@RequestMapping(value = "/css/multilineOverflow", method = RequestMethod.GET)
 	public String multilineOverflow() {
 		return "html5/css/multilineOverflow";
 	}
-	
+
 	@RequestMapping(value = "/iframe/index", method = RequestMethod.GET)
 	public String iframeIndex() {
 		return "html5/iframe/index";
 	}
-	
+
 	@RequestMapping(value = "/iframe/iframeWithEcharts", method = RequestMethod.GET)
 	public String iframeWithEcharts() {
 		return "html5/iframe/iframeWithEcharts";
 	}
-	
+
 	@RequestMapping(value = "/svg/index", method = RequestMethod.GET)
 	public String svgIndex() {
 		return "html5/svg/index";
 	}
-	
+
 	@RequestMapping(value = "/svg/basicShape", method = RequestMethod.GET)
 	public String basicShape() {
 		return "html5/svg/basicShape";
 	}
-	
+
 	@RequestMapping(value = "/svg/path", method = RequestMethod.GET)
 	public String path() {
 		return "html5/svg/path";
 	}
-	
+
 	@RequestMapping(value = "/svg/text", method = RequestMethod.GET)
 	public String text() {
 		return "html5/svg/text";
 	}
-	
+
 	@RequestMapping(value = "/svg/stroke", method = RequestMethod.GET)
 	public String stroke() {
 		return "html5/svg/stroke";
 	}
 
+	@RequestMapping(value = "/file/index", method = RequestMethod.GET)
+	public String file() {
+		return "html5/file/index";
+	}
+
+	@RequestMapping(value = "/file/selectFiles", method = RequestMethod.GET)
+	public String selectFiles() {
+		return "html5/file/selectFiles";
+	}
+
+	@RequestMapping(value = "/file/readTextFile", method = RequestMethod.GET)
+	public String readTextFile() {
+		return "html5/file/readTextFile";
+	}
 }
