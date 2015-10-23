@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="suite" verbose="1">
+	<test name="suit">
+		<classes>
+			<class name="idv.hsiehpinghan.testngexample.setting.TestngSuitSetting" />
+		</classes>
+	</test>
+	<test name="test">
+		<classes>
+			<class name="idv.hsiehpinghan.testngexample.setting.TestngTestSetting" />
+			<class name="idv.hsiehpinghan.testngexample.test.LifeCycleTest" />
+			<class name="idv.hsiehpinghan.testngexample.test.ExceptionTest" />
+			<class name="idv.hsiehpinghan.testngexample.test.TimeoutTest" />
+		</classes>
+	</test>
+</suite>
