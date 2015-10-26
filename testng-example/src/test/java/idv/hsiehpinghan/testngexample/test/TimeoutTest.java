@@ -1,6 +1,7 @@
 package idv.hsiehpinghan.testngexample.test;
 
 import org.testng.annotations.Test;
+import org.testng.internal.thread.ThreadTimeoutException;
 
 public class TimeoutTest {
 
@@ -9,7 +10,7 @@ public class TimeoutTest {
 		Thread.sleep(4000);
 	}
 
-	@Test(timeOut = 1000)
+	@Test(timeOut = 1000, expectedExceptions = { ThreadTimeoutException.class })
 	public void whileTrue() {
 		while (true)
 			;

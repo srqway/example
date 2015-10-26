@@ -9,9 +9,11 @@
 	<test name="test">
 		<classes>
 			<class name="idv.hsiehpinghan.testngexample.setting.TestngTestSetting" />
+			<class name="idv.hsiehpinghan.testngexample.test.GroupsTest" />
 			<class name="idv.hsiehpinghan.testngexample.test.LifeCycleTest" />
 			<class name="idv.hsiehpinghan.testngexample.test.ExceptionTest" />
 			<class name="idv.hsiehpinghan.testngexample.test.TimeoutTest" />
+			<class name="idv.hsiehpinghan.testngexample.test.SpringIntegrationTest" />
 		</classes>
 	</test>
 </suite>

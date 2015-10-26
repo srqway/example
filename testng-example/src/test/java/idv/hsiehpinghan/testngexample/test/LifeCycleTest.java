@@ -40,9 +40,9 @@ public class LifeCycleTest {
 		System.out.println("@AfterMethod");
 	}
 
-	@Test(groups = "group_0")
-	public void group0test() {
-		System.out.println("@Test group_0");
+	@Test(dependsOnGroups = { "group_0" })
+	public void dependsOnGroups() {
+		System.out.println("@Test dependsOnGroups(group_0)");
 	}
 
 	@Test
@@ -50,4 +50,8 @@ public class LifeCycleTest {
 		System.out.println("@Test test");
 	}
 
+	@Test(dependsOnMethods = { "test" })
+	public void dependsOnMethods() {
+		System.out.println("@Test dependsOnMethods(test)");
+	}
 }
