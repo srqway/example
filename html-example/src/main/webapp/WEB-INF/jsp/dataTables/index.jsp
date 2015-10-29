@@ -12,5 +12,6 @@
 	<a href="jqueryUi/index">jQueryUI</a><br>
 	<a href="setting/index">setting</a><br>
 	<a href="heightFitting/index">height fitting</a><br>
+	<a href="ajaxData/index">ajax data</a><br>
 </body>
 </html>
