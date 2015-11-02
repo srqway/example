@@ -12,9 +12,33 @@ public class CssController {
 		return "css/index";
 	}
 
-	// @RequestMapping(value = "/dom/index", method = RequestMethod.GET)
-	// public String domIndex() {
-	// return "html5/dom/index";
-	// }
+	@RequestMapping(value = "/multilineOverflow", method = RequestMethod.GET)
+	public String cssMultilineOverflow() {
+		return "css/multilineOverflow";
+	}
+	
+	@RequestMapping(value = "/background", method = RequestMethod.GET)
+	public String cssBackground() {
+		return "css/background";
+	}
 
+	@RequestMapping(value = "/text", method = RequestMethod.GET)
+	public String cssText() {
+		return "css/text";
+	}
+
+	@RequestMapping(value = "/font", method = RequestMethod.GET)
+	public String cssFont() {
+		return "css/font";
+	}
+
+	@RequestMapping(value = "/table", method = RequestMethod.GET)
+	public String cssTable() {
+		return "css/table";
+	}
+
+	@RequestMapping(value = "/boxModel", method = RequestMethod.GET)
+	public String boxModel() {
+		return "css/boxModel";
+	}
 }

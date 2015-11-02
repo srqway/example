@@ -50,21 +50,6 @@ public class Html5Controller {
 		return model;
 	}
 
-	@RequestMapping(value = "/css/index", method = RequestMethod.GET)
-	public String cssIndex() {
-		return "html5/css/index";
-	}
-
-	@RequestMapping(value = "/css/array", method = RequestMethod.GET)
-	public String array() {
-		return "html5/css/array";
-	}
-
-	@RequestMapping(value = "/css/multilineOverflow", method = RequestMethod.GET)
-	public String multilineOverflow() {
-		return "html5/css/multilineOverflow";
-	}
-
 	@RequestMapping(value = "/iframe/index", method = RequestMethod.GET)
 	public String iframeIndex() {
 		return "html5/iframe/index";
