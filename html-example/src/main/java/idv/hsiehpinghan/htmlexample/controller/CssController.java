@@ -41,4 +41,9 @@ public class CssController {
 	public String boxModel() {
 		return "css/boxModel";
 	}
+
+	@RequestMapping(value = "/position", method = RequestMethod.GET)
+	public String position() {
+		return "css/position";
+	}
 }
