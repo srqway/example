@@ -15,5 +15,8 @@
 	<a href="table">table</a><br>
 	<a href="boxModel">box model</a><br>
 	<a href="position">position</a><br>
+	<a href="float">float</a><br>
+	<a href="inlineBlock">inline-block</a><br>
+	<a href="imageSprite">image sprite</a><br>
 </body>
 </html>

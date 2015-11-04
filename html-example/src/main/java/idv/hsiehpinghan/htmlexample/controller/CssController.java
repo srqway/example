@@ -16,7 +16,7 @@ public class CssController {
 	public String cssMultilineOverflow() {
 		return "css/multilineOverflow";
 	}
-	
+
 	@RequestMapping(value = "/background", method = RequestMethod.GET)
 	public String cssBackground() {
 		return "css/background";
@@ -46,4 +46,20 @@ public class CssController {
 	public String position() {
 		return "css/position";
 	}
+
+	@RequestMapping(value = "/float", method = RequestMethod.GET)
+	public String _float() {
+		return "css/float";
+	}
+	
+	@RequestMapping(value = "/inlineBlock", method = RequestMethod.GET)
+	public String inlineBlock() {
+		return "css/inlineBlock";
+	}
+	
+	@RequestMapping(value = "/imageSprite", method = RequestMethod.GET)
+	public String imageSprite() {
+		return "css/imageSprite";
+	}
+	
 }
