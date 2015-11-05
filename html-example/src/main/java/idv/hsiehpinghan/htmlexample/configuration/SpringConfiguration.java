@@ -1,8 +1,13 @@
 package idv.hsiehpinghan.htmlexample.configuration;
 
+import idv.hsiehpinghan.htmlexample.converter.TsvHttpMessageConverter;
+
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -31,4 +36,9 @@ public class SpringConfiguration extends WebMvcConfigurerAdapter {
 				"/javascript/");
 	}
 
+	@Override
+	public void configureMessageConverters(
+			List<HttpMessageConverter<?>> converters) {
+		converters.add(new TsvHttpMessageConverter());
+	}
 }
