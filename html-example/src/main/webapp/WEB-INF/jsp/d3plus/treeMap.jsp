@@ -9,7 +9,7 @@
 <title>d3plus tree map</title>
 </head>
 <body>
-	<div id="viz" style="width: 300px; height: 300px;"></div>
+	<div id="viz" style="width: 500px; height: 500px;"></div>
 </body>
 <script src="/html-example/javascript/d3-master/d3.min.js"></script>
 <script src="/html-example/javascript/d3plus-master/d3plus.min.js"></script>
@@ -30,7 +30,7 @@
 					return;
 				}
 				d[k] = +d[k];
-			})
+			});
 		});
 	}
 	
@@ -42,7 +42,7 @@
 			.id("id")
 			.size("size")
 			.time("time")
-			.draw()
+			.draw();
 	}
 </script>
 </html>

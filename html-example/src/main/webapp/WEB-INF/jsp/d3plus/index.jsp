@@ -10,5 +10,7 @@
 <body>
 	<a href="treeMap">tree map</a>
 	<br>
+	<a href="rings">rings</a>
+	<br>
 </body>
 </html>

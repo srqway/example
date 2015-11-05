@@ -31,6 +31,11 @@ public class D3plusController {
 		return generateTsvVo();
 	}
 
+	@RequestMapping(value = "/rings", method = RequestMethod.GET)
+	public String rings() {
+		return "d3plus/rings";
+	}
+
 	private TreeMapVo generateTsvVo() {
 		TreeMapVo vo = new TreeMapVo();
 		buildTsvVoTitles(vo);
