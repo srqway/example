@@ -8,16 +8,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
-@EnableWebMvc
 @Configuration
 @ComponentScan(basePackages = { "idv.hsiehpinghan.htmlexample" })
-public class SpringConfiguration extends WebMvcConfigurerAdapter {
+public class SpringConfiguration extends WebMvcConfigurationSupport {
 	@Bean
 	public UrlBasedViewResolver setupViewResolver() {
 		UrlBasedViewResolver resolver = new UrlBasedViewResolver();
@@ -40,5 +38,6 @@ public class SpringConfiguration extends WebMvcConfigurerAdapter {
 	public void configureMessageConverters(
 			List<HttpMessageConverter<?>> converters) {
 		converters.add(new TsvHttpMessageConverter());
+		super.addDefaultHttpMessageConverters(converters);
 	}
 }
