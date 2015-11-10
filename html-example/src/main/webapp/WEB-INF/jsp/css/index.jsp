@@ -25,6 +25,8 @@
 	<a href="boxShadow">box shadow</a><br>
 	<a href="transform2d">2D transform</a><br>
 	<a href="transform3d">3D transform</a><br>
-	
+	<a href="transition">transition</a><br>
+	<a href="animation">animation</a><br>
+
 </body>
 </html>

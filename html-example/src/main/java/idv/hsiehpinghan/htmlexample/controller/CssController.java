@@ -96,4 +96,14 @@ public class CssController {
 	public String transform3d() {
 		return "css/transform3d";
 	}
+
+	@RequestMapping(value = "/transition", method = RequestMethod.GET)
+	public String transition() {
+		return "css/transition";
+	}
+
+	@RequestMapping(value = "/animation", method = RequestMethod.GET)
+	public String animation() {
+		return "css/animation";
+	}
 }
