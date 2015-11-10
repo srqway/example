@@ -62,8 +62,46 @@
     text-shadow: 2px 2px 4px #000000;
 }
 
+#text-shadow_0_0_5px_FF0000_0_0_10px_0000FF {
+    text-shadow: 0 0 5px #FF0000, 0 0 10px #0000FF;
+}
+
 #white-space_nowrap {
     white-space: nowrap;
+}
+
+#word-wrap_break_word {
+    width: 11em;
+    border: 1px solid #000000;
+    word-wrap: break-word;
+}
+
+#word-break_keep_all {
+    width: 11em;
+    border: 1px solid #000000;
+    word-break: keep-all;
+}
+
+#word-break_break_all {
+    width: 11em;
+    border: 1px solid #000000;
+    word-break: break-all;
+}
+
+#text_overflow_clip {
+    white-space: nowrap; 
+    width: 100px; 
+    border: 1px solid #000000;
+    overflow: hidden;
+	text-overflow: clip; 
+}
+
+#text_overflow_ellipsis {
+    white-space: nowrap; 
+    width: 100px; 
+    border: 1px solid #000000;
+    overflow: hidden;
+	text-overflow: ellipsis; 
 }
 </style>
 </head>
@@ -100,6 +138,8 @@
 	<br>
 	<div id="text-shadow_2px_2px_4px_000000">text-shadow: 2px 2px 4px #000000;</div>
 	<br>
+	<div id="text-shadow_0_0_5px_FF0000_0_0_10px_0000FF">text-shadow: 0 0 5px #FF0000, 0 0 10px #0000FF;</div>
+	<br>
 	<div id="white-space_nowrap">
 		This is white-space: nowrap;
 		This is white-space: nowrap;
@@ -117,6 +157,16 @@
 		This is white-space: nowrap;
 		This is white-space: nowrap;
 	</div>
+	<br>
+	<p id="word-wrap_break_word">word-wrap: break-word; abcdefghijklmnopqrstuvwxyz</p>
+	<br>
+	<p id="word-break_keep_all">word-break: keep-all; abcdefghijklmnopqrstuvwxyz</p>
+	<br>
+	<p id="word-break_break_all">word-break: break-all; abcdefghijklmnopqrstuvwxyz</p>
+	<br>
+	<p id="text_overflow_clip">text-overflow: clip;</p>
+	<br>
+	<p id="text_overflow_ellipsis">text-overflow: ellipsis;</p>
 	<br>
 </body>
 </html>

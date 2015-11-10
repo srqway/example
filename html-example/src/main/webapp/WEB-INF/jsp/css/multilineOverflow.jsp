@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>css</title>
 <style type="text/css">
-
 .ellipsis {
 	overflow: hidden;
 	position: relative;
@@ -30,9 +29,9 @@
 
 .ellipsis:after {
 	content: "\02026 more";
-	box-sizing: content-box;
 	-webkit-box-sizing: content-box;
 	-moz-box-sizing: content-box;
+	box-sizing: content-box;
 	float: right;
 	position: relative;
 	top: -25px;
@@ -61,8 +60,8 @@
 	position: absolute;
 	left: 0;
 	top: 0;
- 	width: 100%;
- 	height: 100%;
+	width: 100%;
+	height: 100%;
 	overflow: hidden;
 	text-indent: -9999px;
 }
@@ -75,20 +74,18 @@
 /* .ellipsis i:before { */
 /* 	content: "more"; */
 /* } */
-
 .ellipsisContent {
 	margin: 0;
 	padding: 0;
 }
-
 </style>
 <script src="/html-example/javascript/jquery-2.1.4/jquery-2.1.4.min.js"></script>
 <script type="text/javascript">
-$(function() {
-	$(".ellipsisMore").on("click", function() {
-		alert("more");
+	$(function() {
+		$(".ellipsisMore").on("click", function() {
+			alert("more");
+		});
 	});
-});
 </script>
 </head>
 <body>
@@ -97,7 +94,7 @@ $(function() {
 			<p class="ellipsisContent">
 				aaaaa bbbbb ccccc ddddd eeeee fffff ggggg hhhhh iiiii jjjjj kkkkk
 				lllll mmmmm nnnnn ooooo ppppp qqqqq rrrrr sssss ttttt uuuuu vvvvv
-				wwwww xxxxx yyyyy zzzzz aaaaa bbbbb ccccc ddddd eeeee fffff ggggg 
+				wwwww xxxxx yyyyy zzzzz aaaaa bbbbb ccccc ddddd eeeee fffff ggggg
 				hhhhh iiiii jjjjj kkkkk lllll mmmmm nnnnn ooooo ppppp qqqqq rrrrr
 				sssss ttttt uuuuu vvvvv wwwww xxxxx yyyyy zzzzz aaaaa bbbbb ccccc
 				ddddd eeeee fffff ggggg hhhhh iiiii jjjjj kkkkk lllll mmmmm nnnnn

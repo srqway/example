@@ -28,6 +28,7 @@ public class SpringConfiguration extends WebMvcConfigurationSupport {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/index.html").addResourceLocations("/");
+		registry.addResourceHandler("/font/**").addResourceLocations("/font/");
 		registry.addResourceHandler("/image/**")
 				.addResourceLocations("/image/");
 		registry.addResourceHandler("/javascript/**").addResourceLocations(

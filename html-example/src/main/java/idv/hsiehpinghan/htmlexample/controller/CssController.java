@@ -72,4 +72,28 @@ public class CssController {
 		return "css/borderImage";
 	}
 
+	@RequestMapping(value = "/color", method = RequestMethod.GET)
+	public String color() {
+		return "css/color";
+	}
+
+	@RequestMapping(value = "/gradient", method = RequestMethod.GET)
+	public String gradient() {
+		return "css/gradient";
+	}
+
+	@RequestMapping(value = "/boxShadow", method = RequestMethod.GET)
+	public String boxShadow() {
+		return "css/boxShadow";
+	}
+
+	@RequestMapping(value = "/transform2d", method = RequestMethod.GET)
+	public String transform2d() {
+		return "css/transform2d";
+	}
+
+	@RequestMapping(value = "/transform3d", method = RequestMethod.GET)
+	public String transform3d() {
+		return "css/transform3d";
+	}
 }
