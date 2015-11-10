@@ -51,15 +51,25 @@ public class CssController {
 	public String _float() {
 		return "css/float";
 	}
-	
+
 	@RequestMapping(value = "/inlineBlock", method = RequestMethod.GET)
 	public String inlineBlock() {
 		return "css/inlineBlock";
 	}
-	
+
 	@RequestMapping(value = "/imageSprite", method = RequestMethod.GET)
 	public String imageSprite() {
 		return "css/imageSprite";
 	}
-	
+
+	@RequestMapping(value = "/roundedCorner", method = RequestMethod.GET)
+	public String roundedCorner() {
+		return "css/roundedCorner";
+	}
+
+	@RequestMapping(value = "/borderImage", method = RequestMethod.GET)
+	public String borderImage() {
+		return "css/borderImage";
+	}
+
 }

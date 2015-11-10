@@ -18,5 +18,8 @@
 	<a href="float">float</a><br>
 	<a href="inlineBlock">inline-block</a><br>
 	<a href="imageSprite">image sprite</a><br>
+	<a href="roundedCorner">rounded corner</a><br>
+	<a href="borderImage">border image</a><br>
+	
 </body>
 </html>
