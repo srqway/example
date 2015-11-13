@@ -106,4 +106,34 @@ public class CssController {
 	public String animation() {
 		return "css/animation";
 	}
+
+	@RequestMapping(value = "/multipleColumn", method = RequestMethod.GET)
+	public String multipleColumn() {
+		return "css/multipleColumn";
+	}
+
+	@RequestMapping(value = "/boxSizing", method = RequestMethod.GET)
+	public String boxSizing() {
+		return "css/boxSizing";
+	}
+
+	@RequestMapping(value = "/flexibleBox", method = RequestMethod.GET)
+	public String flexibleBox() {
+		return "css/flexibleBox";
+	}
+
+	@RequestMapping(value = "/media", method = RequestMethod.GET)
+	public String media() {
+		return "css/media";
+	}
+
+	@RequestMapping(value = "/viewport", method = RequestMethod.GET)
+	public String viewport() {
+		return "css/viewport";
+	}
+	
+	@RequestMapping(value = "/gridView", method = RequestMethod.GET)
+	public String gridView() {
+		return "css/gridView";
+	}
 }
