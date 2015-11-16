@@ -34,6 +34,8 @@ public class SpringConfiguration extends WebMvcConfigurationSupport {
 				.addResourceLocations("/image/");
 		registry.addResourceHandler("/javascript/**").addResourceLocations(
 				"/javascript/");
+		registry.addResourceHandler("/video/**")
+				.addResourceLocations("/video/");
 	}
 
 	@Override

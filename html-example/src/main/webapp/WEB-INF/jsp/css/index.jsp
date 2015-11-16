@@ -33,6 +33,7 @@
 	<a href="media">media</a><br>
 	<a href="viewport">viewport</a><br>
 	<a href="gridView">grid view</a><br>
+	<a href="video">video</a><br>
 
 </body>
 </html>

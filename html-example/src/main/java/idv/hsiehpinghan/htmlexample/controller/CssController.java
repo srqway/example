@@ -131,9 +131,14 @@ public class CssController {
 	public String viewport() {
 		return "css/viewport";
 	}
-	
+
 	@RequestMapping(value = "/gridView", method = RequestMethod.GET)
 	public String gridView() {
 		return "css/gridView";
+	}
+
+	@RequestMapping(value = "/video", method = RequestMethod.GET)
+	public String video() {
+		return "css/video";
 	}
 }
