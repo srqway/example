@@ -7,26 +7,31 @@
 		/> -->
 	<!-- </classes> -->
 	<!-- </test> -->
-	<test name="test">
+	<test name="feature">
 		<classes>
-			<class name="idv.hsiehpinghan.java8example.example.LambdaExpressionTest" />
-			<class name="idv.hsiehpinghan.java8example.example.MethodReferenceTest" />
+			<class name="idv.hsiehpinghan.java8example.feature.LambdaExpressionTest" />
+			<class name="idv.hsiehpinghan.java8example.feature.MethodReferenceTest" />
 			<class
-				name="idv.hsiehpinghan.java8example.example.FunctionalInterfaceTest" />
-			<class name="idv.hsiehpinghan.java8example.example.DefaultMethodTest" />
-			<class name="idv.hsiehpinghan.java8example.example.StreamTest" />
-			<class name="idv.hsiehpinghan.java8example.example.OptionalClassTest" />
-			<class name="idv.hsiehpinghan.java8example.example.PeriodClassTest" />
-			<class name="idv.hsiehpinghan.java8example.example.DurationClassTest" />
+				name="idv.hsiehpinghan.java8example.feature.FunctionalInterfaceTest" />
+			<class name="idv.hsiehpinghan.java8example.feature.DefaultMethodTest" />
+			<class name="idv.hsiehpinghan.java8example.feature.StreamTest" />
+			<class name="idv.hsiehpinghan.java8example.feature.OptionalClassTest" />
+			<class name="idv.hsiehpinghan.java8example.feature.PeriodClassTest" />
+			<class name="idv.hsiehpinghan.java8example.feature.DurationClassTest" />
 			<class
-				name="idv.hsiehpinghan.java8example.example.BackwardCompatibilityTest" />
-			<class name="idv.hsiehpinghan.java8example.example.TryWithResourcesTest" />
+				name="idv.hsiehpinghan.java8example.feature.BackwardCompatibilityTest" />
+			<class name="idv.hsiehpinghan.java8example.feature.TryWithResourcesTest" />
 			<class
-				name="idv.hsiehpinghan.java8example.example.ConstructorReferenceTest" />
-			<class name="idv.hsiehpinghan.java8example.example.ConsumerTest" />
-			<class name="idv.hsiehpinghan.java8example.example.SupplierTest" />
-			<class name="idv.hsiehpinghan.java8example.example.FunctionTest" />
-			<class name="idv.hsiehpinghan.java8example.example.PredicateTest" />
+				name="idv.hsiehpinghan.java8example.feature.ConstructorReferenceTest" />
+			<class name="idv.hsiehpinghan.java8example.feature.ConsumerTest" />
+			<class name="idv.hsiehpinghan.java8example.feature.SupplierTest" />
+			<class name="idv.hsiehpinghan.java8example.feature.FunctionTest" />
+			<class name="idv.hsiehpinghan.java8example.feature.PredicateTest" />
+		</classes>
+	</test>
+	<test name="net">
+		<classes>
+			<class name="idv.hsiehpinghan.java8example.net.HttpsConnectionTest" />
 		</classes>
 	</test>
 </suite>
