@@ -36,6 +36,11 @@ public class D3plusController {
 		return "d3plus/rings";
 	}
 
+	@RequestMapping(value = "/bubbles", method = RequestMethod.GET)
+	public String bubbles() {
+		return "d3plus/bubbles";
+	}
+	
 	private TreeMapVo generateTsvVo() {
 		TreeMapVo vo = new TreeMapVo();
 		buildTsvVoTitles(vo);

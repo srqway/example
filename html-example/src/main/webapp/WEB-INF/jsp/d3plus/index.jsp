@@ -12,5 +12,7 @@
 	<br>
 	<a href="rings">rings</a>
 	<br>
+	<a href="bubbles">bubbles</a>
+	<br>
 </body>
 </html>
