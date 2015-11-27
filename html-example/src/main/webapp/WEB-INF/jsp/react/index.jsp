@@ -8,23 +8,17 @@
 <title>React Index</title>
 <script src="/html-example/javascript/react-0.14.3/build/react.js"></script>
 <script src="/html-example/javascript/react-0.14.3/build/react-dom.js"></script>
+<script src="/html-example/javascript/babel-core-5.8.23/browser.min.js"></script>
 </head>
 <body>
 
-	<div id="content"></div>
-
-	<script>
-		var CommentBox = React.createClass({
-			displayName : 'CommentBox',
-			render : function() {
-				return (React.createElement('div', {
-					className : "commentBox"
-				}, "Hello, world! I am a CommentBox."));
-			}
-		});
-		ReactDOM.render(React.createElement(CommentBox, null), document
-				.getElementById('content'));
-	</script>
-
+    <div id="example"></div>
+    <script type="text/babel">
+      ReactDOM.render(
+        <h1>Hello, world!</h1>,
+        document.getElementById('example')
+      );
+    </script>
+    
 </body>
 </html>
