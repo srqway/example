@@ -1,0 +1,42 @@
+# temporary files
+*~
+*.swp
+*.zip
+_builtins.js
+v8.log
+CodeMirror-*
+bootstrap/
+.jsx.*
+.jsx
+tmp/
+
+# files in git but not from npm
+.npmignore
+.travis.yml
+.proverc
+complete/
+doc/
+example/
+extlib/
+gruntfile.js
+idl2jsx/
+Makefile
+release-engineering.md
+src/
+submodules/
+t/
+tool/
+try/
+web/
+xt/
+
+# npm-related files
+npm-debug.log
+package/
+jsx-*.tgz
+
+# no need to include node modules
+node_modules/
+
+# git stuff
+.git*

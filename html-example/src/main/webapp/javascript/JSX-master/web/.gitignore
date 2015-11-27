@@ -1,0 +1,3 @@
+*.generated.*
+.profile
+*.jsx.js

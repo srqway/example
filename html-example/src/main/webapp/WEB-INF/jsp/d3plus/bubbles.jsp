@@ -15,18 +15,18 @@
 <script src="/html-example/javascript/d3plus-master/d3plus.min.js"></script>
 <script type="text/javascript">
 	var datas = [
-		{"value": 40, "name": "名字0", "group": "group 1"},
-		{"value": 30, "name": "名字1", "group": "group 1"},
-		{"value": 20, "name": "名字2", "group": "group 1"},
-		{"value": 10, "name": "名字3", "group": "group 1"},
-		{"value": 30, "name": "名字1", "group": "group 2"},
-		{"value": 30, "name": "名字2", "group": "group 2"},
-		{"value": 20, "name": "名字3", "group": "group 2"},
-		{"value": 10, "name": "名字4", "group": "group 2"},
-		{"value": 10, "name": "名字5", "group": "group 2"},
-		{"value": 80, "name": "名字0", "group": "group 3"},
-		{"value": 15, "name": "名字1", "group": "group 3"},
-		{"value": 5, "name": "名字2", "group": "group 3"},
+		{"value": 40, "name": "name0", "group": "group 1"},
+		{"value": 30, "name": "name1", "group": "group 1"},
+		{"value": 20, "name": "name2", "group": "group 1"},
+		{"value": 10, "name": "name3", "group": "group 1"},
+		{"value": 30, "name": "name1", "group": "group 2"},
+		{"value": 30, "name": "name2", "group": "group 2"},
+		{"value": 20, "name": "name3", "group": "group 2"},
+		{"value": 10, "name": "name4", "group": "group 2"},
+		{"value": 10, "name": "name5", "group": "group 2"},
+		{"value": 80, "name": "name0", "group": "group 3"},
+		{"value": 15, "name": "name1", "group": "group 3"},
+		{"value": 5, "name": "name2", "group": "group 3"},
 	];
 	
 	var visualization = d3plus.viz()
