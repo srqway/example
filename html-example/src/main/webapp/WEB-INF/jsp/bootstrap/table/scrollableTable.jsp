@@ -50,8 +50,7 @@
 				<tr>
 					<td class="col-xs-3">${v.integerValue}</td>
 					<td class="col-xs-3">${v.floatValue}</td>
-					<td class="col-xs-6"><fmt:formatDate pattern="yyyy/MM/dd"
-							value="${v.dateValue}" /></td>
+					<td class="col-xs-6">${v.dateValue}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
