@@ -56,3 +56,55 @@ arr_12 = NP.array([[1,2,3],[4,5,6],[7,8,9]])
 arr_12.resize(2,2)
 print("arr_12.resize(2,2):")
 print(arr_12)
+
+arr_13 = NP.array([[1,2,3,4],
+                   [5,6,7,8],
+                   [9,10,11,12]])
+print("arr_13[0:3, 0:2]:")
+print(arr_13[1:3, 0:2])
+
+arr_14 = NP.array([[1,2,3,4],
+                   [5,6,7,8],
+                   [9,10,11,12]])
+arr_14[1, 1:3] = 0
+print("arr_14[1, 1:3] = 0:")
+print(arr_14)
+
+arr_15 = NP.array([1,2,3,4])
+arr_15[0:3] = arr_15[1:4]
+print("arr_15[0:3] = arr_15[1:4]:")
+print(arr_15)
+
+arr_16 = NP.array([1,2,3,4])
+subscript_16 = [3,1]
+print("arr_16[subscript_16]:")
+print(arr_16[subscript_16])
+
+arr_17 = NP.array([1,2,3,4])
+print("arr_17 < 3:")
+print(arr_17 < 3)
+
+arr_18 = NP.array([1,2,3,4])
+print("arr_18[arr_18 < 3]:")
+print(arr_18[arr_18 < 3])
+
+arr_19 = NP.array([1,2,3,4])
+mask_19 = NP.array([True, False, True, False])
+arr_19[mask_19] = NP.array([10,20])
+print("arr_19[mask_19] = NP.array([10,20,30,40]):")
+print(arr_19)
+
+arr_20 = NP.array([1,2,3,4])
+mask_20 = NP.array([True, False, True, False])
+replace_20 = NP.array([10,20,30,40])
+NP.putmask(arr_20, mask_20, replace_20)
+print("NP.putmask(arr_20, mask_20, replace_20):")
+print(arr_20)
+
+arr_21 = NP.array([1,2,3,4])
+print("(arr_21 > 1) & (arr_21 < 4):")
+print((arr_21 > 1) & (arr_21 < 4))
+
+arr_22 = NP.array([1,2,3,4])
+print("NP.where(arr_22 < 3, arr_22, 0):")
+print(NP.where(arr_22 < 3, arr_22*10, 0))
