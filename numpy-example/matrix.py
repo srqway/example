@@ -1,6 +1,3 @@
-'''
-matrix
-'''
 import numpy as NP
 
 m_0 = NP.matrix('1 2; 3 4');

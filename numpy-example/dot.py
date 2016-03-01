@@ -1,6 +1,3 @@
-'''
-dot product
-'''
 import numpy as NP
 
 u = [1,2]
