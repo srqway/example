@@ -7,6 +7,13 @@
 				name="idv.hsiehpinghan.javadesignpatternexample.factorypattern.FactoryPatternTest" />
 			<class
 				name="idv.hsiehpinghan.javadesignpatternexample.abstractfactorypattern.AbstractFactoryPatternTest" />
+			<class
+				name="idv.hsiehpinghan.javadesignpatternexample.singletonpattern.SingletonObjectTest" />
+			<class
+				name="idv.hsiehpinghan.javadesignpatternexample.builderpattern.BuilderPatternTest" />
+			<class
+				name="idv.hsiehpinghan.javadesignpatternexample.prototypepattern.PrototypePatternTest" />
+
 		</classes>
 	</test>
 </suite>
