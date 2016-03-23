@@ -1,0 +1,11 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from __future__ import print_function
+
+import sys
+
+print("default encoding : " + sys.getdefaultencoding())
+
+unicode = "測試x\0020中文轉換".decode("big5")
+print(unicode)
