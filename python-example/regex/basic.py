@@ -63,3 +63,33 @@ compile_10 = re.compile('(cd(e|x))')
 search_10 = compile_10.search("abcdef")
 print(search_10.groups())
 
+print('<<(\\bspace\\b)>>')
+compile_11 = re.compile('(\\bspace\\b)')
+search_11 = compile_11.search("abc space abc")
+print(search_11.groups())
+
+print('<<(\\s)>>')
+compile_12 = re.compile('(\\s)+')
+findall_12 = compile_12.findall("a\nb\rc\t d")
+print(findall_12)
+
+print('<<(\\w+)>>')
+compile_13 = re.compile('(\\w+)')
+findall_13 = compile_13.findall("!a1@B2#c3")
+print(findall_13)
+
+print('<<(\\W+), split>>')
+compile_14 = re.compile('(\\W+)')
+split_14 = compile_14.split("abc def ghi.")
+print(split_14)
+
+print('<<[^\\w]+, sub>>')
+print(re.sub("[^\\w]+", "-", "something in here... "))
+
+print('<<\\w+, finditer>>')
+text = "something in here..."
+finditer = re.finditer("\\w+", text)
+for x in finditer:
+    print(text[x.start():x.end()])
+
+
