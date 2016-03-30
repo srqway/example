@@ -37,3 +37,27 @@ except ValueError:
 
 print("<<lstrip>>")
 print("       abc        ".lstrip())
+
+print("<<rfind>>")
+print("abcde".rfind("f"))
+
+print("<<rjust>>")
+print("abcde".rjust(20))
+
+print("<<rsplit>>")
+print("a,b,c,d,e".rsplit(","))
+
+print("<<splitlines>>")
+print("abc\ndef\nghi\n".splitlines())
+
+print("<<swapcase>>")
+print("aBcDe".swapcase())
+
+print("<<title>>")
+print("abcde".title())
+
+print("<<translate>>")
+print("abcde".translate(None, "aeiou"))
+
+print("<<zfill>>")
+print("abcde".zfill(10))
