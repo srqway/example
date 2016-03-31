@@ -1,8 +1,10 @@
 eclipse.preferences.version=1
 encoding//file/__init__.py=utf-8
 encoding//file/codecs.py=utf-8
+encoding//function/basic.py=utf-8
 encoding//regex/__init__.py=utf-8
 encoding//regex/basic.py=utf-8
+encoding//sequence/basic.py=utf-8
 encoding//string/locale.py=utf-8
 encoding//string/print.py=utf-8
 encoding//string/string.py=utf-8
