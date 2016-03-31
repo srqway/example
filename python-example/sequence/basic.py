@@ -20,3 +20,31 @@ x_2 = [
 ]
 print(x_2)
 
+print("<<sequence_3>>")
+x_3 = ["aaa", "bbb", "ccc"]
+print(x_3.count("aaa"))
+
+print("<<sequence_4>>")
+x_4 = ["aaa", "bbb", "ccc"]
+print(x_4.index("bbb"))
+
+print("<<sequence_5>>")
+x_5 = ["aaa", "bbb", "ccc"]
+x_5.insert(1, "xxx")
+print(x_5)
+
+print("<<sequence_6>>")
+x_6 = ["aaa", "bbb", "ccc"]
+print(x_6.pop())
+print(x_6)
+
+print("<<sequence_7>>")
+x_7 = ["aaa", "bbb", "ccc"]
+x_7.remove("bbb")
+print(x_7)
+
+print("<<sequence_8>>")
+x_8 = ["aaa", "bbb", "ccc"]
+x_8.reverse()
+print(x_8)
+
