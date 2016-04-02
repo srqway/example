@@ -27,3 +27,10 @@ class Obj_1_1(Obj_1_0):
         pass
 
 print(issubclass(Obj_1_1, Obj_1_0))
+
+print("<<id>>")
+class Obj_2_0:
+    def __init__(self):
+        pass
+
+print(id(Obj_2_0()))
