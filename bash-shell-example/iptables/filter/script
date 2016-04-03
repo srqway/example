@@ -1,0 +1,33 @@
+# list chains
+iptables -t filter -n -L
+
+# delete rules
+iptables -t filter -F
+
+# delete chains
+iptables -t filter -X
+
+# reset policy
+iptables -t filter -P INPUT ACCEPT
+iptables -t filter -P FORWARD ACCEPT
+iptables -t filter -P OUTPUT ACCEPT
+
+# null scan filter
+iptables -A INPUT -p tcp --tcp-flags ALL NONE -j DROP
+# xmas scan filter
+iptables -A INPUT -p tcp --tcp-flags ALL FIN,URG,PSH -j LOG --log-prefix "xmas scan : "
+<<hacker>> nmap -sX 172.17.0.6
+dmesg | grep "xmas scan : " | less
+#	SYN,RST scan filter
+iptables -A INPUT -p tcp --tcp-flags SYN,RST SYN,RST -j DROP
+#	SYN,FIN scan filter
+iptables -A INPUT -p tcp --tcp-flags SYN,FIN SYN,FIN -j DROP
+#	FIN,RST scan filter
+iptables -A INPUT -p tcp --tcp-flags FIN,RST FIN,RST -j DROP
+
+# invalid input filter
+iptables -A INPUT -m state --state INVALID -j DROP
+
+
+
+

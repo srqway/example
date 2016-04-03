@@ -1,0 +1,9 @@
+# list all net settings
+sysctl -a | grep net | less
+
+# ignore icmp
+echo "net.ipv4.icmp_echo_ignore_all = 1" >> /etc/sysctl.conf
+sysctl -p
+cat /proc/sys/net/ipv4/icmp_echo_ignore_all
+ping localhost
+
