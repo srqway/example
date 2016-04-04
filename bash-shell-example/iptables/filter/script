@@ -28,6 +28,116 @@ iptables -A INPUT -p tcp --tcp-flags FIN,RST FIN,RST -j DROP
 # invalid input filter
 iptables -A INPUT -m state --state INVALID -j DROP
 
+# spoofing filter - local ip
+iptables -A INPUT -i eth0 -s <<LOCAL_HOST_IP>> -j DROP
+
+# spoofing filter - intranet and loopback ip
+iptables -A INPUT -i eth0 -s 10.0.0.0/8 -j DROP
+iptables -A INPUT -i eth0 -s 172.16.0.0/12 -j DROP
+iptables -A INPUT -i eth0 -s 192.168.0.0/16 -j DROP
+iptables -A INPUT -i eth0 -s 127.0.0.0/8 -j DROP
+
+# spoofing filter - class d and class e
+iptables -A INPUT -i eth0 ! -p udp -d 224.0.0.0/4 -j DROP
+iptables -A INPUT -i eth0 -s 240.0.0.0/5 -j DROP
+
+# spoofing filter - other ip range
+iptables -A INPUT -i eth0 -s 0.0.0.0/8 -j DROP
+iptables -A INPUT -i eth0 -s 192.0.2/24 -j DROP
+
+# spoofing filter - intranet broadcast
+iptables -A INPUT -i eth0 -d 10.0.0.0 -j DROP
+iptables -A INPUT -i eth0 -d 10.0.0.255 -j DROP
+iptables -A INPUT -i eth0 -s 172.16.0.0 -j DROP
+iptables -A INPUT -i eth0 -s 172.16.0.255 -j DROP
+iptables -A INPUT -i eth0 -s 192.168.0.0 -j DROP
+iptables -A INPUT -i eth0 -s 192.168.0.255 -j DROP
+
+# spoofing filter - broadcast ip
+iptables -A INPUT -i eth0 -s 255.255.255.255 -j DROP
+iptables -A INPUT -i eth0 -d 0.0.0.0 -j DROP
+
+# prevent X-windows using
+iptables -A INPUT -i eth0 -p tcp --syn --destination-port 6000:6063 -j DROP
+iptables -A OUTPUT -o eth0 -p tcp --syn --destination-port 6000:6063 -j REJECT
+
+# allow udp using
+iptables -A OUTPUT -o eth0 -p udp -s <<LOCAL_HOST_IP>> --sport 1024:65535 -d <<NAME_SERVER>> --dport 53 -m state --state NEW -j ACCEPT
+iptables -A OUTPUT -o eth0 -p udp -s <<LOCAL_HOST_IP>> --sport 1024:65535 -d <<NAME_SERVER>> --dport 53 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 -d <<NAME_SERVER>> --dport 53 -m state --state NEW -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 -d <<NAME_SERVER>> --dport 53 -j ACCEPT
+iptables -A INPUT -i eth0 -p udp -s <<NAME_SERVER>> --sport 53 -d <<LOCAL_HOST_IP>> --dport 1024:65535 -j ACCEPT
+
+# SMTP client
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 -d <<SMTP_SERVER>> --dport 25 -m state --state NEW -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 -d <<SMTP_SERVER>> --dport 25 -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp ! --syn -s <<SMTP_SERVER>> --sport 25 -d <<LOCAL_HOST_IP>> --dport 1024:65535 -j ACCEPT
+
+# SMTP server
+iptables -A INPUT -i eth0 -p tcp --sport 1024:65535 -d <<LOCAL_HOST_IP>> --dport 25 -m state --state NEW -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp --sport 1024:65535 -d <<LOCAL_HOST_IP>> --dport 25 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp ! --syn -s <<LOCAL_HOST_IP>> --sport 25 --dport 1024:65535 -j ACCEPT
+
+# POP client
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 -d <<POP_SERVER>> --dport 110 -m state --state NEW -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 -d <<POP_SERVER>> --dport 110 -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp ! --syn -s <<POP_SERVER>> --sport 110 -d <<LOCAL_HOST_IP>> --dport 1024:65535 -j ACCEPT
+
+# POP server
+iptables -A INPUT -i eth0 -p tcp --sport 1024:65535 -d <<LOCAL_HOST_IP>> --dport 110 -m state --state NEW -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp --sport 1024:65535 -d <<LOCAL_HOST_IP>> --dport 110 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp ! --syn -s <<LOCAL_HOST_IP>> --sport 110 --dport 1024:65535 -j ACCEPT
+
+# IMAP client
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 -d <<IMAP_SERVER>> --dport 143 -m state --state NEW -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 -d <<IMAP_SERVER>> --dport 143 -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp ! --syn -s <<IMAP_SERVER>> --sport 143 -d <<LOCAL_HOST_IP>> --dport 1024:65535 -j ACCEPT
+
+# IMAP server
+iptables -A INPUT -i eth0 -p tcp --sport 1024:65535 -d <<LOCAL_HOST_IP>> --dport 143 -m state --state NEW -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp --sport 1024:65535 -d <<LOCAL_HOST_IP>> --dport 143 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp ! --syn -s <<LOCAL_HOST_IP>> --sport 143 --dport 1024:65535 -j ACCEPT
+
+# telnet client
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 --dport 23 -m state --state NEW -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 --dport 23 -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp ! --syn --sport 23 -d <<LOCAL_HOST_IP>> --dport 1024:65535 -j ACCEPT
+
+# telnet server
+iptables -A INPUT -i eth0 -p tcp --sport 1024:65535 -d <<LOCAL_HOST_IP>> --dport 23 -m state --state NEW -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp --sport 1024:65535 -d <<LOCAL_HOST_IP>> --dport 23 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp ! --syn -s <<LOCAL_HOST_IP>> --sport 23 --dport 1024:65535 -j ACCEPT
+
+# ssh client
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 --dport 22 -m state --state NEW -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 --dport 22 -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp ! --syn --sport 22 -d <<LOCAL_HOST_IP>> --dport 1024:65535 -j ACCEPT
+
+# ssh server
+iptables -A INPUT -i eth0 -p tcp --sport 1024:65535 -d <<LOCAL_HOST_IP>> --dport 22 -m state --state NEW -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp --sport 1024:65535 -d <<LOCAL_HOST_IP>> --dport 22 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp ! --syn -s <<LOCAL_HOST_IP>> --sport 22 --dport 1024:65535 -j ACCEPT
+
+# ftp client - passive data transfer
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 --dport 21 -m state --state NEW -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 --dport 21 -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp --sport 21 -d <<LOCAL_HOST_IP>> --dport 1024:65535 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 --dport 1024:65535 -m state --state NEW -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 --dport 1024:65535 -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp --sport 1024:65535 -d <<LOCAL_HOST_IP>> --dport 1024:65535 -j ACCEPT
+
+# ssh server - passive data transfer
+iptables -A INPUT -i eth0 -p tcp --sport 1024:65535 -d <<LOCAL_HOST_IP>> --dport 21 -m state --state NEW -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp --sport 1024:65535 -d <<LOCAL_HOST_IP>> --dport 21 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp ! --syn -s <<LOCAL_HOST_IP>> --sport 21 --dport 1024:65535 -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp ! --syn --sport 1024:65535 -d <<LOCAL_HOST_IP>> --dport 1024:65535 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 --dport 1024:65535 -m state --state NEW -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 --dport 1024:65535 -j ACCEPT
+
+# http server
+iptables -A INPUT -i eth0 -p tcp ! --syn --sport 80 -d <<LOCAL_HOST_IP>> --dport 1024:65535 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 --dport 80 -m state --state NEW -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp -s <<LOCAL_HOST_IP>> --sport 1024:65535 --dport 80 -j ACCEPT
 
 
 
