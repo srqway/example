@@ -1,0 +1,30 @@
+# list chains
+iptables -t nat -n -L
+
+# delete rules
+iptables -t nat -F
+
+# delete chains
+iptables -t nat -X
+
+# reset policy
+iptables -t nat -P PREROUTING ACCEPT
+iptables -t nat -P POSTROUTING ACCEPT
+iptables -t nat -P OUTPUT ACCEPT
+
+# enable nat route
+iptables -t filter -A INPUT -i docker0 -j ACCEPT
+echo "1" > /proc/sys/net/ipv4/ip_forward
+
+# SNAT : change docker0 to eth0
+iptables -t nat -A POSTROUTING -s docker0 -o eth0 -j MASQUERADE
+
+# SNAT : change docker0 to specific ip (ex. PUBLIC_IP_RANGE = 192.168.0.100-192.168.0.120)
+iptables -t nat -A POSTROUTING -s docker0 -o eth0 -j SNAT --to <<PUBLIC_IP_RANGE>>
+
+# DNAT : change 80 port to 8080 port
+iptables -t nat -A PREROUTING -p tcp -i eth0 --dport 80 -j REDIRECT --to-ports 8080
+
+# DNAT : change 80 port to http server
+iptables -t nat -A PREROUTING -p tcp -i eth0 --dport 80 -j DNAT --to-destination <<HTTP_SERVER_IP:80>>
+

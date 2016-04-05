@@ -1,0 +1,16 @@
+# list chains
+iptables -t mangle -n -L
+
+# delete rules
+iptables -t mangle -F
+
+# delete chains
+iptables -t mangle -X
+
+# reset policy
+iptables -t mangle -P PREROUTING ACCEPT
+iptables -t mangle -P INPUT ACCEPT
+iptables -t mangle -P FORWARD ACCEPT
+iptables -t mangle -P OUTPUT ACCEPT
+iptables -t mangle -P POSTROUTING ACCEPT
+

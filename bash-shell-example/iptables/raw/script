@@ -1,0 +1,14 @@
+# list chains
+iptables -t raw -n -L
+
+# delete rules
+iptables -t raw -F
+
+# delete chains
+iptables -t raw -X
+
+# reset policy
+iptables -t raw -P PREROUTING ACCEPT
+iptables -t raw -P OUTPUT ACCEPT
+
+
