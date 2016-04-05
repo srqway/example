@@ -7,7 +7,43 @@ apt-get install ntp
 # correct time
 sntp time.stdtime.gov.tw
 
-openssl req -newkey rsa:2048 -x509 -days 3650 -keyout private/host2-cakey.pem -out host2-cacert.pem
-openssl x509 -in host2-cacert.pem -text
+# edit openssl.cnf
+#	change "HOME = ." to "HOME = /root/ca"
+#	change "dir = ./demoCA" to "dir = /root/ca"
+#	change "crlnumber = $dir/crlnumber" to "#crlnumber = $dir/crlnumber"
+vi /etc/ssl/openssl.cnf
 
+# make ca directory
+cd /root
+mkdir ca
+cd ca
+mkdir certs newcerts private crl
+
+# generate root pem
+#	Country Name (2 letter code) [AU]:TW
+#	State or Province Name (full name) [Some-State]:Taiwan
+#	Locality Name (eg, city) []:Taipei
+openssl req -newkey rsa:2048 -x509 -days 3650 -keyout /root/ca/private/cakey.pem -out /root/ca/cacert.pem
+
+# check pem
+openssl x509 -in /root/ca/cacert.pem -text
+
+# prepare relative files
+touch /root/ca/index.txt
+echo 01 > /root/ca/serial
+
+# generate pem
+openssl req -new -keyout /root/ca/private/test_key.pem -out /root/ca/certs/test_req.pem -days 365
+
+# certificate request
+openssl ca -policy policy_anything -notext -out /root/ca/certs/test_cert.pem -infiles /root/ca/certs/test_req.pem
+cat /root/ca/index.txt
+cat /root/ca/serial
+
+# revoke pem
+openssl ca -revoke /root/ca/certs/test_cert.pem
+
+# generate crl
+openssl ca -gencrl -out /root/ca/crl/test_crl.pem
+cat /root/ca/index.txt
 
