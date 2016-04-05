@@ -1,0 +1,13 @@
+# ubuntu : install openssl
+apt-get install openssl
+
+# ubuntu : install ntp
+apt-get install ntp
+
+# correct time
+sntp time.stdtime.gov.tw
+
+openssl req -newkey rsa:2048 -x509 -days 3650 -keyout private/host2-cakey.pem -out host2-cacert.pem
+openssl x509 -in host2-cacert.pem -text
+
+
