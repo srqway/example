@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
+encoding//anydbm_/basic.py=utf-8
+encoding//array_/basic.py=utf-8
 encoding//exception_/basic.py=utf-8
 encoding//file_/__init__.py=utf-8
 encoding//file_/codecs.py=utf-8
