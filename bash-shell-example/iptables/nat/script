@@ -28,3 +28,6 @@ iptables -t nat -A PREROUTING -p tcp -i eth0 --dport 80 -j REDIRECT --to-ports 8
 # DNAT : change 80 port to http server
 iptables -t nat -A PREROUTING -p tcp -i eth0 --dport 80 -j DNAT --to-destination <<HTTP_SERVER_IP:80>>
 
+# update rule
+iptables -R INPUT <<line_number>> -p tcp -s 59.120.4.235 --dport 21 -j ACCEPT
+

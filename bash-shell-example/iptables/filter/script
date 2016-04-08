@@ -1,5 +1,5 @@
 # list chains
-iptables -t filter -n -L
+iptables -t filter -n -L --line-number
 
 # delete rules
 iptables -t filter -F
@@ -177,4 +177,6 @@ iptables -t filter -P INPUT DROP
 iptables -t filter -P FORWARD DROP
 iptables -t filter -P OUTPUT DROP
 
+# update rule
+iptables -R INPUT <<line_number>> -p tcp -s 59.120.4.235 --dport 21 -j ACCEPT
 
