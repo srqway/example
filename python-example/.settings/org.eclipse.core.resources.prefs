@@ -45,3 +45,4 @@ encoding//textwrap_/basic.py=utf-8
 encoding//thread_/basic.py=utf-8
 encoding//threading_/basic.py=utf-8
 encoding//threading_/queue.py=utf-8
+encoding//time_/basic.py=utf-8

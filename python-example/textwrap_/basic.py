@@ -6,5 +6,15 @@ from __future__ import division
 
 import textwrap
 
+text = "wrap123 " * 100
+
 print("<<wrap>>")
-text = ""
+wrappedText = textwrap.wrap(text, 30)
+for line in wrappedText:
+    print(line)
+
+print("<<fill>>")
+filledText = textwrap.fill(text, 30)
+print(filledText)
+
+
