@@ -178,5 +178,10 @@ iptables -t filter -P FORWARD DROP
 iptables -t filter -P OUTPUT DROP
 
 # update rule
-iptables -R INPUT <<line_number>> -p tcp -s 59.120.4.235 --dport 21 -j ACCEPT
+iptables -R INPUT <<line_number>> -p tcp -s 127.0.0.1 --dport 80 -j ACCEPT
 
+# insert rule
+iptables -I INPUT <<line_number>> -p tcp -s 127.0.0.1 --dport 80 -j ACCEPT
+
+# delete rule
+iptables -D INPUT <<line_number>>
