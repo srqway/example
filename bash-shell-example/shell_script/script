@@ -1,0 +1,45 @@
+# idenfity shell builtin or not
+type ls
+type cd
+
+# concate
+ls \
+/tmp
+
+# show variable
+echo ${SHELL}
+
+# set variable
+variable_0="variable 0 : ${SHELL}"
+echo ${variable_0}
+variable_1="variable 1 : \${SHELL}"
+echo ${variable_1}
+variable_2='variable 2 : ${SHELL}'
+echo ${variable_2}
+
+# variable in command
+cd /lib/modules/$(uname -r)/kernel
+cd /lib/modules/`uname -r`/kernel
+
+# share variable with sub process
+export variable_3="variable 3"
+bash
+echo ${variable_3}
+exit
+
+# show variables
+set
+
+# kill variable
+variable_4="variable 4"
+unset variable_4
+echo ${variable_4}
+
+# show pid
+echo $$
+
+# show return code
+echo $?
+
+
+

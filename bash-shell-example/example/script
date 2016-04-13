@@ -1,0 +1,181 @@
+# '-' for stdin and stdout
+tar cvfz - ~/.bashrc | tar xvfz - -C /tmp/
+
+# idenfity shell builtin or not
+type ls
+type cd
+
+# concate
+ls \
+/tmp
+
+# show variable
+echo ${SHELL}
+
+# set variable
+variable_0="variable 0 : ${SHELL}"
+echo ${variable_0}
+variable_1="variable 1 : \${SHELL}"
+echo ${variable_1}
+variable_2='variable 2 : ${SHELL}'
+echo ${variable_2}
+
+# variable in command
+cd /lib/modules/$(uname -r)/kernel
+cd /lib/modules/`uname -r`/kernel
+
+# share variable with sub process
+export variable_3="variable 3"
+bash
+echo ${variable_3}
+exit
+
+# show variables
+set
+
+# show set args
+echo $-
+
+# kill variable
+variable_4="variable 4"
+unset variable_4
+echo ${variable_4}
+
+# show pid
+echo $$
+
+# show return code
+echo $?
+
+# show all encoding
+locale -a
+
+# show current encoding
+locale
+
+# read
+read variable_5
+echo ${variable_5}
+
+# declare
+#	integer
+declare -i sum=1+2+3
+echo ${sum}
+#	environment variable
+declare -x sum
+export | grep sum
+#	disable environment variable
+declare +x sum
+export | grep sum
+#	readonly
+declare -r sum
+sum=3
+#	show variable type
+declare -p sum
+
+# array
+var[1]="array 1"
+var[2]="array 2"
+var[3]="array 3"
+echo ${var[1]}
+
+# truncate variable by shortest from beginning
+variable_6="aaabbbccc"
+echo ${variable_6#a*b}
+
+# truncate variable by longest from beginning
+variable_7="aaabbbccc"
+echo ${variable_7##a*b}
+
+# truncate variable by shortest from end
+variable_8="aaabbbccc"
+echo ${variable_8%b*c}
+
+# truncate variable by longest from end
+variable_9="aaabbbccc"
+echo ${variable_9%%b*c}
+
+# replace first
+variable_10="aaabbbccc"
+echo ${variable_10/b/B}
+
+# replace all
+variable_11="aaabbbccc"
+echo ${variable_11//b/B}
+
+# alternative variable
+# 變數設定方式			str沒有設定			str為空字串			str已設定非為空字串
+# var=${str-expr}	var=expr			var=				var=$str
+# var=${str:-expr}	var=expr			var=expr			var=$str
+# var=${str+expr}	var=				var=expr			var=expr
+# var=${str:+expr}	var=				var=				var=expr
+# var=${str=expr}	str=expr;var=expr	str不變;var=			str不變;var=$str
+# var=${str:=expr}	str=expr;var=expr 	str=expr;var=expr	str不變;var=$str
+# var=${str?expr}	expr輸出至stderr		var=				var=$str
+# var=${str:?expr}	expr輸出至stderr		expr輸出至stderr		var=$str
+echo ${not_exist_variable-alternative_value}
+exist_variable="exist variable"
+echo ${exist_variable-alternative_value}
+empty_variable=""
+echo ${empty_variable-alternative_value}
+echo ${empty_variable:-alternative_value}
+
+# wildcard
+ls ~/.bash_*
+ls ~/.bash_?istory
+ls ~/.bash_[fghij]istory
+ls ~/.bash_[f-j]istory
+ls ~/.bash_[^a-e]istory
+
+# redirect 
+#	create new
+ls ~/.bashrc ~/not_exist_file 1> /tmp/correct 2> /tmp/error
+#	append
+ls ~/.bashrc ~/not_exist_file 1>> /tmp/correct 2>> /tmp/error
+#	send to the same file
+ls ~/.bashrc ~/not_exist_file &> /tmp/all
+ls ~/.bashrc ~/not_exist_file > /tmp/all 2>&1
+#	send to null
+ls ~/.bashrc ~/not_exist_file 1> /dev/null 2> /dev/null
+#	type input (ctrl + d to quit)
+cat > ~/catfile_0
+#	file input
+cat > /tmp/catfile_1 < ~/.bashrc
+#	define eof (input customerized_eof to quit)
+cat > /tmp/catfile_2 << "customerized_eof"
+
+# sequence command
+ls ~/not_exist_file; ls ~/
+#	if (cmd_1 $?=0) then cmd_2 else do nothing
+ls ~/not_exist_file && ls ~/
+#	if (cmd_1 $?=0) then do noting else cmd_2
+ls ~/not_exist_file || ls ~/
+
+# select 3th and 5th value
+echo ${PATH} | cut -d ';' -f 3,5
+# remove first 12 character
+export | cut -c 12-
+
+# grep root
+cat /etc/passwd | grep 'root'
+# grep not root
+cat /etc/passwd | grep -v 'root'
+
+# sort
+cat /etc/passwd | sort
+# sort by column 3
+cat /etc/passwd | sort -t ':' -k 3
+# sort by column integer 3
+cat /etc/passwd | sort -t ':' -k 3 -n
+
+# print to screen and save to file
+last | tee /tmp/tee
+
+# change uncapital word to capital word
+last | tr '[a-z]' '[A-Z]'
+# remove ':'
+cat /etc/passwd | tr -d ':'
+
+# join
+join -t ':' /etc/passwd /etc/shadow
+
