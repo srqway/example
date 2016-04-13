@@ -18,7 +18,7 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
 
 # SNAT : change docker0 to eth0
 iptables -t nat -A POSTROUTING -s docker0 -o eth0 -j MASQUERADE
-
+ 
 # SNAT : change docker0 to specific ip (ex. PUBLIC_IP_RANGE = 192.168.0.100-192.168.0.120)
 iptables -t nat -A POSTROUTING -s docker0 -o eth0 -j SNAT --to <<PUBLIC_IP_RANGE>>
 
@@ -31,3 +31,6 @@ iptables -t nat -A PREROUTING -p tcp -i eth0 --dport 80 -j DNAT --to-destination
 # update rule
 iptables -R INPUT <<line_number>> -p tcp -s 59.120.4.235 --dport 21 -j ACCEPT
 
+# cloudera docker example
+docker run --privileged=true --hostname=quickstart.cloudera -p 7180 -p 8888 -t -i 2cda82941cb7 /usr/bin/docker-quickstart
+iptables -t nat -L -n

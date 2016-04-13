@@ -1,6 +1,16 @@
 # '-' for stdin and stdout
 tar cvfz - ~/.bashrc | tar xvfz - -C /tmp/
 
+# calculate
+echo $((5 + 3))
+echo $((5 - 3))
+echo $((5 * 3))
+echo $((5 / 3))
+echo $((5 % 3))
+declare -i value_0=5-3
+echo ${value_0}
+echo "123.45 * 67.89" | bc
+
 # idenfity shell builtin or not
 type ls
 type cd
@@ -113,12 +123,12 @@ echo ${variable_11//b/B}
 # var=${str:=expr}	str=expr;var=expr 	str=expr;var=expr	str不變;var=$str
 # var=${str?expr}	expr輸出至stderr		var=				var=$str
 # var=${str:?expr}	expr輸出至stderr		expr輸出至stderr		var=$str
-echo ${not_exist_variable-alternative_value}
+echo ${not_exist_variable-"alternative_value"}
 exist_variable="exist variable"
-echo ${exist_variable-alternative_value}
+echo ${exist_variable-"alternative_value"}
 empty_variable=""
-echo ${empty_variable-alternative_value}
-echo ${empty_variable:-alternative_value}
+echo ${empty_variable-"alternative_value"}
+echo ${empty_variable:-"alternative_value"}
 
 # wildcard
 ls ~/.bash_*
@@ -178,4 +188,19 @@ cat /etc/passwd | tr -d ':'
 
 # join
 join -t ':' /etc/passwd /etc/shadow
+
+# test
+#	if file exists (0:exists; 1:not exists)
+test -e ~/.bashrc
+echo $?
+#	if file is directory (0:directory; 1:not directory)
+test -d ~/.bashrc
+echo $?
+#	if file is file (0:file; 1:not file)
+test -f ~/.bashrc
+echo $?
+
+
+
+
 

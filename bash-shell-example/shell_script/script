@@ -1,45 +1,119 @@
-# idenfity shell builtin or not
-type ls
-type cd
+#!/bin/bash
+# Program:
+# 	This program is for testing.
+# History:
+# 	2016/04/13	Thank	first release
 
-# concate
-ls \
-/tmp
+# test
+file_0=~/.bashrc
+file_1=/etc/passwd
 
-# show variable
-echo ${SHELL}
+if test -e ${file_0}; then
+	echo "file exists."
+else
+	echo "file not exists."
+fi
 
-# set variable
-variable_0="variable 0 : ${SHELL}"
-echo ${variable_0}
-variable_1="variable 1 : \${SHELL}"
-echo ${variable_1}
-variable_2='variable 2 : ${SHELL}'
-echo ${variable_2}
+if test -f ${file_0}; then
+	echo "is file."
+else
+	echo "is not file."
+fi
 
-# variable in command
-cd /lib/modules/$(uname -r)/kernel
-cd /lib/modules/`uname -r`/kernel
+if test -d ${file_0}; then
+	echo "is directory."
+else
+	echo "is not directory."
+fi
 
-# share variable with sub process
-export variable_3="variable 3"
-bash
-echo ${variable_3}
-exit
+if test -b ${file_0}; then
+	echo "is block device."
+else
+	echo "is not block device."
+fi
 
-# show variables
-set
+if test -c ${file_0}; then
+	echo "is character device."
+else
+	echo "is not character device."
+fi
 
-# kill variable
-variable_4="variable 4"
-unset variable_4
-echo ${variable_4}
+if test -S ${file_0}; then
+	echo "is socket file."
+else
+	echo "is not socket file."
+fi
 
-# show pid
-echo $$
+if test -p ${file_0}; then
+	echo "is pipe."
+else
+	echo "is not pipe."
+fi
 
-# show return code
-echo $?
+if test -L ${file_0}; then
+	echo "is link file."
+else
+	echo "is not link file."
+fi
 
+if test -r ${file_0}; then
+	echo "is readable."
+else
+	echo "is not readable."
+fi
 
+if test -w ${file_0}; then
+	echo "is writable."
+else
+	echo "is not writable."
+fi
 
+if test -x ${file_0}; then
+	echo "is executable."
+else
+	echo "is not executable."
+fi
+
+if test -u ${file_0}; then
+	echo "has SUID."
+else
+	echo "has no SUID."
+fi
+
+if test -g ${file_0}; then
+	echo "has SGID."
+else
+	echo "has no SGID."
+fi
+
+if test -k ${file_0}; then
+	echo "has sticky bit."
+else
+	echo "has no sticky bit."
+fi
+
+if test -s ${file_0}; then
+	echo "is empty file."
+else
+	echo "is not empty file."
+fi
+
+if test ${file_0} -nt ${file_1}; then
+	echo "${file_0} newer than ${file_1}"
+else
+	echo "${file_0} not newer than ${file_1}"
+fi
+
+if test ${file_0} -ot ${file_1}; then
+	echo "${file_0} older than ${file_1}"
+else
+	echo "${file_0} not older than ${file_1}"
+fi
+
+if test ${file_0} -ef ${file_1}; then
+	echo "${file_0} and ${file_1} is the same file."
+else
+	echo "${file_0} and ${file_1} is not the same file."
+fi
+
+exit 0
