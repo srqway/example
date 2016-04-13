@@ -7,6 +7,8 @@
 # test
 file_0=~/.bashrc
 file_1=/etc/passwd
+integer_0=3
+integer_1=5
 
 if test -e ${file_0}; then
 	echo "file exists."
@@ -114,6 +116,44 @@ if test ${file_0} -ef ${file_1}; then
 	echo "${file_0} and ${file_1} is the same file."
 else
 	echo "${file_0} and ${file_1} is not the same file."
+fi
+
+
+
+if test ${integer_0} -eq ${integer_1}; then
+	echo "${integer_0} is equal to ${integer_1}."
+else
+	echo "${integer_0} is not equal to ${integer_1}."
+fi
+
+if test ${integer_0} -ne ${integer_1}; then
+	echo "${integer_0} is not equal to ${integer_1}."
+else
+	echo "${integer_0} is equal to ${integer_1}."
+fi
+
+if test ${integer_0} -gt ${integer_1}; then
+	echo "${integer_0} is greater than ${integer_1}."
+else
+	echo "${integer_0} is not greater than ${integer_1}."
+fi
+
+if test ${integer_0} -lt ${integer_1}; then
+	echo "${integer_0} is less than ${integer_1}."
+else
+	echo "${integer_0} is not less than ${integer_1}."
+fi
+
+if test ${integer_0} -ge ${integer_1}; then
+	echo "${integer_0} is greater than or equal to ${integer_1}."
+else
+	echo "${integer_0} is not greater than or equal to ${integer_1}."
+fi
+
+if test ${integer_0} -le ${integer_1}; then
+	echo "${integer_0} is less than or equal to ${integer_1}."
+else
+	echo "${integer_0} is not less than or equal to ${integer_1}."
 fi
 
 exit 0
