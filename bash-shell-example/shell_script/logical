@@ -10,6 +10,8 @@ integer_0=3
 integer_1=5
 string_0="string_0"
 string_1="string_1"
+while_i=0
+until_i=0
 
 # if
 echo "<<if>>"
@@ -34,6 +36,46 @@ case ${string_1} in
 		echo "other = ${string_1}"
 		;;
 esac
+
+# while
+echo "<<while>>"
+while [ ${while_i} -lt 10 ]; do
+	while_i=$((${while_i} + 1))
+	echo "while_i = ${while_i}"
+done
+
+# until
+echo "<<until>>"
+until [ ${until_i} -gt 10 ]; do
+	until_i=$((${until_i} + 1))
+	echo "until_i = ${until_i}"
+done
+
+# for
+echo "<<for>>"
+for ele in "ele_0" "ele_1" "ele_2"
+do
+	echo "for : ${ele}"
+done
+
+echo "<<for seq>>"
+for for_seq in $(seq 1 10); do
+	echo "for_seq : ${for_seq}"
+done
+
+echo "<<for conditional>>"
+for (( for_i=1; for_i<=10; for_i=for_i+1 ))
+do
+	echo "for_i : ${for_i}"
+done
+
+
+
+exit 0
+
+
+
+
 
 # test
 echo "<<test>>"
