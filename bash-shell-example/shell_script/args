@@ -1,0 +1,23 @@
+#!/bin/bash
+# Program:
+# 	This program is for args testing.
+# History:
+# 	2016/04/13	Thank	first release
+# Example:
+# sh ./args  one   two   three four 
+#      ${0}  ${1}  ${2}  ${3}  ${4}
+
+echo "no shift"
+echo "args size : ${#}" 
+echo "args string list : ${@}"
+echo "args string : ${*}"
+echo "script name : ${0}"
+
+echo "shift 2"
+shift 2
+echo "args size : ${#}" 
+echo "args string list : ${@}"
+echo "args string : ${*}"
+echo "script name : ${0}"
+
+exit 0

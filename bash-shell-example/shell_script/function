@@ -1,0 +1,14 @@
+#!/bin/bash
+# Program:
+# 	This program is for function testing.
+# History:
+# 	2016/04/13	Thank	first release
+
+function show(){
+	echo "function name : ${0}"
+	echo "function args : ${1} ${2} ${3} ${4}"
+}
+
+show "one" "two" "three"
+
+exit 0

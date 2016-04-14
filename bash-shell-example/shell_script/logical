@@ -1,6 +1,6 @@
 #!/bin/bash
 # Program:
-# 	This program is for testing.
+# 	This program is for logical testing.
 # History:
 # 	2016/04/13	Thank	first release
 
@@ -10,6 +10,30 @@ integer_0=3
 integer_1=5
 string_0="string_0"
 string_1="string_1"
+
+# if
+echo "<<if>>"
+if [ ${integer_0} < 0 ]; then
+	echo "${integer_0} < 0"
+elif [ ${integer_0} == 0 ]; then
+	echo "${integer_0} == 0"
+else
+	echo "${integer_0} > 0"
+fi
+
+# case
+echo "<<case>>"
+case ${string_1} in
+	"string_0")
+		echo "case_0 = ${string_1}"
+		;;
+	"string_1")
+		echo "case_1 = ${string_1}"
+		;;
+	*)
+		echo "other = ${string_1}"
+		;;
+esac
 
 # test
 echo "<<test>>"
@@ -157,43 +181,43 @@ else
 	echo "${integer_0} is not less than or equal to ${integer_1}."
 fi
 
-if test -z ${string_0}; then
+if test -z "${string_0}"; then
 	echo "empty string."
 else
 	echo "not empty string."
 fi
 
-if test -n ${string_0}; then
+if test -n "${string_0}"; then
 	echo "not empty string."
 else
 	echo "empty string."
 fi
 
-if test ${string_0} == ${string_1}; then
+if test "${string_0}" == "${string_1}"; then
 	echo "${string_0} equals to ${string_1}"
 else
 	echo "${string_0} not equals to ${string_1}"
 fi
 
-if test ${string_0} != ${string_1}; then
+if test "${string_0}" != "${string_1}"; then
 	echo "${string_0} not equals to ${string_1}"
 else
 	echo "${string_0} equals to ${string_1}"
 fi
 
-if test ${integer_0} -ne ${integer_1} -a -n ${string_0}; then
+if test ${integer_0} -ne ${integer_1} -a -n "${string_0}"; then
 	echo "${integer_0} not equal to ${integer_1} and ${string_0} is not empty string."
 else
 	echo "${integer_0} equal to ${integer_1} or ${string_0} is empty string."
 fi
 
-if test ${integer_0} -ne ${integer_1} -o -n ${string_0}; then
+if test ${integer_0} -ne ${integer_1} -o -n "${string_0}"; then
 	echo "${integer_0} not equal to ${integer_1} or ${string_0} is not empty string."
 else
 	echo "${integer_0} equal to ${integer_1} and ${string_0} is empty string."
 fi
 
-if test ! -n ${string_0}; then
+if test ! -n "${string_0}"; then
 	echo "${string_0} is empty string."
 else
 	echo "${string_0} is not empty string."
@@ -345,46 +369,60 @@ else
 	echo "${integer_0} is not less than or equal to ${integer_1}."
 fi
 
-if [ -z ${string_0} ]; then
+if [ -z "${string_0}" ]; then
 	echo "empty string."
 else
 	echo "not empty string."
 fi
 
-if [ -n ${string_0} ]; then
+if [ -n "${string_0}" ]; then
 	echo "not empty string."
 else
 	echo "empty string."
 fi
 
-if [ ${string_0} == ${string_1} ]; then
+if [ "${string_0}" == "${string_1}" ]; then
 	echo "${string_0} equals to ${string_1}"
 else
 	echo "${string_0} not equals to ${string_1}"
 fi
 
-if [ ${string_0} != ${string_1} ]; then
+if [ "${string_0}" != "${string_1}" ]; then
 	echo "${string_0} not equals to ${string_1}"
 else
 	echo "${string_0} equals to ${string_1}"
 fi
 
-if [ ${integer_0} -ne ${integer_1} -a -n ${string_0} ]; then
+if [ ${integer_0} -ne ${integer_1} -a -n "${string_0}" ]; then
 	echo "${integer_0} not equal to ${integer_1} and ${string_0} is not empty string."
 else
 	echo "${integer_0} equal to ${integer_1} or ${string_0} is empty string."
 fi
 
-if [ ${integer_0} -ne ${integer_1} -o -n ${string_0} ]; then
+if [ ${integer_0} -ne ${integer_1} -o -n "${string_0}" ]; then
 	echo "${integer_0} not equal to ${integer_1} or ${string_0} is not empty string."
 else
 	echo "${integer_0} equal to ${integer_1} and ${string_0} is empty string."
 fi
 
-if [ ! -n ${string_0} ]; then
+if [ ! -n "${string_0}" ]; then
 	echo "${string_0} is empty string."
 else
 	echo "${string_0} is not empty string."
+fi
+
+# multi [...]
+echo "multi [...]"
+if [ ${integer_0} -ne ${integer_1} ] && [ -n "${string_0}" ]; then
+	echo "${integer_0} not equal to ${integer_1} and ${string_0} is not empty string."
+else
+	echo "${integer_0} equal to ${integer_1} or ${string_0} is empty string."
+fi
+
+if [ ${integer_0} -ne ${integer_1} ] || [ -n "${string_0}" ]; then
+	echo "${integer_0} not equal to ${integer_1} or ${string_0} is not empty string."
+else
+	echo "${integer_0} equal to ${integer_1} and ${string_0} is empty string."
 fi
 
 exit 0
