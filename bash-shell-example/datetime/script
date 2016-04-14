@@ -1,0 +1,4 @@
+# date
+echo "<<date>>"
+date=$(date +%Y%m%d%H%M%S)
+echo "date : ${date}";

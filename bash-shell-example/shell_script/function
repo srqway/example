@@ -4,11 +4,21 @@
 # History:
 # 	2016/04/13	Thank	first release
 
+echo "<<show>>"
 function show(){
 	echo "function name : ${0}"
 	echo "function args : ${1} ${2} ${3} ${4}"
 }
-
 show "one" "two" "three"
+
+echo "<<info and error>>"
+function info() {
+	date=`date +%Y%m%d` 
+	echo "${date} ${@}" 
+}
+function error() {
+	date=`date +%Y%m%d`
+	echo "${date} ${@}" 1>&2
+}
 
 exit 0

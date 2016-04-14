@@ -1,0 +1,6 @@
+# read file line by line
+echo "<<read file line by line>>"
+while read line           
+do
+	echo -e "${line}"
+done < ~/.bashrc

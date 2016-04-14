@@ -1,0 +1,34 @@
+#!/bin/bash
+# Program:
+#       一、判斷UDR資料夾中是否有ctrl_file。
+#       二、如果有就將資料檔由201移到199的UDR下，成功後將201的ctrl_file及資料檔刪除。
+#       三、開始解壓縮，之後將資料匯入hbase。
+#       四、匯入成功後將199的資料檔移除.
+# History:
+#       2016/04/14      Thank   v1.0.0  
+
+# parameter
+base_dir=~/UDR
+udr_dir=${base_dir}/udr_1
+ctrl_file=${udr_dir}/ctrl_file.tsv
+
+# function
+function info() {
+	date=$(date +%Y%m%d%H%M%S)
+	echo "${date} ${@}" 
+}
+function error() {
+	date=$(date +%Y%m%d%H%M%S)
+	echo "${date} ${@}" 1>&2
+}
+
+info "aaa"
+error "bbb"
+exit 0
+
+# 一、判斷UDR資料夾中是否有ctrl_file。
+if [ ! -f ${ctrl_file} ]; then
+        info ""
+fi
+
+exit 0

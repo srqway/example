@@ -1,0 +1,26 @@
+# delete
+#	delete 3-5 lines
+nl /etc/passwd | sed '3,5d'
+#	delete 3 to last lines
+nl /etc/passwd | sed '3,$d'
+
+# append
+#	append ccccc after line 3
+nl /etc/passwd | sed '3a ccccc'
+#	append multi-lines after line 3
+nl /etc/passwd | sed '3a ccccc\
+ddddd'
+
+# replace
+#	replace 3 to 5 lines with ccccc
+nl /etc/passwd | sed '3,5c ccccc'
+
+# print
+#	print 3 to 5 lines
+nl /etc/passwd | sed -n '3,5p'
+
+# substitute
+ifconfig eth0 | grep 'inet' | sed 's/^.*inet //g'
+
+
+
