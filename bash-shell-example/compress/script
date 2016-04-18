@@ -1,0 +1,9 @@
+# tar
+tar -zcvf archive_name.tar.gz directory_to_compress
+tar -zxvf archive_name.tar.gz -C /tmp/
+
+# zip
+zip -r archive_name.zip directory_to_compress
+unzip archive_name.zip
+
+

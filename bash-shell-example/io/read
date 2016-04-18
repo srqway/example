@@ -1,0 +1,9 @@
+string_0="aaa bbb ccc"
+
+# read line as array
+echo "<<read line as array>>"
+read -a eles <<< ${string_0}
+echo "${eles[0]}"
+echo "${eles[1]}"
+echo "${eles[2]}"
+

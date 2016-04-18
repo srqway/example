@@ -13,11 +13,11 @@ show "one" "two" "three"
 
 echo "<<info and error>>"
 function info() {
-	date=`date +%Y%m%d` 
+	date=$(date +"%Y/%m/%d %H:%M:%S")
 	echo "${date} ${@}" 
 }
 function error() {
-	date=`date +%Y%m%d`
+	date=$(date +"%Y/%m/%d %H:%M:%S")
 	echo "${date} ${@}" 1>&2
 }
 
