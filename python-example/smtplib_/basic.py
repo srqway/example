@@ -11,7 +11,7 @@ from_addr = "daniel.hsiehpinghan@gmail.com"
 to_addrs  = "thank.hsiehpinghan@gmail.com"
 msg = 'Subject: %s\n\n%s' % ("python smtplib subject", "python smtplib text.")
 username = "daniel.hsiehpinghan@gmail.com"
-password = "3isagesjdje"
+password = ""
 server = smtplib.SMTP("smtp.gmail.com:587")
 server.starttls()
 server.login(username,password)

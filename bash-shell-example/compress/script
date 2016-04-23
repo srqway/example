@@ -6,4 +6,7 @@ tar -zxvf archive_name.tar.gz -C /tmp/
 zip -r archive_name.zip directory_to_compress
 unzip archive_name.zip
 
+# gzip
+gzip -9 -c directory_to_compress > archive_name.gz
+gzip -d archive_name.gz
 
