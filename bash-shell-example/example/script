@@ -1,6 +1,10 @@
 # '-' for stdin and stdout
 tar cvfz - ~/.bashrc | tar xvfz - -C /tmp/
 
+# string replace
+str_0=str_0.tsv
+echo ${str_0//tsv/gz}
+
 # calculate
 echo $((5 + 3))
 echo $((5 - 3))
@@ -199,7 +203,6 @@ echo $?
 #	if file is file (0:file; 1:not file)
 test -f ~/.bashrc
 echo $?
-
 
 
 
