@@ -13,8 +13,15 @@ def createDataSet():
     return group, labels
 
 def classify0(inX, dataSet, labels, k):
+    
+    print(inX)
+    
     dataSetSize = dataSet.shape[0]
     diffMat = tile(inX, (dataSetSize,1)) - dataSet
+    
+    print(tile(inX, (dataSetSize,1)) - dataSet)
+    
+    
     sqDiffMat = diffMat**2   
     
     print(sqDiffMat)
@@ -22,7 +29,7 @@ def classify0(inX, dataSet, labels, k):
     sqDistances = sqDiffMat.sum(axis=1)
     
         
-    print(sqDistances)
+#     print(sqDistances)
         
      
     distances = sqDistances**0.5
