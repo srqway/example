@@ -4,6 +4,7 @@ encoding//array_/basic.py=utf-8
 encoding//base64_/basic.py=utf-8
 encoding//binascii_/basic.py=utf-8
 encoding//bisect_/basic.py=utf-8
+encoding//class_/basic.py=utf-8
 encoding//copy_/basic.py=utf-8
 encoding//datetime_/basic.py=utf-8
 encoding//exception_/basic.py=utf-8
