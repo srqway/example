@@ -1,17 +1,24 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
+'''
+If your data is dense (almost all attributes have non-zero values) and the magnitude of the attribute values is important, use distance measures such as Euclidean or Manhattan.
+'''
 from __future__ import division
 from __future__ import print_function
 
 class Recommender(object):
     def minkowski(self, rating1, rating2, r):
         distance = 0
+        commonRatings = False
         for key in rating1:
             if key in rating2:
                 distance += pow(abs(rating1[key] - rating2[key]), r)
-        return pow(distance, 1/r)
-    
+                commonRatings = True
+        if commonRatings:
+            return pow(distance, 1/r)
+        else:
+            return 0
+
     def computeNearestNeighbor(self, username, users, r):
         distances = []
         for user in users:
