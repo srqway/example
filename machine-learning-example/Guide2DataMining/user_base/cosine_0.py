@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 '''
 If the data is sparse consider using Cosine Similarity.
+找出與特定user(T)直線距離最近的user(O)，看user(O)看過那些user(T)沒看過的項目，做為推薦項目。
 '''
 from __future__ import division
 from __future__ import print_function

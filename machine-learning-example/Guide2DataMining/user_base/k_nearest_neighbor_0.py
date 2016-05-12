@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
+'''
+用特定的方法(ex. manhattan、cosine、pearson…)找出與特定user(T)最相關的k位users(O)，並將users(O)看過那些項目，但user(T)沒看過的項目加權後做加總，依加總分數做為推薦項目。
+'''
 from __future__ import division
 from __future__ import print_function
 from math import sqrt

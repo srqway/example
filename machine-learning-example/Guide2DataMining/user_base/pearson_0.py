@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 '''
 If the data is subject to grade-inflation (different users may be using different scales) use Pearson.
+找出與特定user(T) Pearson相關最高的user(O)，看user(O)看過那些user(T)沒看過的項目，做為推薦項目。
 '''
 from __future__ import division
 from __future__ import print_function

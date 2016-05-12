@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 '''
 If your data is dense (almost all attributes have non-zero values) and the magnitude of the attribute values is important, use distance measures such as Euclidean or Manhattan.
+找出與特定user(T)直角距離最近的user(O)，看user(O)看過那些user(T)沒看過的項目，做為推薦項目。
 '''
 from __future__ import division
 from __future__ import print_function
