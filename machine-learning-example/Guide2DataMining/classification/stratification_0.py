@@ -14,11 +14,11 @@ class Classifier(object):
         self.data = []           
         for i in range(1, 11):
             if i != testBucketNumber:
-                filename = "%s-%02i" % (bucketPrefix, i)
+                filename = "/tmp/%s-%02i" % (bucketPrefix, i)
                 f = open(filename)
                 lines = f.readlines()
                 f.close()
-                for line in lines[1:]:
+                for line in lines:
                     fields = line.strip().split('\t')
                     ignore = []
                     vector = []
@@ -30,13 +30,11 @@ class Classifier(object):
                         elif self.format[i] == 'class':
                             classification = fields[i]
                     self.data.append((classification, vector, ignore))
-        self.rawData = list(self.data)
         self.vlen = len(self.data[0][1])
         for i in range(self.vlen):
             self.normalizeColumn(i)
 
     def getMedian(self, alist):
-        """return median of alist"""
         if alist == []:
             return []
         blist = sorted(alist)
@@ -63,28 +61,22 @@ class Classifier(object):
         return sum_ / len(alist)
 
     def manhattan(self, vector1, vector2):
-        """Computes the Manhattan distance."""
         return sum(map(lambda v1, v2: abs(v1 - v2), vector1, vector2))
 
     def knn(self, itemVector):
         neighbors = heapq.nsmallest(self.k, [(self.manhattan(itemVector, item[1]), item) for item in self.data])
-        # each neighbor gets a vote
         results = {}
         for neighbor in neighbors: 
             theClass = neighbor[1][0]
             results.setdefault(theClass, 0)
             results[theClass] += 1
         resultList = sorted([(i[1], i[0]) for i in results.items()], reverse=True)
-        #get all the classes that have the maximum votes
         maxVotes = resultList[0][0]
         possibleAnswers = [i[1] for i in resultList if i[0] == maxVotes]
-        # randomly select one of the classes that received the max votes
         answer = random.choice(possibleAnswers)
         return( answer)
     
     def normalizeVector(self, v):
-        """We have stored the median and asd for each column.
-        We now use them to normalize vector v"""
         vector = list(v)
         for i in range(len(vector)):
             (median, asd) = self.medianAndDeviation[i]
@@ -95,10 +87,7 @@ class Classifier(object):
         return(self.knn(self.normalizeVector(itemVector)))  
     
     def testBucket(self, bucketPrefix, bucketNumber):
-        """Evaluate the classifier with data from the file
-        bucketPrefix-bucketNumber"""
-        
-        filename = "%s-%02i" % (bucketPrefix, bucketNumber)
+        filename = "/tmp/%s-%02i" % (bucketPrefix, bucketNumber)
         f = open(filename)
         lines = f.readlines()
         totals = {}
@@ -108,19 +97,46 @@ class Classifier(object):
             vector = []
             classInColumn = -1
             for i in range(len(self.format)):
-                  if self.format[i] == 'num':
-                      vector.append(float(data[i]))
-                  elif self.format[i] == 'class':
-                      classInColumn = i
+                    if self.format[i] == 'num':
+                        vector.append(float(data[i]))
+                    elif self.format[i] == 'class':
+                        classInColumn = i
             theRealClass = data[classInColumn]
-            #print("REAL ", theRealClass)
             classifiedAs = self.classify(vector)
             totals.setdefault(theRealClass, {})
             totals[theRealClass].setdefault(classifiedAs, 0)
             totals[theRealClass][classifiedAs] += 1
         return totals
-    
+
+def buckets(filename, bucketName, separator, classColumn):
+    numberOfBuckets = 10
+    data = {}
+    with open(filename) as f:
+        lines = f.readlines()
+    for line in lines:
+        if separator != '\t':
+            line = line.replace(separator, '\t')
+        category = line.split()[classColumn]
+        data.setdefault(category, [])
+        data[category].append(line)
+    buckets = []
+    for i in range(numberOfBuckets):
+        buckets.append([])
+    for k in data.keys():
+        random.shuffle(data[k])
+        bNum = 0
+        for item in data[k]:
+            buckets[bNum].append(item)
+            bNum = (bNum + 1) % numberOfBuckets
+            
+    for bNum in range(numberOfBuckets):
+        f = open("/tmp/%s-%02i" % (bucketName, bNum + 1), 'w')
+        for item in buckets[bNum]:
+            f.write(item)
+        f.close()
+            
 if __name__ == '__main__':
+    buckets("mpgData.txt", 'mpgData', '\t', 0)
     bucketPrefix = "mpgData"
     dataFormat = "class\tnum\tnum\tnum\tnum\tnum\tcomment"
     k = 3
