@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
+'''
+以manhattan距離找出最近的項目item(O)，並以最近的項目item(O)的分類為目標項目item(T)的分類。
+'''
 from __future__ import division
 from __future__ import print_function
 

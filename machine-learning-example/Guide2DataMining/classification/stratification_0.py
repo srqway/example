@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
+'''
+將資料分成10層，其中9層為training set，1層為test set。以training set訓練完後的資料測試test set，並將最終的測試結果顯示出來。
+'''
 from __future__ import division
 from __future__ import print_function
 import heapq
@@ -120,8 +122,10 @@ def buckets(filename, bucketName, separator, classColumn):
         data.setdefault(category, [])
         data[category].append(line)
     buckets = []
-    for i in range(numberOfBuckets):
+    i = len(range(numberOfBuckets))
+    while i > 0:
         buckets.append([])
+        i -= 1
     for k in data.keys():
         random.shuffle(data[k])
         bNum = 0
