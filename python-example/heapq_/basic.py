@@ -25,6 +25,13 @@ print(heapq.heappushpop(heap, -1))
 print("<<heapreplace>>")
 print(heapq.heapreplace(heap, -1))
 
+print("<<merge>>")
+merge_0 = [1,3,5]
+merge_1 = [2,4]
+print(list(heapq.merge(merge_0, merge_1)))
 
+print("<<nlargest>>")
+print(heapq.nlargest(3, heap))
 
- 
+print("<<nsmallest>>")
+print(heapq.nsmallest(3, heap))
