@@ -6,7 +6,7 @@
 from __future__ import division
 from __future__ import print_function
 
-class Recommender(object):
+class Classifier(object):
     def __init__(self, items, users):
         self.items = items
         self.users = users
@@ -68,6 +68,6 @@ if __name__ == '__main__':
             "Lady Gaga/Alejandro": "D"
         }
     }
-    recommender = Recommender(items, users)
-    print(recommender.classify('Angelica', 'Cagle', [1, 5, 2.5, 1, 1, 5, 1]))
+    classifier = Classifier(items, users)
+    print(classifier.classify('Angelica', 'Cagle', [1, 5, 2.5, 1, 1, 5, 1]))
     

@@ -42,10 +42,10 @@ class Classifier(object):
         blist = sorted(alist)
         length = len(alist)
         if length % 2 == 1:
-            return blist[int(((length + 1) / 2) -  1)]
+            return blist[int(((length + 1) / 2) - 1)]
         else:
             v1 = blist[int(length / 2)]
-            v2 =blist[(int(length / 2) - 1)]
+            v2 = blist[(int(length / 2) - 1)]
             return (v1 + v2) / 2.0
         
     def normalizeColumn(self, columnNumber):
@@ -76,7 +76,7 @@ class Classifier(object):
         maxVotes = resultList[0][0]
         possibleAnswers = [i[1] for i in resultList if i[0] == maxVotes]
         answer = random.choice(possibleAnswers)
-        return( answer)
+        return(answer)
     
     def normalizeVector(self, v):
         vector = list(v)
@@ -155,8 +155,8 @@ if __name__ == '__main__':
                 results[key][ckey] += cvalue
     categories = list(results.keys())
     categories.sort()
-    print(   "\n       Classified as: ")
-    header =    "        "
+    print("\n       Classified as: ")
+    header = "        "
     subheader = "      +"
     for category in categories:
         header += "% 2s   " % category
@@ -178,6 +178,6 @@ if __name__ == '__main__':
                 correct += count
         print(row)
     print(subheader)
-    print("\n%5.3f percent correct" %((correct * 100) / total))
+    print("\n%5.3f percent correct" % ((correct * 100) / total))
     print("total of %i instances" % total)
     
