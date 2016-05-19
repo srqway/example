@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
+'''
+以Naive Bayes找出擁有某些屬性者可歸類到那一個類別。 
+'''
 from __future__ import division
 from __future__ import print_function
 
