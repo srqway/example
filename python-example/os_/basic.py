@@ -17,8 +17,11 @@ print("<<system>>")
 print(os.system("touch /tmp/osTest"))
 
 print("<<rename>>")
-os.rename("/tmp/osTest", "tmp/newOsTest")
+os.rename("/tmp/osTest", "/tmp/newOsTest")
 
-print("listdir")
+print("<<listdir>>")
 for fn in os.listdir("/tmp"):
     print(fn)
+
+print("<<listdir>>")
+print(os.path.isdir("/tmp"))
