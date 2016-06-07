@@ -8,6 +8,11 @@
 <title>html iframe</title>
 </head>
 <body>
-	<a href="iframeWithEcharts">iframe with echarts</a><br>
+	<a href="iframeWithEcharts">iframe with echarts</a>
+	<br>
+	<a href="interaction">interaction</a>
+	<br>
+	<a href="onload">onload</a>
+	<br>
 </body>
 </html>

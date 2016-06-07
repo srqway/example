@@ -30,23 +30,16 @@ public class Html5Controller {
 	@RequestMapping(value = "/dom/form", method = RequestMethod.GET)
 	public ModelAndView domForm(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("html5/dom/parameter");
-		model.addObject(
-				"parameter",
-				"form - parameter1 : " + request.getParameter("parameter1")
-						+ "; parameter2 : "
-						+ request.getParameter("parameter2"));
+		model.addObject("parameter", "form - parameter1 : " + request.getParameter("parameter1") + "; parameter2 : "
+				+ request.getParameter("parameter2"));
 		return model;
 	}
 
 	@RequestMapping(value = "/dom/overrideForm", method = RequestMethod.POST)
 	public ModelAndView domOverrideForm(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("html5/dom/parameter");
-		model.addObject(
-				"parameter",
-				"overrideForm - parameter1 : "
-						+ request.getParameter("parameter1")
-						+ "; parameter2 : "
-						+ request.getParameter("parameter2"));
+		model.addObject("parameter", "overrideForm - parameter1 : " + request.getParameter("parameter1")
+				+ "; parameter2 : " + request.getParameter("parameter2"));
 		return model;
 	}
 
@@ -58,6 +51,26 @@ public class Html5Controller {
 	@RequestMapping(value = "/iframe/iframeWithEcharts", method = RequestMethod.GET)
 	public String iframeWithEcharts() {
 		return "html5/iframe/iframeWithEcharts";
+	}
+
+	@RequestMapping(value = "/iframe/interaction", method = RequestMethod.GET)
+	public String interaction() {
+		return "html5/iframe/interaction";
+	}
+
+	@RequestMapping(value = "/iframe/interactionIframe", method = RequestMethod.GET)
+	public String interactionIframe() {
+		return "html5/iframe/interactionIframe";
+	}
+
+	@RequestMapping(value = "/iframe/onload", method = RequestMethod.GET)
+	public String onload() {
+		return "html5/iframe/onload";
+	}
+
+	@RequestMapping(value = "/iframe/onloadIframe", method = RequestMethod.GET)
+	public String onloadIframe() {
+		return "html5/iframe/onloadIframe";
 	}
 
 	@RequestMapping(value = "/svg/index", method = RequestMethod.GET)
