@@ -24,5 +24,6 @@
 	<a href="badge/index">badge</a><br>
 	<a href="label/index">label</a><br>
 	<a href="progressBar/index">progress bar</a><br>
+	<a href="iframe/index">iframe</a><br>
 </body>
 </html>

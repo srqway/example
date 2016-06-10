@@ -127,6 +127,11 @@ public class BootstrapController {
 		return "bootstrap/progressBar/index";
 	}
 	
+	@RequestMapping(value = "/iframe/index", method = RequestMethod.GET)
+	public String iframe() {
+		return "bootstrap/iframe/index";
+	}
+	
 	private List<Data> generateDatas(int size) {
 		List<Data> datas = new ArrayList<Data>(size);
 		for (int i = 0; i < size; ++i) {
