@@ -28,6 +28,12 @@ class Collection {
     println(Nil)
   }
   
+  def list_4() = {
+    var list_a = List(1,2,3)
+    var list_b = List(1,2,3)
+    println(list_a == list_b)
+  }
+  
   def tuple_0() = {
     var t = ("str", 333)
     println("%s, %d%n".format(t._1, t._2))
@@ -60,8 +66,9 @@ object Collection_Main extends App {
 //  c.list_1()
 //  c.list_2()
 //  c.list_3()
+  c.list_4()
 //  c.tuple_0()
 //  c.set_0()
 //  c.map_0()
-  c.map_1
+//  c.map_1
 }
