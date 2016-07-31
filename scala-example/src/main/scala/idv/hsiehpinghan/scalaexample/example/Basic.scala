@@ -89,6 +89,11 @@ class Basic {
   def basic_16() {
     println(1 == 1.0)
   }
+  
+  def basic_17() {
+    val result = println("basic_17")
+    println(result == ())
+  }
 }
 
 object Basic_Main {
@@ -110,6 +115,7 @@ object Basic_Main {
 //    b.basic_13()
 //    b.basic_14()
 //    b.basic_15()
-    b.basic_16()
+//    b.basic_16()
+    b.basic_17()
   }
 }
