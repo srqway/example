@@ -71,62 +71,95 @@ class Basic {
     val str = "basic_12"
     println(str indexOf 's')
   }
-  
+
   def basic_13() {
     val str = "basic_13"
     println(str indexOf ('1', 3))
   }
-  
+
   def basic_14() {
     println("123" toInt)
   }
-  
+
   def basic_15() {
     // only +, -, !, and ~ allowed
     println((3).unary_-)
   }
-  
+
   def basic_16() {
     println(1 == 1.0)
   }
-  
+
   def basic_17() {
     val result = println("basic_17")
     println(result == ())
   }
-  
+
   def basic_18(i: Int) {
-    if(i < 0) Unit
-    else if(i % 2 == 0) basic_18(i + 1)  // continue
-    else if(i >= 10) Unit  // break
+    if (i < 0) Unit
+    else if (i % 2 == 0) basic_18(i + 1) // continue
+    else if (i >= 10) Unit // break
     else {
       println(i)
       basic_18(i + 1)
     }
+  }
+
+  def basic_19() {
+    val v = 1;
+    {
+      val v = 2
+      println(v)
+    }
+    println(v)
+  }
+
+  def basic_20() {
+    var l = List(1, 2, 3, 4, 5)
+    l.filter { _ % 2 == 0 }.foreach { println }
+  }
+
+  def basic_21(args: String*) {
+    args.foreach { println }
+  }
+
+  def basic_22(arg_0: Int, arg_1: Int) {
+    println("arg_0(%d), arg_1(%d)".format(arg_0, arg_1))
+  }
+
+  def basic_23(arg_0: Int = 0, arg_1: Int = 1) {
+    println("arg_0(%d), arg_1(%d)".format(arg_0, arg_1))
   }
 }
 
 object Basic_Main {
   def main(args: Array[String]) {
     val b = new Basic
-//    b.basic_0()
-//    b.basic_1()
-//    b.basic_2()
-//    b.basic_3()
-//    b.basic_4()
-//    b.basic_5()
-//    b.basic_6()
-//    b.basic_7()
-//    b.basic_8()
-//    b.basic_9()
-//    b.basic_10()
-//    b.basic_11()
-//    b.basic_12()
-//    b.basic_13()
-//    b.basic_14()
-//    b.basic_15()
-//    b.basic_16()
-//    b.basic_17()
-    b.basic_18(0)
+    //    b.basic_0()
+    //    b.basic_1()
+    //    b.basic_2()
+    //    b.basic_3()
+    //    b.basic_4()
+    //    b.basic_5()
+    //    b.basic_6()
+    //    b.basic_7()
+    //    b.basic_8()
+    //    b.basic_9()
+    //    b.basic_10()
+    //    b.basic_11()
+    //    b.basic_12()
+    //    b.basic_13()
+    //    b.basic_14()
+    //    b.basic_15()
+    //    b.basic_16()
+    //    b.basic_17()
+    //    b.basic_18(0)
+    //    b.basic_19()
+    //    b.basic_20()
+    //    b.basic_21("aaa", "bbb", "ccc")
+    //    val arr_21 = Array("aaa", "bbb", "ccc")
+    //    b.basic_21(arr_21: _*)
+    //    b.basic_22(arg_0 = 0, arg_1 = 1)
+    b.basic_23()
   }
 }
