@@ -94,6 +94,16 @@ class Basic {
     val result = println("basic_17")
     println(result == ())
   }
+  
+  def basic_18(i: Int) {
+    if(i < 0) Unit
+    else if(i % 2 == 0) basic_18(i + 1)  // continue
+    else if(i >= 10) Unit  // break
+    else {
+      println(i)
+      basic_18(i + 1)
+    }
+  }
 }
 
 object Basic_Main {
@@ -116,6 +126,7 @@ object Basic_Main {
 //    b.basic_14()
 //    b.basic_15()
 //    b.basic_16()
-    b.basic_17()
+//    b.basic_17()
+    b.basic_18(0)
   }
 }
