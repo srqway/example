@@ -130,6 +130,10 @@ class Basic {
   def basic_23(arg_0: Int = 0, arg_1: Int = 1) {
     println("arg_0(%d), arg_1(%d)".format(arg_0, arg_1))
   }
+
+  def basic_24() {
+    println { "basic_24" }
+  }
 }
 
 object Basic_Main {
@@ -160,6 +164,7 @@ object Basic_Main {
     //    val arr_21 = Array("aaa", "bbb", "ccc")
     //    b.basic_21(arr_21: _*)
     //    b.basic_22(arg_0 = 0, arg_1 = 1)
-    b.basic_23()
+    //    b.basic_23()
+    b.basic_24()
   }
 }

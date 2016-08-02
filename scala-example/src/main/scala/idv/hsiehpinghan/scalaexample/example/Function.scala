@@ -1,6 +1,9 @@
 package idv.hsiehpinghan.scalaexample.example
 
 import scala.io.Source
+import java.io.PrintWriter
+import java.util.Date
+
 
 class Function {
   def function_0_0(x: Int, y: Int): Int = {
@@ -79,6 +82,48 @@ class Function {
     println(fun(2))
   }
   def function_5_2_0(more: Int) = (x: Int) => x + more
+  
+  def function_6_0(matcher: (String, String) => Boolean) {
+    println(matcher("abcde", "bcd"))
+  }
+  
+  def function_7_0(x: Int) = (y: Int) => x + y
+  
+  def function_7_1(x: Int)(y: Int) = x + y
+  
+  def function_7_2(x: Int) = {
+    val fun = function_7_1(1)_
+    fun(x)
+  }
+  
+  def function_8_0() {
+    val file = new java.io.File("/tmp/function_8_0")
+    function_8_0_0(file) {
+      writer => writer.println(new Date)
+    }
+  }
+  def function_8_0_0(file: java.io.File)(op: PrintWriter => Unit) {
+    val writer = new PrintWriter(file)
+    try {
+      op(writer)
+    } finally {
+      writer.close()
+    }
+  }
+  
+  def function_9_0() {
+    function_9_0_0(() => 5 > 3)
+  }
+  def function_9_0_0(predicate: () => Boolean) = {
+    println(predicate())
+  }
+  
+  def function_9_1() {
+    function_9_1_0(5 > 3)
+  }
+  def function_9_1_0(predicate: => Boolean) = {
+    println(predicate)
+  }
 }
 
 object Function_Main extends App {
@@ -102,5 +147,16 @@ object Function_Main extends App {
   
 //  func.function_5_0
 //  func.function_5_1
-  func.function_5_2
+//  func.function_5_2
+  
+//  func.function_6_0(_.contains(_))
+  
+//  println(func.function_7_0(1)(2))
+//  println(func.function_7_1(1)(2))
+//  println(func.function_7_2(2))
+  
+//  func.function_8_0()
+  
+//  func.function_9_0()
+  func.function_9_1()
 }
