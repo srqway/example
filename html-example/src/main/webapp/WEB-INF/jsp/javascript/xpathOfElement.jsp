@@ -46,56 +46,29 @@
 	</div>
 </body>
 <script type="text/javascript">
-	var spanEle = document.getElementById("spanTarget");
-	var aEle = document.getElementById("aTarget");
-	document.getElementById("span").innerHTML = getXpath(spanEle);
-	document.getElementById("a").innerHTML = getXpath(aEle);
+var spanEle = document.getElementById("spanTarget");
+var aEle = document.getElementById("aTarget");
+document.getElementById("span").innerHTML = getXpath(spanEle);
+document.getElementById("a").innerHTML = getXpath(aEle);
 
-	function getXpath(ele) {
-		var tempEle = ele;
-		var xpathArr = [];
-		do {
-			xpathArr.unshift(getPartialXpath(tempEle));
-			tempEle = tempEle.parentNode
-		} while(tempEle.localName.toLowerCase() != "html");
-		return "//" + xpathArr.join("//");
+function getXpath(ele) {
+	var tempEle = ele;
+	var xpathArr = [];
+	do {
+		xpathArr.unshift(getPartialXpath(tempEle));
+		tempEle = tempEle.parentNode
+	} while(tempEle.localName.toLowerCase() != "html");
+	return "//" + xpathArr.join("//");
+}
+
+function getPartialXpath(ele) {
+	var tagName = ele.tagName;
+	var i = 1;
+	for (sib = ele.previousSibling; sib; sib = sib.previousSibling) { 
+		if (ele.localName == sib.localName) ++i;
 	}
-	
-	function getPartialXpath(ele) {
-		var tagName = ele.tagName;
-		var i = 1;
-		for (sib = ele.previousSibling; sib; sib = sib.previousSibling) { 
-			if (ele.localName == sib.localName) ++i;
-		}
-		return tagName + "[" + i + "]";
-	}
-	
-	function createXPathFromElement(elm) { 
-		var allNodes = document.getElementsByTagName('*'); 
-		for (var segs = []; elm && elm.nodeType == 1; elm = elm.parentNode) 
-		{ 
-			if (elm.hasAttribute('id')) { 
-					var uniqueIdCount = 0; 
-					for (var n=0;n < allNodes.length;n++) { 
-						if (allNodes[n].hasAttribute('id') && allNodes[n].id == elm.id) uniqueIdCount++; 
-						if (uniqueIdCount > 1) break; 
-					}; 
-					if ( uniqueIdCount == 1) { 
-						segs.unshift('id("' + elm.getAttribute('id') + '")'); 
-						return segs.join('/'); 
-					} else { 
-						segs.unshift(elm.localName.toLowerCase() + '[@id="' + elm.getAttribute('id') + '"]'); 
-					} 
-			} else if (elm.hasAttribute('class')) { 
-				segs.unshift(elm.localName.toLowerCase() + '[@class="' + elm.getAttribute('class') + '"]'); 
-			} else { 
-				for (i = 1, sib = elm.previousSibling; sib; sib = sib.previousSibling) { 
-					if (sib.localName == elm.localName)  i++; }; 
-					segs.unshift(elm.localName.toLowerCase() + '[' + i + ']'); 
-			}; 
-		}; 
-		return segs.length ? '/' + segs.join('/') : null; 
-	}; 
+	return tagName + "[" + i + "]";
+} 
 
 </script>
 </html>
