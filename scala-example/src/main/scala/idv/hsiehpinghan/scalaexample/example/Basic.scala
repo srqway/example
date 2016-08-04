@@ -134,6 +134,22 @@ class Basic {
   def basic_24() {
     println { "basic_24" }
   }
+
+  def basic_25() {
+    val arr_0 = Array(1, 2, 3)
+    val arr_1 = Array("a", "b", "c", "d", "e")
+    for ((ele_0, ele_1) <- arr_0 zip arr_1) {
+      println(ele_0, ele_1)
+    }
+  }
+
+  def basic_26(null_ : AnyRef) {
+    println(null_)
+  }
+
+  def basic_27(): Nothing = {
+    throw new RuntimeException("basic_27")
+  }
 }
 
 object Basic_Main {
@@ -165,6 +181,9 @@ object Basic_Main {
     //    b.basic_21(arr_21: _*)
     //    b.basic_22(arg_0 = 0, arg_1 = 1)
     //    b.basic_23()
-    b.basic_24()
+    //    b.basic_24()
+    //    b.basic_25()
+    //    b.basic_26(null)
+    println(b.basic_27())
   }
 }
