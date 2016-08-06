@@ -44,54 +44,45 @@ class Class_1 extends AnyRef with Trait_1_0 with Trait_1_1 {
 }
 
 abstract class Class_2 {
-  def traitOverrideMethod() {
-    println("trait override method")
-  }
-  def classOverrideMethod() {
-    println("class override method")
-  }
-  def traitAndClassOverrideMethod() {
-    println("trait and class override method")
+  def abstractOverrideMethod()
+}
+
+class Class_2_0 extends Class_2 {
+  override def abstractOverrideMethod() {
+    println("class 2 : abstractOverrideMethod")
   }
 }
 
 trait Trait_2 extends Class_2 {
-  abstract override def traitOverrideMethod() {
+  abstract override def abstractOverrideMethod() {
     print("trait 2 : ")
-    super.traitOverrideMethod()
-  }
-  abstract override def traitAndClassOverrideMethod() {
-    print("trait 2 : ")
-    super.traitAndClassOverrideMethod()
+    super.abstractOverrideMethod()
   }
 }
 
-class Class_2_0 extends Trait_2 {
-  override def classOverrideMethod() {
-    print("class 2 : ")
-    super.classOverrideMethod()
-  }
-  override def traitAndClassOverrideMethod() {
-    print("class 2 : ")
-    super.traitAndClassOverrideMethod()
-  }
+class Class_2_0_0 extends Class_2_0 with Trait_2 {
 }
 
 abstract class Class_3 {
-  def stackMethod() {
-    println("class 3")
-  }}
+  def stackMethod()
+}
+
+class Class_3_0 extends Class_3 {
+  override def stackMethod() {
+    println("class 3 0 : stackMethod")
+  }
+}
 
 trait Trait_3_0 extends Class_3 {
   abstract override def stackMethod() {
-    println("trait 3 0")
+    print("trait 3 0 : ")
     super.stackMethod()
   }
 }
 
 trait Trait_3_1 extends Class_3 {
   abstract override def stackMethod() {
-    println("trait 3 1")
+    print("trait 3 1 :")
     super.stackMethod()
   }
 }
@@ -106,17 +97,13 @@ object Trait_Main extends App {
 //  val c_1 = new Class_1
 //  c_1.method_1_1()
   
-//  val c_2_0 = new Class_2_0
-//  c_2_0.traitOverrideMethod
-//  c_2_0.classOverrideMethod
-//  c_2_0.traitAndClassOverrideMethod
+//  val c_2_0_0 = new Class_2_0_0
+//  c_2_0_0.abstractOverrideMethod
 
-//  val c_2_1 = new Class_2 with Trait_2
-//  c_2_1.traitOverrideMethod
-//  c_2_1.classOverrideMethod
-//  c_2_1.traitAndClassOverrideMethod
+//  val c_2_0_1 = new Class_2_0 with Trait_2
+//  c_2_0_1.abstractOverrideMethod
 
-  val c_3 = new Class_3 with Trait_3_0 with Trait_3_1
+  val c_3 = new Class_3_0 with Trait_3_0 with Trait_3_1
   c_3.stackMethod()
 
 }

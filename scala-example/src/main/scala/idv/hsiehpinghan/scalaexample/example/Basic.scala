@@ -150,6 +150,10 @@ class Basic {
   def basic_27(): Nothing = {
     throw new RuntimeException("basic_27")
   }
+  
+  def basic_28() {
+    assert(1 == 2, "basic 28 assert")
+  }
 }
 
 object Basic_Main {
@@ -184,6 +188,7 @@ object Basic_Main {
     //    b.basic_24()
     //    b.basic_25()
     //    b.basic_26(null)
-    println(b.basic_27())
+//    println(b.basic_27())
+    b.basic_28()
   }
 }

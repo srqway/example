@@ -26,6 +26,7 @@ class Clazz(privateVal_ : Int, var publicVar_ : Int, val publicVal_ : Int) {
   final def finalMethod(v : Int) {
     var_ += v;
   }
+
 }
 
 abstract class AbstractClass(private val privateVal_ : Int, protected val protectedVal_ : Int, protected var protectedVar_ : Int) {
@@ -52,6 +53,28 @@ final class FinalClass {
   
 }
 
+package package_0 {
+  private[example] class PrivateClass_0 {
+    private[example] def privateMethod_0() {
+      println("PrivateClass_0 privateMethod_0")
+    }
+  }
+}
+
+class CompanionClass {
+  private val privateCompanionClassVal = "Companion Class"
+  def getPrivateCompanionObjectVal = {
+    CompanionClass.privateCompanionObjectVal
+  }
+}
+
+object CompanionClass {
+  private val privateCompanionObjectVal = "Companion Object"
+  def getPrivateCompanionClassVal(obj : CompanionClass) = {
+    obj.privateCompanionClassVal
+  }
+}
+
 object Clazz_Main extends App {
 //  val c = new Clazz(1, 1, 1)
 //  c.add(3)
@@ -59,10 +82,18 @@ object Clazz_Main extends App {
 //  println(c.publicVar_)
 //  println(c.publicVal_)
   
-  val ac = new SubAbstractClass(10)
-  println(ac.protectedVal_)
-  println(ac.declaredMethod)
-  println(ac.definedMethod)
-  ac.declaredMethodWithParentheses()
-  ac.definedMethodWithParentheses()
+//  val ac = new SubAbstractClass(10)
+//  println(ac.protectedVal_)
+//  println(ac.declaredMethod)
+//  println(ac.definedMethod)
+//  ac.declaredMethodWithParentheses()
+//  ac.definedMethodWithParentheses()
+
+//  import idv.hsiehpinghan.scalaexample.example.package_0.PrivateClass_0
+//  val pc = new PrivateClass_0
+//  pc.privateMethod_0()
+  
+  val cc = new CompanionClass
+  println(cc.getPrivateCompanionObjectVal)
+  println(CompanionClass.getPrivateCompanionClassVal(cc))
 }
