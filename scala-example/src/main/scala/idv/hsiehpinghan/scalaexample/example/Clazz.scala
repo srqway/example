@@ -50,7 +50,6 @@ class SubAbstractClass(override val protectedVal_ : Int) extends AbstractClass(1
 }
 
 final class FinalClass {
-  
 }
 
 package package_0 {
@@ -75,6 +74,11 @@ object CompanionClass {
   }
 }
 
+class EmptyClass
+
+case class CaseClass(v : String, i : Int) {
+}
+
 object Clazz_Main extends App {
 //  val c = new Clazz(1, 1, 1)
 //  c.add(3)
@@ -92,8 +96,14 @@ object Clazz_Main extends App {
 //  import idv.hsiehpinghan.scalaexample.example.package_0.PrivateClass_0
 //  val pc = new PrivateClass_0
 //  pc.privateMethod_0()
+
+//  val cc = new CompanionClass
+//  println(cc.getPrivateCompanionObjectVal)
+//  println(CompanionClass.getPrivateCompanionClassVal(cc))
   
-  val cc = new CompanionClass
-  println(cc.getPrivateCompanionObjectVal)
-  println(CompanionClass.getPrivateCompanionClassVal(cc))
+  val cc_0 = CaseClass("cc", 3)
+  val cc_1 = CaseClass("cc", 3)
+  println(cc_0 == cc_1)
+  println("cc_0.v = " + cc_0.v + ", cc_0.i = " + cc_0.i)
+  println(cc_1.copy(i = 5))
 }

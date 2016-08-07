@@ -150,16 +150,52 @@ class Basic {
   def basic_27(): Nothing = {
     throw new RuntimeException("basic_27")
   }
-  
+
   def basic_28() {
     assert(1 == 2, "basic 28 assert")
   }
+
+  def basic_29() {
+    val str = "str"
+    if (str.isInstanceOf[String]) {
+      println(str.asInstanceOf[String])
+    }
+  }
+
+  def basic_30(key: String) {
+    val map = Map("some" -> "Some")
+    val value = map.get(key)
+    val result = value match {
+      case Some(s) => s
+      case None =>
+    }
+    println(result)
+  }
+
+  def basic_31() {
+    val list = List(1, 2, 3)
+    val List(x, y, z) = list
+    println(x, y, z)
+  }
+
+  def basic_32() {
+    val partialFunction: PartialFunction[List[Int], Int] = {
+      case x :: y :: _ => y
+    }
+    if (partialFunction.isDefinedAt(Nil)) {
+      println(partialFunction(Nil))
+    }
+    val list = List(1, 2, 3)
+    if (partialFunction.isDefinedAt(list)) {
+      println(partialFunction(list))
+    }
+  }
+
 }
 
 object Basic_Main {
   def main(args: Array[String]) {
-    val b = new Basic
-    //    b.basic_0()
+    val b = new Basic //    b.basic_0()
     //    b.basic_1()
     //    b.basic_2()
     //    b.basic_3()
@@ -188,7 +224,13 @@ object Basic_Main {
     //    b.basic_24()
     //    b.basic_25()
     //    b.basic_26(null)
-//    println(b.basic_27())
-    b.basic_28()
+    //    println(b.basic_27())
+    //    b.basic_28()
+    //    b.basic_29()
+    //    b.basic_30("some")
+    //    b.basic_30("none")
+    //    b.basic_31()
+    //    b.basic_32()
+
   }
 }
