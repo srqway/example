@@ -109,7 +109,7 @@ class Collection {
   
   def span() {
     val list = List(1,2,3,-4,5)
-    println(list.span(_ < 0))    
+    println(list.span(_ > 0))    
   }
   
   def tuple_0() {
