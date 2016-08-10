@@ -136,10 +136,9 @@ class Basic {
   }
 
   def basic_25() {
-    val arr_0 = Array(1, 2, 3)
-    val arr_1 = Array("a", "b", "c", "d", "e")
-    for ((ele_0, ele_1) <- arr_0 zip arr_1) {
-      println(ele_0, ele_1)
+    val list = List("a", "b", "c")
+    for ((index, value) <- list.indices zip list) {
+      println(index, value)
     }
   }
 
@@ -191,6 +190,17 @@ class Basic {
     }
   }
 
+  def basic_33[T](xs: List[T], ys: List[T]): List[T] = {
+    xs match {
+      case Nil => ys
+      case x :: xs1 => x :: basic_33(xs1, ys)
+    }
+  }
+
+  def basic_34() {
+    val list = List(("c", 2), ("b", 1), ("a", 0))
+    println(list.unzip)
+  }
 }
 
 object Basic_Main {
@@ -231,6 +241,7 @@ object Basic_Main {
     //    b.basic_30("none")
     //    b.basic_31()
     //    b.basic_32()
-
+    //    println(b.basic_33(List(1,2,3), List(4,5,6)))
+    b.basic_34()
   }
 }
