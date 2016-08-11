@@ -53,7 +53,7 @@ class Match {
     println(result)
   }
   
-  def match_4_0(x: SealedClass_4) {
+  def classMatch_0(x: SealedClass_4) {
     val result =
       x match {
         case SealedClass_4_0() => "SealedClass_4_0"
@@ -63,7 +63,7 @@ class Match {
     println(result)
   }
   
-  def match_4_1(x: SealedClass_4) {
+  def unchecked_0(x: SealedClass_4) {
     val result =
       (x: @unchecked) match {
         case SealedClass_4_0() => "SealedClass_4_0"
@@ -72,10 +72,10 @@ class Match {
     println(result)
   }
   
-  def match_5() {
-    val list = List(Some("aaa"), None, Some("bbb"))
-    for(Some(v) <- list) {
-      println(v)
+  def patternMatch_0[T](xs: List[T], ys: List[T]): List[T] = {
+    xs match {
+      case Nil => ys
+      case x :: xs1 => x :: patternMatch_0(xs1, ys)
     }
   }
 }
@@ -92,28 +92,28 @@ case class SealedClass_4_2() extends SealedClass_4
 
 object Match_Main extends App {
   val m = new Match
-//  m.match_0("second")
-//  m.match_1("second")
-//  m.match_2("third")
-//  m.match_3(5)
-//  m.match_3(true)
-//  m.match_3("str")
-//  m.match_3(List(1,2,3))
-//  m.match_3(List(1,2))
-//  m.match_3(Nil)
-//  m.match_3("valName")
-//  m.match_3(CaseClass_3("case class_3", CaseClass_3_0(3)))
-//  m.match_3(CaseClass_3("case class_3", CaseClass_3_0(5)))
-//  m.match_3(CaseClass_3("case class_7", CaseClass_3_0(7)))
-//  m.match_3("typedPattern")
-//  var map = Map[Int, String]()
-//  map += (1 -> "AAA")
-//  map += (2 -> "BBB")
-//  map += (3 -> "CCC")
-//  m.match_3(map)
-//  m.match_3(Array("aaa","bbb","ccc"))
-//  m.match_3(m)
-//  m.match_4_0(SealedClass_4_1())
-//  m.match_4_1(SealedClass_4_1())
-  m.match_5
+  m.match_0("second")
+  m.match_1("second")
+  m.match_2("third")
+  m.match_3(5)
+  m.match_3(true)
+  m.match_3("str")
+  m.match_3(List(1,2,3))
+  m.match_3(List(1,2))
+  m.match_3(Nil)
+  m.match_3("valName")
+  m.match_3(CaseClass_3("case class_3", CaseClass_3_0(3)))
+  m.match_3(CaseClass_3("case class_3", CaseClass_3_0(5)))
+  m.match_3(CaseClass_3("case class_7", CaseClass_3_0(7)))
+  m.match_3("typedPattern")
+  var map = Map[Int, String]()
+  map += (1 -> "AAA")
+  map += (2 -> "BBB")
+  map += (3 -> "CCC")
+  m.match_3(map)
+  m.match_3(Array("aaa","bbb","ccc"))
+  m.match_3(m)
+  m.classMatch_0(SealedClass_4_1())
+  m.unchecked_0(SealedClass_4_1())
+  println(m.patternMatch_0(List(1, 2, 3), List(4, 5, 6)))
 }

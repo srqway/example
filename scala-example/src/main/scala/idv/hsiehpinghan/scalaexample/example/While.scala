@@ -1,6 +1,7 @@
 package idv.hsiehpinghan.scalaexample.example
 
-import scala.util.control.Breaks._
+import scala.util.control.Breaks.break
+import scala.util.control.Breaks.breakable
 
 class While {
   def while_0() = {
@@ -11,7 +12,7 @@ class While {
     }
   }
 
-  def while_1() = {
+  def doWhile_0() = {
     var i = 0;
     do {
       println(i)
@@ -19,7 +20,7 @@ class While {
     } while (i < 3)
   }
 
-  def while_2() = {
+  def breakable_0() = {
     breakable {
       var i = 0
       while (i < 10) {
@@ -33,7 +34,7 @@ class While {
 
 object While_Main extends App {
   val wl = new While
-  //  wl.while_0()
-  //  wl.while_1()
-  wl.while_2()
+  wl.while_0()
+  wl.doWhile_0()
+  wl.breakable_0()
 }

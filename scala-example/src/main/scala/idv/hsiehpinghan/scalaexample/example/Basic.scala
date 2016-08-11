@@ -3,109 +3,71 @@ package idv.hsiehpinghan.scalaexample.example
 import scala.collection.immutable.List
 
 class Basic {
-  def basic_0() {
+  def println_0() {
     var l = List(1, 2, 3)
     l.foreach { println }
   }
 
-  def basic_1() {
+  def println_1() {
     var l = List(1, 2, 3)
     l.foreach { x => println(x) }
   }
 
-  def basic_2() {
+  def println_2() {
     var l = List(1, 2, 3)
     l.foreach { (x: Int) => println(x) }
   }
 
-  def basic_3() {
-    var arr = new Array[String](3)
-    arr(0) = "aaa"
-    arr(1) = "bbb"
-    arr(2) = "ccc"
-    arr.foreach { println }
-  }
-
-  def basic_4(): Unit = {
+  def unit_0(): Unit = {
     println(Unit)
   }
 
-  def basic_5() {
-    println("*" * 5)
+  def unit_1() {
+    val result = println("unit_1")
+    println(result == ())
   }
 
-  def basic_6() {
-    val str = "basic_6"; println(str)
+  def oneLineExpress_0() {
+    val str = "oneLineExpress_0"; println(str)
   }
 
-  def basic_7() {
+  def multilinesExpress_0() {
     val v = (3
       + 5)
     println(v)
   }
 
-  def basic_8() {
+  def multilinesExpress_1() {
     val v = 3 +
       5
     println(v)
   }
 
-  def basic_9() {
+  def unicodeParameterName_0() {
     val \u0041\u0044 = 1
     println(\u0041\u0044)
   }
 
-  def basic_10() {
-    println("""basic_10
-      basic_10
-      basic_10""")
-  }
-
-  def basic_11() {
-    println("""|basic_11
-      |basic_11
-      |basic_11""".stripMargin)
-  }
-
-  def basic_12() {
-    val str = "basic_12"
-    println(str indexOf 's')
-  }
-
-  def basic_13() {
-    val str = "basic_13"
-    println(str indexOf ('1', 3))
-  }
-
-  def basic_14() {
-    println("123" toInt)
-  }
-
-  def basic_15() {
+  def unary_0() {
     // only +, -, !, and ~ allowed
     println((3).unary_-)
   }
 
-  def basic_16() {
+  def equals_0() {
     println(1 == 1.0)
   }
 
-  def basic_17() {
-    val result = println("basic_17")
-    println(result == ())
-  }
-
-  def basic_18(i: Int) {
+  def recursive_0(i: Int) {
     if (i < 0) Unit
-    else if (i % 2 == 0) basic_18(i + 1) // continue
+    else if (i % 2 == 0) recursive_0(i + 1) // continue
     else if (i >= 10) Unit // break
     else {
       println(i)
-      basic_18(i + 1)
+      recursive_0(i + 1)
     }
   }
 
-  def basic_19() {
+  def variableMask() {
     val v = 1;
     {
       val v = 2
@@ -114,54 +76,46 @@ class Basic {
     println(v)
   }
 
-  def basic_20() {
-    var l = List(1, 2, 3, 4, 5)
-    l.filter { _ % 2 == 0 }.foreach { println }
-  }
-
-  def basic_21(args: String*) {
+  def variableLengthArgument_0(args: String*) {
     args.foreach { println }
   }
 
-  def basic_22(arg_0: Int, arg_1: Int) {
-    println("arg_0(%d), arg_1(%d)".format(arg_0, arg_1))
+  def bigParanthesesReplaceSmallParantheses_0() {
+    println { "big parantheses replace small parantheses" }
   }
 
-  def basic_23(arg_0: Int = 0, arg_1: Int = 1) {
-    println("arg_0(%d), arg_1(%d)".format(arg_0, arg_1))
-  }
-
-  def basic_24() {
-    println { "basic_24" }
-  }
-
-  def basic_25() {
+  def zip_0() {
     val list = List("a", "b", "c")
     for ((index, value) <- list.indices zip list) {
       println(index, value)
     }
   }
 
-  def basic_26(null_ : AnyRef) {
+  def unzip_0() {
+    val list = List(("c", 2), ("b", 1), ("a", 0))
+    println(list.unzip)
+  }
+  
+  def anyRef_0(null_ : AnyRef) {
     println(null_)
   }
 
-  def basic_27(): Nothing = {
-    throw new RuntimeException("basic_27")
+  def nothing_0(): Nothing = {
+    throw new RuntimeException("nothing_0")
   }
 
-  def basic_28() {
-    assert(1 == 2, "basic 28 assert")
+  def assert_0() {
+    assert(1 == 2, "assert_0")
   }
 
-  def basic_29() {
+  def isInstanceOfAndAsInstanceOf() {
     val str = "str"
     if (str.isInstanceOf[String]) {
       println(str.asInstanceOf[String])
     }
   }
 
-  def basic_30(key: String) {
+  def option_0(key: String) {
     val map = Map("some" -> "Some")
     val value = map.get(key)
     val result = value match {
@@ -171,13 +125,7 @@ class Basic {
     println(result)
   }
 
-  def basic_31() {
-    val list = List(1, 2, 3)
-    val List(x, y, z) = list
-    println(x, y, z)
-  }
-
-  def basic_32() {
+  def partialFunction_0() {
     val partialFunction: PartialFunction[List[Int], Int] = {
       case x :: y :: _ => y
     }
@@ -190,58 +138,36 @@ class Basic {
     }
   }
 
-  def basic_33[T](xs: List[T], ys: List[T]): List[T] = {
-    xs match {
-      case Nil => ys
-      case x :: xs1 => x :: basic_33(xs1, ys)
-    }
-  }
-
-  def basic_34() {
-    val list = List(("c", 2), ("b", 1), ("a", 0))
-    println(list.unzip)
-  }
 }
 
 object Basic_Main {
   def main(args: Array[String]) {
-    val b = new Basic //    b.basic_0()
-    //    b.basic_1()
-    //    b.basic_2()
-    //    b.basic_3()
-    //    b.basic_4()
-    //    b.basic_5()
-    //    b.basic_6()
-    //    b.basic_7()
-    //    b.basic_8()
-    //    b.basic_9()
-    //    b.basic_10()
-    //    b.basic_11()
-    //    b.basic_12()
-    //    b.basic_13()
-    //    b.basic_14()
-    //    b.basic_15()
-    //    b.basic_16()
-    //    b.basic_17()
-    //    b.basic_18(0)
-    //    b.basic_19()
-    //    b.basic_20()
-    //    b.basic_21("aaa", "bbb", "ccc")
-    //    val arr_21 = Array("aaa", "bbb", "ccc")
-    //    b.basic_21(arr_21: _*)
-    //    b.basic_22(arg_0 = 0, arg_1 = 1)
-    //    b.basic_23()
-    //    b.basic_24()
-    //    b.basic_25()
-    //    b.basic_26(null)
-    //    println(b.basic_27())
-    //    b.basic_28()
-    //    b.basic_29()
-    //    b.basic_30("some")
-    //    b.basic_30("none")
-    //    b.basic_31()
-    //    b.basic_32()
-    //    println(b.basic_33(List(1,2,3), List(4,5,6)))
-    b.basic_34()
+    val b = new Basic
+//    b.println_0()
+//    b.println_1()
+//    b.println_2()
+//    b.unit_0()
+//    b.unit_1()
+//    b.oneLineExpress_0()
+//    b.multilinesExpress_0()
+//    b.multilinesExpress_1()
+//    b.unicodeParameterName_0()
+//    b.unary_0()
+//    b.equals_0()
+//    b.recursive_0(0)
+//    b.variableMask()
+//    b.variableLengthArgument_0("aaa", "bbb", "ccc")
+//    val arr_21 = Array("aaa", "bbb", "ccc")
+//    b.variableLengthArgument_0(arr_21: _*)
+//    b.bigParanthesesReplaceSmallParantheses_0()
+//    b.zip_0()
+//    b.unzip_0()
+//    b.anyRef_0(null)
+//    println(b.nothing_0())
+//    b.assert_0()
+//    b.isInstanceOfAndAsInstanceOf()
+//    b.option_0("some")
+//    b.option_0("none")
+//    b.partialFunction_0()
   }
 }

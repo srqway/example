@@ -3,7 +3,7 @@ package idv.hsiehpinghan.scalaexample.example
 import scala.collection.immutable.List
 import scala.io.Source
 
-class File {
+class File_ {
   def file_0() = {
     var f = Source.fromFile("/etc/passwd");
     for(l <- f.getLines()) {
@@ -14,7 +14,7 @@ class File {
 }
 
 object File_Main extends App {
-  val f = new File
+  val f = new File_
   f.file_0()
   
 }
