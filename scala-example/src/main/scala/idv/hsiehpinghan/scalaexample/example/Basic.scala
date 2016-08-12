@@ -95,7 +95,7 @@ class Basic {
     val list = List(("c", 2), ("b", 1), ("a", 0))
     println(list.unzip)
   }
-  
+
   def anyRef_0(null_ : AnyRef) {
     println(null_)
   }
@@ -138,36 +138,47 @@ class Basic {
     }
   }
 
+  def functionVariable_0() {
+    var fun = (x: Int) => x + 1
+    println(fun(1))
+  }
+
+  def placeholder_0() {
+    var fun = (_: Int) + (_: Int)
+    println(fun(3, 5))
+  }
 }
 
 object Basic_Main {
   def main(args: Array[String]) {
     val b = new Basic
-//    b.println_0()
-//    b.println_1()
-//    b.println_2()
-//    b.unit_0()
-//    b.unit_1()
-//    b.oneLineExpress_0()
-//    b.multilinesExpress_0()
-//    b.multilinesExpress_1()
-//    b.unicodeParameterName_0()
-//    b.unary_0()
-//    b.equals_0()
-//    b.recursive_0(0)
-//    b.variableMask()
-//    b.variableLengthArgument_0("aaa", "bbb", "ccc")
-//    val arr_21 = Array("aaa", "bbb", "ccc")
-//    b.variableLengthArgument_0(arr_21: _*)
-//    b.bigParanthesesReplaceSmallParantheses_0()
-//    b.zip_0()
-//    b.unzip_0()
-//    b.anyRef_0(null)
-//    println(b.nothing_0())
-//    b.assert_0()
-//    b.isInstanceOfAndAsInstanceOf()
-//    b.option_0("some")
-//    b.option_0("none")
-//    b.partialFunction_0()
+    //    b.println_0()
+    //    b.println_1()
+    //    b.println_2()
+    //    b.unit_0()
+    //    b.unit_1()
+    //    b.oneLineExpress_0()
+    //    b.multilinesExpress_0()
+    //    b.multilinesExpress_1()
+    //    b.unicodeParameterName_0()
+    //    b.unary_0()
+    //    b.equals_0()
+    //    b.recursive_0(0)
+    //    b.variableMask()
+    //    b.variableLengthArgument_0("aaa", "bbb", "ccc")
+    //    val arr_21 = Array("aaa", "bbb", "ccc")
+    //    b.variableLengthArgument_0(arr_21: _*)
+    //    b.bigParanthesesReplaceSmallParantheses_0()
+    //    b.zip_0()
+    //    b.unzip_0()
+    //    b.anyRef_0(null)
+    //    println(b.nothing_0())
+    //    b.assert_0()
+    //    b.isInstanceOfAndAsInstanceOf()
+    //    b.option_0("some")
+    //    b.option_0("none")
+    //    b.partialFunction_0()
+    //    b.functionVariable_0()
+    b.placeholder_0()
   }
 }

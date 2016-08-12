@@ -4,105 +4,96 @@ import scala.io.Source
 import java.io.PrintWriter
 import java.util.Date
 
-
 class Function {
-  def function_0_0(x: Int, y: Int): Int = {
+  def function_0(x: Int, y: Int): Int = {
     if (x > y) x
     else y
   }
 
-  def function_0_1(x: Int, y: Int) = {
+  def function_1(x: Int, y: Int) = {
     if (x > y) x
     else y
   }
 
-  def function_0_2(x: Int, y: Int) = if (x > y) x else y
-  
-  def function_1_0() = println("function_1_0")
-  
-  def function_1_1() {
-    "function_1_1"
+  def function_2(x: Int, y: Int) = if (x > y) x else y
+
+  def function_3() = println("function_3")
+
+  def function_4 = println("function_4")
+
+  def returnUnit() {
+    "returnUnit"
   }
-  
-  def function_1_2() = {
-    "function_1_2"
+
+  def returnLastLine() = {
+    "returnLastLine"
   }
-    
-  def function_2_0 {
+
+  def functionInFunction_0() {
     val fileName = "/etc/passwd"
     val source = Source.fromFile(fileName)
-    for(line <- source.getLines()) {
+    for (line <- source.getLines()) {
       processLine(line)
     }
-    
+
     def processLine(line: String) {
       println(fileName + " : " + line)
     }
   }
-  
-  def function_3_0 {
-    var fun = (x: Int) => x + 1
-    println(fun(1))
+
+  def partiallyAppliedFunction_0() {
+    val fun = partiallyAppliedFunction_0_0 _
+    println(fun(1, 2, 3))
   }
-  
-  def function_4_0 {
-    var fun = (_: Int) + (_: Int)
-    println(fun(3,5))
-  }
-  
-  def function_4_1 {
-    val fun = function_4_1_0 _
-    println(fun(1,2,3))
-  }
-  def function_4_1_0(a: Int, b: Int, c: Int) = a + b + c
-  
-  def function_4_2 {
-    val fun = function_4_2_0(1, _: Int, 3)
+  def partiallyAppliedFunction_0_0(a: Int, b: Int, c: Int) = a + b + c
+
+  def partiallyAppliedFunction_1() {
+    val fun = partiallyAppliedFunction_1_0(1, _: Int, 3)
     println(fun(2))
   }
-  def function_4_2_0(a: Int, b: Int, c: Int) = a + b + c
-  
-  def function_5_0 {
+  def partiallyAppliedFunction_1_0(a: Int, b: Int, c: Int) = a + b + c
+
+  def closures_0() {
     var more = 1
     val fun = (x: Int) => x + more
     println(fun(1))
     more = 2
     println(fun(1))
   }
-  
-  def function_5_1 {
+
+  def closures_1() {
     var more = 1
     val fun = () => more += 1
     fun()
     println(more)
   }
-  
-  def function_5_2() {
-    val fun = function_5_2_0(1)
-    println(fun(2))
-  }
-  def function_5_2_0(more: Int) = (x: Int) => x + more
-  
-  def function_6_0(matcher: (String, String) => Boolean) {
+
+  def functionArgument_0(matcher: (String, String) => Boolean) {
     println(matcher("abcde", "bcd"))
   }
-  
-  def function_7_0(x: Int) = (y: Int) => x + y
-  
-  def function_7_1(x: Int)(y: Int) = x + y
-  
-  def function_7_2(x: Int) = {
-    val fun = function_7_1(1)_
+
+  def functionReturnFunction_0() {
+    val fun = functionReturnFunction_0_0(1)
+    println(fun(2))
+  }
+  def functionReturnFunction_0_0(more: Int) = (x: Int) => x + more
+
+  def functionReturnFunction_1(x: Int) = (y: Int) => x + y
+
+  def currying_0(x: Int)(y: Int) = x + y
+
+  def currying_1(x: Int) = {
+    val fun = currying_0(1)_
     fun(x)
   }
-  
-  def function_8_0() {
+
+  def currying_2() {
     val file = new java.io.File("/tmp/function_8_0")
-    function_8_0_0(file) {
+    currying_2_0(file) {
       writer => writer.println(new Date)
     }
   }
-  def function_8_0_0(file: java.io.File)(op: PrintWriter => Unit) {
+  def currying_2_0(file: java.io.File)(op: PrintWriter => Unit) {
     val writer = new PrintWriter(file)
     try {
       op(writer)
@@ -110,53 +101,43 @@ class Function {
       writer.close()
     }
   }
-  
-  def function_9_0() {
-    function_9_0_0(() => 5 > 3)
+
+  def notByNameAssert_0() {
+    notByNameAssert_0_0(() => 5 > 3)
   }
-  def function_9_0_0(predicate: () => Boolean) = {
+  def notByNameAssert_0_0(predicate: () => Boolean) = {
     println(predicate())
   }
-  
-  def function_9_1() {
-    function_9_1_0(5 > 3)
+
+  def byNameAssert_0() {
+    byNameAssert_0_0(5 > 3)
   }
-  def function_9_1_0(predicate: => Boolean) = {
+  def byNameAssert_0_0(predicate: => Boolean) = {
     println(predicate)
   }
 }
 
 object Function_Main extends App {
   val func = new Function
-//  println(func.function_0_0(3, 5))
-//  println(func.function_0_1(3, 5))
-//  println(func.function_0_2(3, 5))
-  
-//  func.function_1_0()
-//  func.function_1_0
-//  println(func.function_1_1())
-//  println(func.function_1_2())
-  
-//  func.function_2_0
-  
-//  func.function_3_0
-  
-//  func.function_4_0
-//  func.function_4_1
-//  func.function_4_2
-  
-//  func.function_5_0
-//  func.function_5_1
-//  func.function_5_2
-  
-//  func.function_6_0(_.contains(_))
-  
-//  println(func.function_7_0(1)(2))
-//  println(func.function_7_1(1)(2))
-//  println(func.function_7_2(2))
-  
-//  func.function_8_0()
-  
-//  func.function_9_0()
-  func.function_9_1()
+  println(func.function_0(3, 5))
+  println(func.function_1(3, 5))
+  println(func.function_2(3, 5))
+  func.function_3()
+  func.function_3
+  func.function_4
+  println(func.returnUnit())
+  println(func.returnLastLine())
+  func.functionInFunction_0()
+  func.partiallyAppliedFunction_0()
+  func.partiallyAppliedFunction_1()
+  func.closures_0()
+  func.closures_1()
+  func.functionArgument_0(_.contains(_))
+  func.functionReturnFunction_0()
+  println(func.functionReturnFunction_1(1)(2))
+  println(func.currying_0(1)(2))
+  println(func.currying_1(2))
+  func.currying_2()
+  func.notByNameAssert_0()
+  func.byNameAssert_0()
 }
