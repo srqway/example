@@ -126,9 +126,24 @@ class Collection {
     println(list.dropWhile(_ < 0))
   }
 
-  def span() {
+  def span_0() {
     val list = List(1, 2, 3, -4, 5)
     println(list.span(_ > 0))
+  }
+
+  def forall_0() {
+    val list = List(1, 2, 3, 4, 5)
+    println(list.forall(_ > 0))
+  }
+
+  def exists_0() {
+    val list = List(1, 2, 3, 4, 5)
+    println(list.exists(_ > 3))
+  }
+
+  def sortWith_0() {
+    val list = List(1, -2, 3, -4, 5)
+    println(list.sortWith(_ < _))
   }
 
   def tuple_0() {
@@ -158,31 +173,34 @@ class Collection {
 
 object Collection_Main extends App {
   val c = new Collection
-  c.array_0()
-  c.array_1()
-  c.list_0()
-  c.list_1()
-  c.listAppendList_0()
-  c.elementAppendList_0()
-  c.nil_0()
-  c.listCompare_0()
-  c.listHeadTailInitLast_0()
-  c.listTakeDropSplitAt_0()
-  c.listFlatten_0()
-  c.zipWithIndex_0()
-  c.listMkString_0()
-  c.listAddString_0()
-  c.listCopyToArray_0()
-  c.listRange_0()
-  c.listPartition_0()
-  c.listFind_0()
-  c.listPatterns_0()
-  c.filter_0()
-  c.takeWhile_0()
-  c.dropWhile_0()
-  c.span()
-  c.tuple_0()
-  c.set_0()
-  c.map_0()
-  c.map_1
+  //  c.array_0()
+  //  c.array_1()
+  //  c.list_0()
+  //  c.list_1()
+  //  c.listAppendList_0()
+  //  c.elementAppendList_0()
+  //  c.nil_0()
+  //  c.listCompare_0()
+  //  c.listHeadTailInitLast_0()
+  //  c.listTakeDropSplitAt_0()
+  //  c.listFlatten_0()
+  //  c.zipWithIndex_0()
+  //  c.listMkString_0()
+  //  c.listAddString_0()
+  //  c.listCopyToArray_0()
+  //  c.listRange_0()
+  //  c.listPartition_0()
+  //  c.listFind_0()
+  //  c.listPatterns_0()
+  //  c.filter_0()
+  //  c.takeWhile_0()
+  //  c.dropWhile_0()
+  //  c.span_0()
+  //  c.forall_0()
+  //  c.exists_0()
+  c.sortWith_0()
+  //  c.tuple_0()
+  //  c.set_0()
+  //  c.map_0()
+  //  c.map_1()
 }

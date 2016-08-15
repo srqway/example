@@ -147,6 +147,24 @@ class Basic {
     var fun = (_: Int) + (_: Int)
     println(fun(3, 5))
   }
+
+  def foldLeft_0() {
+    val list = List("1", "2", "3")
+    println(foldLeft_0_0(list))
+  }
+  def foldLeft_0_0(list: List[String]) = ("A" /: list)(_ + _)
+
+  def foldLeft_1() {
+    val list = List("1", "2", "3")
+    println(foldLeft_1_0(list))
+  }
+  def foldLeft_1_0(list: List[String]) = ("A" /: list) { (x, y) => x + "," + y }
+
+  def foldRight_0() {
+    val list = List("1", "2", "3")
+    println(foldRight_0_0(list))
+  }
+  def foldRight_0_0(list: List[String]) = (list :\ "Z")(_ + _)
 }
 
 object Basic_Main {
@@ -179,6 +197,9 @@ object Basic_Main {
     //    b.option_0("none")
     //    b.partialFunction_0()
     //    b.functionVariable_0()
-    b.placeholder_0()
+    //    b.placeholder_0()
+    //    b.foldLeft_0()
+    //    b.foldLeft_1()
+    //    b.foldRight_0()
   }
 }
