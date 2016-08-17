@@ -1,6 +1,8 @@
 package idv.hsiehpinghan.scalaexample.example
 
 import scala.collection.immutable.List
+import scala.collection.mutable.ListBuffer
+import scala.collection.mutable.ArrayBuffer
 
 class Collection {
   def array_0() {
@@ -14,6 +16,14 @@ class Collection {
     arr(1) = "bbb"
     arr(2) = "ccc"
     arr.foreach { println }
+  }
+
+  def arrayBuffer_0() {
+    val buf = new ArrayBuffer[Int]
+    buf += 1
+    buf += 2
+    0 +=: buf
+    println(buf)
   }
 
   def list_0() {
@@ -146,6 +156,57 @@ class Collection {
     println(list.sortWith(_ < _))
   }
 
+  def fill_0() {
+    val list = List.fill(5)("fill_0")
+    println(list)
+  }
+
+  def fill_1() {
+    val list = List.fill(2, 3)("fill_1")
+    println(list)
+  }
+
+  def tabulate_0() {
+    println(List.tabulate(5)(i => i * i))
+  }
+
+  def tabulate_1() {
+    println(List.tabulate(5, 5)(_ * _))
+  }
+
+  def concat_0() {
+    val list_0 = List('a', 'b')
+    val list_1 = List('1', '2')
+    val list_2 = List('+', '-')
+    println(List.concat(list_0, list_1, list_2))
+  }
+
+  def zippedMap_0() {
+    val list_0 = List(1, 2)
+    val list_1 = List(3, 4, 5)
+    println((list_0, list_1).zipped.map(_ * _))
+  }
+
+  def zippedForall_0() {
+    val list_0 = List(1, 2)
+    val list_1 = List(3, 4, 5)
+    println((list_0, list_1).zipped.forall(_ < _))
+  }
+
+  def zippedExists_0() {
+    val list_0 = List(1, 2)
+    val list_1 = List(3, 4, 5)
+    println((list_0, list_1).zipped.exists(_ < _))
+  }
+
+  def listBuffer_0() {
+    val buf = new ListBuffer[Int]
+    buf += 1
+    buf += 2
+    0 +=: buf
+    println(buf.toList)
+  }
+
   def tuple_0() {
     var t = ("str", 333)
     println("%s, %d%n".format(t._1, t._2))
@@ -175,6 +236,7 @@ object Collection_Main extends App {
   val c = new Collection
   //  c.array_0()
   //  c.array_1()
+  c.arrayBuffer_0()
   //  c.list_0()
   //  c.list_1()
   //  c.listAppendList_0()
@@ -198,7 +260,16 @@ object Collection_Main extends App {
   //  c.span_0()
   //  c.forall_0()
   //  c.exists_0()
-  c.sortWith_0()
+  //  c.sortWith_0()
+  //  c.fill_0()
+  //  c.fill_1()
+  //  c.tabulate_0()
+  //  c.tabulate_1()
+  //  c.concat_0()
+  //  c.zippedMap_0()
+  //  c.zippedForall_0()
+  //  c.zippedExists_0()
+  //  c.listBuffer_0()
   //  c.tuple_0()
   //  c.set_0()
   //  c.map_0()
