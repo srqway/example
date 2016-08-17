@@ -1,8 +1,12 @@
 package idv.hsiehpinghan.scalaexample.example
 
+import scala.annotation.migration
 import scala.collection.immutable.List
-import scala.collection.mutable.ListBuffer
+import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
+import scala.collection.mutable.ListBuffer
+import scala.collection.mutable.TreeSet
+import scala.collection.immutable.TreeMap
 
 class Collection {
   def array_0() {
@@ -208,13 +212,65 @@ class Collection {
   }
 
   def tuple_0() {
-    var t = ("str", 333)
+    val t = ("str", 333)
     println("%s, %d%n".format(t._1, t._2))
+  }
+
+  def tuple_1() {
+    val t = ("str", 333)
+    val (s, i) = t
+    println("%s, %d%n".format(s, i))
   }
 
   def set_0() {
     var set = Set("AAA", "BBB")
     set.foreach { println }
+  }
+
+  def set_1() {
+    var set = Set("AAA", "BBB")
+    println(set + "CCC")
+    println(set - "BBB")
+    println(set ++ List("XX", "YY"))
+    println(set -- List("BBB"))
+    println(set & Set("BBB"))
+  }
+
+  def mutableSet_0() {
+    val mutableSet = mutable.Set(1, 2, 3)
+    println(mutableSet)
+  }
+
+  def mutableSet_1() {
+    val mutableSet = mutable.Set.empty[String]
+    mutableSet += "AAA"
+    mutableSet += "BBB"
+    mutableSet += "CCC"
+    mutableSet -= "BBB"
+    println(mutableSet)
+  }
+
+  def mutableSet_2() {
+    val mutableSet = mutable.Set(1, 2, 3)
+    println(mutableSet ++ List(7, 8, 9))
+    println(mutableSet -- List(1, 3))
+  }
+
+  def treeSet_0() {
+    val treeSet = TreeSet(3, 1, 2)
+    println(treeSet)
+  }
+
+  def convertImmutableSetToMutableSet_0() {
+    val immutableSet = Set("AAA", "BBB")
+    val mutableSet = mutable.Set.empty[String] ++ immutableSet
+    println(mutableSet)
+  }
+
+  def convertMutableSetToImmutableSet_0() {
+    val mutableSet = mutable.Set("AAA", "BBB")
+    val immutableSet = Set.empty[String] ++ mutableSet
+    println(immutableSet)
   }
 
   def map_0() {
@@ -225,18 +281,44 @@ class Collection {
   }
 
   def map_1() {
-    var m = Map(3 -> "CCC")
+    var m = Map(3 -> "CCC", 4 -> "DDD")
     m += (1 -> "AAA")
     m += (2 -> "BBB")
     m.foreach(x => println("%d %s".format(x._1, x._2)))
   }
+
+  def map_2() {
+    var m = Map("AAA" -> 1, "BBB" -> 2, "CCC" -> 3)
+    m - "BBB"
+    m.foreach(x => println("%s %d".format(x._1, x._2)))
+  }
+
+  def map_3() {
+    val m = Map("AAA" -> 1, "BBB" -> 2, "CCC" -> 3)
+    println(m ++ List("DDD" -> 4, "EEE" -> 5))
+    println(m -- List("AAA", "CCC"))
+  }
+
+  def mutableMap_0() {
+    val mutableMap_0 = mutable.Map[String, Int]()
+    mutableMap_0("AAA") = 0
+    mutableMap_0("BBB") = 1
+    mutableMap_0("CCC") = 2
+    mutableMap_0.foreach(x => println("%s %d".format(x._1, x._2)))
+  }
+
+  def treeMap_0() {
+    val treeMap = TreeMap(3 -> "CCC", 1 -> "AAA", 2 -> "BBB")
+    println(treeMap)
+  }
+
 }
 
 object Collection_Main extends App {
   val c = new Collection
   //  c.array_0()
   //  c.array_1()
-  c.arrayBuffer_0()
+  //  c.arrayBuffer_0()
   //  c.list_0()
   //  c.list_1()
   //  c.listAppendList_0()
@@ -271,7 +353,19 @@ object Collection_Main extends App {
   //  c.zippedExists_0()
   //  c.listBuffer_0()
   //  c.tuple_0()
+  //  c.tuple_1()
   //  c.set_0()
+  //  c.set_1()
+  //  c.mutableSet_0()
+  //  c.mutableSet_1()
+  //  c.mutableSet_2()
+  //  c.treeSet_0()
+  //  c.convertImmutableSetToMutableSet_0()
+  //  c.convertMutableSetToImmutableSet_0()
+  //  c.mutableMap_0()
   //  c.map_0()
   //  c.map_1()
+  //  c.map_2()
+  //  c.map_3()
+  //  c.treeMap_0()
 }
