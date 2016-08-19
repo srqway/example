@@ -15,6 +15,16 @@ declare -i value_0=5-3
 echo ${value_0}
 echo "123.45 * 67.89" | bc
 
+a=5
+b=3
+echo $((a + b))
+echo $((a - b))
+echo $((a * b))
+echo $((a / b))
+echo $((a % b))
+declare -i value_1=a-b
+echo ${value_1}
+
 # idenfity shell builtin or not
 type ls
 type cd
