@@ -29,7 +29,7 @@ public class HttpPostConnectionTest {
 	@Test
 	public void getContent() throws IOException {
 		String content = connection.getContent();
-		System.err.println("HttpsConnectionTest.getContent : " + content);
+		System.err.println("content : " + content);
 		Assert.assertFalse(StringUtils.isEmpty(content));
 	}
 
