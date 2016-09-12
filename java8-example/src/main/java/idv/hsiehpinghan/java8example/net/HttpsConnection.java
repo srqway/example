@@ -8,7 +8,7 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 public class HttpsConnection {
-	HttpsURLConnection connection;
+	private HttpsURLConnection connection;
 
 	public HttpsConnection(String httpsUrl) throws IOException {
 		URL url = new URL(httpsUrl);
@@ -21,15 +21,20 @@ public class HttpsConnection {
 
 	public String getContent() throws IOException {
 		final int SIZE = 1024;
-		BufferedReader reader = new BufferedReader(new InputStreamReader(
-				connection.getInputStream()));
-		StringBuilder sb = new StringBuilder();
-		char[] cbuf = new char[SIZE];
-		while (reader.read(cbuf) != -1) {
-			sb.append(cbuf);
+		BufferedReader reader = null;
+		try {
+			reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			StringBuilder sb = new StringBuilder();
+			char[] cbuf = new char[SIZE];
+			while (reader.read(cbuf) != -1) {
+				sb.append(cbuf);
+			}
+			return sb.toString();
+		} finally {
+			if (reader != null) {
+				reader.close();
+			}
 		}
-		reader.close();
-		return sb.toString();
 	}
 
 }
