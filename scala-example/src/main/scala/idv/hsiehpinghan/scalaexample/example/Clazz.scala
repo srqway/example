@@ -79,6 +79,34 @@ class EmptyClass
 case class CaseClass(v : String, i : Int) {
 }
 
+class GetterSetterClass {
+  private[this] var x = 0
+  
+  def something: Int = x
+  def something_=(x: Int) { this.x = x }
+}
+
+class DefaultValueClass {
+  var double: Double = _
+  var float: Float = _
+  var long: Long = _
+  var int: Int = _
+  var short: Short = _
+  var byte: Byte = _
+  var unit: Unit = _
+  var boolean: Boolean = _
+  var char: Char = _
+  var anyRef: AnyRef = _
+}
+
+class PrivateConstructorClass private(list: List[Any]) {
+  override def toString = list.toString() 
+}
+
+object PrivateConstructorClass {
+  def apply[T](xs: T*) = new PrivateConstructorClass(xs.toList)
+}
+
 object Clazz_Main extends App {
 //  val c = new Clazz(1, 1, 1)
 //  c.add(3)
@@ -101,9 +129,29 @@ object Clazz_Main extends App {
 //  println(cc.getPrivateCompanionObjectVal)
 //  println(CompanionClass.getPrivateCompanionClassVal(cc))
   
-  val cc_0 = CaseClass("cc", 3)
-  val cc_1 = CaseClass("cc", 3)
-  println(cc_0 == cc_1)
-  println("cc_0.v = " + cc_0.v + ", cc_0.i = " + cc_0.i)
-  println(cc_1.copy(i = 5))
+//  val cc_0 = CaseClass("cc", 3)
+//  val cc_1 = CaseClass("cc", 3)
+//  println(cc_0 == cc_1)
+//  println("cc_0.v = " + cc_0.v + ", cc_0.i = " + cc_0.i)
+//  println(cc_1.copy(i = 5))
+  
+//  val getterSetterClass = new GetterSetterClass
+//  getterSetterClass.something = 3
+//  println(getterSetterClass.something)
+  
+//  val defaultValueClass = new DefaultValueClass
+//  println("%s = %s".format("double", defaultValueClass.double))
+//  println("%s = %s".format("float", defaultValueClass.float))
+//  println("%s = %s".format("long", defaultValueClass.long))
+//  println("%s = %s".format("int", defaultValueClass.int))
+//  println("%s = %s".format("short", defaultValueClass.short))
+//  println("%s = %s".format("byte", defaultValueClass.byte))
+//  println("%s = %s".format("unit", defaultValueClass.unit))
+//  println("%s = %s".format("boolean", defaultValueClass.boolean))
+//  println("%s = %s".format("char", defaultValueClass.char))
+//  println("%s = %s".format("anyRef", defaultValueClass.anyRef))
+
+  val privateConstructorClass = PrivateConstructorClass(1,2,3)
+  println(privateConstructorClass)
+  
 }
