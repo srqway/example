@@ -87,6 +87,20 @@ trait Trait_3_1 extends Class_3 {
   }
 }
 
+trait Trait_4 {
+  type T
+  val val_ : T
+  var var_ : T
+  def function(x: T): T
+}
+
+class Class_4 extends Trait_4 {
+  type T = String
+  val val_ = "val_"
+  var var_ = "var_"
+  def function(x: T) = x + x
+}
+
 object Trait_Main extends App {
 //  val c_0_0 = new Class_0_0
 //  c_0_0.definedMethod()
@@ -103,7 +117,12 @@ object Trait_Main extends App {
 //  val c_2_0_1 = new Class_2_0 with Trait_2
 //  c_2_0_1.abstractOverrideMethod
 
-  val c_3 = new Class_3_0 with Trait_3_0 with Trait_3_1
-  c_3.stackMethod()
-
+//  val c_3 = new Class_3_0 with Trait_3_0 with Trait_3_1
+//  c_3.stackMethod()
+  
+  val c_4 = new Class_4
+  println(c_4.val_)
+  println(c_4.var_)
+  println(c_4.function("function"))  
 }
+
