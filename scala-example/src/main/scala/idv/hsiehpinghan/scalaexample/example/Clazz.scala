@@ -107,6 +107,18 @@ object PrivateConstructorClass {
   def apply[T](xs: T*) = new PrivateConstructorClass(xs.toList)
 }
 
+abstract class AbstractTypesClass {
+  type T <: AnyVal
+  def method(t: T) : T
+}
+
+class AbstractTypesClass_0 extends AbstractTypesClass {
+  type T = Int
+  override def method(t: Int): Int = {
+    t + t
+  }
+}
+
 object Clazz_Main extends App {
 //  val c = new Clazz(1, 1, 1)
 //  c.add(3)
@@ -151,7 +163,9 @@ object Clazz_Main extends App {
 //  println("%s = %s".format("char", defaultValueClass.char))
 //  println("%s = %s".format("anyRef", defaultValueClass.anyRef))
 
-  val privateConstructorClass = PrivateConstructorClass(1,2,3)
-  println(privateConstructorClass)
-  
+//  val privateConstructorClass = PrivateConstructorClass(1,2,3)
+//  println(privateConstructorClass)
+ 
+  val abstractTypesClass_0: AbstractTypesClass_0 = new AbstractTypesClass_0
+  println(abstractTypesClass_0.method(3))
 }

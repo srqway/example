@@ -4,7 +4,7 @@ import java.io.FileReader
 import java.io.FileNotFoundException
 import java.io.IOException
 
-trait Trait_0 {
+trait BasicTrait {
   private var privateVar = 0
   private val privateVal = 0
   protected var protectedVar = 0
@@ -17,112 +17,146 @@ trait Trait_0 {
   }
 }
 
-class Class_0_0 extends Trait_0 {
+class BasicClass_0 extends BasicTrait {
   override def declaredMethod: String = "declared method"
   override def definedMethod() {
     println("override defined method")
-  } 
+  }
 }
 
-class Class_0_1 extends AnyRef with Trait_0 {  
+class BasicClass_1 extends AnyRef with BasicTrait {
   override def declaredMethod: String = "declared method"
 }
 
-trait Trait_1_0 {
-  def method_1_0() {
-    println("method_1_0")
+trait WithTrait_0 {
+  def method_0() {
+    println("method_0")
   }
 }
 
-trait Trait_1_1 {
-  def method_1_1() {
-    println("method_1_1")
+trait WithTrait_1 {
+  def method_1() {
+    println("method_1")
   }
 }
 
-class Class_1 extends AnyRef with Trait_1_0 with Trait_1_1 {  
+class WithClass extends AnyRef with WithTrait_0 with WithTrait_1 {
 }
 
-abstract class Class_2 {
+abstract class AopClass {
   def abstractOverrideMethod()
 }
 
-class Class_2_0 extends Class_2 {
+class AopClass_0 extends AopClass {
   override def abstractOverrideMethod() {
-    println("class 2 : abstractOverrideMethod")
+    println("AopClass_0 : abstractOverrideMethod")
   }
 }
 
-trait Trait_2 extends Class_2 {
+trait AopTrait extends AopClass {
   abstract override def abstractOverrideMethod() {
-    print("trait 2 : ")
+    print("AopTrait : ")
     super.abstractOverrideMethod()
   }
 }
 
-class Class_2_0_0 extends Class_2_0 with Trait_2 {
+class AopClass_0_0 extends AopClass_0 with AopTrait {
 }
 
 abstract class Class_3 {
   def stackMethod()
 }
 
-class Class_3_0 extends Class_3 {
+class StackMethodClass extends Class_3 {
   override def stackMethod() {
-    println("class 3 0 : stackMethod")
+    println("StackMethodClass : stackMethod")
   }
 }
 
-trait Trait_3_0 extends Class_3 {
+trait StackMethodTrait_0 extends Class_3 {
   abstract override def stackMethod() {
-    print("trait 3 0 : ")
+    print("StackMethodTrait_0 : ")
     super.stackMethod()
   }
 }
 
-trait Trait_3_1 extends Class_3 {
+trait StackMethodTrait_1 extends Class_3 {
   abstract override def stackMethod() {
-    print("trait 3 1 :")
+    print("StackMethodTrait_1 :")
     super.stackMethod()
   }
 }
 
-trait Trait_4 {
+trait TypeParameterTrait {
   type T
   val val_ : T
   var var_ : T
   def function(x: T): T
 }
 
-class Class_4 extends Trait_4 {
+class TypeParameterClass extends TypeParameterTrait {
   type T = String
   val val_ = "val_"
   var var_ = "var_"
   def function(x: T) = x + x
 }
 
+trait AnonymousTrait {
+  val val_ : Int
+  var var_ : Int
+}
+
+trait PreInitializedTrait {
+  val val_ : Int
+  var var_ : Int
+}
+
+class PreInitializedClass(v_0: Int, v_1: Int) extends {
+  val val_ = v_0
+  var var_ = v_1
+} with PreInitializedTrait
+
 object Trait_Main extends App {
-//  val c_0_0 = new Class_0_0
-//  c_0_0.definedMethod()
-//  println(c_0_0.val_)
-//  val c_0_1 = new Class_0_1
-//  c_0_1.definedMethod()
+  //  val basicClass_0 = new BasicClass_0
+  //  basicClass_0.definedMethod()
+  //  println(basicClass_0.val_)
+  //  val basicClass_1 = new BasicClass_1
+  //  basicClass_1.definedMethod()
 
-//  val c_1 = new Class_1
-//  c_1.method_1_1()
-  
-//  val c_2_0_0 = new Class_2_0_0
-//  c_2_0_0.abstractOverrideMethod
+  //  val withClass = new WithClass
+  //  withClass.method_1()
 
-//  val c_2_0_1 = new Class_2_0 with Trait_2
-//  c_2_0_1.abstractOverrideMethod
+  //  val aopClass_0_0 = new AopClass_0_0
+  //  aopClass_0_0.abstractOverrideMethod
 
-//  val c_3 = new Class_3_0 with Trait_3_0 with Trait_3_1
-//  c_3.stackMethod()
-  
-  val c_4 = new Class_4
-  println(c_4.val_)
-  println(c_4.var_)
-  println(c_4.function("function"))  
+  //  val aopClass_0 = new AopClass_0 with AopTrait
+  //  aopClass_0.abstractOverrideMethod
+
+  //  val stackMethodClass = new StackMethodClass with StackMethodTrait_0 with StackMethodTrait_1
+  //  stackMethodClass.stackMethod()
+
+  //  val typeParameterClass = new TypeParameterClass
+  //  println(typeParameterClass.val_)
+  //  println(typeParameterClass.var_)
+  //  println(typeParameterClass.function("function"))
+
+  //    val anonymousTrait = new AnonymousTrait {
+  //      val val_ = 1
+  //      var var_ = 2
+  //    }
+  //    println(anonymousTrait.val_)
+  //    println(anonymousTrait.var_)
+
+  //  val x = 3
+  //  val preInitializedTrait = new {
+  //      val val_ = 1 * x
+  //      var var_ = 2 * x
+  //  } with PreInitializedTrait
+  //  println(preInitializedTrait.val_);
+  //  println(preInitializedTrait.var_);
+
+  val preInitializedClass = new PreInitializedClass(1, 2)
+  println(preInitializedClass.val_);
+  println(preInitializedClass.var_);
 }
 
