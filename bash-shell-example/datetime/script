@@ -1,4 +1,8 @@
-# date
 echo "<<date>>"
 date=$(date +"%Y/%m/%d %H:%M:%S")
 echo "date : ${date}";
+
+echo "<<date add day>>"
+date_add_day=$(date -d "+1 day")
+echo ${date_add_day}
+
