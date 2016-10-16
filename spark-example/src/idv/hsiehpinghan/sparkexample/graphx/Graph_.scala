@@ -46,6 +46,21 @@ class Graph_ {
       }
     }
   }
+
+  def subgraph(graph: Graph[(String, String, String), String]) = {
+    graph.subgraph(vpred = (id, attr) => attr._2 != "b_?");
+  }
+
+  def aggregateMessages(graph: Graph[(String, String, String), String]) = {
+    graph.aggregateMessages[(Long, (String, String, String))](
+      triplet => { // map
+        triplet.sendToDst(1L, triplet.srcAttr)
+      },
+      (a, b) => { // reduce
+        (a._1 + b._1, (a._2._1 + b._2._1, a._2._2 + b._2._2, a._2._3 + b._2._3))
+      })
+  }
+
 }
 
 object Construct_Main extends App {
@@ -78,9 +93,16 @@ object Construct_Main extends App {
   //  println("<<mapVerticesGraph vertices>>")
   //  mapVerticesGraph.vertices.collect.foreach(println)
 
-  val outerJoinVerticesGraph = obj.outerJoinVertices(sc, graph)
-  println("<<outerJoinVerticesGraph vertices>>")
-  outerJoinVerticesGraph.vertices.collect.foreach(println)
+  //  val outerJoinVerticesGraph = obj.outerJoinVertices(sc, graph)
+  //  println("<<outerJoinVerticesGraph vertices>>")
+  //  outerJoinVerticesGraph.vertices.collect.foreach(println)
 
+  //  val subgraph = obj.subgraph(graph)
+  //  println("<<subgraph vertices>>")
+  //  subgraph.vertices.collect.foreach(println)
+
+  val aggregateMessages = obj.aggregateMessages(graph)
+  println("<<aggregateMessages vertices>>")
+  aggregateMessages.collect.foreach(println)
 }
 
