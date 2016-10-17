@@ -1,0 +1,44 @@
+# Specifies the maximum size (in bytes) of the memory allocation pool in bytes. 
+# This value must be a multiple of 1024 and greater than 2 MB. 
+# The default value is chosen at runtime based on system configuration. 
+# For server deployments, 
+# -Xms and -Xmx are often set to the same value.
+-Xmx<size>[g|G|m|M|k|K]
+-Xmx2M
+
+# Sets the initial size (in bytes) of the heap. 
+# This value must be a multiple of 1024 and greater than 1 MB.
+-Xms<size>[g|G|m|M|k|K]
+-Xms1M
+
+# Sets the thread stack size (in bytes).
+# The default value depends on virtual memory.
+-Xss<size>[g|G|m|M|k|K]
+-Xss1M
+
+# Sets the initial and maximum size (in bytes) of the heap for the young generation (nursery)
+# The young generation region of the heap is used for new objects. 
+# GC is performed in this region more often than in other regions.
+# If the size for the young generation is too small, 
+# then a lot of minor garbage collections will be performed. 
+# If the size is too large, 
+# then only full garbage collections will be performed, 
+# which can take a long time to complete. 
+# Oracle recommends that you keep the size for the young generation between a half and a quarter of the overall heap size.
+-Xmn<size>[g|G|m|M|k|K]
+-Xmn2M	// suggest 1/2 ~ 1/4 heap size
+
+# Sets the space (in bytes) allocated to the permanent generation that triggers a garbage collection if it is exceeded. 
+# This option was deprecated un JDK 8, and superseded by the -XX:MetaspaceSize option.
+-XX:PermSize=<size>[g|G|m|M|k|K]
+-XX:PermSize=4M
+
+# Sets the maximum permanent generation space size (in bytes). 
+# This option was deprecated in JDK 8, and superseded by the -XX:MaxMetaspaceSize option.
+-XX:MaxPermSize=<size>[g|G|m|M|k|K]
+-XX:MaxPermSize=64M	// suggest 64MB/128MB
+
+
+
+# Sets gc setting
+-XX:+PrintGCDetails -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=15 -Xms4M -Xmx11M -verbose:gc
