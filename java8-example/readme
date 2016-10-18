@@ -1,3 +1,7 @@
+reference : https://docs.oracle.com/javase/8/docs/technotes/tools/windows/java.html
+jclasslib : https://github.com/ingokegel/jclasslib
+
+----------------------------- heap -----------------------------
 # Specifies the maximum size (in bytes) of the memory allocation pool in bytes. 
 # This value must be a multiple of 1024 and greater than 2 MB. 
 # The default value is chosen at runtime based on system configuration. 
@@ -11,10 +15,21 @@
 -Xms<size>[g|G|m|M|k|K]
 -Xms1M
 
-# Sets the thread stack size (in bytes).
-# The default value depends on virtual memory.
--Xss<size>[g|G|m|M|k|K]
--Xss1M
+# Sets the minimum allowed percentage of free heap space (0 to 100) after a GC event. 
+# If free heap space falls below this value, 
+# then the heap will be expanded. 
+# By default, 
+# this value is set to 40%.
+-XX:MinHeapFreeRatio=percent
+-XX:MinHeapFreeRatio=40
+
+# Sets the maximum allowed percentage of free heap space (0 to 100) after a GC event.
+# If free heap space expands above this value,
+# then the heap will be shrunk.
+# By default,
+# this value is set to 70%.
+-XX:MaxHeapFreeRatio=percent
+-XX:MaxHeapFreeRatio=70
 
 # Sets the initial and maximum size (in bytes) of the heap for the young generation (nursery)
 # The young generation region of the heap is used for new objects. 
@@ -38,7 +53,108 @@
 -XX:MaxPermSize=<size>[g|G|m|M|k|K]
 -XX:MaxPermSize=64M	// suggest 64MB/128MB
 
+# Sets the initial size (in bytes) of the heap for the young generation (nursery).
+# The -XX:NewSize option is equivalent to -Xmn.
+-XX:NewSize=<size>[g|G|m|M|k|K]
+-XX:NewSize=256m
+
+# Sets the ratio between eden space size and survivor space size. 
+# By default, this option is set to 8.
+-XX:SurvivorRatio=<size>	// <size>=eden/s0=eden/s1
+-XX:SurvivorRatio=8
+
+# Sets the desired percentage of survivor space (0 to 100) used after young garbage collection. 
+# By default, 
+# this option is set to 50%.
+-XX:TargetSurvivorRatio=percent
+-XX:TargetSurvivorRatio=50
+
+# Sets the ratio between young and old generation sizes.
+# By default, this option is set to 2.
+-XX:NewRatio=ratio
+-XX:NewRatio=2
+
+# Sets the maximum tenuring threshold for use in adaptive GC sizing. 
+# The largest value is 15. 
+# The default value is 15 for the parallel (throughput) collector, 
+# and 6 for the CMS collector.
+-XX:MaxTenuringThreshold=<size>
+-XX:MaxTenuringThreshold=15
+
+----------------------------- stack -----------------------------
+# Sets the thread stack size (in bytes).
+# The default value depends on virtual memory.
+-Xss<size>[g|G|m|M|k|K]
+-Xss1M
+
+----------------------------- gc -----------------------------
+# Enables the use of the serial garbage collector.
+# This is generally the best choice for small and simple applications that do not require any special functionality from garbage collection.
+# By default,
+# this option is disabled and the collector is chosen automatically based on the configuration of the machine and type of the JVM.
+-XX:+UseSerialGC
+
+# Enables the use of parallel threads for collection in the young generation.
+# By default,
+# this option is disabled.
+# It is automatically enabled when you set the -XX:+UseConcMarkSweepGC option.
+# Using the -XX:+UseParNewGC option without the -XX:+UseConcMarkSweepGC option was deprecated in JDK 8.
+-XX:+UseParNewGC
+
+# Enables the use of the CMS garbage collector for the old generation.
+# Oracle recommends that you use the CMS garbage collector when application latency requirements cannot be met by the throughput (-XX:+UseParallelGC) garbage collector.
+# The G1 garbage collector (-XX:+UseG1GC) is another alternative.
+# By default,
+# this option is disabled and the collector is chosen automatically based on the configuration of the machine and type of the JVM.
+# When this option is enabled,
+# the -XX:+UseParNewGC option is automatically set and you should not disable it,
+# because the following combination of options has been deprecated in JDK 8: -XX:+UseConcMarkSweepGC -XX:-UseParNewGC.
+-XX:+UseConcMarkSweepGC
+
+# Sets the number of threads used for parallel garbage collection in the young and old generations.
+# The default value depends on the number of CPUs available to the JVM.
+-XX:ParallelGCThreads=<threads>
+-XX:ParallelGCThreads=2		// suggest threads = cpu amount
+
+# Enables the use of the parallel garbage collector for full GCs.
+# By default,
+# this option is disabled.
+# Enabling it automatically enables the -XX:+UseParallelGC option.
+-XX:+UseParallelOldGC
+
+# Sets a target for the maximum GC pause time (in milliseconds).
+# This is a soft goal,
+# and the JVM will make its best effort to achieve it.
+# By default,
+# there is no maximum pause time value.
+-XX:MaxGCPauseMillis=<time>
+-XX:MaxGCPauseMillis=500
+
+# Enables the use of adaptive generation sizing.
+# This option is enabled by default.
+# To disable adaptive generation sizing,
+# specify -XX:-UseAdaptiveSizePolicy and set the size of the memory allocation pool explicitly (see the -XX:SurvivorRatio option).
+-XX:+UseAdaptiveSizePolicy
+
+# Enables the use of the parallel scavenge garbage collector (also known as the throughput collector) to improve the performance of your application by leveraging multiple processors.
+# By default,
+# this option is disabled and the collector is chosen automatically based on the configuration of the machine and type of the JVM.
+# If it is enabled, 
+# then the -XX:+UseParallelOldGC option is automatically enabled,
+# unless you explicitly disable it.
+-XX:+UseParallelGC
+
+# Sets the percentage of the old generation occupancy (0 to 100) at which to start a CMS collection cycle.
+# The default value is set to -1.
+# Any negative value (including the default) implies that -XX:CMSTriggerRatio is used to define the value of the initiating occupancy fraction.
+-XX:CMSInitiatingOccupancyFraction=<percent>
+-XX:CMSInitiatingOccupancyFraction=68
+
+# Displays information about each garbage collection (GC) event.
+-verbose:gc
+
+# Enables printing of detailed messages at every GC. 
+# By default, this option is disabled.
+-XX:+PrintGCDetails
 
 
-# Sets gc setting
--XX:+PrintGCDetails -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=15 -Xms4M -Xmx11M -verbose:gc
