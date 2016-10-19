@@ -26,6 +26,12 @@ public class JqueryController {
 		return model;
 	}
 
+	@RequestMapping(value = "/dynamicElementEventBinding", method = RequestMethod.GET)
+	public ModelAndView dynamicElementEventBinding(HttpServletRequest httpServletRequest) {
+		ModelAndView model = new ModelAndView("jquery/dynamicElementEventBinding");
+		return model;
+	}
+	
 	@RequestMapping(value = "/ajax", method = RequestMethod.GET)
 	public String ajax() {
 		return "jquery/ajax";

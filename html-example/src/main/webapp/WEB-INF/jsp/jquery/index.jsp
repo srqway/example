@@ -9,6 +9,8 @@
 <body>
 	<a href="dynamicFormInput">dynamic form input</a>
 	<br>
+	<a href="dynamicElementEventBinding">dynamic element event binding</a>
+	<br>
 	<a href="ajax">ajax</a>
 	<br>
 	<a href="jsonp">jsonp</a>
