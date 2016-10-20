@@ -5,6 +5,11 @@ tar cvfz - ~/.bashrc | tar xvfz - -C /tmp/
 str_0=str_0.tsv
 echo ${str_0//tsv/gz}
 
+# split string
+IFS=" " read split_0_0 split_0_1 <<< "aaa bbb"
+echo "$split_0_0"
+echo "$split_0_1"
+
 # calculate
 echo $((5 + 3))
 echo $((5 - 3))

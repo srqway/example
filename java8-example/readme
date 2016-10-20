@@ -81,6 +81,28 @@ jclasslib : https://github.com/ingokegel/jclasslib
 -XX:MaxTenuringThreshold=<size>
 -XX:MaxTenuringThreshold=15
 
+# Enables the dumping of the Java heap to a file in the current directory by using the heap profiler (HPROF) when a java.lang.OutOfMemoryError exception is thrown. 
+# You can explicitly set the heap dump file path and name using the -XX:HeapDumpPath option.
+# By default, this option is disabled and the heap is not dumped when an OutOfMemoryError exception is thrown.
+-XX:+HeapDumpOnOutOfMemory
+
+-XX:HeapDumpPath=path
+# Sets the path and file name for writing the heap dump provided by the heap profiler (HPROF) when the -XX:+HeapDumpOnOutOfMemoryError option is set.
+# By default,
+# the file is created in the current working directory,
+# and it is named java_pidpid.hprof where pid is the identifier of the process that caused the error.
+# The following example shows how to set the default file explicitly (%p represents the current process identificator):
+-XX:HeapDumpPath=./java_pid%p.hprof
+-XX:HeapDumpPath=C:/log/java/java_heapdump.log
+
+# Sets a custom command or a series of semicolon-separated commands to run when an OutOfMemoryError exception is first thrown.
+# If the string contains spaces,
+# then it must be enclosed in quotation marks.
+# For an example of a command string,
+# see the description of the -XX:OnError option.
+-XX:OnOutOfMemoryError=string
+-XX:OnOutOfMemoryError=C:\reset.bat
+
 ----------------------------- stack -----------------------------
 # Sets the thread stack size (in bytes).
 # The default value depends on virtual memory.
@@ -196,11 +218,121 @@ jclasslib : https://github.com/ingokegel/jclasslib
 -XX:LargePageSizeInBytes=<size>[g|G|m|M|k|K]
 -XX:LargePageSizeInBytes=4m
 
+# Enables the use of large page memory.
+# By default,
+# this option is disabled and large page memory is not used.
+# For more information, see "Large Pages".
+-XX:+UseLargePages
+
+# Disables the use of compressed pointers.
+# By default,
+# this option is enabled,
+# and compressed pointers are used when Java heap sizes are less than 32 GB.
+# When this option is enabled,
+# object references are represented as 32-bit offsets instead of 64-bit pointers,
+# which typically increases performance when running the application with Java heap sizes less than 32 GB.
+# This option works only for 64-bit JVMs.
+# It is also possible to use compressed pointers when Java heap sizes are greater than 32GB.
+# See the -XX:ObjectAlignmentInBytes option.
+-XX:-UseCompressedOops
+
 # Displays information about each garbage collection (GC) event.
 -verbose:gc
 
 # Enables printing of detailed messages at every GC. 
 # By default, this option is disabled.
 -XX:+PrintGCDetails
+
+# Enables printing of messages at every GC.
+# By default,
+# this option is disabled.
+-XX:+PrintGC
+
+# Enables printing of time stamps at every GC.
+# By default,
+# this option is disabled.
+-XX:+PrintGCTimeStamps
+
+# Enables printing of tenuring age information.
+# By default,
+# this option is disabled.
+-XX:+PrintTenuringDistribution
+
+# Enables printing of how much time elapsed since the last pause (for example, a GC pause).
+# By default,
+# this option is disabled.
+-XX:+PrintGCApplicationConcurrentTime
+
+# Enables printing of how much time the pause (for example, a GC pause) lasted.
+# By default,
+# this option is disabled.
+-XX:+PrintGCApplicationStoppedTime
+
+# Sets the file to which verbose GC events information should be redirected for logging.
+# The information written to this file is similar to the output of -verbose:gc with the time elapsed since the first GC event preceding each logged event.
+# The -Xloggc option overrides -verbose:gc if both are given with the same java command.
+-Xloggc:filename
+-Xloggc:garbage-collection.log
+
+# Enables tracing of classes as they are loaded.
+# By default,
+# this option is disabled and classes are not traced.
+-XX:+TraceClassLoading
+
+# Enables tracing of classes as they are unloaded.
+# By default,
+# this option is disabled and classes are not traced.
+-XX:+TraceClassUnloading
+
+# Enables printing of a class instance histogram after a Control+Break event.
+# By default,
+# this option is disabled.
+# Setting this option is equivalent to running the jmap -histo command,
+# or the jcmd pid GC.class_histogram command,
+# where pid is the current Java process identifier.
+-XX:+PrintClassHistogram
+
+# Disables garbage collection (GC) of classes.
+# This can save some GC time,
+# which shortens interruptions during the application run.
+# When you specify -Xnoclassgc at startup,
+# the class objects in the application will be left untouched during GC and will always be considered live.
+# This can result in more memory being permanently occupied which,
+# if not used carefully,
+# will throw an out of memory exception.
+-Xnoclassgc
+
+# Enables incremental garbage collection.
+# This option was deprecated in JDK 8 with no replacement.
+-Xincgc
+
+----------------------------- JIT -----------------------------
+
+-XX:CompileThreshold=invocations
+# Sets the number of interpreted method invocations before compilation.
+# By default, in the server JVM, the JIT compiler performs 10,000 interpreted method invocations to gather information for efficient compilation.
+# For the client JVM, the default setting is 1,500 invocations.
+# This option is ignored when tiered compilation is enabled;
+# see the option -XX:+TieredCompilation.
+# You can completely disable interpretation of Java methods before compilation by specifying the -Xcomp option.
+-XX:CompileThreshold=<number>
+-XX:CompileThreshold=5000
+
+# Enables verbose diagnostic output from the JVM by printing a message to the console every time a method is compiled.
+# This enables you to see which methods actually get compiled.
+# By default,
+# this option is disabled and diagnostic output is not printed.
+# You can also log compilation activity to a file by using the -XX:+LogCompilation option.
+-XX:+PrintCompilation
+
+-Xverify:mode
+# Sets the mode of the bytecode verifier.
+# Bytecode verification ensures that class files are properly formed and satisfy the constraints listed in The Java Virtual Machine Specification;
+# see section 4.10, "Verification of class Files": https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.10
+# Do not turn off verification when running dynamically generated or untrusted class files as this reduces the protection provided by Java and makes diagnosing problems with ill-formed bytecodes more difficult.
+# Possible mode arguments for this option include the following:
+#   remote : Verifies all bytecodes not loaded by the bootstrap class loader. This is the default behavior.
+#   all : Enables verification of all bytecodes.
+#   none : Disables verification of all bytecodes.
 
 

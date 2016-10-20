@@ -1,5 +1,0 @@
-# split string
-IFS=" " read split_0_0 split_0_1 <<< "aaa bbb"
-echo "$split_0_0"
-echo "$split_0_1"
-
