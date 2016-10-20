@@ -150,6 +150,52 @@ jclasslib : https://github.com/ingokegel/jclasslib
 -XX:CMSInitiatingOccupancyFraction=<percent>
 -XX:CMSInitiatingOccupancyFraction=68
 
+# Enables class unloading when using the concurrent mark-sweep (CMS) garbage collector.
+# This option is enabled by default.
+# To disable class unloading for the CMS garbage collector,
+# specify -XX:-CMSClassUnloadingEnabled.
+-XX:+CMSClassUnloadingEnabled
+
+# Sets the percentage of the permanent generation occupancy (0 to 100) at which to start a GC.
+# This option was deprecated in JDK 8 with no replacement.
+-XX:CMSInitiatingPermOccupancyFraction=percent
+
+# Enables the use of the occupancy value as the only criterion for initiating the CMS collector.
+# By default,
+# this option is disabled and other criteria may be used.
+-XX:+UseCMSInitiatingOccupancyOnly
+
+# Enables the incremental mode for the CMS collector.
+# This option was deprecated in JDK 8 with no replacement,
+# along with other options that start with CMSIncremental.
+-XX:+CMSIncrementalMode
+
+# Enables the use of the garbage-first (G1) garbage collector.
+# It is a server-style garbage collector,
+# targeted for multiprocessor machines with a large amount of RAM.
+# It meets GC pause time goals with high probability,
+# while maintaining good throughput.
+# The G1 collector is recommended for applications requiring large heaps (sizes of around 6 GB or larger) with limited GC latency requirements (stable and predictable pause time below 0.5 seconds).
+# By default,
+#  this option is disabled and the collector is chosen automatically based on the configuration of the machine and type of the JVM.
+-XX:+UseG1GC
+
+# Enables the option that disables processing of calls to System.gc().
+# This option is disabled by default,
+# meaning that calls to System.gc() are processed.
+# If processing of calls to System.gc() is disabled,
+# the JVM still performs GC when necessary.
+-XX:+DisableExplicitGC
+
+# On Solaris,
+# sets the maximum size (in bytes) for large pages used for Java heap.
+# The size argument must be a power of 2 (2, 4, 8, 16, ...).
+# By default,
+# the size is set to 0,
+# meaning that the JVM chooses the size for large pages automatically.
+-XX:LargePageSizeInBytes=<size>[g|G|m|M|k|K]
+-XX:LargePageSizeInBytes=4m
+
 # Displays information about each garbage collection (GC) event.
 -verbose:gc
 
