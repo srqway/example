@@ -325,7 +325,6 @@ jclasslib : https://github.com/ingokegel/jclasslib
 # You can also log compilation activity to a file by using the -XX:+LogCompilation option.
 -XX:+PrintCompilation
 
--Xverify:mode
 # Sets the mode of the bytecode verifier.
 # Bytecode verification ensures that class files are properly formed and satisfy the constraints listed in The Java Virtual Machine Specification;
 # see section 4.10, "Verification of class Files": https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.10
@@ -334,5 +333,57 @@ jclasslib : https://github.com/ingokegel/jclasslib
 #   remote : Verifies all bytecodes not loaded by the bootstrap class loader. This is the default behavior.
 #   all : Enables verification of all bytecodes.
 #   none : Disables verification of all bytecodes.
+-Xverify:<mode>
 
+----------------------------- jdk command tool -----------------------------
+# print java process
+jps
+
+# print java process with parameter
+jps -m
+
+# print java process with full path
+jps -l
+
+# print java process with jvm parameter
+jps -v
+
+# print classloader info
+jstat -class -t <PID>
+
+# print compiler info
+jstat -compiler -t <PID>
+
+# print gc info
+jstat -gc <PID>
+
+# print gc cause
+jstat -gccause <PID>
+
+# print jvm parameter
+jinfo -flag <parameter> <PID>
+jinfo -flag MaxTenuringThreshold 3008
+
+# modify jvm parameter
+jinfo -flag +/-<parameter> <PID>
+jinfo -flag +PrintGCDetails 3008
+
+# create heap profile and view it
+jmap -dump:format=b,file=<file> <PID>
+jhat <file>
+http://localhost:7000/
+
+# print stack info
+jstack <PID>
+
+# print stack info with lock info
+jstack -l <PID>		// could find deadlock
+
+# print heap profiling
+java -agentlib:hprof=heap|all,file=<file> <PID>
+java -agentlib:hprof=heap=all,file=/tmp/test 3008
+
+# print cpu info
+java -agentlib:hprof=cpu=times,file=<file> <PID>
+java -agentlib:hprof=cpu=times,file=/tmp/test 3008
 
