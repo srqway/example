@@ -1,8 +1,8 @@
 #!/bin/bash
 # Program:
-# 	This program is for logical testing.
+#     This program is for logical testing.
 # History:
-# 	2016/04/13	Thank	first release
+#     2016/04/13    Thank    first release
 
 file_0=~/.bashrc
 file_1=/etc/passwd
@@ -16,57 +16,67 @@ until_i=0
 # if
 echo "<<if>>"
 if [ ${integer_0} < 0 ]; then
-	echo "${integer_0} < 0"
+    echo "${integer_0} < 0"
 elif [ ${integer_0} == 0 ]; then
-	echo "${integer_0} == 0"
+    echo "${integer_0} == 0"
 else
-	echo "${integer_0} > 0"
+    echo "${integer_0} > 0"
 fi
 
 # case
 echo "<<case>>"
 case ${string_1} in
-	"string_0")
-		echo "case_0 = ${string_1}"
-		;;
-	"string_1")
-		echo "case_1 = ${string_1}"
-		;;
-	*)
-		echo "other = ${string_1}"
-		;;
+    "string_0")
+        echo "case_0 = ${string_1}"
+        ;;
+    "string_1")
+        echo "case_1 = ${string_1}"
+        ;;
+    *)
+        echo "other = ${string_1}"
+        ;;
 esac
 
 # while
 echo "<<while>>"
 while [ ${while_i} -lt 10 ]; do
-	while_i=$((${while_i} + 1))
-	echo "while_i = ${while_i}"
+    while_i=$((${while_i} + 1))
+    echo "while_i = ${while_i}"
 done
 
 # until
 echo "<<until>>"
 until [ ${until_i} -gt 10 ]; do
-	until_i=$((${until_i} + 1))
-	echo "until_i = ${until_i}"
+    until_i=$((${until_i} + 1))
+    echo "until_i = ${until_i}"
 done
 
 # for
 echo "<<for>>"
 for ele in "ele_0" "ele_1" "ele_2"
 do
-	echo "for : ${ele}"
+    echo "for : ${ele}"
 done
 
 echo "<<for seq>>"
 for for_seq in $(seq 1 10); do
-	echo "for_seq : ${for_seq}"
+    echo "for_seq : ${for_seq}"
 done
 
 echo "<<for conditional>>"
 for (( for_i=1; for_i<=10; for_i=for_i+1 ))
 do
-	echo "for_i : ${for_i}"
+    echo "for_i : ${for_i}"
+done
+
+echo "<<for break>>"
+for (( for_i=1; for_i<=10; ++for_i ))
+do
+    echo "for_i : ${for_i}"
+    if [ ${for_i} -gt 5 ]; then
+        echo "break"
+        break
+    fi
 done
 
 
@@ -80,391 +90,391 @@ exit 0
 # test
 echo "<<test>>"
 if test -e ${file_0}; then
-	echo "file exists."
+    echo "file exists."
 else
-	echo "file not exists."
+    echo "file not exists."
 fi
 
 if test -f ${file_0}; then
-	echo "is file."
+    echo "is file."
 else
-	echo "is not file."
+    echo "is not file."
 fi
 
 if test -d ${file_0}; then
-	echo "is directory."
+    echo "is directory."
 else
-	echo "is not directory."
+    echo "is not directory."
 fi
 
 if test -b ${file_0}; then
-	echo "is block device."
+    echo "is block device."
 else
-	echo "is not block device."
+    echo "is not block device."
 fi
 
 if test -c ${file_0}; then
-	echo "is character device."
+    echo "is character device."
 else
-	echo "is not character device."
+    echo "is not character device."
 fi
 
 if test -S ${file_0}; then
-	echo "is socket file."
+    echo "is socket file."
 else
-	echo "is not socket file."
+    echo "is not socket file."
 fi
 
 if test -p ${file_0}; then
-	echo "is pipe."
+    echo "is pipe."
 else
-	echo "is not pipe."
+    echo "is not pipe."
 fi
 
 if test -L ${file_0}; then
-	echo "is link file."
+    echo "is link file."
 else
-	echo "is not link file."
+    echo "is not link file."
 fi
 
 if test -r ${file_0}; then
-	echo "is readable."
+    echo "is readable."
 else
-	echo "is not readable."
+    echo "is not readable."
 fi
 
 if test -w ${file_0}; then
-	echo "is writable."
+    echo "is writable."
 else
-	echo "is not writable."
+    echo "is not writable."
 fi
 
 if test -x ${file_0}; then
-	echo "is executable."
+    echo "is executable."
 else
-	echo "is not executable."
+    echo "is not executable."
 fi
 
 if test -u ${file_0}; then
-	echo "has SUID."
+    echo "has SUID."
 else
-	echo "has no SUID."
+    echo "has no SUID."
 fi
 
 if test -g ${file_0}; then
-	echo "has SGID."
+    echo "has SGID."
 else
-	echo "has no SGID."
+    echo "has no SGID."
 fi
 
 if test -k ${file_0}; then
-	echo "has sticky bit."
+    echo "has sticky bit."
 else
-	echo "has no sticky bit."
+    echo "has no sticky bit."
 fi
 
 if test -s ${file_0}; then
-	echo "is empty file."
+    echo "is empty file."
 else
-	echo "is not empty file."
+    echo "is not empty file."
 fi
 
 if test ${file_0} -nt ${file_1}; then
-	echo "${file_0} newer than ${file_1}"
+    echo "${file_0} newer than ${file_1}"
 else
-	echo "${file_0} not newer than ${file_1}"
+    echo "${file_0} not newer than ${file_1}"
 fi
 
 if test ${file_0} -ot ${file_1}; then
-	echo "${file_0} older than ${file_1}"
+    echo "${file_0} older than ${file_1}"
 else
-	echo "${file_0} not older than ${file_1}"
+    echo "${file_0} not older than ${file_1}"
 fi
 
 if test ${file_0} -ef ${file_1}; then
-	echo "${file_0} and ${file_1} is the same file."
+    echo "${file_0} and ${file_1} is the same file."
 else
-	echo "${file_0} and ${file_1} is not the same file."
+    echo "${file_0} and ${file_1} is not the same file."
 fi
 
 if test ${integer_0} -eq ${integer_1}; then
-	echo "${integer_0} is equal to ${integer_1}."
+    echo "${integer_0} is equal to ${integer_1}."
 else
-	echo "${integer_0} is not equal to ${integer_1}."
+    echo "${integer_0} is not equal to ${integer_1}."
 fi
 
 if test ${integer_0} -ne ${integer_1}; then
-	echo "${integer_0} is not equal to ${integer_1}."
+    echo "${integer_0} is not equal to ${integer_1}."
 else
-	echo "${integer_0} is equal to ${integer_1}."
+    echo "${integer_0} is equal to ${integer_1}."
 fi
 
 if test ${integer_0} -gt ${integer_1}; then
-	echo "${integer_0} is greater than ${integer_1}."
+    echo "${integer_0} is greater than ${integer_1}."
 else
-	echo "${integer_0} is not greater than ${integer_1}."
+    echo "${integer_0} is not greater than ${integer_1}."
 fi
 
 if test ${integer_0} -lt ${integer_1}; then
-	echo "${integer_0} is less than ${integer_1}."
+    echo "${integer_0} is less than ${integer_1}."
 else
-	echo "${integer_0} is not less than ${integer_1}."
+    echo "${integer_0} is not less than ${integer_1}."
 fi
 
 if test ${integer_0} -ge ${integer_1}; then
-	echo "${integer_0} is greater than or equal to ${integer_1}."
+    echo "${integer_0} is greater than or equal to ${integer_1}."
 else
-	echo "${integer_0} is not greater than or equal to ${integer_1}."
+    echo "${integer_0} is not greater than or equal to ${integer_1}."
 fi
 
 if test ${integer_0} -le ${integer_1}; then
-	echo "${integer_0} is less than or equal to ${integer_1}."
+    echo "${integer_0} is less than or equal to ${integer_1}."
 else
-	echo "${integer_0} is not less than or equal to ${integer_1}."
+    echo "${integer_0} is not less than or equal to ${integer_1}."
 fi
 
 if test -z "${string_0}"; then
-	echo "empty string."
+    echo "empty string."
 else
-	echo "not empty string."
+    echo "not empty string."
 fi
 
 if test -n "${string_0}"; then
-	echo "not empty string."
+    echo "not empty string."
 else
-	echo "empty string."
+    echo "empty string."
 fi
 
 if test "${string_0}" == "${string_1}"; then
-	echo "${string_0} equals to ${string_1}"
+    echo "${string_0} equals to ${string_1}"
 else
-	echo "${string_0} not equals to ${string_1}"
+    echo "${string_0} not equals to ${string_1}"
 fi
 
 if test "${string_0}" != "${string_1}"; then
-	echo "${string_0} not equals to ${string_1}"
+    echo "${string_0} not equals to ${string_1}"
 else
-	echo "${string_0} equals to ${string_1}"
+    echo "${string_0} equals to ${string_1}"
 fi
 
 if test ${integer_0} -ne ${integer_1} -a -n "${string_0}"; then
-	echo "${integer_0} not equal to ${integer_1} and ${string_0} is not empty string."
+    echo "${integer_0} not equal to ${integer_1} and ${string_0} is not empty string."
 else
-	echo "${integer_0} equal to ${integer_1} or ${string_0} is empty string."
+    echo "${integer_0} equal to ${integer_1} or ${string_0} is empty string."
 fi
 
 if test ${integer_0} -ne ${integer_1} -o -n "${string_0}"; then
-	echo "${integer_0} not equal to ${integer_1} or ${string_0} is not empty string."
+    echo "${integer_0} not equal to ${integer_1} or ${string_0} is not empty string."
 else
-	echo "${integer_0} equal to ${integer_1} and ${string_0} is empty string."
+    echo "${integer_0} equal to ${integer_1} and ${string_0} is empty string."
 fi
-
+j
 if test ! -n "${string_0}"; then
-	echo "${string_0} is empty string."
+    echo "${string_0} is empty string."
 else
-	echo "${string_0} is not empty string."
+    echo "${string_0} is not empty string."
 fi
 
 # [...]
 echo "<<[...]>>"
 if [ -e ${file_0} ]; then
-	echo "file exists."
+    echo "file exists."
 else
-	echo "file not exists."
+    echo "file not exists."
 fi
 
 if [ -f ${file_0} ]; then
-	echo "is file."
+    echo "is file."
 else
-	echo "is not file."
+    echo "is not file."
 fi
 
 if [ -d ${file_0} ]; then
-	echo "is directory."
+    echo "is directory."
 else
-	echo "is not directory."
+    echo "is not directory."
 fi
 
 if [ -b ${file_0} ]; then
-	echo "is block device."
+    echo "is block device."
 else
-	echo "is not block device."
+    echo "is not block device."
 fi
 
 if [ -c ${file_0} ]; then
-	echo "is character device."
+    echo "is character device."
 else
-	echo "is not character device."
+    echo "is not character device."
 fi
 
 if [ -S ${file_0} ]; then
-	echo "is socket file."
+    echo "is socket file."
 else
-	echo "is not socket file."
+    echo "is not socket file."
 fi
 
 if [ -p ${file_0} ]; then
-	echo "is pipe."
+    echo "is pipe."
 else
-	echo "is not pipe."
+    echo "is not pipe."
 fi
 
 if [ -L ${file_0} ]; then
-	echo "is link file."
+    echo "is link file."
 else
-	echo "is not link file."
+    echo "is not link file."
 fi
 
 if [ -r ${file_0} ]; then
-	echo "is readable."
+    echo "is readable."
 else
-	echo "is not readable."
+    echo "is not readable."
 fi
 
 if [ -w ${file_0} ]; then
-	echo "is writable."
+    echo "is writable."
 else
-	echo "is not writable."
+    echo "is not writable."
 fi
 
 if [ -x ${file_0} ]; then
-	echo "is executable."
+    echo "is executable."
 else
-	echo "is not executable."
+    echo "is not executable."
 fi
 
 if [ -u ${file_0} ]; then
-	echo "has SUID."
+    echo "has SUID."
 else
-	echo "has no SUID."
+    echo "has no SUID."
 fi
 
 if [ -g ${file_0} ]; then
-	echo "has SGID."
+    echo "has SGID."
 else
-	echo "has no SGID."
+    echo "has no SGID."
 fi
 
 if [ -k ${file_0} ]; then
-	echo "has sticky bit."
+    echo "has sticky bit."
 else
-	echo "has no sticky bit."
+    echo "has no sticky bit."
 fi
 
 if [ -s ${file_0} ]; then
-	echo "is empty file."
+    echo "is empty file."
 else
-	echo "is not empty file."
+    echo "is not empty file."
 fi
 
 if [ ${file_0} -nt ${file_1} ]; then
-	echo "${file_0} newer than ${file_1}"
+    echo "${file_0} newer than ${file_1}"
 else
-	echo "${file_0} not newer than ${file_1}"
+    echo "${file_0} not newer than ${file_1}"
 fi
 
 if [ ${file_0} -ot ${file_1} ]; then
-	echo "${file_0} older than ${file_1}"
+    echo "${file_0} older than ${file_1}"
 else
-	echo "${file_0} not older than ${file_1}"
+    echo "${file_0} not older than ${file_1}"
 fi
 
 if [ ${file_0} -ef ${file_1} ]; then
-	echo "${file_0} and ${file_1} is the same file."
+    echo "${file_0} and ${file_1} is the same file."
 else
-	echo "${file_0} and ${file_1} is not the same file."
+    echo "${file_0} and ${file_1} is not the same file."
 fi
 
 if [ ${integer_0} -eq ${integer_1} ]; then
-	echo "${integer_0} is equal to ${integer_1}."
+    echo "${integer_0} is equal to ${integer_1}."
 else
-	echo "${integer_0} is not equal to ${integer_1}."
+    echo "${integer_0} is not equal to ${integer_1}."
 fi
 
 if [ ${integer_0} -ne ${integer_1} ]; then
-	echo "${integer_0} is not equal to ${integer_1}."
+    echo "${integer_0} is not equal to ${integer_1}."
 else
-	echo "${integer_0} is equal to ${integer_1}."
+    echo "${integer_0} is equal to ${integer_1}."
 fi
 
 if [ ${integer_0} -gt ${integer_1} ]; then
-	echo "${integer_0} is greater than ${integer_1}."
+    echo "${integer_0} is greater than ${integer_1}."
 else
-	echo "${integer_0} is not greater than ${integer_1}."
+    echo "${integer_0} is not greater than ${integer_1}."
 fi
 
 if [ ${integer_0} -lt ${integer_1} ]; then
-	echo "${integer_0} is less than ${integer_1}."
+    echo "${integer_0} is less than ${integer_1}."
 else
-	echo "${integer_0} is not less than ${integer_1}."
+    echo "${integer_0} is not less than ${integer_1}."
 fi
 
 if [ ${integer_0} -ge ${integer_1} ]; then
-	echo "${integer_0} is greater than or equal to ${integer_1}."
+    echo "${integer_0} is greater than or equal to ${integer_1}."
 else
-	echo "${integer_0} is not greater than or equal to ${integer_1}."
+    echo "${integer_0} is not greater than or equal to ${integer_1}."
 fi
 
 if [ ${integer_0} -le ${integer_1} ]; then
-	echo "${integer_0} is less than or equal to ${integer_1}."
+    echo "${integer_0} is less than or equal to ${integer_1}."
 else
-	echo "${integer_0} is not less than or equal to ${integer_1}."
+    echo "${integer_0} is not less than or equal to ${integer_1}."
 fi
 
 if [ -z "${string_0}" ]; then
-	echo "empty string."
+    echo "empty string."
 else
-	echo "not empty string."
+    echo "not empty string."
 fi
 
 if [ -n "${string_0}" ]; then
-	echo "not empty string."
+    echo "not empty string."
 else
-	echo "empty string."
+    echo "empty string."
 fi
 
 if [ "${string_0}" == "${string_1}" ]; then
-	echo "${string_0} equals to ${string_1}"
+    echo "${string_0} equals to ${string_1}"
 else
-	echo "${string_0} not equals to ${string_1}"
+    echo "${string_0} not equals to ${string_1}"
 fi
 
 if [ "${string_0}" != "${string_1}" ]; then
-	echo "${string_0} not equals to ${string_1}"
+    echo "${string_0} not equals to ${string_1}"
 else
-	echo "${string_0} equals to ${string_1}"
+    echo "${string_0} equals to ${string_1}"
 fi
 
 if [ ${integer_0} -ne ${integer_1} -a -n "${string_0}" ]; then
-	echo "${integer_0} not equal to ${integer_1} and ${string_0} is not empty string."
+    echo "${integer_0} not equal to ${integer_1} and ${string_0} is not empty string."
 else
-	echo "${integer_0} equal to ${integer_1} or ${string_0} is empty string."
+    echo "${integer_0} equal to ${integer_1} or ${string_0} is empty string."
 fi
 
 if [ ${integer_0} -ne ${integer_1} -o -n "${string_0}" ]; then
-	echo "${integer_0} not equal to ${integer_1} or ${string_0} is not empty string."
+    echo "${integer_0} not equal to ${integer_1} or ${string_0} is not empty string."
 else
-	echo "${integer_0} equal to ${integer_1} and ${string_0} is empty string."
+    echo "${integer_0} equal to ${integer_1} and ${string_0} is empty string."
 fi
 
 if [ ! -n "${string_0}" ]; then
-	echo "${string_0} is empty string."
+    echo "${string_0} is empty string."
 else
-	echo "${string_0} is not empty string."
+    echo "${string_0} is not empty string."
 fi
 
 # multi [...]
 echo "multi [...]"
 if [ ${integer_0} -ne ${integer_1} ] && [ -n "${string_0}" ]; then
-	echo "${integer_0} not equal to ${integer_1} and ${string_0} is not empty string."
+    echo "${integer_0} not equal to ${integer_1} and ${string_0} is not empty string."
 else
-	echo "${integer_0} equal to ${integer_1} or ${string_0} is empty string."
+    echo "${integer_0} equal to ${integer_1} or ${string_0} is empty string."
 fi
 
 if [ ${integer_0} -ne ${integer_1} ] || [ -n "${string_0}" ]; then
-	echo "${integer_0} not equal to ${integer_1} or ${string_0} is not empty string."
+    echo "${integer_0} not equal to ${integer_1} or ${string_0} is not empty string."
 else
-	echo "${integer_0} equal to ${integer_1} and ${string_0} is empty string."
+    echo "${integer_0} equal to ${integer_1} and ${string_0} is empty string."
 fi
 
 exit 0

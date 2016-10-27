@@ -11,14 +11,26 @@ function show(){
 }
 show "one" "two" "three"
 
-echo "<<info and error>>"
+echo "<<info>>"
 function info() {
 	date=$(date +"%Y/%m/%d %H:%M:%S")
 	echo "${date} ${@}" 
 }
+info "this" "is" "info"
+
+echo "<<error>>"
 function error() {
 	date=$(date +"%Y/%m/%d %H:%M:%S")
 	echo "${date} ${@}" 1>&2
 }
+error "this" "is" "error"
+
+echo "<<execute script>>"
+function executeScript() {
+	"/bin/ls" "${@}"
+	returnCode=$?
+	echo ${returnCode}
+}
+executeScript "/tmp"
 
 exit 0

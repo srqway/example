@@ -27,6 +27,8 @@ echo $((a - b))
 echo $((a * b))
 echo $((a / b))
 echo $((a % b))
+value_0_0=`expr ${a} \* ${b}`
+echo ${value_0_0}
 declare -i value_1=a-b
 echo ${value_1}
 
