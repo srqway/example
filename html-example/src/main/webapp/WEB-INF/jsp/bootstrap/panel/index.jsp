@@ -17,7 +17,7 @@
 <body>
 	<h5>basic panel</h5>
 	<div class="panel panel-default">
-  		<div class="panel-heading">Panel Heading</div>
+		<div class="panel-heading">Panel Heading</div>
 		<div class="panel-body">Panel Body</div>
 		<div class="panel-footer">Panel Footer</div>
 	</div>
@@ -25,12 +25,12 @@
 	<h5>panel group</h5>
 	<div class="panel-group">
 		<div class="panel panel-default">
-	  		<div class="panel-heading">Panel Heading</div>
+			<div class="panel-heading">Panel Heading</div>
 			<div class="panel-body">Panel Body</div>
 			<div class="panel-footer">Panel Footer</div>
 		</div>
 		<div class="panel panel-default">
-	  		<div class="panel-heading">Panel Heading</div>
+			<div class="panel-heading">Panel Heading</div>
 			<div class="panel-body">Panel Body</div>
 			<div class="panel-footer">Panel Footer</div>
 		</div>
@@ -38,27 +38,27 @@
 	<hr>
 	<h5>panels with contextual classes</h5>
 	<div class="panel panel-primary">
-  		<div class="panel-heading">Panel Heading</div>
+		<div class="panel-heading">Panel Heading</div>
 		<div class="panel-body">Panel Body</div>
 		<div class="panel-footer">Panel Footer</div>
 	</div>
 	<div class="panel panel-success">
-  		<div class="panel-heading">Panel Heading</div>
+		<div class="panel-heading">Panel Heading</div>
 		<div class="panel-body">Panel Body</div>
 		<div class="panel-footer">Panel Footer</div>
 	</div>
 	<div class="panel panel-info">
-  		<div class="panel-heading">Panel Heading</div>
+		<div class="panel-heading">Panel Heading</div>
 		<div class="panel-body">Panel Body</div>
 		<div class="panel-footer">Panel Footer</div>
 	</div>
 	<div class="panel panel-warning">
-  		<div class="panel-heading">Panel Heading</div>
+		<div class="panel-heading">Panel Heading</div>
 		<div class="panel-body">Panel Body</div>
 		<div class="panel-footer">Panel Footer</div>
 	</div>
 	<div class="panel panel-danger">
-  		<div class="panel-heading">Panel Heading</div>
+		<div class="panel-heading">Panel Heading</div>
 		<div class="panel-body">Panel Body</div>
 		<div class="panel-footer">Panel Footer</div>
 	</div>
@@ -66,9 +66,7 @@
 	<h5>panels with table</h5>
 	<div class="panel panel-default">
 		<div class="panel-heading">Panel Heading</div>
-		<div class="panel-body">
-			Panel Body
-		</div>
+		<div class="panel-body">Panel Body</div>
 		<table class="table">
 			<thead>
 				<tr>
@@ -100,13 +98,24 @@
 	<h5>panels with list group</h5>
 	<div class="panel panel-default">
 		<div class="panel-heading">Panel Heading</div>
-		<div class="panel-body">
-			Panel Body
-		</div>
+		<div class="panel-body">Panel Body</div>
 		<div class="list-group">
-			<a href="#" class="list-group-item">item 1</a> 
-			<a href="#" class="list-group-item">item 2</a> 
-			<a href="#" class="list-group-item">item 3</a> 
+			<a href="#" class="list-group-item">item 1</a> <a href="#"
+				class="list-group-item">item 2</a> <a href="#"
+				class="list-group-item">item 3</a>
+		</div>
+	</div>
+	<hr>
+	<h5>panels with scollbar</h5>
+	<div class="panel panel-default">
+		<div class="panel-heading">Panel Heading</div>
+		<div class="panel-body" style="max-height: 100px; overflow-y: scroll;">
+			test<br> test<br> test<br> test<br> test<br>
+			test<br> test<br> test<br> test<br> test<br>
+			test<br> test<br> test<br> test<br> test<br>
+			test<br> test<br> test<br> test<br> test<br>
+			test<br> test<br> test<br> test<br> test<br>
+			test<br> test<br> test<br> test<br> test<br>
 		</div>
 	</div>
 </body>
