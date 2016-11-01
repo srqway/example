@@ -1,3 +1,80 @@
+資料來源：JAVA 我的程式比你的快10倍 從概念到工具的極度優化 
+<<傳輸量優先案例>>
+傳輸量優先的方案將儘可能減少系統的執行垃報回收的總時間，
+故可以考慮關注系統傳輸量的平行回收收集器。
+在擁有4GB記憶體和32核心CPU的電腦上，
+進行傳輸量優先的最佳化，
+可用以下參數：
+java -Xmx3800m -Xms3800m -Xmn2g -Xss128k -XX:+UseParallelGC -XX:ParallelGCThreads=20 -XX:+UseParallelOldGC
+-Xmx3800m -Xms3800m:
+設定Java堆積的最大值和初值。
+為了避免執積記憶體的頻繁震盪導致系統性能下降，
+讓最小堆積等於最大堆積是一種比較常用的做法。
+假設將最小堆積設定為最大堆積的一半，
+即1900MB，
+那麼JVM會盡可能在1900MB堆積空間中執行，
+如果這樣，
+它發生GC的可能性就會比較高。
+-Xss128k:
+減少執行緒堆疊的大小。
+這樣可以使剩餘的系統記憶體支援更多的執行緒。
+-Xmn2g:
+設定新生代大小。
+-XX:+UseParallelGC:
+新生代使用平行回收收集器。
+這是一個關注傳輸量的收集器，
+可以盡可能地減少GC時間。
+-XX:ParallelGCThreads:
+設定用於垃報回收的執行緒數，
+大部分的情況下可以和CPU數量相等。
+但在CPU數量比較多的情況下，
+設定相對較小的數值也是合理的。
+-XX:+UseParallelOldGC:
+老年代也使用平行回收收集器。
+
+<<使用大型分頁案例>>
+在Solaris系統中，
+JVM可以支援大型分頁的使用。
+使用大的記憶體分頁可以增強CPU的記憶體定址能力，
+進一步提升系統的效能。
+java -Xmx2506m -Xms2506m -Xmn1536m -Xss128k -XX:+UseParallelGC -XX:parallelGCThreads=20 -XX:+UseParallelOldGC -XX:LargePageSizeInBytes=256m
+-XX:LargePageSizeInBytes:
+設定大型分頁的大小。
+
+<<降低停頓案例>>
+為降低應用軟體在垃報回收時的停頓，
+首先考慮的是使用關注系統停頓的CMS回收器，
+其次，
+為了減少Full GC次數，
+應盡可能將物件預留在新生代，
+因為新生代Minor GC的成本遠遠小於老年代的Full GC。
+java -Xmx3550m -Xms3550m -Xmn2g -Xss128k -XX:ParallelGCThreads=20 -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:SurvivorRatio=8 -XX:TargetSurvivorRatio=90 -XX:MaxTenuringThreshold=31
+-XX:ParallelGCThreads:設定20個執行緒進行垃圾回收。
+-XX:+UseParNewGC:新生代使用平行回收器。
+-XX:+UseConcMarkSweepGC:老年代使用CMS收集器降低停頓。
+-XX:SurvivorRation:設定eden區和survivor區的比例為8:1。
+稍大的survivor空間可以加強在新生代回收生命週期轉短的物件的可能性
+(如果survivor不夠大，
+一些短命的物件可能直接進入老年代，
+這對系統是不利的)。
+-XX:TargetSurvivorRation:
+設定survivor區的可使用率。
+這裡設定為90%，
+則允許90%的survivor空間被使用。
+預設值為50%。
+故該該定加強了survivor區的使用率。
+當儲存的物件超過這個百分比，
+則物件會向老年代壓縮。
+因此，
+這個選項更有助將物件留在新生代。
+-XX:MaxTenuringThreshold:
+設定年輕物件晉升到老年代的年齡。
+預設值是15次，
+也就是說物件經過15次Minor GC仍然存活，
+則進入老年代。
+這裡設定為31，
+即盡可能地將物件儲存在新生代。
+
 reference : https://docs.oracle.com/javase/8/docs/technotes/tools/windows/java.html
 jclasslib : https://github.com/ingokegel/jclasslib
 
