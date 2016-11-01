@@ -31,26 +31,23 @@ public class JqueryController {
 		ModelAndView model = new ModelAndView("jquery/dynamicElementEventBinding");
 		return model;
 	}
-	
+
 	@RequestMapping(value = "/ajax", method = RequestMethod.GET)
 	public String ajax() {
 		return "jquery/ajax";
 	}
 
 	@RequestMapping(value = "/ajaxGetWithBootstrap", method = RequestMethod.GET)
-	public ModelAndView ajaxGetWithBootstrap(
-			HttpServletRequest httpServletRequest)
+	public ModelAndView ajaxGetWithBootstrap(HttpServletRequest httpServletRequest)
 			throws UnsupportedEncodingException {
 		ModelAndView model = new ModelAndView("jquery/ajaxWithBootstrap");
-		String chinese = convertIso88591ToUtf8(httpServletRequest
-				.getParameter("chinese"));
+		String chinese = convertIso88591ToUtf8(httpServletRequest.getParameter("chinese"));
 		model.addObject("chinese", chinese);
 		return model;
 	}
 
 	@RequestMapping(value = "/ajaxPostWithBootstrap", method = RequestMethod.POST)
-	public ModelAndView ajaxPostWithBootstrap(
-			HttpServletRequest httpServletRequest) {
+	public ModelAndView ajaxPostWithBootstrap(HttpServletRequest httpServletRequest) {
 		ModelAndView model = new ModelAndView("jquery/ajaxWithBootstrap");
 		String chinese = httpServletRequest.getParameter("chinese");
 		model.addObject("chinese", chinese);
@@ -70,8 +67,13 @@ public class JqueryController {
 		return callback + "('{\"jsonp\":\"success\"}')";
 	}
 
-	private String convertIso88591ToUtf8(String chinese)
-			throws UnsupportedEncodingException {
+	@ResponseBody
+	@RequestMapping(value = "/ajaxJsonWithChineseResponse", produces = "application/json;charset=UTF-8")
+	public String ajaxJsonWithChineseResponse() {
+		return "[\"中文\"]";
+	}
+
+	private String convertIso88591ToUtf8(String chinese) throws UnsupportedEncodingException {
 		return new String(chinese.getBytes("ISO-8859-1"), "UTF-8");
 	}
 }

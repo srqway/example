@@ -19,6 +19,10 @@
 	<br>
 	<input id="post" type="button" value="post"> 
 	<br>
+	<input id="ajaxJsonWithChineseResponse_get" type="button" value="ajax get json with chinese response">
+	<br>
+	<input id="ajaxJsonWithChineseResponse_post" type="button" value="ajax post json with chinese response"> 
+	<br>
 	<input id="chinese" type="text" value="中文">
 	<br>
 	context : <span id="context"></span>
@@ -39,7 +43,7 @@
 					alert("beforeSend");
 				},
 // 				success : function(data) {
-// 					$('#ajaxGetWithBootstrap').html(data);
+// 					$('#getResult').html(data);
 // 				},
 				complete : function(jqXHR, textStatus) {
 					alert("complete : " + textStatus);
@@ -60,7 +64,7 @@
 				var chinese = $("#chinese").val();
 				setting.data = {"chinese" : chinese};
 				setting.success = function(data) {
-					$('#ajaxGetWithBootstrap').html(data);
+					$('#getResult').html(data);
 				};
 				$.ajax(setting).done(function(data, textStatus,jqXHR) {
 					$(this).html("done : " + textStatus);
@@ -73,7 +77,29 @@
 				var chinese = $("#chinese").val();
 				setting.data = {"chinese" : chinese};
 				setting.success = function(data) {
-					$('#ajaxPostWithBootstrap').html(data);
+					$('#postResult').html(data);
+				};
+				$.ajax(setting).done(function(data, textStatus,jqXHR) {
+					$(this).html("done : " + textStatus);
+				});
+			});
+			
+			$("#ajaxJsonWithChineseResponse_get").on("click", function() {
+				setting.url = "ajaxJsonWithChineseResponse";
+				setting.method = "GET";
+				setting.success = function(data) {
+					$('#getResult').html(data);
+				};
+				$.ajax(setting).done(function(data, textStatus,jqXHR) {
+					$(this).html("done : " + textStatus);
+				});
+			});
+			
+			$("#ajaxJsonWithChineseResponse_post").on("click", function() {
+				setting.url = "ajaxJsonWithChineseResponse";
+				setting.method = "POST";
+				setting.success = function(data) {
+					$('#postResult').html(data);
 				};
 				$.ajax(setting).done(function(data, textStatus,jqXHR) {
 					$(this).html("done : " + textStatus);
@@ -84,10 +110,10 @@
 	<br> 
 	<br> 
 	get : 
-	<div id="ajaxGetWithBootstrap"></div>
+	<div id="getResult"></div>
 	<br>
 	post : 
-	<div id="ajaxPostWithBootstrap"></div>
+	<div id="postResult"></div>
 	<hr>
 </body>
 </html>
