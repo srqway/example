@@ -35,7 +35,7 @@
 				contentType : 'application/x-www-form-urlencoded; charset=UTF-8',	// false, application/json, multipart/form-data, or text/plain
 				context: document.getElementById("context"),
 				cache : false,	// true, false
-				dataType : 'html',	// xml, json, script, or html
+// 				dataType : 'html',	// xml, json, script, or html
 		        ifModified : false, // false, true
 // 		        method : 'GET',	// GET, POST ...
 				timeout : 10000,
@@ -63,6 +63,7 @@
 				setting.method = "GET";
 				var chinese = $("#chinese").val();
 				setting.data = {"chinese" : chinese};
+				setting.dataType = "html";
 				setting.success = function(data) {
 					$('#getResult').html(data);
 				};
@@ -76,6 +77,7 @@
 				setting.method = "POST";
 				var chinese = $("#chinese").val();
 				setting.data = {"chinese" : chinese};
+				setting.dataType = "html";
 				setting.success = function(data) {
 					$('#postResult').html(data);
 				};
@@ -87,6 +89,7 @@
 			$("#ajaxJsonWithChineseResponse_get").on("click", function() {
 				setting.url = "ajaxJsonWithChineseResponse";
 				setting.method = "GET";
+				setting.dataType = "json";
 				setting.success = function(data) {
 					$('#getResult').html(data);
 				};
@@ -98,6 +101,7 @@
 			$("#ajaxJsonWithChineseResponse_post").on("click", function() {
 				setting.url = "ajaxJsonWithChineseResponse";
 				setting.method = "POST";
+				setting.dataType = "json";
 				setting.success = function(data) {
 					$('#postResult').html(data);
 				};
