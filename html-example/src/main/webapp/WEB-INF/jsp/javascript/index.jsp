@@ -11,5 +11,11 @@
 	<br>
 	<a href="xpathOfElement">xpath of element</a>
 	<br>
+	<a href="for">for</a>
+	<br>
+	<a href="switch">switch</a>
+	<br>
+	<a href="while">while</a>
+	<br>
 </body>
 </html>

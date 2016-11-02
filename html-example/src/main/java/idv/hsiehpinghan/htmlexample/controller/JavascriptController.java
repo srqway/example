@@ -1,14 +1,8 @@
 package idv.hsiehpinghan.htmlexample.controller;
 
-import java.io.UnsupportedEncodingException;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/javascript")
@@ -28,4 +22,18 @@ public class JavascriptController {
 		return "javascript/xpathOfElement";
 	}
 
+	@RequestMapping(value = "/for", method = RequestMethod.GET)
+	public String for_() {
+		return "javascript/for";
+	}
+
+	@RequestMapping(value = "/switch", method = RequestMethod.GET)
+	public String switch_() {
+		return "javascript/switch";
+	}
+
+	@RequestMapping(value = "/while", method = RequestMethod.GET)
+	public String while_() {
+		return "javascript/while";
+	}
 }
