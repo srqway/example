@@ -9,6 +9,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import idv.hsiehpinghan.java8example.utility.UrlUtility;
+
 public class HttpPostConnectionTest {
 	private HttpPostConnection connection;
 
@@ -22,13 +24,13 @@ public class HttpPostConnectionTest {
 
 	@Test
 	public void getResponseCode() throws IOException {
-		int responseCode = connection.getResponseCode();
+		int responseCode = UrlUtility.getResponseCode(connection.getConnection());
 		Assert.assertEquals(responseCode, 200);
 	}
 
 	@Test
 	public void getContent() throws IOException {
-		String content = connection.getContent();
+		String content = UrlUtility.getContent(connection.getConnection());
 		System.err.println("content : " + content);
 		Assert.assertFalse(StringUtils.isEmpty(content));
 	}

@@ -7,6 +7,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import idv.hsiehpinghan.java8example.utility.UrlUtility;
+
 public class HttpsConnectionTest {
 	private static final String HTTPS_URL = "https://www.google.com/";
 	private HttpsConnection connection;
@@ -18,13 +20,13 @@ public class HttpsConnectionTest {
 
 	@Test
 	public void getResponseCode() throws IOException {
-		int responseCode = connection.getResponseCode();
+		int responseCode = UrlUtility.getResponseCode(connection.getConnection());
 		Assert.assertEquals(responseCode, 200);
 	}
 
 	@Test
 	public void getContent() throws IOException {
-		String content = connection.getContent();
+		String content = UrlUtility.getContent(connection.getConnection());
 		System.err.println("content : " + content);
 		Assert.assertFalse(StringUtils.isEmpty(content));
 	}

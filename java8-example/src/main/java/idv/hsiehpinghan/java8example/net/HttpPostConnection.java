@@ -1,13 +1,10 @@
 package idv.hsiehpinghan.java8example.net;
 
-import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.Map;
 
 public class HttpPostConnection {
@@ -24,27 +21,12 @@ public class HttpPostConnection {
 		addParameter(parameter);
 	}
 
-	public int getResponseCode() throws IOException {
-		return connection.getResponseCode();
+	public HttpURLConnection getConnection() {
+		return connection;
 	}
 
-	public String getContent() throws IOException {
-		final int SIZE = 1024;
-		BufferedReader reader = null;
-		try {
-			reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-			StringBuilder sb = new StringBuilder();
-			char[] cbuf = new char[SIZE];
-			while (reader.read(cbuf) != -1) {
-				sb.append(cbuf);
-				Arrays.fill(cbuf, '\0');
-			}
-			return sb.toString();
-		} finally {
-			if (reader != null) {
-				reader.close();
-			}
-		}
+	public void setConnection(HttpURLConnection connection) {
+		this.connection = connection;
 	}
 
 	private void addRequestProperties(Map<String, String> requestProperties) {
