@@ -36,4 +36,9 @@ public class JavascriptController {
 	public String while_() {
 		return "javascript/while";
 	}
+
+	@RequestMapping(value = "/regex", method = RequestMethod.GET)
+	public String regex() {
+		return "javascript/regex";
+	}
 }

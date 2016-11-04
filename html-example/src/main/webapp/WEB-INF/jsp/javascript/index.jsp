@@ -17,5 +17,7 @@
 	<br>
 	<a href="while">while</a>
 	<br>
+	<a href="regex">regex</a>
+	<br>
 </body>
 </html>
