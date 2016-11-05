@@ -18,7 +18,7 @@
 	<path id="jar" location="${jarDirectory}/${ant.project.name}.jar" />
 
 	<target name="main" depends="clean,process-resources,compile,package,run" />
-	<target name="test" depends="clean,process-test-resources,test-compile,package,testng" />
+	<target name="test" depends="clean,process-test-resources,test-compile,testng" />
 
 	<target name="clean">
 		<delete dir="${directory}" />
