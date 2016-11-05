@@ -6,9 +6,10 @@
 	<property name="testSourceDirectory" value="src/test/java" />
 	<property name="outputDirectory" value="${directory}/classes" />
 	<property name="testOutputDirectory" value="${directory}/test-classes" />
-	<property name="jarDirectory" value="${directory}/jar" />
 	<property name="resources" value="src/main/resources" />
 	<property name="testResources" value="src/test/resources" />
+	<property name="jarDirectory" value="${directory}/jar" />
+	<property name="reportDirectory" value="test-output" />
 	<property name="main-class" value="idv.hsiehpinghan.antexample.example.Main" />
 
 	<path id="lib">
@@ -17,6 +18,7 @@
 	<path id="jar" location="${jarDirectory}/${ant.project.name}.jar" />
 
 	<target name="main" depends="clean,process-resources,compile,package,run" />
+	<target name="test" depends="clean,process-test-resources,test-compile,package,testng" />
 
 	<target name="clean">
 		<delete dir="${directory}" />
@@ -43,7 +45,12 @@
 
 	<target name="test-compile" depends="compile">
 		<mkdir dir="${testOutputDirectory}" />
-		<javac srcdir="${testSourceDirectory}" destdir="${testOutputDirectory}" classpathref="lib" includeantruntime="false" />
+		<javac srcdir="${testSourceDirectory}" destdir="${testOutputDirectory}" includeantruntime="false">
+			<classpath>
+				<path refid="lib" />
+				<pathelement path="${outputDirectory}" />
+			</classpath>
+		</javac>
 	</target>
 
 	<target name="package">
@@ -62,6 +69,19 @@
 				<path refid="jar" />
 			</classpath>
 		</java>
+	</target>
+
+	<taskdef name="testng" classname="org.testng.TestNGAntTask">
+		<classpath location="${libraryDirectory}/testng-6.9.4.jar" />
+	</taskdef>
+
+	<target name="testng">
+		<mkdir dir="${reportDirectory}" />
+		<testng classpathref="lib" outputDir="${reportDirectory}" haltOnFailure="true">
+			<classpath location="${outputDirectory}" />
+			<classpath location="${testOutputDirectory}" />
+			<classfileset dir="${testOutputDirectory}" includes="**/*.class" />
+		</testng>
 	</target>
 
 </project>
