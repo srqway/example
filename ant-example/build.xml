@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="ant-example" basedir="." default="main">
+	<property name="libraryDirectory" value="lib" />
+	<property name="directory" value="target" />
+	<property name="sourceDirectory" value="src/main/java" />
+	<property name="testSourceDirectory" value="src/test/java" />
+	<property name="outputDirectory" value="${directory}/classes" />
+	<property name="testOutputDirectory" value="${directory}/test-classes" />
+	<property name="jarDirectory" value="${directory}/jar" />
+	<property name="resources" value="src/main/resources" />
+	<property name="testResources" value="src/test/resources" />
+	<property name="main-class" value="idv.hsiehpinghan.antexample.example.Main" />
+
+	<path id="lib">
+		<fileset dir="${libraryDirectory}" includes="**/*.jar" />
+	</path>
+	<path id="jar" location="${jarDirectory}/${ant.project.name}.jar" />
+
+	<target name="main" depends="clean,process-resources,compile,package,run" />
+
+	<target name="clean">
+		<delete dir="${directory}" />
+	</target>
+
+	<target name="process-resources">
+		<mkdir dir="${outputDirectory}" />
+		<copy todir="${outputDirectory}">
+			<fileset dir="${resources}" />
+		</copy>
+	</target>
+
+	<target name="process-test-resources" depends="process-resources">
+		<mkdir dir="${testOutputDirectory}" />
+		<copy todir="${testOutputDirectory}">
+			<fileset dir="${testResources}" />
+		</copy>
+	</target>
+
+	<target name="compile">
+		<mkdir dir="${outputDirectory}" />
+		<javac srcdir="${sourceDirectory}" destdir="${outputDirectory}" classpathref="lib" includeantruntime="false" />
+	</target>
+
+	<target name="test-compile" depends="compile">
+		<mkdir dir="${testOutputDirectory}" />
+		<javac srcdir="${testSourceDirectory}" destdir="${testOutputDirectory}" classpathref="lib" includeantruntime="false" />
+	</target>
+
+	<target name="package">
+		<mkdir dir="${jarDirectory}" />
+		<jar destfile="${jarDirectory}/${ant.project.name}.jar" basedir="${outputDirectory}">
+			<manifest>
+				<attribute name="Main-Class" value="${main-class}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="run">
+		<java fork="true" classname="${main-class}">
+			<classpath>
+				<path refid="lib" />
+				<path refid="jar" />
+			</classpath>
+		</java>
+	</target>
+
+</project>

@@ -1,0 +1,6 @@
+# run main
+Run As->Ant Build...->main
+
+# run test
+Run As->Ant Build...->test
+
