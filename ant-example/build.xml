@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project name="ant-example" basedir="." default="main">
+<project name="ant-example" basedir="." default="main" xmlns:ivy="antlib:org.apache.ivy.ant">
 	<property name="libraryDirectory" value="lib" />
 	<property name="directory" value="target" />
 	<property name="sourceDirectory" value="src/main/java" />
@@ -17,11 +17,15 @@
 	</path>
 	<path id="jar" location="${jarDirectory}/${ant.project.name}.jar" />
 
-	<target name="main" depends="clean,process-resources,compile,package,run" />
-	<target name="test" depends="clean,process-test-resources,test-compile,testng" />
+	<target name="main" depends="clean,resolve,process-resources,compile,package,run" />
+	<target name="test" depends="clean,resolve,process-test-resources,test-compile,testng" />
 
 	<target name="clean">
 		<delete dir="${directory}" />
+	</target>
+
+	<target name="resolve">
+		<ivy:retrieve />
 	</target>
 
 	<target name="process-resources">
