@@ -71,12 +71,11 @@
 		</java>
 	</target>
 
-	<taskdef name="testng" classname="org.testng.TestNGAntTask">
-		<classpath location="${libraryDirectory}/testng-6.9.4.jar" />
-	</taskdef>
-
 	<target name="testng">
 		<mkdir dir="${reportDirectory}" />
+		<taskdef name="testng" classname="org.testng.TestNGAntTask">
+			<classpath location="${libraryDirectory}/testng-6.9.4.jar" />
+		</taskdef>
 		<testng classpathref="lib" outputDir="${reportDirectory}" haltOnFailure="true">
 			<classpath location="${outputDirectory}" />
 			<classpath location="${testOutputDirectory}" />
