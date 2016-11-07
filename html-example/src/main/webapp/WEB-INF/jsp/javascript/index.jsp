@@ -19,5 +19,7 @@
 	<br>
 	<a href="regex">regex</a>
 	<br>
+	<a href="string">string</a>
+	<br>
 </body>
 </html>
