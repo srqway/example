@@ -1,0 +1,9 @@
+# set eclipse ant
+Window->Preferences->Ant->Editor->Runtime->Ant Home->/opt/apache-ant-1.9.4
+
+# run main
+Run As->Ant Build...->main
+
+# run test
+Run As->Ant Build...->test
+
