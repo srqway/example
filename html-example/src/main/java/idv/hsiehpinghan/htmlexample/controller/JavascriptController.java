@@ -41,4 +41,9 @@ public class JavascriptController {
 	public String regex() {
 		return "javascript/regex";
 	}
+
+	@RequestMapping(value = "/string", method = RequestMethod.GET)
+	public String string() {
+		return "javascript/string";
+	}
 }
