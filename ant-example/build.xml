@@ -21,7 +21,7 @@
 	<target name="test" depends="clean,resolve,process-test-resources,test-compile,testng" />
 
 	<target name="clean">
-		<delete dir="${directory}" />
+		<delete includeemptydirs="true" dir="${directory}" />
 	</target>
 
 	<target name="resolve">
