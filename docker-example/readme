@@ -1,0 +1,18 @@
+# install docker
+apt-get install docker.io
+
+# leave container shell
+Ctrl+P -> Ctrl+Q
+
+# attach container
+docker attach [CONTAINER HASH]
+
+# look up images
+docker images
+
+# look up running containers
+docker ps
+
+# kill container
+docker rm [CONTAINER NAME]
+
