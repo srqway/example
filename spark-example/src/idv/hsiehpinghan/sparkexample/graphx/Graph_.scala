@@ -63,7 +63,7 @@ class Graph_ {
 
 }
 
-object Construct_Main extends App {
+object Graph_Main extends App {
   val conf = new SparkConf().setAppName("Graph_")
     .setMaster("local")
   val sc = new SparkContext(conf)
