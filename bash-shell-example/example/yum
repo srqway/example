@@ -13,10 +13,6 @@ yum list extras
 yum list recent
 #     List available packages of different version (ex. yum --showduplicates list httpd)
 yum --showduplicates list <<package>>
-#     List packages dependencies (ex. yum deplist httpd)
-yum deplist <<package>>
-#     List available package groups
-yum grouplist
 
 # Search
 #     search packages with specific keyword (ex. yum search mongodb)
@@ -29,8 +25,6 @@ yum provides <<full file path>>
 yum install <<package_1>> <<package_2>> <<package_3>>
 #     install packages with specific version (ex. yum install httpd-2.4.6-40.el7.centos)
 yum install <<package-version>>
-#     install package groups (ex. yum groupinstall Desktop)
-yum groupinstall <<package group>>
 
 # Remove
 #     remove specific package (ex. yum remove httpd)
@@ -38,8 +32,6 @@ yum remove <<package>>
 yum erase <<package>>
 #     remove unused packages
 yum autoremove
-#     update package groups (ex. yum groupremove Desktop)
-yum groupremove <<package group>>
 
 # Check-update
 #     list all updatable packages
@@ -50,8 +42,6 @@ yum check-update
 yum update
 #     update specific package (ex. yum update httpd)
 yum update <<package>>
-#     update package groups (ex. yum groupupdate Desktop)
-yum groupupdate <<package group>>
 
 # Upgrade
 yum upgrade
@@ -70,6 +60,18 @@ yum clean headers
 #     clean rpm package caches
 yum clean packages
 
+# Package groups
+#     List available package groups
+yum grouplist
+#     install package groups (ex. yum groupinstall Desktop)
+yum groupinstall <<package group>>
+#     update package groups (ex. yum groupupdate Desktop)
+yum groupupdate <<package group>>
+#     remove package groups (ex. yum groupremove Desktop)
+yum groupremove <<package group>>
 
+# Package dependency
+#     List packages dependencies (ex. yum deplist httpd)
+yum deplist <<package>>
 
 
