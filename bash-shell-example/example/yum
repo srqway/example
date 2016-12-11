@@ -1,0 +1,75 @@
+# List
+#     List available and installed packages
+yum list
+#     List available packages
+yum list available
+#     List installed packages
+yum list installed
+#     List updatable packages
+yum list updates
+#     List packages not installed by yum (ex. manual installed rpm packages)
+yum list extras
+#     List installed packages recently
+yum list recent
+#     List available packages of different version (ex. yum --showduplicates list httpd)
+yum --showduplicates list <<package>>
+#     List packages dependencies (ex. yum deplist httpd)
+yum deplist <<package>>
+#     List available package groups
+yum grouplist
+
+# Search
+#     search packages with specific keyword (ex. yum search mongodb)
+yum search <<keyword>>
+#     search packages with specific file (ex. yum provides /etc/sysconfig/docker)
+yum provides <<full file path>>
+
+# Install
+#     install packages (ex. yum install httpd)
+yum install <<package_1>> <<package_2>> <<package_3>>
+#     install packages with specific version (ex. yum install httpd-2.4.6-40.el7.centos)
+yum install <<package-version>>
+#     install package groups (ex. yum groupinstall Desktop)
+yum groupinstall <<package group>>
+
+# Remove
+#     remove specific package (ex. yum remove httpd)
+yum remove <<package>>
+yum erase <<package>>
+#     remove unused packages
+yum autoremove
+#     update package groups (ex. yum groupremove Desktop)
+yum groupremove <<package group>>
+
+# Check-update
+#     list all updatable packages
+yum check-update
+
+# Update
+#     update all installed package
+yum update
+#     update specific package (ex. yum update httpd)
+yum update <<package>>
+#     update package groups (ex. yum groupupdate Desktop)
+yum groupupdate <<package group>>
+
+# Upgrade
+yum upgrade
+
+# Repository
+#     List package repository in using
+yum repolist
+#     List available package repository
+yum repolist all
+
+# Clean 
+#     clean all caches
+yum clean all
+#     clean rpm header caches
+yum clean headers
+#     clean rpm package caches
+yum clean packages
+
+
+
+
