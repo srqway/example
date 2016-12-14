@@ -18,6 +18,13 @@ class Basic {
     l.foreach { (x: Int) => println(x) }
   }
 
+  def println_3() {
+    val int: Int = 3
+    val double: Double = 3.3
+    val string: String = "string"
+    println("int(%d), double(%f), string(%s)".format(int, double, string))
+  }
+
   def unit_0(): Unit = {
     println(Unit)
   }
@@ -120,7 +127,7 @@ class Basic {
     val value = map.get(key)
     val result = value match {
       case Some(s) => s
-      case None =>
+      case None    =>
     }
     println(result)
   }
@@ -173,6 +180,7 @@ object Basic_Main {
     //    b.println_0()
     //    b.println_1()
     //    b.println_2()
+    //    b.println_3()
     //    b.unit_0()
     //    b.unit_1()
     //    b.oneLineExpress_0()

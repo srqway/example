@@ -114,7 +114,7 @@ abstract class AbstractTypesClass {
 
 class AbstractTypesClass_0 extends AbstractTypesClass {
   type T = Int
-  override def method(t: Int): Int = {
+  override def method(t: T): T = {
     t + t
   }
 }
