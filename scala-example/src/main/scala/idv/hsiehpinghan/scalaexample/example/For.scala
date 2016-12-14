@@ -88,14 +88,14 @@ class For {
 
 object For_Main extends App {
   val f = new For
-  f.for_0()
-  f.to_0()
-  f.until_0()
-  f.forIf_0()
-  f.forIf_1()
-  f.forIf_2()
-  f.forIf_3()
-  f.yield_0()
-  f.yield_1()
-  f.elementMatch_0()
+//  f.for_0()
+//  f.to_0()
+//  f.until_0()
+//  f.forIf_0()
+//  f.forIf_1()
+//  f.forIf_2()
+//  f.forIf_3()
+//  f.yield_0()
+//  f.yield_1()
+//  f.elementMatch_0()
 }

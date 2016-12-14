@@ -222,6 +222,10 @@ class Collection {
     println("%s, %d%n".format(s, i))
   }
 
+  def tuple_2(t: Tuple2[String, Long]) {
+    println("%s, %d%n".format(t._1, t._2))
+  }
+
   def set_0() {
     var set = Set("AAA", "BBB")
     set.foreach { println }
@@ -354,6 +358,7 @@ object Collection_Main extends App {
   //  c.listBuffer_0()
   //  c.tuple_0()
   //  c.tuple_1()
+  //  c.tuple_2(("str", 333))
   //  c.set_0()
   //  c.set_1()
   //  c.mutableSet_0()
