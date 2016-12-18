@@ -119,6 +119,12 @@ class AbstractTypesClass_0 extends AbstractTypesClass {
   }
 }
 
+class StructuralTypeClass {
+  def method() {
+    println("StructuralType method")
+  }
+}
+
 object Clazz_Main extends App {
 //  val c = new Clazz(1, 1, 1)
 //  c.add(3)
@@ -166,6 +172,14 @@ object Clazz_Main extends App {
 //  val privateConstructorClass = PrivateConstructorClass(1,2,3)
 //  println(privateConstructorClass)
  
-  val abstractTypesClass_0: AbstractTypesClass_0 = new AbstractTypesClass_0
-  println(abstractTypesClass_0.method(3))
+//  val abstractTypesClass_0: AbstractTypesClass_0 = new AbstractTypesClass_0
+//  println(abstractTypesClass_0.method(3))
+
+//  def structuralTypeTest[T <: { def method(): Unit }](obj: T) {
+//    obj.method()
+//  }
+//  val structuralTypeClass = new StructuralTypeClass
+//  structuralTypeTest(structuralTypeClass)
+  
+  
 }
