@@ -145,6 +145,16 @@ class Basic {
     }
   }
 
+  def partialFunction_1() {
+    val tuples = Array((0, ("A", "a")), (1, ("B", "b")), (2, ("C", "c")))
+    tuples.map { case (i, (x, y)) => "%d%s%s".format(i, x, y) }.foreach { println }
+  }
+
+  def partialFunction_2() {
+    val arrays = Array(Array(0, 1, 2), Array(3, 4, 5), Array(6, 7, 8))
+    arrays.map { case Array(x, y, z) => "%d%d%d".format(x, y, z) }.foreach { println }
+  }
+
   def functionVariable_0() {
     var fun = (x: Int) => x + 1
     println(fun(1))
@@ -204,6 +214,8 @@ object Basic_Main {
     //    b.option_0("some")
     //    b.option_0("none")
     //    b.partialFunction_0()
+    //    b.partialFunction_1()
+    b.partialFunction_2()
     //    b.functionVariable_0()
     //    b.placeholder_0()
     //    b.foldLeft_0()
