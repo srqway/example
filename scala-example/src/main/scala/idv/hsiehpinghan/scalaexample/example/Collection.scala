@@ -1,12 +1,11 @@
 package idv.hsiehpinghan.scalaexample.example
 
-import scala.annotation.migration
 import scala.collection.immutable.List
+import scala.collection.immutable.TreeMap
 import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
 import scala.collection.mutable.ListBuffer
 import scala.collection.mutable.TreeSet
-import scala.collection.immutable.TreeMap
 
 class Collection {
   def array_0() {
@@ -20,6 +19,14 @@ class Collection {
     arr(1) = "bbb"
     arr(2) = "ccc"
     arr.foreach { println }
+  }
+
+  def array_2() {
+    var arr = new Array[String](3)
+    arr(0) = "aaa"
+    arr(1) = "bbb"
+    arr(2) = "ccc"
+    arr.init.foreach { println }
   }
 
   def arrayBuffer_0() {
@@ -322,6 +329,7 @@ object Collection_Main extends App {
   val c = new Collection
   //  c.array_0()
   //  c.array_1()
+  //  c.array_2()
   //  c.arrayBuffer_0()
   //  c.list_0()
   //  c.list_1()
