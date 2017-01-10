@@ -16,9 +16,9 @@
 	</licenses>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<maven.compiler.target>1.6</maven.compiler.target>
-		<encoding>UTF-8</encoding>
 		<scala.version>2.11.5</scala.version>
 		<scala.compat.version>2.11</scala.compat.version>
 		<scalatest.version>2.2.4</scalatest.version>
@@ -46,26 +46,26 @@
 		<sourceDirectory>src/main/scala</sourceDirectory>
 		<testSourceDirectory>src/test/scala</testSourceDirectory>
 		<plugins>
-			<plugin>
-				<groupId>net.alchim31.maven</groupId>
-				<artifactId>scala-maven-plugin</artifactId>
-				<version>3.2.0</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>compile</goal>
-							<goal>testCompile</goal>
-						</goals>
-						<configuration>
-							<args>
-								<arg>-make:transitive</arg>
-								<arg>-dependencyfile</arg>
-								<arg>${project.build.directory}/.scala_dependencies</arg>
-							</args>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>net.alchim31.maven</groupId> -->
+<!-- 				<artifactId>scala-maven-plugin</artifactId> -->
+<!-- 				<version>3.2.0</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<goals> -->
+<!-- 							<goal>compile</goal> -->
+<!-- 							<goal>testCompile</goal> -->
+<!-- 						</goals> -->
+<!-- 						<configuration> -->
+<!-- 							<args> -->
+<!-- 								<arg>-make:transitive</arg> -->
+<!-- 								<arg>-dependencyfile</arg> -->
+<!-- 								<arg>${project.build.directory}/.scala_dependencies</arg> -->
+<!-- 							</args> -->
+<!-- 						</configuration> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>

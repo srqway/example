@@ -127,7 +127,7 @@ class Basic {
     val value = map.get(key)
     val result = value match {
       case Some(s) => s
-      case None    =>
+      case None =>
     }
     println(result)
   }
@@ -182,6 +182,10 @@ class Basic {
     println(foldRight_0_0(list))
   }
   def foldRight_0_0(list: List[String]) = (list :\ "Z")(_ + _)
+
+  def classOf(clazz: Class[_]) {
+    println(clazz)
+  }
 }
 
 object Basic_Main {
@@ -215,11 +219,12 @@ object Basic_Main {
     //    b.option_0("none")
     //    b.partialFunction_0()
     //    b.partialFunction_1()
-    b.partialFunction_2()
+    //    b.partialFunction_2()
     //    b.functionVariable_0()
     //    b.placeholder_0()
     //    b.foldLeft_0()
     //    b.foldLeft_1()
     //    b.foldRight_0()
+    b.classOf(classOf[Int])
   }
 }
