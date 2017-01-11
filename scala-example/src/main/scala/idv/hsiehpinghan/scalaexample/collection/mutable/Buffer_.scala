@@ -1,4 +1,4 @@
-package idv.hsiehpinghan.scalaexample.collection
+package idv.hsiehpinghan.scalaexample.collection.mutable
 
 import scala.collection.mutable.Buffer
 
