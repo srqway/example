@@ -25,6 +25,13 @@ class Basic {
     println("int(%d), double(%f), string(%s)".format(int, double, string))
   }
 
+  def println_4() {
+    val int: Int = 3
+    val double: Double = 3.3
+    val string: String = "string"
+    println(s"int($int), double($double), string($string)")
+  }
+
   def unit_0(): Unit = {
     println(Unit)
   }
@@ -195,6 +202,7 @@ object Basic_Main {
     //    b.println_1()
     //    b.println_2()
     //    b.println_3()
+    b.println_4()
     //    b.unit_0()
     //    b.unit_1()
     //    b.oneLineExpress_0()
@@ -225,6 +233,6 @@ object Basic_Main {
     //    b.foldLeft_0()
     //    b.foldLeft_1()
     //    b.foldRight_0()
-    b.classOf(classOf[Int])
+    //    b.classOf(classOf[Int])
   }
 }
