@@ -1,5 +1,5 @@
 # set up StatET
-<< console >> R CMD javareconf
+<< console >> sudo R CMD javareconf
 << console >> R
 << r console >> install.packages("rJava")
 Windows -> Preferences -> StatEt -> Run/Debug -> R Environments -> Add
