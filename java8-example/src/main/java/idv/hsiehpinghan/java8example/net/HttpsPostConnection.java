@@ -42,6 +42,7 @@ public class HttpsPostConnection {
 		try {
 			outputStream = connection.getOutputStream();
 			dataOutputStream = new DataOutputStream(outputStream);
+			dataOutputStream.writeBytes(parameter);
 			dataOutputStream.flush();
 		} finally {
 			if (dataOutputStream != null) {
