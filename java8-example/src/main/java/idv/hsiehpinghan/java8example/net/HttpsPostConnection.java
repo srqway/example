@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.net.ssl.HttpsURLConnection;
 
 public class HttpsPostConnection {
+	private final int FIVE_SECONDS = 5000;
 	private static final String POST = "POST";
 	private HttpsURLConnection connection;
 
@@ -16,6 +17,8 @@ public class HttpsPostConnection {
 			throws IOException {
 		URL url = new URL(null, httpUrl, new sun.net.www.protocol.https.Handler());
 		connection = (HttpsURLConnection) url.openConnection();
+		connection.setConnectTimeout(FIVE_SECONDS);
+		connection.setReadTimeout(FIVE_SECONDS);
 		connection.setRequestMethod(POST);
 		connection.setDoOutput(true);
 		addRequestProperties(requestProperties);

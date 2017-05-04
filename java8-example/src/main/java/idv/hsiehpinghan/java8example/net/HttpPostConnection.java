@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.Map;
 
 public class HttpPostConnection {
+	private final int FIVE_SECONDS = 5000;
 	private static final String POST = "POST";
 	private HttpURLConnection connection;
 
@@ -15,6 +16,8 @@ public class HttpPostConnection {
 			throws IOException {
 		URL url = new URL(httpUrl);
 		connection = (HttpURLConnection) url.openConnection();
+		connection.setConnectTimeout(FIVE_SECONDS);
+		connection.setReadTimeout(FIVE_SECONDS);
 		connection.setRequestMethod(POST);
 		connection.setDoOutput(true);
 		addRequestProperties(requestProperties);
