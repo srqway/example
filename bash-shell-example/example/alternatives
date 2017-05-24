@@ -1,0 +1,6 @@
+# add java alternatives
+alternatives --install /usr/bin/java java /opt/jdk1.8.0_131/bin/java 9999
+
+# check and choice the java alternatives configured
+alternatives --config java
+
