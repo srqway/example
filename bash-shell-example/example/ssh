@@ -1,6 +1,9 @@
 # ubuntu : install ssh
 apt-get install ssh
 
+# centos : install ssh
+yum install openssh*
+
 # server : allow root ssh login
 #	change "PermitRootLogin without-password" to "PermitRootLogin yes"
 vi /etc/ssh/sshd_config 
