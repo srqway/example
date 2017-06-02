@@ -1,0 +1,13 @@
+# stop pppoe
+vi /etc/network/interfaces
+
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet dhcp
+
+rm /etc/ppp/peers/dsl-provider
+
+reboot
+
