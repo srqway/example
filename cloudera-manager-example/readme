@@ -48,6 +48,13 @@ solution : service cloudera-scm-agent hard_restart_confirmed
 problem : W: Failed to fetch http://tw.archive.ubuntu.com/ubuntu/dists/trusty/InRelease 
 solution : apt-get update
 
+problem : Cloudera recommends setting /proc/sys/vm/swappiness to a maximum of 10. Current setting is 60. Use the sysctl command to change this setting at run time and edit /etc/sysctl.conf for this setting to be saved after a reboot. You can continue with installation, but Cloudera Manager might report that your hosts are unhealthy because they are swapping. The following hosts are affected: 
+solution : 
+    sysctl vm.swappiness=10
+    
+    vi /etc/sysctl.conf
+    vm.swappiness = 10
+
 # reference
 http://www.pynut.com/?p=160
 
