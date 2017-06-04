@@ -1,0 +1,53 @@
+# download cloudera-manager-installer.bin
+https://www.cloudera.com/downloads/manager/5-11-0.html
+
+# change hostname
+<<ubuntu>>
+hostname node0
+
+vi /etc/hostname
+node0
+
+# set /etc/hosts (change 127.0.1.1 to 127.0.0.1)
+192.168.1.108 node0
+192.168.1.112 node1
+
+# set login without password
+https://github.com/hsiehpinghan/example/blob/master/bash-shell-example/example/ssh
+
+# stop iptables
+<<centos>>service iptables stop
+<<ubuntu>>
+
+# disable selinux or apparmor
+<<centos>>
+vi /etc/selinux/config
+SELINUX=disabled
+
+reboot
+
+<<ubuntu>>
+??? service apparmor stop
+??? update-rc.d -f apparmor remove
+??? apt-get remove apparmor apparmor-utils -y
+
+# install ntp
+<<centos>>yum install ntp
+<<ubuntu>>apt-get install ntp
+service ntpd start
+
+# install cloudera-manager-installer.bin (check /var/log/cloudera-*/)
+
+# check port usage
+netstat -putan | grep 7182
+
+# problem & solution
+problem : 18169 MonitorDaemon-Reporter throttling_logger ERROR Error sending messages to firehose: mgmt-SERVICEMONITOR-cbd294141eab27d18ac0987c42334e3c 
+solution : service cloudera-scm-agent hard_restart_confirmed
+
+problem : W: Failed to fetch http://tw.archive.ubuntu.com/ubuntu/dists/trusty/InRelease 
+solution : apt-get update
+
+# reference
+http://www.pynut.com/?p=160
+
