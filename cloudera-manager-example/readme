@@ -15,6 +15,18 @@ node0
 192.168.1.108 node0
 192.168.1.112 node1
 
+# change dhcp to static ip
+vi /etc/sysconfig/network-scripts/ifcfg-eth0
+BOOTPROTO=static
+IPADDR=192.168.1.200
+NETMASK=255.255.255.0
+DNS1=8.8.8.8
+DNS2=192.168.1.1
+
+vi /etc/sysconfig/network
+NETWORKING=yes
+GATEWAY=192.168.1.1
+
 # set login without password
 https://github.com/hsiehpinghan/example/blob/master/bash-shell-example/example/ssh
 
