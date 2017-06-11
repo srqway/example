@@ -74,4 +74,5 @@ yum groupremove <<package group>>
 #     List packages dependencies (ex. yum deplist httpd)
 yum deplist <<package>>
 
-
+# install epel
+yum install epel-release
