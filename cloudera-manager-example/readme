@@ -19,36 +19,36 @@ mkdir -p /usr/share/java/
 cp mysql-connector-java-5.1.42-bin.jar /usr/share/java/mysql-connector-java.jar
 
 # prepare database (reference https://www.cloudera.com/documentation/enterprise/latest/topics/cm_ig_mysql.html#cmig_topic_5_5)
-<<mysql>>GRANT ALL ON *.* TO 'temp'@'%' IDENTIFIED BY '%j6w1oW' WITH GRANT OPTION;
-/usr/share/cmf/schema/scm_prepare_database.sh mysql -h node0 -utemp -p%j6w1oW --scm-host node0 scm scm %j6w1oW
+<<mysql>>GRANT ALL ON *.* TO 'temp'@'%' IDENTIFIED BY '<<password>>' WITH GRANT OPTION;
+/usr/share/cmf/schema/scm_prepare_database.sh mysql -h node0 -utemp -p<<password>> --scm-host node0 scm scm <<password>>
 <<mysql>>DROP USER 'temp'@'%';
 
 CREATE DATABASE amon DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON amon.* TO 'amon'@'%' IDENTIFIED BY '%j6w1oW';
+GRANT ALL ON amon.* TO 'amon'@'%' IDENTIFIED BY '<<password>>';
 
 CREATE DATABASE rman DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON rman.* TO 'rman'@'%' IDENTIFIED BY '%j6w1oW';
+GRANT ALL ON rman.* TO 'rman'@'%' IDENTIFIED BY '<<password>>';
 
 CREATE DATABASE metastore DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON metastore.* TO 'metastore'@'%' IDENTIFIED BY '%j6w1oW';
+GRANT ALL ON metastore.* TO 'metastore'@'%' IDENTIFIED BY '<<password>>';
 
 CREATE DATABASE sentry DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON sentry.* TO 'sentry'@'%' IDENTIFIED BY '%j6w1oW';
+GRANT ALL ON sentry.* TO 'sentry'@'%' IDENTIFIED BY '<<password>>';
 
 CREATE DATABASE nav DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON nav.* TO 'nav'@'%' IDENTIFIED BY '%j6w1oW';
+GRANT ALL ON nav.* TO 'nav'@'%' IDENTIFIED BY '<<password>>';
 
 CREATE DATABASE navms DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON navms.* TO 'navms'@'%' IDENTIFIED BY '%j6w1oW';
+GRANT ALL ON navms.* TO 'navms'@'%' IDENTIFIED BY '<<password>>';
 
 CREATE DATABASE hue DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON hue.* TO 'hue'@'%' IDENTIFIED BY '%j6w1oW';
+GRANT ALL ON hue.* TO 'hue'@'%' IDENTIFIED BY '<<password>>';
 
 CREATE DATABASE oozie DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON oozie.* TO 'oozie'@'%' IDENTIFIED BY '%j6w1oW';
+GRANT ALL ON oozie.* TO 'oozie'@'%' IDENTIFIED BY '<<password>>';
 
 CREATE DATABASE hive DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON hive.* TO 'hive'@'%' IDENTIFIED BY '%j6w1oW';
+GRANT ALL ON hive.* TO 'hive'@'%' IDENTIFIED BY '<<password>>';
 
 rm /etc/cloudera-scm-server/db.mgmt.properties
 
