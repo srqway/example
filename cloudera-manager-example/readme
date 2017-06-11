@@ -11,14 +11,46 @@ vi /etc/profile
 # install mysql
 https://github.com/hsiehpinghan/assistant/blob/master/mysql-assistant/readme
 
+# config mysql (reference https://www.cloudera.com/documentation/enterprise/latest/topics/cm_ig_mysql.html#cmig_topic_5_5)g
+vi /etc/my.cnf
+
+# installing the mysql jdbc driver to nodes
+mkdir -p /usr/share/java/
+cp mysql-connector-java-5.1.42-bin.jar /usr/share/java/mysql-connector-java.jar
+
 # prepare database (reference https://www.cloudera.com/documentation/enterprise/latest/topics/cm_ig_mysql.html#cmig_topic_5_5)
-/usr/share/cmf/schema/scm_prepare_database.sh mysql scm scm scm
+<<mysql>>GRANT ALL ON *.* TO 'temp'@'%' IDENTIFIED BY '%j6w1oW' WITH GRANT OPTION;
+/usr/share/cmf/schema/scm_prepare_database.sh mysql -h node0 -utemp -p%j6w1oW --scm-host node0 scm scm %j6w1oW
+<<mysql>>DROP USER 'temp'@'%';
+
+CREATE DATABASE amon DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON amon.* TO 'amon'@'%' IDENTIFIED BY '%j6w1oW';
+
+CREATE DATABASE rman DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON rman.* TO 'rman'@'%' IDENTIFIED BY '%j6w1oW';
+
+CREATE DATABASE metastore DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON metastore.* TO 'metastore'@'%' IDENTIFIED BY '%j6w1oW';
+
+CREATE DATABASE sentry DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON sentry.* TO 'sentry'@'%' IDENTIFIED BY '%j6w1oW';
+
+CREATE DATABASE nav DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON nav.* TO 'nav'@'%' IDENTIFIED BY '%j6w1oW';
+
+CREATE DATABASE navms DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON navms.* TO 'navms'@'%' IDENTIFIED BY '%j6w1oW';
+
+CREATE DATABASE hue DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON hue.* TO 'hue'@'%' IDENTIFIED BY '%j6w1oW';
+
+CREATE DATABASE oozie DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON oozie.* TO 'oozie'@'%' IDENTIFIED BY '%j6w1oW';
+
+CREATE DATABASE hive DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON hive.* TO 'hive'@'%' IDENTIFIED BY '%j6w1oW';
+
 rm /etc/cloudera-scm-server/db.mgmt.properties
-
-
-
-
-
 
 # download cloudera-manager-installer.bin
 https://www.cloudera.com/downloads/manager/5-11-0.html
@@ -84,7 +116,7 @@ service ntp start
 # check port usage
 netstat -putan | grep 7182
 
-# problem & solution
+# problem & solutionhttp://cloudjie.iteye.com/blog/2296203
 problem : 18169 MonitorDaemon-Reporter throttling_logger ERROR Error sending messages to firehose: mgmt-SERVICEMONITOR-cbd294141eab27d18ac0987c42334e3c 
 solution : service cloudera-scm-agent hard_restart_confirmed
 
@@ -126,8 +158,10 @@ apt-get remove cloudera-manager-client
 
 
 # reference
+https://www.cloudera.com/documentation/enterprise/latest/topics/installation_installation.html
 https://geosmart.github.io/2015/10/20/Hadoop%E9%9B%86%E7%BE%A4%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2/
 http://blog.csdn.net/scgaliguodong123_/article/details/46661881
 http://www.pynut.com/?p=160
 http://blog.csdn.net/shawnhu007/article/details/52579204
+http://cloudjie.iteye.com/blog/2296203
 
