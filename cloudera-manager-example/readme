@@ -1,5 +1,24 @@
-# check java version and install java
+# check support version
 https://www.cloudera.com/documentation/enterprise/release-notes/topics/rn_consolidated_pcm.html
+
+# install java with rpm
+rpm -qa | grep java
+rpm -e --nodeps <<openjdk package>>
+yum install <<java rpm>>
+vi /etc/profile
+    JAVA_HOME=/usr/java/latest/
+
+# install mysql
+https://github.com/hsiehpinghan/assistant/blob/master/mysql-assistant/readme
+
+# prepare database (reference https://www.cloudera.com/documentation/enterprise/latest/topics/cm_ig_mysql.html#cmig_topic_5_5)
+/usr/share/cmf/schema/scm_prepare_database.sh mysql scm scm scm
+rm /etc/cloudera-scm-server/db.mgmt.properties
+
+
+
+
+
 
 # download cloudera-manager-installer.bin
 https://www.cloudera.com/downloads/manager/5-11-0.html
@@ -12,8 +31,9 @@ vi /etc/hostname
 node0
 
 # set /etc/hosts (change 127.0.1.1 to 127.0.0.1)
-192.168.1.108 node0
-192.168.1.112 node1
+192.168.1.200 node0
+192.168.1.201 node1
+192.168.1.202 node2
 
 # change dhcp to static ip
 vi /etc/sysconfig/network-scripts/ifcfg-eth0
@@ -31,9 +51,13 @@ GATEWAY=192.168.1.1
 https://github.com/hsiehpinghan/example/blob/master/bash-shell-example/example/ssh
 
 # stop iptables
-<<centos>>service iptables stop
-<<ubuntu>>
-
+<<centos 6>>
+    service iptables stop
+    chkconfig iptables off
+<<centos 7>>
+    systemctl stop firewalld
+    systemctl disable firewalld
+    
 # disable selinux or apparmor
 <<centos>>
 vi /etc/selinux/config
@@ -47,7 +71,8 @@ reboot
 ??? apt-get remove apparmor apparmor-utils -y
 
 # install ntp
-<<centos>>yum install ntp
+<<centos>>
+yum install ntp
 service ntpd start
 chkconfig ntpd on
 
@@ -101,5 +126,8 @@ apt-get remove cloudera-manager-client
 
 
 # reference
+https://geosmart.github.io/2015/10/20/Hadoop%E9%9B%86%E7%BE%A4%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2/
+http://blog.csdn.net/scgaliguodong123_/article/details/46661881
 http://www.pynut.com/?p=160
 http://blog.csdn.net/shawnhu007/article/details/52579204
+
