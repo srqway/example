@@ -11,7 +11,7 @@ vi /etc/profile
 # install mysql
 https://github.com/hsiehpinghan/assistant/blob/master/mysql-assistant/readme
 
-# config mysql (reference https://www.cloudera.com/documentation/enterprise/latest/topics/cm_ig_mysql.html#cmig_topic_5_5)g
+# config mysql (reference https://www.cloudera.com/documentation/enterprise/latest/topics/cm_ig_mysql.html#cmig_topic_5_5)
 vi /etc/my.cnf
 
 # installing the mysql jdbc driver to nodes
