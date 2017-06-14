@@ -18,43 +18,6 @@ vi /etc/my.cnf
 mkdir -p /usr/share/java/
 cp mysql-connector-java-5.1.42-bin.jar /usr/share/java/mysql-connector-java.jar
 
-# prepare database (reference https://www.cloudera.com/documentation/enterprise/latest/topics/cm_ig_mysql.html#cmig_topic_5_5)
-<<mysql>>GRANT ALL ON *.* TO 'temp'@'%' IDENTIFIED BY '<<password>>' WITH GRANT OPTION;
-/usr/share/cmf/schema/scm_prepare_database.sh mysql -h node0 -utemp -p<<password>> --scm-host node0 scm scm <<password>>
-<<mysql>>DROP USER 'temp'@'%';
-
-CREATE DATABASE amon DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON amon.* TO 'amon'@'%' IDENTIFIED BY '<<password>>';
-
-CREATE DATABASE rman DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON rman.* TO 'rman'@'%' IDENTIFIED BY '<<password>>';
-
-CREATE DATABASE metastore DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON metastore.* TO 'metastore'@'%' IDENTIFIED BY '<<password>>';
-
-CREATE DATABASE sentry DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON sentry.* TO 'sentry'@'%' IDENTIFIED BY '<<password>>';
-
-CREATE DATABASE nav DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON nav.* TO 'nav'@'%' IDENTIFIED BY '<<password>>';
-
-CREATE DATABASE navms DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON navms.* TO 'navms'@'%' IDENTIFIED BY '<<password>>';
-
-CREATE DATABASE hue DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON hue.* TO 'hue'@'%' IDENTIFIED BY '<<password>>';
-
-CREATE DATABASE oozie DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON oozie.* TO 'oozie'@'%' IDENTIFIED BY '<<password>>';
-
-CREATE DATABASE hive DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON hive.* TO 'hive'@'%' IDENTIFIED BY '<<password>>';
-
-rm /etc/cloudera-scm-server/db.mgmt.properties
-
-# download cloudera-manager-installer.bin
-https://www.cloudera.com/downloads/manager/5-11-0.html
-
 # change hostname
 <<ubuntu>>
 hostname node0
@@ -111,6 +74,9 @@ chkconfig ntpd on
 <<ubuntu>>apt-get install ntp
 service ntp start
 
+# download cloudera-manager-installer.bin
+https://www.cloudera.com/downloads/manager/5-11-0.html
+
 # install cloudera-manager-installer.bin (check /var/log/cloudera-*/)
 
 # check port usage
@@ -146,6 +112,49 @@ problem : W: GPG error: https://archive.cloudera.com trusty-cm5.11.0 InRelease: 
 solution :
     sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 327574EE02A818DD
     apt-get update
+
+problem : Cannnot start Cloudera Management Service
+solution :
+    <</var/log/cloudera-scm-agent/cloudera-scm-agent.log>>[14/Jun/2017 21:51:13 +0000] 22042 MainThread agent        ERROR    Error, CM server guid updated, expected eeb86fa5-cadd-4bf8-9cf4-d7caab539a2b, received bdf48ef8-4822-4823-b302-0872393a9097
+    rm /var/lib/cloudera-scm-agent/cm_guid
+    service cloudera-scm-agent restart
+
+# prepare database (reference https://www.cloudera.com/documentation/enterprise/latest/topics/cm_ig_mysql.html#cmig_topic_5_5)
+<<mysql>>GRANT ALL ON *.* TO 'temp'@'%' IDENTIFIED BY '<<password>>' WITH GRANT OPTION;
+/usr/share/cmf/schema/scm_prepare_database.sh mysql -h node0 -utemp -p<<password>> --scm-host node0 scm scm <<password>>
+<<mysql>>DROP USER 'temp'@'%';
+
+CREATE DATABASE amon DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON amon.* TO 'amon'@'%' IDENTIFIED BY '<<password>>';
+
+CREATE DATABASE rman DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON rman.* TO 'rman'@'%' IDENTIFIED BY '<<password>>';
+
+CREATE DATABASE metastore DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON metastore.* TO 'metastore'@'%' IDENTIFIED BY '<<password>>';
+
+CREATE DATABASE sentry DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON sentry.* TO 'sentry'@'%' IDENTIFIED BY '<<password>>';
+
+CREATE DATABASE nav DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON nav.* TO 'nav'@'%' IDENTIFIED BY '<<password>>';
+
+CREATE DATABASE navms DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON navms.* TO 'navms'@'%' IDENTIFIED BY '<<password>>';
+
+CREATE DATABASE hue DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON hue.* TO 'hue'@'%' IDENTIFIED BY '<<password>>';
+
+CREATE DATABASE oozie DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON oozie.* TO 'oozie'@'%' IDENTIFIED BY '<<password>>';
+
+CREATE DATABASE oozie_oozie_server DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON oozie_oozie_server.* TO 'oozie_oozie_server'@'%' IDENTIFIED BY '<<password>>';
+
+CREATE DATABASE hive DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON hive.* TO 'hive'@'%' IDENTIFIED BY '<<password>>';
+
+rm /etc/cloudera-scm-server/db.mgmt.properties
 
 # uninstall cloudera manager
 apt-get remove cloudera-manager-daemons
