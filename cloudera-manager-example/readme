@@ -119,6 +119,17 @@ solution :
     rm /var/lib/cloudera-scm-agent/cm_guid
     service cloudera-scm-agent restart
 
+problem : cannot switch to oozie
+solution :
+    vi /etc/passwd
+    oozie:x:483:479:Oozie User:/var/lib/oozie:/bin/bash
+
+problem : oozie execute ssh has "Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password)." problem.
+solution :
+    cp /root/.ssh/authorized_keys /var/lib/oozie/.ssh/
+    cp /root/.ssh/id_rsa /var/lib/oozie/.ssh/
+    
+
 # prepare database (reference https://www.cloudera.com/documentation/enterprise/latest/topics/cm_ig_mysql.html#cmig_topic_5_5)
 <<mysql>>GRANT ALL ON *.* TO 'temp'@'%' IDENTIFIED BY '<<password>>' WITH GRANT OPTION;
 /usr/share/cmf/schema/scm_prepare_database.sh mysql -h node0 -utemp -p<<password>> --scm-host node0 scm scm <<password>>
