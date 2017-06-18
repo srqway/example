@@ -32,6 +32,12 @@ node0
 
 # change dhcp to static ip
 vi /etc/sysconfig/network-scripts/ifcfg-eth0
+DEVICE=eth0
+HWADDR=40:61:86:02:D7:D3
+TYPE=Ethernet
+UUID=b90eb590-757f-464e-82ab-c9cd9dccc38c
+ONBOOT=yes
+NM_CONTROLLED=yes
 BOOTPROTO=static
 IPADDR=192.168.1.200
 NETMASK=255.255.255.0
@@ -40,6 +46,7 @@ DNS2=192.168.1.1
 
 vi /etc/sysconfig/network
 NETWORKING=yes
+HOSTNAME=node0
 GATEWAY=192.168.1.1
 
 # set login without password
