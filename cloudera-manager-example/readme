@@ -83,6 +83,7 @@ service ntp start
 
 # download cloudera-manager-installer.bin
 https://www.cloudera.com/downloads/manager/5-11-0.html
+wget http://archive.cloudera.com/cm5/installer/latest/cloudera-manager-installer.bin
 
 # install cloudera-manager-installer.bin (check /var/log/cloudera-*/)
 

@@ -76,3 +76,11 @@ yum deplist <<package>>
 
 # install epel
 yum install epel-release
+
+# install desktop
+yum groupinstall "X Window System" "Desktop" "Fonts" "General Purpose Desktop"
+
+# install firefox
+yum install firefox
+
+
