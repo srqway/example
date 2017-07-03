@@ -90,6 +90,43 @@ wget http://archive.cloudera.com/cm5/installer/latest/cloudera-manager-installer
 # check port usage
 netstat -putan | grep 7182
 
+# prepare database (reference https://www.cloudera.com/documentation/enterprise/latest/topics/cm_ig_mysql.html#cmig_topic_5_5)
+<<mysql>>GRANT ALL ON *.* TO 'temp'@'%' IDENTIFIED BY '<<password>>' WITH GRANT OPTION;
+/usr/share/cmf/schema/scm_prepare_database.sh mysql -h node0 -utemp -p<<password>> --scm-host node0 scm scm <<password>>
+<<mysql>>DROP USER 'temp'@'%';
+
+CREATE DATABASE amon DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON amon.* TO 'amon'@'%' IDENTIFIED BY '<<password>>';
+
+CREATE DATABASE rman DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON rman.* TO 'rman'@'%' IDENTIFIED BY '<<password>>';
+
+CREATE DATABASE metastore DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON metastore.* TO 'metastore'@'%' IDENTIFIED BY '<<password>>';
+
+CREATE DATABASE sentry DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON sentry.* TO 'sentry'@'%' IDENTIFIED BY '<<password>>';
+
+CREATE DATABASE nav DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON nav.* TO 'nav'@'%' IDENTIFIED BY '<<password>>';
+
+CREATE DATABASE navms DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON navms.* TO 'navms'@'%' IDENTIFIED BY '<<password>>';
+
+CREATE DATABASE hue DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON hue.* TO 'hue'@'%' IDENTIFIED BY '<<password>>';
+
+CREATE DATABASE oozie DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON oozie.* TO 'oozie'@'%' IDENTIFIED BY '<<password>>';
+
+CREATE DATABASE oozie_oozie_server DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON oozie_oozie_server.* TO 'oozie_oozie_server'@'%' IDENTIFIED BY '<<password>>';
+
+CREATE DATABASE hive DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL ON hive.* TO 'hive'@'%' IDENTIFIED BY '<<password>>';
+
+rm /etc/cloudera-scm-server/db.mgmt.properties
+
 # problem & solutionhttp://cloudjie.iteye.com/blog/2296203
 problem : 18169 MonitorDaemon-Reporter throttling_logger ERROR Error sending messages to firehose: mgmt-SERVICEMONITOR-cbd294141eab27d18ac0987c42334e3c 
 solution : service cloudera-scm-agent hard_restart_confirmed
@@ -137,43 +174,6 @@ solution :
     cp /root/.ssh/authorized_keys /var/lib/oozie/.ssh/
     cp /root/.ssh/id_rsa /var/lib/oozie/.ssh/
     
-
-# prepare database (reference https://www.cloudera.com/documentation/enterprise/latest/topics/cm_ig_mysql.html#cmig_topic_5_5)
-<<mysql>>GRANT ALL ON *.* TO 'temp'@'%' IDENTIFIED BY '<<password>>' WITH GRANT OPTION;
-/usr/share/cmf/schema/scm_prepare_database.sh mysql -h node0 -utemp -p<<password>> --scm-host node0 scm scm <<password>>
-<<mysql>>DROP USER 'temp'@'%';
-
-CREATE DATABASE amon DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON amon.* TO 'amon'@'%' IDENTIFIED BY '<<password>>';
-
-CREATE DATABASE rman DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON rman.* TO 'rman'@'%' IDENTIFIED BY '<<password>>';
-
-CREATE DATABASE metastore DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON metastore.* TO 'metastore'@'%' IDENTIFIED BY '<<password>>';
-
-CREATE DATABASE sentry DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON sentry.* TO 'sentry'@'%' IDENTIFIED BY '<<password>>';
-
-CREATE DATABASE nav DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON nav.* TO 'nav'@'%' IDENTIFIED BY '<<password>>';
-
-CREATE DATABASE navms DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON navms.* TO 'navms'@'%' IDENTIFIED BY '<<password>>';
-
-CREATE DATABASE hue DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON hue.* TO 'hue'@'%' IDENTIFIED BY '<<password>>';
-
-CREATE DATABASE oozie DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON oozie.* TO 'oozie'@'%' IDENTIFIED BY '<<password>>';
-
-CREATE DATABASE oozie_oozie_server DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON oozie_oozie_server.* TO 'oozie_oozie_server'@'%' IDENTIFIED BY '<<password>>';
-
-CREATE DATABASE hive DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL ON hive.* TO 'hive'@'%' IDENTIFIED BY '<<password>>';
-
-rm /etc/cloudera-scm-server/db.mgmt.properties
 
 # uninstall cloudera manager
 apt-get remove cloudera-manager-daemons
