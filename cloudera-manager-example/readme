@@ -86,6 +86,8 @@ https://www.cloudera.com/downloads/manager/5-11-0.html
 wget http://archive.cloudera.com/cm5/installer/latest/cloudera-manager-installer.bin
 
 # install cloudera-manager-installer.bin (check /var/log/cloudera-*/)
+rm /etc/cloudera-scm-server/db.mgmt.properties
+reboot
 
 # check port usage
 netstat -putan | grep 7182
@@ -124,8 +126,6 @@ GRANT ALL ON oozie_oozie_server.* TO 'oozie_oozie_server'@'%' IDENTIFIED BY '<<p
 
 CREATE DATABASE hive DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 GRANT ALL ON hive.* TO 'hive'@'%' IDENTIFIED BY '<<password>>';
-
-rm /etc/cloudera-scm-server/db.mgmt.properties
 
 # problem & solutionhttp://cloudjie.iteye.com/blog/2296203
 problem : 18169 MonitorDaemon-Reporter throttling_logger ERROR Error sending messages to firehose: mgmt-SERVICEMONITOR-cbd294141eab27d18ac0987c42334e3c 
@@ -174,7 +174,21 @@ solution :
     cp /root/.ssh/authorized_keys /var/lib/oozie/.ssh/
     cp /root/.ssh/id_rsa /var/lib/oozie/.ssh/
     
-
+problem : service cloudera-scm-agent status --> cloudera-scm-agent dead but pid file exists
+solution : 
+  a. rm /var/run/cloudera-scm-agent/cloudera-scm-agent.pid
+  b. service cloudera-scm-agent start
+  
+problem : change ip address for existing nodes
+solution : 
+  a. <<node0>> service cloudera-scm-server stop
+  b. <<node[0-2]>>service cloudera-scm-agent hard_stop_confirmed
+???  c. <<node[0-2]>>rm /var/lib/cloudera-scm-agent/uuid
+???  d. <<node[0-2]>>rm /var/lib/cloudera-scm-agent/response.avro
+  e. <<node[0-2]>>make sure /etc/cloudera-scm-agent/config.ini is pointing to the right CM server.
+  f. <<node0>>service cloudera-scm-server start
+  g. <<node[0-2]>>service cloudera-scm-agent clean_start
+  
 # uninstall cloudera manager
 apt-get remove cloudera-manager-daemons
 apt-get remove cloudera-manager-repository
