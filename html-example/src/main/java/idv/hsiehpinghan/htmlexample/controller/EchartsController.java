@@ -97,6 +97,18 @@ public class EchartsController {
 		return model;
 	}
 
+	@RequestMapping(value = "/pie/index", method = RequestMethod.GET)
+	public ModelAndView pie() {
+		ModelAndView model = new ModelAndView("echarts/pie/index");
+		return model;
+	}
+	
+	@RequestMapping(value = "/pie/basicPie", method = RequestMethod.GET)
+	public ModelAndView basicPie() {
+		ModelAndView model = new ModelAndView("echarts/pie/basicPie");
+		return model;
+	}
+	
 	@RequestMapping(value = "/component/index", method = RequestMethod.GET)
 	public ModelAndView compoment() {
 		ModelAndView model = new ModelAndView("echarts/component/index");

@@ -20,6 +20,8 @@
 	<br>
 	<a href="treeMap/index">tree map</a>
 	<br>
+	<a href="pie/index">pie</a>
+	<br>
 	<a href="component/index">component</a>
 	<br>
 	<a href="instanceMethod/index">instance method</a>
