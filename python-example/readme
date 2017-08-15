@@ -1,0 +1,15 @@
+# install python in centos (https://www.digitalocean.com/community/tutorials/how-to-set-up-python-2-7-6-and-3-3-3-on-centos-6-4)
+yum groupinstall development
+//yum install -y zlib-dev openssl-devel sqlite-devel bzip2-devel
+cd /tmp
+wget https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz
+tar xvfz Python-2.7.13.tgz -C .
+cd Python-2.7.13
+./configure --prefix=/usr/local
+make
+make altinstall
+
+
+
+
+
