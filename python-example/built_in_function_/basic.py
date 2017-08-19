@@ -155,7 +155,7 @@ print(hex(255))
 print("<<id('id')>>")
 print(id('id'))
 
-#print("<<id('id')>>")
+#print("input('please key in (2+3) : '")
 #print(input('please key in (2+3) : '))
 
 print("<<int('100', base=10)>>")
