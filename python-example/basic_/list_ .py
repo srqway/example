@@ -4,7 +4,7 @@
 from __future__ import division
 from __future__ import print_function
 
-print("<<[n * 3 + 1 for n in numbers_0 if n % 2 == 0]:>>")
+print("<<[n_0 + str(n_1) for n_0 in numbers_0_0 for n_1 in numbers_0_1 if n_1 % 2 == 0]:>>")
 numbers_0_0 = ["a", "b", "c"]
 numbers_0_1 = [1, 2, 3, 4, 5]
 list_0 = [n_0 + str(n_1) for n_0 in numbers_0_0 for n_1 in numbers_0_1 if n_1 % 2 == 0]
