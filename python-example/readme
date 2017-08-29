@@ -1,0 +1,25 @@
+# install python 2.7 in centos (https://www.digitalocean.com/community/tutorials/how-to-set-up-python-2-7-6-and-3-3-3-on-centos-6-4)
+yum groupinstall development
+cd /tmp
+wget https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz
+tar xvfz Python-2.7.13.tgz -C .
+cd Python-2.7.13
+./configure --prefix=/usr/local
+make
+make altinstall
+
+# install python 3.5 in centos (https://www.digitalocean.com/community/tutorials/how-to-set-up-python-2-7-6-and-3-3-3-on-centos-6-4)
+yum groupinstall development
+cd /tmp
+wget https://www.python.org/ftp/python/3.5.4/Python-3.5.4.tgz
+tar xvfz Python-3.5.4.tgz -C .
+cd Python-3.5.4
+./configure --prefix=/usr/local
+make
+make altinstall
+
+
+
+
+
+
