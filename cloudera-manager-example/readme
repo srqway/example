@@ -87,6 +87,10 @@ wget http://archive.cloudera.com/cm5/installer/latest/cloudera-manager-installer
 
 # install cloudera-manager-installer.bin (check /var/log/cloudera-*/)
 
+# check all hosts have the same java version
+Hosts -> All Hosts -> node? -> Components -> Java 8
+Hosts -> All Hosts -> node? -> Configuration -> Java Home Directory
+
 # check port usage
 netstat -putan | grep 7182
 
