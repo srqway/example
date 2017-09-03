@@ -22,7 +22,7 @@ for i in bool_0:
     print(i, ' : ', bool(i))
 
 print("<<bytearray('bytearray')>>")
-print(bytearray('bytearray'))
+print(bytearray('bytearray', encoding='utf-8'))
 
 print("<<callable(callable_)>>")
 def callable_(x,y):
@@ -40,8 +40,8 @@ class ClassmethodClass():
         return 2 * cls.x
 print(ClassmethodClass.function_0())
 
-print("<<cmp(1,2)>>")
-print(cmp(1,2))
+#print("<<cmp(1,2)>>")
+#print(cmp(1,2))
 
 print("<<compile(contents, 'compile_module.py', 'exec')>>")
 with open('compile_module.py') as f:
@@ -86,11 +86,11 @@ print("<<eval('eval_0 * 5')>>")
 eval_0 = 10
 print(eval('eval_0 * 5'))
 
-print("<<execfile('compile_module.py')>>")
-execfile('compile_module.py')
+#print("<<execfile('compile_module.py')>>")
+#execfile('compile_module.py')
 
-print("<<file('compile_module.py')>>")
-print(file('compile_module.py'))
+#print("<<file('compile_module.py')>>")
+#print(file('compile_module.py'))
 
 print("<<filter(starts_with_vowel, ['hello', 'apple', 'excellent', 'dictionary', 'our'])>>")
 def starts_with_vowel(the_str):
@@ -113,7 +113,7 @@ print(format(-5, "-"))
 print(format(5, " "))
 print(format(.123, "^010"))
 print(format(3, "#b"))
-print(format(65, "#c"))
+#print(format(65, "#c"))
 print(format(3, "#d"))
 print(format(3, "#o"))
 print(format(65, "#x"))
@@ -161,8 +161,8 @@ print(id('id'))
 print("<<int('100', base=10)>>")
 print(int('100', base=10))
 
-print("<<isinstance('isinstance', basestring)>>")
-print(isinstance('isinstance', basestring))
+#print("<<isinstance('isinstance', basestring)>>")
+#print(isinstance('isinstance', basestring))
 
 class IssubclassClass():
     def function_0(self):
@@ -186,8 +186,8 @@ print(list('abc'))
 print("<<locals()>>")
 print(locals())
 
-print("<<long('100', base=10)>>")
-print(long('100', base=10))
+#print("<<long('100', base=10)>>")
+#print(long('100', base=10))
 
 print("<<map(sqr, map_0)>>")
 map_0 = [1, 2, 3, 4, 5]
@@ -242,11 +242,11 @@ print(range(5, 20, 3))
 #print("<<raw_input>>")
 #print(raw_input('please key in : '))
 
-print("<<reduce(sum_, reduce_0)>>")
-reduce_0 = [1, 2, 3, 4, 5]
-def sum_(x, y):
-    return x + y
-print(reduce(sum_, reduce_0))
+#print("<<reduce(sum_, reduce_0)>>")
+#reduce_0 = [1, 2, 3, 4, 5]
+#def sum_(x, y):
+#    return x + y
+#print(reduce(sum_, reduce_0))
 
 print("<<repr('repr')>>")
 print(repr('repr'))
@@ -276,6 +276,9 @@ print(slice_0.start, slice_0.stop, slice_0.step)
 print("<<sorted([2, 4, 3, 5, 1])>>")
 print(sorted([2, 4, 3, 5, 1]))
 
+print("<<sorted([2, '4', 3, '5', 1])>>")
+print(sorted([2, '4', 3, '5', 1], key=int))
+
 print("<<@staticmethod>>")
 class StaticmethodClass():
     @staticmethod
@@ -295,11 +298,11 @@ print(tuple([2, 4, 3, 5, 1]))
 print("<<type('str')>>")
 print(type('str'))
 
-print("<<unichr(97)>>")
-print(unichr(97))
+#print("<<unichr(97)>>")
+#print(unichr(97))
 
-print("<<unicode('str')>>")
-print(unicode('str'))
+#print("<<unicode('str')>>")
+#print(unicode('str'))
 
 print("<<vars()>>")
 print(vars())

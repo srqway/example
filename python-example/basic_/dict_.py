@@ -4,6 +4,8 @@
 from __future__ import division
 from __future__ import print_function
 
+import os
+
 print("<<create dict:>>")
 x_0_0 = dict({"name" : "hsiehpinghan", "age" : 38})
 print(x_0_0)
@@ -42,7 +44,11 @@ for k, v in x_5.items():
     print(k, v)
 
 print("<<update dict values:>>")
-x_6= dict({"zero" : 0, "one" : 1, "two" : 2})
+x_6 = dict({"zero" : 0, "one" : 1, "two" : 2})
 for k in x_6:
     x_6[k] += 1
 print(x_6)
+
+print("<< {name : os.path.getsize(name) for name in os.listdir('.')} >>")
+x_7 = {s : os.path.getsize(s) for s in os.listdir('.')}
+print(x_7)

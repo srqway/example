@@ -20,12 +20,12 @@ try:
 except (IndexError, TypeError):
     print("Error")
     
-print("<<try...except, e>>")
-try:
-    arr_2 = ["aaa", "bbb", "ccc"]
-    arr_2[3]
-except IndexError, e:
-    print(e)    
+#print("<<try...except, e>>")
+#try:
+#    arr_2 = ["aaa", "bbb", "ccc"]
+#    arr_2[3]
+#except IndexError, e:
+#    print(e)    
 
 print("<<try...except...finally>>")
 try:
@@ -45,6 +45,17 @@ except IndexError:
 else:
     print('else')
 
+print("<<try...except...else...finally>>>")
+try:
+    arr_4 = ["aaa", "bbb", "ccc"]
+    arr_4[1]
+except IndexError:
+    print('except')
+else:
+    print('else')
+finally:
+    print("finally")
+
 print("<<pass>>")
 try:
     arr_5 = ["aaa", "bbb", "ccc"]
@@ -52,6 +63,13 @@ try:
 except IndexError:
     print('pass')
     pass
+
+print("<<try...finally>>")
+try:
+    arr_6 = ["aaa", "bbb", "ccc"]
+    arr_6[2]
+finally:
+    print("finally")
 
 print("<<raise error>>")
 try:

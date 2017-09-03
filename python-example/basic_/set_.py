@@ -48,3 +48,24 @@ print(x_6_0 | x_6_1)
 print("<<frozenset:>>")
 x_7 = frozenset({0, 1, 2, 3})
 print(x_7)
+
+print("<<x_8_0 & x_8_1>>")
+x_8_0 = {"zero", "one", "two"}
+x_8_1 = {"one", "two", "three"}
+print(x_8_0 & x_8_1)
+
+print("<<x_9_0 | x_9_1>>")
+x_9_0 = {"zero", "one", "two"}
+x_9_1 = {"one", "two", "three"}
+print(x_9_0 | x_9_1)
+
+print("<<x_10_0 - x_10_1>>")
+x_10_0 = {"zero", "one", "two"}
+x_10_1 = {"one", "two", "three"}
+print(x_10_0 - x_10_1)
+
+print("<<x_11_0 ^ x_11_1>>")
+x_11_0 = {"zero", "one", "two"}
+x_11_1 = {"one", "two", "three"}
+print(x_11_0 ^ x_11_1)
+

@@ -4,7 +4,7 @@
 from __future__ import division
 from __future__ import print_function
 
-print("while True")
+print("<<while True>>")
 x_0 = 0
 while True:
     print(x_0)
@@ -13,4 +13,11 @@ while True:
         break
     else:
         continue
-
+    
+print("<<while else>>")
+x_1 = 0
+while x_1 < 3:
+    print(x_1)
+    x_1 += 1
+else:
+    print("exit while")
