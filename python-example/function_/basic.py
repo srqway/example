@@ -78,3 +78,13 @@ def function_11_outer(a):
     print(function_11_inner(1))
 function_11_outer(1)
 
+print("<<function_12>>")
+def function_12(position_var_0, position_var_1, position_var_2, *, name_var_0, name_var_1, name_var_2):
+    print(position_var_0 + ":" + position_var_0)
+    print(position_var_1 + ":" + position_var_1)
+    print(position_var_2 + ":" + position_var_2)
+    print(name_var_0 + ":" + name_var_0)
+    print(name_var_1 + ":" + name_var_1)
+    print(name_var_2 + ":" + name_var_2)
+function_12("pos_0", "pos_1", "pos_2", name_var_0="name_0", name_var_1="name_1", name_var_2="name_2")
+
