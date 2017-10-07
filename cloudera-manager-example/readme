@@ -130,6 +130,12 @@ GRANT ALL ON oozie_oozie_server.* TO 'oozie_oozie_server'@'%' IDENTIFIED BY '<<p
 
 CREATE DATABASE hive DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 GRANT ALL ON hive.* TO 'hive'@'%' IDENTIFIED BY '<<password>>';
+  
+# uninstall cloudera manager
+apt-get remove cloudera-manager-daemons
+apt-get remove cloudera-manager-repository
+apt-get remove cloudera-manager-server
+apt-get remove cloudera-manager-client
 
 # problem & solutionhttp://cloudjie.iteye.com/blog/2296203
 problem : 18169 MonitorDaemon-Reporter throttling_logger ERROR Error sending messages to firehose: mgmt-SERVICEMONITOR-cbd294141eab27d18ac0987c42334e3c 
@@ -192,22 +198,10 @@ solution :
   e. <<node[0-2]>>make sure /etc/cloudera-scm-agent/config.ini is pointing to the right CM server.
   f. <<node0>>service cloudera-scm-server start
   g. <<node[0-2]>>service cloudera-scm-agent clean_start
+
+problem : namenode start fail. execute "hdfs namenode -recover", get "ERROR namenode.FSImage: Failed to load image from FSImageFile(file=/dfs/nn/current/fsimage_0000000000000275863, cpktTxId=0000000000000275863)"
+solution : 
+	mv /dfs/nn/current/fsimage_0000000000000275863 /tmp/
+	mv /dfs/nn/current/fsimage_0000000000000275863.md5 /tmp/
+	
   
-# uninstall cloudera manager
-apt-get remove cloudera-manager-daemons
-apt-get remove cloudera-manager-repository
-apt-get remove cloudera-manager-server
-apt-get remove cloudera-manager-client
-
-
-
-
-
-# reference
-https://www.cloudera.com/documentation/enterprise/latest/topics/installation_installation.html
-https://geosmart.github.io/2015/10/20/Hadoop%E9%9B%86%E7%BE%A4%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2/
-http://blog.csdn.net/scgaliguodong123_/article/details/46661881
-http://www.pynut.com/?p=160
-http://blog.csdn.net/shawnhu007/article/details/52579204
-http://cloudjie.iteye.com/blog/2296203
-
