@@ -1,18 +1,28 @@
 # install docker
+yum install docker.io
 apt-get install docker.io
 
 # leave container shell
 Ctrl+P -> Ctrl+Q
 
-# attach container
-docker attach [CONTAINER HASH]
-
 # look up images
 docker images
 
+# inspect images
+docker inspect [IMAGE ID]
+
+# remove image
+docker rmi [IMAGE ID]
+
 # look up running containers
-docker ps
+docker ps -a
+
+# attach container
+docker attach [CONTAINER ID]
 
 # kill container
-docker rm [CONTAINER NAME]
+docker rm [CONTAINER ID]
+
+# inspect container
+docker inspect [CONTAINER ID]
 
