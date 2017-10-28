@@ -18,8 +18,20 @@ cd Python-3.5.4
 make
 make altinstall
 
-
-
-
-
+# anaconda
+https://www.anaconda.com/download/
+sh /home/hsiehpinghan/Downloads/Anaconda3-5.0.1-Linux-x86_64.sh -b
+/home/hsiehpinghan/anaconda3/bin/conda list
+/home/hsiehpinghan/anaconda3/bin/conda update <<PACKAGE>>
+/home/hsiehpinghan/anaconda3/bin/conda create --name <<VIRTUAL_ENVIRONMENT_NAME>> python=<<PYTHON_VERSION>> anaconda
+/home/hsiehpinghan/anaconda3/bin/conda info --envs
+cd /home/hsiehpinghan/anaconda3/bin
+source activate <<VIRTUAL_ENVIRONMENT_NAME>> 
+source deactivate <<VIRTUAL_ENVIRONMENT_NAME>> 
+/home/hsiehpinghan/anaconda3/bin/conda search --full --name <<VIRTUAL_ENVIRONMENT_NAME>>
+/home/hsiehpinghan/anaconda3/bin/conda search <<PACKAGE>>
+/home/hsiehpinghan/anaconda3/bin/conda install --name <<VIRTUAL_ENVIRONMENT_NAME>> <<PACKAGE>>
+<<in virtual environment>>pip install <<PACKAGE>>
+/home/hsiehpinghan/anaconda3/bin/conda remove -n <<VIRTUAL_ENVIRONMENT_NAME>> <<PACKAGE>>
+/home/hsiehpinghan/anaconda3/bin/conda remove -n <<VIRTUAL_ENVIRONMENT_NAME>> --all
 
