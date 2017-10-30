@@ -29,6 +29,7 @@ encoding//function_/basic.py=utf-8
 encoding//function_/build_in.py=utf-8
 encoding//getopt_/basic.py=utf-8
 encoding//gzip_/basic.py=utf-8
+encoding//hbase_/basic.py=utf-8
 encoding//heapq_/basic.py=utf-8
 encoding//httplib_/basic.py=utf-8
 encoding//imghdr_/basic.py=utf-8
