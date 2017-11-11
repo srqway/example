@@ -1,0 +1,9 @@
+{
+	"manifest_version": 2,
+	"name": "popup extension",
+	"version": "1.0.0.0",
+	"browser_action": {
+		"default_title": "default title",
+		"default_popup": "popup.html"
+	}
+}
