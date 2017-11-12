@@ -1,0 +1,31 @@
+{
+	"manifest_version": 2,
+	"name": "commands extension",
+	"version": "1.0.0.0",
+	"browser_action": {
+		
+	},
+	"permissions": [
+		"tabs",
+		"activeTab",
+		"declarativeContent"
+	],
+	"commands": {
+		"change_background_color": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+Y",
+				"linux": "Ctrl+Shift+Y",
+				"chromeos": "Ctrl+Shift+Y",
+				"mac": "Command+Shift+Y",
+				"windows": "Ctrl+Shift+Y"
+			},
+			"description": "切換背景顏色"
+		}
+	},
+	"background": {
+		"persistent": false,
+		"scripts": [
+			"background.js"
+		]
+	}
+}
