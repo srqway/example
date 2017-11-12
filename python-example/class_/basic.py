@@ -99,9 +99,9 @@ print("name = " + child_2.getName())
 
 print("<<private variable & method>>")
 class Parent_3:
-    __class_variable = 3;
+    __class_variable = 3
     def __init__(self, x):
-        self.__instance_variable = x;
+        self.__instance_variable = x
     def __method(self):
         pass
 
@@ -126,3 +126,56 @@ try:
     print(child_3.getMethod())
 except AttributeError:
     print("Child_3 instance has no attribute _Child_3__method")
+
+print("<<special method>>")
+class Class_4:
+    __class_variable = None
+    def __init__(self, class_variable):
+        super().__init__()
+        self.__class_variable = class_variable
+        print("__init__")
+    def __lt__(self, other):
+        if not isinstance(other, Class_4):
+            return NotImplemented
+        return self.__class_variable < other.__class_variable
+#    def __ge__(self, other):
+#        if not isinstance(other, Class_4):
+#            return NotImplemented
+#        return self.__class_variable >= other.__class_variable
+    def __le__(self, other):
+        if not isinstance(other, Class_4):
+            return NotImplemented
+        return self.__class_variable <= other.__class_variable
+#    def __gt__(self, other):
+#        if not isinstance(other, Class_4):
+#            return NotImplemented
+#        return self.__class_variable > other.__class_variable
+    def __eq__(self, other):
+        if not isinstance(other, Class_4):
+            return NotImplemented
+        return self.__class_variable == other.__class_variable
+#    def __ne__(self, other):
+#        if not isinstance(other, Class_4):
+#            return NotImplemented
+#        return self.__class_variable != other.__class_variable
+    def __bool__(self):
+        return True
+    def __format__(self, format_spec):
+        return "format"
+    def __hash__(self):
+        return 3
+    def __repr__(self):
+        return "repr"
+    def __str__(self):
+        return "str"
+
+class_4_0 = Class_4(4)
+class_4_1 = Class_4(4)
+print(class_4_0 > class_4_1)
+print(bool(class_4_0))
+print("{0}".format(class_4_0))
+print(hash(class_4_0))
+print(repr(class_4_0))
+print(ascii(class_4_0))
+print(str(class_4_0))
+
