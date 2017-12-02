@@ -1,0 +1,34 @@
+# install kvm
+grep -E '(vmx|svm)' /proc/cpuinfo
+yum install libvirt-daemon-kvm qemu-kvm
+usermod -a -G libvirt $(whoami)
+newgrp libvirt
+curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2 
+chmod +x docker-machine-driver-kvm2
+mv docker-machine-driver-kvm2 /usr/bin/
+
+# install kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+chmod +x kubectl
+mv kubectl /usr/local/bin/
+
+# install minikube
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.24.1/minikube-linux-amd64
+chmod +x minikube
+mv minikube /usr/local/bin/
+
+# starts a local kubernetes cluster
+minikube start --vm-driver=kvm2
+minikube status
+minikube stop
+
+# ui and console
+minikube dashboard
+minikube ssh
+
+# info
+minikube docker-env
+kubectl get <<resource>> -o wide
+
+
+
