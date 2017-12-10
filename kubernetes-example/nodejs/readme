@@ -1,0 +1,30 @@
+# set environment
+1. yum install nodejs
+2. eval $(minikube docker-env)
+
+# Create a Docker container image
+1. cd /home/hsiehpinghan/git/example/kubernetes-example/nodejs/v1
+2. docker build -t hello-node:v1 .
+
+# Create a Deployment
+1. kubectl run hello-node --image=hello-node:v1 --port=8080
+2. kubectl get events
+3. kubectl config view
+
+# Create a Service
+1. kubectl expose deployment hello-node --type=LoadBalancer
+2. kubectl get services
+3. minikube service hello-node
+4. kubectl logs <POD-NAME>
+
+# Update app
+1. cd /home/hsiehpinghan/git/example/kubernetes-example/nodejs/v2
+2. docker build -t hello-node:v2 .
+3. kubectl set image deployment/hello-node hello-node=hello-node:v2
+4. minikube service hello-node
+
+# Clean up
+1. kubectl delete service hello-node
+2. kubectl delete deployment hello-node
+3. minikube stop
+4. eval $(minikube docker-env -u)
