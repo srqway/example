@@ -5,6 +5,12 @@ apt-get install docker.io
 # leave container shell
 Ctrl+P -> Ctrl+Q
 
+# Dockerfile reference
+https://docs.docker.com/engine/reference/builder/
+
+# Command-Line Interfaces (CLIs)
+https://docs.docker.com/engine/reference/run/
+
 # look up images
 docker images
 
