@@ -1,0 +1,7 @@
+# create container
+docker build -t my_etcd:1.0.0 .
+docker run --name my_etcd -p 2379:2379 -d my_etcd:1.0.0
+
+# check etcd status
+docker exec my_etcd /bin/sh -c "/tmp/etcd-v2.2.0-linux-amd64/etcdctl cluster-health"
+
