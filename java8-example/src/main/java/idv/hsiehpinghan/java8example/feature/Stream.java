@@ -70,6 +70,11 @@ public class Stream {
 		}));
 	}
 
+	public List<Integer> flatMap(List<Integer> list_0, List<Integer> list_1) {
+		return java.util.stream.Stream.of(list_0, list_1).flatMap(numbers -> numbers.stream())
+				.collect(Collectors.toList());
+	}
+
 	private static void addToStringBuilder(int i) {
 		sb.append(i);
 	}

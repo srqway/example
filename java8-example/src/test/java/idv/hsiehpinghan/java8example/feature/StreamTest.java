@@ -1,13 +1,13 @@
 package idv.hsiehpinghan.java8example.feature;
 
-import idv.hsiehpinghan.java8example.feature.Stream;
-import idv.hsiehpinghan.java8example.utility.GeneratorUtility;
-
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import idv.hsiehpinghan.java8example.utility.GeneratorUtility;
 
 public class StreamTest {
 	private Stream stream = new Stream();
@@ -57,8 +57,7 @@ public class StreamTest {
 	@Test
 	public void toArray() {
 		List<Integer> list = GeneratorUtility.generateIntegerList();
-		Assert.assertEquals(stream.toArray(list),
-				new String[] { "0", "1", "2" });
+		Assert.assertEquals(stream.toArray(list), new String[] { "0", "1", "2" });
 	}
 
 	@Test
@@ -71,4 +70,11 @@ public class StreamTest {
 		});
 	}
 
+	@Test
+	public void flatMap() {
+		List<Integer> list_0 = GeneratorUtility.generateIntegerList();
+		List<Integer> list_1 = GeneratorUtility.generateIntegerList();
+		List<Integer> list = stream.flatMap(list_0, list_1);
+		Assert.assertEquals(list, Arrays.asList(0, 1, 2, 0, 1, 2));
+	}
 }
