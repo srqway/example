@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class OptionalClass {
-	public Integer sum(List<Integer> list) {
+	public Integer orElse(List<Integer> list) {
 		Integer sum = 0;
 		for (Integer i : list) {
 			Optional<Integer> opt = Optional.ofNullable(i);
@@ -14,16 +14,24 @@ public class OptionalClass {
 		return sum;
 	}
 
+	public Integer orElseGet(List<Integer> list) {
+		Integer sum = 0;
+		for (Integer i : list) {
+			Optional<Integer> opt = Optional.ofNullable(i);
+			Integer val = opt.orElseGet(() -> new Integer(0));
+			sum += val;
+		}
+		return sum;
+	}
+
 	public static String flatMap(Optional<FlatMap_1> flatMap_1) {
-		return flatMap_1.flatMap(FlatMap_1::getFlatMap_2)
-				.flatMap(FlatMap_1.FlatMap_2::getFlatMap_3)
+		return flatMap_1.flatMap(FlatMap_1::getFlatMap_2).flatMap(FlatMap_1.FlatMap_2::getFlatMap_3)
 				.flatMap(FlatMap_1.FlatMap_2.FlatMap_3::getName).get();
 	}
 
 	public static String map(Map_1 map_1) {
-		return Optional.ofNullable(map_1).map(Map_1::getMap_2)
-				.map(Map_1.Map_2::getMap_3).map(Map_1.Map_2.Map_3::getName)
-				.get();
+		return Optional.ofNullable(map_1).map(Map_1::getMap_2).map(Map_1.Map_2::getMap_3)
+				.map(Map_1.Map_2.Map_3::getName).get();
 	}
 
 	public static class FlatMap_1 {

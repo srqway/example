@@ -1,7 +1,11 @@
 package idv.hsiehpinghan.java8example.feature;
 
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public class Stream {
@@ -75,8 +79,40 @@ public class Stream {
 				.collect(Collectors.toList());
 	}
 
+	public Collection<Integer> toCollection(List<Integer> list) {
+		return list.stream().collect(Collectors.toCollection(TreeSet::new));
+	}
+
+	public Optional<Integer> minBy(List<Integer> list) {
+		return list.stream().collect(Collectors.minBy(Comparator.comparing(Integer::intValue)));
+	}
+
+	public Double averagingInt(List<Integer> list) {
+		return list.stream().collect(Collectors.averagingInt(Integer::intValue));
+	}
+
+	public Map<Boolean, List<Integer>> partitioningBy(List<Integer> list) {
+		return list.stream().collect(Collectors.partitioningBy(i -> i % 2 == 0));
+	}
+
+	public Map<Character, List<String>> groupingBy(List<String> list) {
+		return list.stream().collect(Collectors.groupingBy(s -> s.charAt(0)));
+	}
+
+	public Map<Character, Long> groupingByWithCounting(List<String> list) {
+		return list.stream().collect(Collectors.groupingBy(s -> s.charAt(0), Collectors.counting()));
+	}
+
+	public Map<Character, List<String>> groupingByWithMapping(List<String> list) {
+		return list.stream().collect(
+				Collectors.groupingBy(s -> s.charAt(0), Collectors.mapping(String::toUpperCase, Collectors.toList())));
+	}
+
+	public String joining(List<String> list) {
+		return list.stream().collect(Collectors.joining("-", "<", ">"));
+	}
+
 	private static void addToStringBuilder(int i) {
 		sb.append(i);
 	}
-
 }

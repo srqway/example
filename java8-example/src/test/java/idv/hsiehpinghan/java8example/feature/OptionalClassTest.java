@@ -1,29 +1,34 @@
 package idv.hsiehpinghan.java8example.feature;
 
-import idv.hsiehpinghan.java8example.feature.OptionalClass;
-import idv.hsiehpinghan.java8example.utility.GeneratorUtility;
-
 import java.util.List;
 import java.util.Optional;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import idv.hsiehpinghan.java8example.utility.GeneratorUtility;
+
 public class OptionalClassTest {
 	private static final String NAME = "flatMap";
 	private OptionalClass optionalClass = new OptionalClass();
 
 	@Test
-	public void sum() {
+	public void orElse() {
 		List<Integer> list = GeneratorUtility.generateIntegerList();
-		Integer actual = optionalClass.sum(list);
+		Integer actual = optionalClass.orElse(list);
+		Assert.assertEquals(actual, Integer.valueOf(3));
+	}
+
+	@Test
+	public void orElseGet() {
+		List<Integer> list = GeneratorUtility.generateIntegerList();
+		Integer actual = optionalClass.orElseGet(list);
 		Assert.assertEquals(actual, Integer.valueOf(3));
 	}
 
 	@Test
 	public void flatMap() {
-		String name = OptionalClass.flatMap(Optional
-				.ofNullable(generateFlatMap_1()));
+		String name = OptionalClass.flatMap(Optional.ofNullable(generateFlatMap_1()));
 		Assert.assertEquals(name, NAME);
 	}
 
