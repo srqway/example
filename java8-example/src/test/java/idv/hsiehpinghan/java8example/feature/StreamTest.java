@@ -143,4 +143,11 @@ public class StreamTest {
 		String result = stream.joining(list);
 		Assert.assertEquals(result, "<aaa-bbb-ccc>");
 	}
+
+	@Test
+	public void peek() {
+		List<String> list = Arrays.asList("aaa", "bbb", "ccc");
+		List<String> result = stream.peek(list);
+		Assert.assertEquals(result, Arrays.asList("aaa", "bbb", "ccc"));
+	}
 }

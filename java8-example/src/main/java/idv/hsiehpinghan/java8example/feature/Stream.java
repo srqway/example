@@ -112,6 +112,11 @@ public class Stream {
 		return list.stream().collect(Collectors.joining("-", "<", ">"));
 	}
 
+	public List<String> peek(List<String> list) {
+		return list.stream().peek(str -> System.err.println(String.format("peek String(%s)", str)))
+				.collect(Collectors.toList());
+	}
+
 	private static void addToStringBuilder(int i) {
 		sb.append(i);
 	}
