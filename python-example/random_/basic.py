@@ -25,3 +25,7 @@ print("<<sample>>")
 arr_1 = [0, 1, 2, 3, 4, 5]
 print(random.sample(arr_1, 3))
 
+print("<<randrange>>")
+print(random.randrange(10))
+
+

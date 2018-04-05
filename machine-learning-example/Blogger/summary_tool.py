@@ -48,7 +48,7 @@ class SummaryTool(object):
 
         # Calculate the intersection of every two sentences
         n = len(sentences)
-        values = [[0 for x in xrange(n)] for x in xrange(n)]
+        values = [[0 for x in range(n)] for x in range(n)]
         for i in range(0, n):
             for j in range(0, n):
                 values[i][j] = self.sentences_intersection(sentences[i], sentences[j])
@@ -170,13 +170,13 @@ def main():
     summary = st.get_summary(title, content, sentences_dic)
 
     # Print the summary
-    print summary
+    print(summary)
 
     # Print the ratio between the summary length and the original length
-    print ""
-    print "Original Length %s" % (len(title) + len(content))
-    print "Summary Length %s" % len(summary)
-    print "Summary Ratio: %s" % (100 - (100 * (len(summary) / (len(title) + len(content)))))
+    print("")
+    print("Original Length %s" % (len(title) + len(content)))
+    print("Summary Length %s" % len(summary))
+    print("Summary Ratio: %s" % (100 - (100 * (len(summary) / (len(title) + len(content))))))
 
 
 if __name__ == '__main__':
