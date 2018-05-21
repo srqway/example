@@ -73,6 +73,13 @@ public class JqueryController {
 		return "[\"中文\"]";
 	}
 
+	@RequestMapping(value = "/animate", method = RequestMethod.GET)
+	public ModelAndView animate()
+			throws UnsupportedEncodingException {
+		ModelAndView model = new ModelAndView("jquery/animate");
+		return model;
+	}
+
 	private String convertIso88591ToUtf8(String chinese) throws UnsupportedEncodingException {
 		return new String(chinese.getBytes("ISO-8859-1"), "UTF-8");
 	}

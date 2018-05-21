@@ -15,5 +15,7 @@
 	<br>
 	<a href="jsonp">jsonp</a>
 	<br>
+	<a href="animate">animate</a>
+	<br>
 </body>
 </html>
