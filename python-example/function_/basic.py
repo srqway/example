@@ -3,7 +3,6 @@
 
 from __future__ import print_function
 from __future__ import division
-import functools
 
 print("<<function_0>>")
 def function_0(x_0):
@@ -66,10 +65,6 @@ print(result_8)
 print("<<function_9>>")
 result_9 = map(lambda x,y : x+y, [1,2,3],[4,5,6])
 print(result_9)
-
-print("<<function_10>>")
-result_10 = functools.reduce(lambda x, y : x+y, [1,2])
-print(result_10)
 
 print("<<function_11>>")
 def function_11_outer(a):

@@ -279,40 +279,8 @@ print(sorted([2, 4, 3, 5, 1]))
 print("<<sorted([2, '4', 3, '5', 1])>>")
 print(sorted([2, '4', 3, '5', 1], key=int))
 
-print("<<@staticmethod>>")
-class StaticmethodClass():
-    @staticmethod
-    def function_0():
-        return 10
-print(StaticmethodClass.function_0())
+print("<<sorted([-4, 1, -2, 3], key=abs, reverse=True)>>")
+print(sorted([-4, 1, -2, 3], key=abs, reverse=True))
 
-print("<<str(12.345)>>")
-print(str(12.345))
-
-print("<<sum([2, 4, 3, 5, 1])>>")
-print(sum([2, 4, 3, 5, 1]))
-
-print("<<tuple([2, 4, 3, 5, 1])>>")
-print(tuple([2, 4, 3, 5, 1]))
-
-print("<<type('str')>>")
-print(type('str'))
-
-#print("<<unichr(97)>>")
-#print(unichr(97))
-
-#print("<<unicode('str')>>")
-#print(unicode('str'))
-
-print("<<vars()>>")
-print(vars())
-
-print("<<zip(zip_0, zip_1)>>")
-zip_0 = [1, 2, 3]
-zip_1 = [4, 5, 6]
-zip_total = zip(zip_0, zip_1)
-print(zip_total)
-zip_a, zip_b = zip(*zip_total)
-print(zip_0 == list(zip_a) and zip_1 == list(zip_b))
 
 
