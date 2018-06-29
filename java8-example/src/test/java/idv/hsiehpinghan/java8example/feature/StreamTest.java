@@ -2,6 +2,7 @@ package idv.hsiehpinghan.java8example.feature;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -25,6 +26,16 @@ public class StreamTest {
 	public void map() {
 		List<Integer> list = GeneratorUtility.generateIntegerList();
 		Assert.assertEquals(stream.map(list), "123");
+	}
+
+	@Test
+	public void mapMap() {
+		Map<Integer, String> map = new HashMap<>();
+		map.put(0, "A");
+		map.put(1, "B");
+		map.put(2, "C");
+		map.put(3, "A");
+		Assert.assertEquals(stream.map(map).toString(), "{A=3, B=1, C=2}");
 	}
 
 	@Test

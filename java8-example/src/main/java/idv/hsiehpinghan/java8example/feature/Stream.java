@@ -22,6 +22,11 @@ public class Stream {
 		}).collect(Collectors.joining());
 	}
 
+	public Map<String, Integer> map(Map<Integer, String> map) {
+		return map.entrySet().stream()
+				.collect(Collectors.toMap(ent -> ent.getValue(), ent -> ent.getKey(), Integer::sum));
+	}
+
 	public Integer reduce(List<Integer> list) {
 		return list.stream().reduce((total, ele) -> {
 			return total += ele;
