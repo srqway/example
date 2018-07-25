@@ -1,0 +1,4 @@
+# centos 7 expose 8080 port 
+firewall-cmd --add-port=8080/tcp --permanent
+firewall-cmd --reload
+firewall-cmd --list-all
