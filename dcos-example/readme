@@ -1,4 +1,69 @@
-## install software
+# install git
+yum install git
+
+# install virtualbox
+cd /etc/yum.repos.d/
+wget http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo
+yum update -y
+yum -y install epel-release
+yum -y install gcc make patch  dkms qt libgomp
+yum -y install kernel-headers kernel-devel fontforge binutils glibc-headers glibc-devel
+yum -y install VirtualBox-5.2
+
+# install vagrant
+cd /tmp
+wget https://releases.hashicorp.com/vagrant/2.1.2/vagrant_2.1.2_x86_64.rpm
+yum -y localinstall vagrant_2.1.2_x86_64.rpm
+
+# install vagrant-hostmanager plugin
+vagrant plugin install vagrant-hostmanager
+
+# clone, configure, and deploy
+cd /tmp
+git clone https://github.com/dcos/dcos-vagrant
+cd dcos-vagrant
+cp VagrantConfig-1m-1a-1p.yaml VagrantConfig.yaml
+vagrant up
+
+# access the GUI 
+http://m1.dcos/
+
+# install the DC/OS CLI
+/tmp/dcos-vagrant/ci/dcos-install-cli.sh
+
+
+
+# list vm
+VBoxManage list runningvms
+
+# Stop running VMs by "hibernating" them (reommended to avoid data loss)
+VBoxManage controlvm m1.dcos savestate
+VBoxManage controlvm a1.dcos savestate
+VBoxManage controlvm p1.dcos savestate
+VBoxManage controlvm boot.dcos savestate
+
+# Poweroff running VMs (not recommended because we may lose data in the guest)
+VBoxManage controlvm m1.dcos poweroff
+VBoxManage controlvm a1.dcos poweroff
+VBoxManage controlvm p1.dcos poweroff
+VBoxManage controlvm boot.dcos poweroff
+
+# Use ACPI in an ACPI-aware guest OS (preferable to poweroff for graceful shutdown of guests)
+VBoxManage controlvm m1.dcos acpipowerbutton
+VBoxManage controlvm a1.dcos acpipowerbutton
+VBoxManage controlvm p1.dcos acpipowerbutton
+VBoxManage controlvm boot.dcos acpipowerbutton
+
+# list box
+vagrant box list
+
+# remove box
+vagrant box remove mesosphere/dcos-centos-virtualbox
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+## install software (reference : https://docs.mesosphere.com/1.11/installing/production/system-requirements/docker-centos/)
 # install git
 yum install git
 
@@ -14,7 +79,6 @@ brew install https://raw.githubusercontent.com/dcos/dcos-e2e/master/dcose2e.rb
 
 # enable user to run docker command 
 groupadd docker
-service docker restart
 usermod -a -G docker hsiehpinghan
 <<login again>>
 
@@ -36,17 +100,39 @@ yum-config-manager \
   --add-repo \
   https://download.docker.com/linux/centos/docker-ce.repo
 yum install docker-ce
-systemctl start docker
 
-# configure docker with storage driver
-systemctl stop docker
-cp -au /var/lib/docker /tmp/docker.bk
-vi /etc/docker/daemon.json
-  {
-    "storage-driver": "overlay"
-  }
-systemctl start docker
+# enable OverlayFS
+yum upgrade --assumeyes --tolerant
+yum update --assumeyes
+sudo tee /etc/modules-load.d/overlay.conf <<-'EOF'
+overlay
+EOF
+
+# configure yum to use the Docker yum repo
+sudo tee /etc/yum.repos.d/docker.repo <<-'EOF'
+[docker-ce-stable]
+name=Docker CE Stable - $basearch
+baseurl=https://download.docker.com/linux/centos/7/$basearch/stable
+enabled=1
+gpgcheck=1
+gpgkey=https://download.docker.com/linux/centos/gpg
+EOF
+
+# configure systemd to run the Docker Daemon with OverlayFS
+sudo mkdir -p /etc/systemd/system/docker.service.d && sudo tee /etc/systemd/system/docker.service.d/override.conf <<- EOF
+[Service]
+ExecStart=
+ExecStart=/usr/bin/dockerd --storage-driver=overlay
+EOF
+
+# start docker
+service docker restart
 docker info
+
+
+
+
+
 
 # check your system
 dcos-docker doctor
@@ -69,5 +155,6 @@ dcos-docker run pytest -k test_tls.py
 # destroy a cluster
 dcos-docker destroy
 
-
+# check mesos ui
+<dcos-url>/mesos/
 
