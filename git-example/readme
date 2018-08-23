@@ -3,3 +3,12 @@ http://learngitbranching.js.org/
 
 # git branching model
 http://nvie.com/posts/a-successful-git-branching-model/
+
+# resolve conflict
+1. Team -> Show in History
+2. Reset -> Mixed (HEAD and Index)
+3. Window -> Perspective -> Open Perspective -> Other... -> Team Synchronizing
+4. merge -> Mark as Merged
+5. commit
+6. right click on project -> Team -> Merge... 
+7. right click on project -> Team -> Push Branch 'master'...
