@@ -141,7 +141,7 @@ dcos-docker doctor
 dcos-docker download-artifact  
 
 # create a dcos cluster.
-dcos-docker create /tmp/dcos_generate_config.sh --agents 0
+dcos-docker create /tmp/dcos_generate_config.sh --agents 3
 
 # wait for dcos to start.
 dcos-docker wait
@@ -157,4 +157,17 @@ dcos-docker destroy
 
 # check mesos ui
 <dcos-url>/mesos/
+
+# check service log
+dcos service log --follow <scheduler-service-name>
+
+
+
+
+
+dcos service log --follow jenkins
+
+http://172.17.0.2:5050/state
+
+http://172.17.0.2:5050/mesos/master/slaves
 
