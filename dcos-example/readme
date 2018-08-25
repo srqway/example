@@ -141,7 +141,7 @@ dcos-docker doctor
 dcos-docker download-artifact  
 
 # create a dcos cluster.
-dcos-docker create /tmp/dcos_generate_config.sh --agents 3
+dcos-docker create /tmp/dcos_generate_config.sh --masters 3 --agents 5
 
 # wait for dcos to start.
 dcos-docker wait
