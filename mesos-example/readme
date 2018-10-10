@@ -5,8 +5,26 @@ yum install http://repos.mesosphere.io/el/7/noarch/RPMS/mesosphere-el-repo-7-1.n
 yum install -y mesos
 
 # install marathon
-wget -L https://downloads.mesosphere.com/marathon/releases/1.6.322/marathon-1.6.322-2bf46b341.tgz -O /tmp//marathon-1.6.322-2bf46b341.tgz
-tar xvfz /tmp//marathon-1.6.322-2bf46b341.tgz -C /opt
+wget -L https://downloads.mesosphere.com/marathon/releases/1.6.322/marathon-1.6.322-2bf46b341.tgz -O /tmp/marathon-1.6.322-2bf46b341.tgz
+tar xvfz /tmp/marathon-1.6.322-2bf46b341.tgz -C /opt
+
+# install mesos-dns (https://github.com/mesosphere/mesos-dns/releases/, https://mesosphere.github.io/mesos-dns/docs/configuration-parameters.html)
+mkdir /opt/mesos-dns
+wget -L https://github.com/mesosphere/mesos-dns/releases/download/v0.6.0/mesos-dns-v0.6.0-linux-amd64 -O /opt/mesos-dns/mesos-dns-v0.6.0-linux-amd64
+vi /opt/mesos-dns/mesos-dns.conf
+  {
+    "zk": "zk://localhost:2181/mesos",
+    "domain": "mesos",
+    "port": 53,
+    "resolvers": ["8.8.8.8"]
+  }
+chmod 777 /opt/mesos-dns/mesos-dns-v0.6.0-linux-amd64
+<< stop all process using 53 port >>
+/opt/mesos-dns/mesos-dns-v0.6.0-linux-amd64 -config=/opt/mesos-dns/mesos-dns.conf
+vi /etc/resolv.conf
+  nameserver 127.0.0.1
+<< http://marathon.mesos:8080/ >>
+<< http://tomcat.marathon.mesos:1234/ >>
 
 # run mesos
 systemctl start mesos-master
@@ -20,6 +38,10 @@ systemctl start mesos-slave
 http://localhost:5050/
 # marathon
 http://localhost:8080/
+
+# mesos rest api
+curl -X POST -H "Content-Type: application/json" http://localhost:5050/quota -d @/home/hsiehpinghan/git/example/mesos-example/json/quota.json
+curl -X GET http://localhost:5050/master/quota
 
 # marathon rest api
 curl -X POST -H "Content-Type: application/json" http://localhost:8080/v2/apps -d @/home/hsiehpinghan/git/example/mesos-example/json/tomcat.json
