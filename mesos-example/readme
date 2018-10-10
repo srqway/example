@@ -1,0 +1,31 @@
+# install zookeeper (reference : https://raw.githubusercontent.com/hsiehpinghan/assistant/master/zookeeper-assistant/readme)
+
+# install mesos
+yum install http://repos.mesosphere.io/el/7/noarch/RPMS/mesosphere-el-repo-7-1.noarch.rpm
+yum install -y mesos
+
+# install marathon
+wget -L https://downloads.mesosphere.com/marathon/releases/1.6.322/marathon-1.6.322-2bf46b341.tgz -O /tmp//marathon-1.6.322-2bf46b341.tgz
+tar xvfz /tmp//marathon-1.6.322-2bf46b341.tgz -C /opt
+
+# run mesos
+systemctl start mesos-master
+systemctl start mesos-slave
+
+# run marathon
+/opt/marathon-1.6.322-2bf46b341/bin/marathon --master=zk://localhost:2181/mesos
+
+## ui
+# mesos
+http://localhost:5050/
+# marathon
+http://localhost:8080/
+
+# marathon rest api
+curl -X POST -H "Content-Type: application/json" http://localhost:8080/v2/apps -d @/home/hsiehpinghan/git/example/mesos-example/json/tomcat.json
+curl -X GET http://localhost:8080/v2/apps
+curl -X DELETE http://localhost:8080/v2/apps/tomcat
+
+# clear mesos sandbox 
+rm -rf /var/lib/mesos/
+
