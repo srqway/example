@@ -1,0 +1,16 @@
+{
+  "id": "/jenkins",
+  "cmd": "java -jar jenkins.war --httpPort=9090",
+  "cpus": 1,
+  "mem": 256,
+  "instances": 1,
+  "acceptedResourceRoles": ["*"],
+  "fetch": [
+    {
+      "uri": "http://mirrors.jenkins.io/war-stable/latest/jenkins.war",
+      "extract": false,
+      "executable": true,
+      "cache": false
+    }
+  ]
+}
