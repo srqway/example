@@ -30,6 +30,8 @@ vi /etc/resolv.conf
 
 # install spark (reference : https://raw.githubusercontent.com/hsiehpinghan/example/master/spark-example/readme)
 
+# install docker (reference : https://raw.githubusercontent.com/hsiehpinghan/example/master/docker-example/readme)
+
 # run zookeeper
 /opt/zookeeper-3.4.13/bin/zkServer.sh start
 
@@ -46,6 +48,9 @@ systemctl start mesos-slave
 # cluster
 /opt/spark-2.3.1-bin-hadoop2.7/sbin/start-mesos-dispatcher.sh --master mesos://localhost:5050
 /opt/spark-2.3.1-bin-hadoop2.7/bin/spark-submit --deploy-mode cluster --class org.apache.spark.examples.SparkPi --master mesos://localhost:7077 /opt/spark-2.3.1-bin-hadoop2.7/examples/jars/spark-examples_2.11-2.3.1.jar 1000
+
+# run docker
+systemctl start docker
 
 ## ui
 # mesos
