@@ -161,9 +161,29 @@ dcos-docker destroy
 # check service log
 dcos service log --follow <scheduler-service-name>
 
+# install kafka
+dcos package install kafka --package-version=1.1.19.1-0.10.1.0
 
+# install kafka client
+cd /tmp
+vi kafka-client.json
+	{
+	 "id": "/kafka-client",
+	 "instances": 1,
+	 "container": {
+	 "type": "MESOS",
+	 "docker": {
+	 "image": "mesosphere/kafka-client:latest"
+	 }
+	 },
+	 "cpus": 0.5,
+	 "mem": 256,
+	 "cmd": "sleep 100000"
+	}
+dcos marathon app add kafka-client.json
 
-
+# show kafka broker socket
+dcos kafka connection address/dns
 
 dcos service log --follow jenkins
 
