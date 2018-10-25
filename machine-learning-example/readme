@@ -1,12 +1,15 @@
 # create anaconda virtual machine
 https://www.anaconda.com/download/
-sh /home/hsiehpinghan/Downloads/Anaconda3-5.1.0-Linux-x86_64.sh -b
-/home/hsiehpinghan/anaconda3/bin/conda create --name machine-learning-example python=3.6 anaconda
-/home/hsiehpinghan/anaconda3/bin/jupyter notebook --generate-config
+sh /home/hsiehpinghan/Downloads/Anaconda3-5.2.0-Linux-x86_64.sh -b
+/home/hsiehpinghan/anaconda3/bin/conda create --name python3.6 python=3.6 anaconda
+export ANACONDA_HOME=/home/hsiehpinghan/anaconda3
+export PATH=$ANACONDA_HOME/bin:$PATH
+cd /home/hsiehpinghan/git/example/machine-learning-example/notebook
+source activate python3.6
 
 # start jupyter notebook
-vi /home/hsiehpinghan/.jupyter/jupyter_notebook_config.py
-	c.NotebookApp.notebook_dir = '/home/hsiehpinghan/git/example/machine-learning-example/notebook/'
-cd /home/hsiehpinghan/anaconda3/bin
-source activate machine-learning-example
+export ANACONDA_HOME=/home/hsiehpinghan/anaconda3
+export PATH=$ANACONDA_HOME/bin:$PATH
+cd /home/hsiehpinghan/git/example/machine-learning-example/notebook
+source activate python3.6
 jupyter lab
