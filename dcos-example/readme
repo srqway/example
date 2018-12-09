@@ -1,3 +1,46 @@
+# install java
+apt-get install openjdk-8-jdk
+
+# install docker (reference : https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+apt-get purge docker-ce
+rm -rf /var/lib/docker
+apt-get remove docker docker-engine docker.io
+apt-get update
+apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+apt-get install docker-ce
+docker run hello-world
+
+# install and run dcos (reference : https://dcos-e2e-cli.readthedocs.io/en/latest/)
+curl --fail -L https://github.com/dcos/dcos-e2e/releases/download/2018.12.05.0/minidcos -o /usr/local/bin/minidcos && chmod +x /usr/local/bin/minidcos
+minidcos docker doctor
+mkdir -p /opt/dcos
+cd /opt/dcos
+minidcos docker download-installer
+minidcos docker create ./dcos_generate_config.sh --docker-version 17.12.1-ce --masters 3 --agents 5
+minidcos docker wait
+minidcos docker web
+
+# install dcos client
+cd /opt/dcos
+curl -O https://downloads.dcos.io/binaries/cli/linux/x86-64/dcos-1.8/dcos
+chmod +x dcos
+./dcos config set core.dcos_url http://172.17.0.3
+./dcos auth login
+
+
+./dcos task exec -it my-tensorflow-no-gpus /bin/sh
+minidcos docker task exec -it my-tensorflow-no-gpus /bin/sh
+--------------------------------------------------------------------------
+
 # install git
 yum install git
 
