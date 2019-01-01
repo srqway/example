@@ -1,3 +1,6 @@
 # post
-curl -X POST -H "Content-Type: text/plain" -d "this is post data" http://localhost:8080/
+curl -iv --raw -X POST -H "Content-Type: text/plain" -d "this is post data" http://localhost:8080/
 
+# download file
+cd /tmp
+curl -O -J -L http://localhost:8080/some_file
