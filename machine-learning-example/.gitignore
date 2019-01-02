@@ -1,5 +1,3 @@
-*.gif
-*.png
 .settings/
 *.pyc
 *-checkpoint.ipynb
