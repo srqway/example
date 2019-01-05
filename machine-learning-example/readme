@@ -98,7 +98,7 @@ Notes:
 	• As always automate what you can.
 	1. Fine-tune the hyperparameters using cross-validation.
 		• Treat your data transformation choices as hyperparameters, especially when you are not sure about them (e.g., should I replace missing values with zero or with the median value? Or just drop the rows?).
-		• Unless there are very few hyperparameter values to explore, prefer random search over grid search. If training is very long, you may prefer a Bayesian optimization approach (e.g., using Gaussian process priors, as described by Jasper Snoek, Hugo Larochelle, and Ryan Adams). 1
+		• Unless there are very few hyperparameter values to explore, prefer random search over grid search. If training is very long, you may prefer a Bayesian optimization approach (e.g., using Gaussian process priors, as described by Jasper Snoek, Hugo Larochelle, and Ryan Adams).
 	2. Try Ensemble methods. Combining your best models will often perform better than running them individually.
 	3. Once you are confident about your final model, measure its performance on the test set to estimate the generalization error.
 7. Present your solution.
